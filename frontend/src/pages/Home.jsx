@@ -7,6 +7,7 @@ import Testimonials from "../components/Testimonials";
 import TeamSection from "../components/TeamSection";
 import FAQSection from "../components/FAQSection";
 import ContactSection from "../components/ContactSection";
+import InlineCTA from "../components/InlineCTA";
 import { Link } from "react-router-dom";
 import { useSmartSite } from "../context/SmartSiteContext";
 
@@ -37,7 +38,7 @@ export default function Home() {
             <p className="mt-5 text-sand-50/90 leading-relaxed max-w-xl">
               For many people, pets are part of the family. You want to be able to trust a veterinarian the
               same way you trust your doctor. Dr. Karen Hamilton and the Annapolis Vet team have been caring
-              for local pets for years &mdash; wellness, surgery, dental, laser therapy, regenerative medicine,
+              for local pets for years: wellness, surgery, dental, laser therapy, regenerative medicine,
               and the occasional hospital kitty cameo from Titus.
             </p>
             <Link
@@ -61,6 +62,7 @@ export default function Home() {
           </div>
         </section>
 
+        <InlineCTA />
         <Testimonials />
         <TeamSection />
         <FAQSection />
