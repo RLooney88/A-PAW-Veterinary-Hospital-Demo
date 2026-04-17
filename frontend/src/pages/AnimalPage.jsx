@@ -31,6 +31,7 @@ const ANIMALS = {
   dogs: {
     slug: "dogs",
     title: "Dogs",
+    noun: "dog",
     hero_headline: "Care that keeps their tail wagging.",
     hero_eyebrow: "Annapolis Dogs",
     hero_copy:
@@ -75,6 +76,7 @@ const ANIMALS = {
   cats: {
     slug: "cats",
     title: "Cats",
+    noun: "cat",
     hero_headline: "Gentle, low-stress feline medicine.",
     hero_eyebrow: "Annapolis Cats",
     hero_copy:
@@ -118,14 +120,15 @@ const ANIMALS = {
   },
   critters: {
     slug: "critters",
-    title: "Other Critters",
-    hero_headline: "Non-dog, non-cat pets welcome.",
-    hero_eyebrow: "Other Critters",
+    title: "Small & Exotic Pets",
+    noun: "pet",
+    hero_headline: "Thoughtful care for every kind of companion.",
+    hero_eyebrow: "Rabbits, Small Mammals & More",
     hero_copy:
-      "Rabbits, guinea pigs, and the occasional unexpected friend. Let's talk about your pet and confirm whether we're the right home for their species-specific care.",
+      "Rabbits, guinea pigs, hamsters, and other small companions deserve the same quality of care as any family pet. We will be honest about what we can treat and guide you to the right specialist when needed.",
     image: "https://images.unsplash.com/photo-1642789310144-bf1254cc56fe?w=1800&q=80&auto=format&fit=crop",
     quote: {
-      body: "The best thing we can do for an exotic pet is be honest, about what we can confidently treat, and when a species-specific specialist is the right next step. We'll point you in the right direction either way.",
+      body: "The best thing we can do for an exotic pet is be honest: what we can confidently treat, and when a species-specific specialist is the right next step. We will point you in the right direction either way.",
       author: "Dr. Karen Hamilton, DVM",
     },
     life_stages: [
@@ -138,24 +141,24 @@ const ANIMALS = {
       { name: "Dental overgrowth (rabbits, rodents)", body: "Continuously-growing teeth need the right diet and regular checks." },
       { name: "GI stasis (rabbits)", body: "A true emergency. If your rabbit stops eating or pooping, call immediately." },
       { name: "Nutritional imbalances", body: "Calcium, vitamin D, and protein issues are common and very fixable." },
-      { name: "Respiratory infections", body: "Small mammals hide respiratory disease well, we screen carefully at every visit." },
+      { name: "Respiratory infections", body: "Small mammals hide respiratory disease well. We screen carefully at every visit." },
     ],
     vaccines: {
-      core: ["Vary widely by species, we'll build a plan that's right for your pet."],
+      core: ["Varies by species. We will build a prevention plan that fits your pet."],
       lifestyle: [],
     },
     what_to_expect: [
-      "A phone conversation first so we can confirm we're a good fit for your species.",
+      "A phone conversation first so we can confirm we are a good fit for your pet's species.",
       "A short, low-stress first visit focused on husbandry, diet, and general health.",
-      "An honest assessment, including referral to a specialist if that's what your pet needs.",
+      "An honest assessment, including referral to a specialist if that is what your pet needs.",
       "Guidance you can put into practice at home that same day.",
     ],
     faqs: [
-      { q: "Do you see rabbits?", a: "Yes, for wellness and common issues, please call first so we can confirm fit and timing." },
-      { q: "What about reptiles, birds, or very exotic species?", a: "We see some. For specialty cases we'll refer you to an experienced exotics practice rather than guess." },
+      { q: "Do you see rabbits?", a: "Yes, for wellness and common issues. Please call first so we can confirm fit and timing." },
+      { q: "What about reptiles, birds, or very exotic species?", a: "We see some. For specialty cases we will refer you to an experienced exotics practice rather than guess." },
       { q: "My rabbit stopped eating, is that urgent?", a: "Yes. GI stasis is life-threatening in rabbits. Call (410) 224-6624 immediately or head to an exotics ER." },
       { q: "How often should my small mammal come in?", a: "At minimum once a year for a wellness and husbandry review. Seniors and sick pets more often." },
-      { q: "Can you help me set up a good habitat?", a: "Absolutely, environment, lighting, diet, and enrichment are often the biggest levers for exotic-pet health." },
+      { q: "Can you help me set up a good habitat?", a: "Absolutely. Environment, lighting, diet, and enrichment are often the biggest levers for exotic pet health." },
     ],
     services: ["wellness-exams", "parasite-prevention", "microchipping", "emergency-care"],
   },
@@ -234,7 +237,7 @@ export default function AnimalPage() {
                 data-testid={`animal-cta-${animal.slug}`}
               >
                 <PawPrint className="h-4 w-4" />
-                Request a {animal.title.replace(/s$/, "").toLowerCase()} visit
+                Request a {animal.noun} visit
               </Link>
               <a
                 href="tel:+14102246624"
@@ -256,7 +259,7 @@ export default function AnimalPage() {
                 Life-stage care
               </div>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-clinic-navy mt-3">
-                Care that grows with your {animal.title.replace(/s$/, "").toLowerCase()}.
+                Care that grows with your {animal.noun}.
               </h2>
             </div>
           </div>
@@ -352,7 +355,7 @@ export default function AnimalPage() {
               <Calendar className="h-3.5 w-3.5" /> What to expect
             </div>
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-clinic-navy mt-3">
-              Here's what a {animal.title.replace(/s$/, "").toLowerCase()} visit looks like.
+              Here's what a {animal.noun} visit looks like.
             </h3>
             <ul className="mt-8 space-y-3">
               {animal.what_to_expect.map((line, i) => (
@@ -387,7 +390,7 @@ export default function AnimalPage() {
               {animal.title} FAQ
             </div>
             <h3 className="font-display text-3xl font-bold text-clinic-navy mt-3">
-              Real questions from {animal.title.toLowerCase()} families.
+              Real questions from {animal.noun} families.
             </h3>
             <p className="mt-4 text-clinic-navy/70">
               If yours isn&rsquo;t here, we&rsquo;re happy to talk it through by phone.

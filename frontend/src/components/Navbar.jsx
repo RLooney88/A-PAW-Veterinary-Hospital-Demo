@@ -21,7 +21,7 @@ const NAV = [
 const ANIMAL_ITEMS = [
   { intent: "dogs", href: "/dogs", label: "Dogs", blurb: "Puppies, adults & seniors", Icon: Dog },
   { intent: "cats", href: "/cats", label: "Cats", blurb: "Gentle feline medicine", Icon: Cat },
-  { intent: "critters", href: "/critters", label: "Other Critters", blurb: "Exotics & small mammals", Icon: Rabbit },
+  { intent: "critters", href: "/critters", label: "Small & Exotic Pets", blurb: "Rabbits, guinea pigs & more", Icon: Rabbit },
 ];
 
 export default function Navbar() {

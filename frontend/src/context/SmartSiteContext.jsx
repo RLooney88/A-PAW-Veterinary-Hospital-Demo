@@ -15,7 +15,7 @@ export function useSmartSite() {
 const INTENT_LABELS = {
   dogs: "Dogs",
   cats: "Cats",
-  critters: "Other Critters",
+  critters: "Small & Exotic Pets",
 };
 
 const SUB_INTENT_LABELS = {
