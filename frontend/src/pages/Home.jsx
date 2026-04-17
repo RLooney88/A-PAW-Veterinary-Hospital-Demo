@@ -1,6 +1,7 @@
 import React from "react";
 import DynamicHero from "../components/DynamicHero";
 import IntentSelector from "../components/IntentSelector";
+import SubIntentPrompt from "../components/SubIntentPrompt";
 import FeaturedCare from "../components/FeaturedCare";
 import Testimonials from "../components/Testimonials";
 import TeamSection from "../components/TeamSection";
@@ -21,6 +22,7 @@ export default function Home() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <IntentSelector />
+        <SubIntentPrompt />
         <FeaturedCare />
 
         {/* Editorial split */}

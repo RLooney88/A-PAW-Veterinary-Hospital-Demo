@@ -144,13 +144,71 @@ INLINE_CTA_DEFAULT = {
     "primary_cta_href": "/appointment",
 }
 
+SUB_INTENT_PROMPT_DEFAULT = {
+    "heading": "What are we helping with?",
+    "subheading": "Pick the closest fit.",
+    "cards": [],
+}
+
+SUB_INTENT_PROMPT_SWITCHES = [
+    {
+        "name": "Dogs — sub-intent options",
+        "rule": {"intent": "dogs"},
+        "priority": 100,
+        "content": {
+            "heading": "What are we helping your dog with?",
+            "subheading": "Pick the closest fit.",
+            "cards": [
+                {"intent": "dogs", "sub_intent": "new_puppy", "title": "New Puppy", "description": "First visits, vaccines, spay/neuter timing.", "image": "https://images.unsplash.com/photo-1767101607738-c93754ce5220?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwzfHxjdXRlJTIwcHVwcHklMjBkb2clMjBmYWNlfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85"},
+                {"intent": "dogs", "sub_intent": "wellness", "title": "Wellness", "description": "Annual exams, vaccines, parasite prevention.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp"},
+                {"intent": "dogs", "sub_intent": "health_concerns", "title": "Something's Wrong", "description": "Symptoms, concerns, urgent questions.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp"},
+                {"intent": "dogs", "sub_intent": "senior", "title": "Senior Care", "description": "Mobility, arthritis, quality-of-life.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1546x1295_80/webmgr/02/s/r/screen-shot-2019-06-21-at-92223-pm.png.webp"},
+                {"intent": "dogs", "sub_intent": "treatments", "title": "Specific Treatments", "description": "Dental, surgery, laser, PRP.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1152x1152_80/webmgr/02/s/r/13116461_1728398937399995_1801395013260039740_o.jpg.webp"},
+            ],
+        },
+    },
+    {
+        "name": "Cats — sub-intent options",
+        "rule": {"intent": "cats"},
+        "priority": 100,
+        "content": {
+            "heading": "What are we helping your cat with?",
+            "subheading": "Pick the closest fit.",
+            "cards": [
+                {"intent": "cats", "sub_intent": "new_kitten", "title": "New Kitten", "description": "First visits, vaccines, early preventive care.", "image": "https://images.unsplash.com/photo-1759564795768-4d6b43846406?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwyfHxjdXRlJTIwa2l0dGVuJTIwbG9va2luZyUyMHVwfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85"},
+                {"intent": "cats", "sub_intent": "wellness", "title": "Wellness", "description": "Gentle annual exams and vaccines.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/720x960_80/webmgr/02/s/r/51361429_2235127750060442_2837072696418762752_n.jpg.webp"},
+                {"intent": "cats", "sub_intent": "health_concerns", "title": "Something's Wrong", "description": "Hiding, not eating, vomiting.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp"},
+                {"intent": "cats", "sub_intent": "senior", "title": "Senior Care", "description": "Aging support, chronic conditions.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1546x1295_80/webmgr/02/s/r/screen-shot-2019-06-21-at-92223-pm.png.webp"},
+                {"intent": "cats", "sub_intent": "treatments", "title": "Specific Treatments", "description": "Dental, surgery, laser.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1152x1152_80/webmgr/02/s/r/13116461_1728398937399995_1801395013260039740_o.jpg.webp"},
+            ],
+        },
+    },
+    {
+        "name": "Critters — sub-intent options",
+        "rule": {"intent": "critters"},
+        "priority": 100,
+        "content": {
+            "heading": "What are we helping with?",
+            "subheading": "Pick the closest fit.",
+            "cards": [
+                {"intent": "critters", "sub_intent": "wellness", "title": "Wellness", "description": "Routine exam and husbandry review.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/3000x2000_80/webmgr/02/s/r/IMG1369.jpg.webp"},
+                {"intent": "critters", "sub_intent": "health_concerns", "title": "Something's Wrong", "description": "Symptoms, urgent concerns.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp"},
+                {"intent": "critters", "sub_intent": "husbandry", "title": "Habitat & Diet", "description": "Environment, nutrition, enrichment.", "image": "https://images.unsplash.com/photo-1555634819-ce681c6e258c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwxfHxwZXQlMjBidW5ueSUyMHJhYmJpdCUyMGd1aW5lYSUyMHBpZ3xlbnwwfHx8fDE3NzY0NDk2NTl8MA&ixlib=rb-4.1.0&q=85"},
+            ],
+        },
+    },
+]
+
 SURFACES = [
     {"slug": "home_hero", "name": "Home Hero", "page": "home",
      "description": "Main hero on the homepage — swaps copy + image per intent.",
      "default_content": HERO_DEFAULT},
-    {"slug": "intent_selector", "name": "Parent-Intent Selector", "page": "home",
-     "description": "Three big pet-type cards that set intent explicitly.",
+    {"slug": "intent_selector", "name": "Parent-Intent Selector (fixed)", "page": "home",
+     "description": "Always-visible parent-animal selector. Not switched by intent — keeps navigation to all animals available.",
      "default_content": INTENT_SELECTOR_DEFAULT},
+    {"slug": "sub_intent_prompt", "name": "Sub-Intent Prompt", "page": "home",
+     "description": "Optional deepening section; only rendered when a parent intent is already set. Offers sub-intent cards specific to the visitor's current animal focus.",
+     "default_content": SUB_INTENT_PROMPT_DEFAULT},
     {"slug": "home_featured_care", "name": "Featured Care Grid", "page": "home",
      "description": "Reorders / swaps featured services based on intent.",
      "default_content": FEATURED_DEFAULT},
@@ -327,40 +385,7 @@ FEATURED_SWITCHES = [
     },
 ]
 
-INTENT_SELECTOR_SWITCHES = [
-    {
-        "name": "Dogs selected — nudge sub-intent",
-        "rule": {"intent": "dogs"},
-        "priority": 100,
-        "content": {
-            "heading": "What are we helping your dog with?",
-            "subheading": "Pick the closest fit.",
-            "cards": [
-                {"intent": "dogs", "sub_intent": "new_puppy", "title": "New Puppy", "description": "First visits, vaccines, spay/neuter timing.", "image": "https://images.unsplash.com/photo-1767101607738-c93754ce5220?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwzfHxjdXRlJTIwcHVwcHklMjBkb2clMjBmYWNlfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85"},
-                {"intent": "dogs", "sub_intent": "wellness", "title": "Wellness & Preventive", "description": "Annual exams, vaccines, parasite prevention.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp"},
-                {"intent": "dogs", "sub_intent": "health_concerns", "title": "Something's Wrong", "description": "Describe symptoms — we'll guide you.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp"},
-                {"intent": "dogs", "sub_intent": "senior", "title": "Senior Dog Care", "description": "Mobility, arthritis and quality-of-life support.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1546x1295_80/webmgr/02/s/r/screen-shot-2019-06-21-at-92223-pm.png.webp"},
-                {"intent": "dogs", "sub_intent": "treatments", "title": "Specific Treatments", "description": "Dental, surgery, laser, PRP.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1152x1152_80/webmgr/02/s/r/13116461_1728398937399995_1801395013260039740_o.jpg.webp"},
-            ],
-        },
-    },
-    {
-        "name": "Cats selected — nudge sub-intent",
-        "rule": {"intent": "cats"},
-        "priority": 100,
-        "content": {
-            "heading": "What are we helping your cat with?",
-            "subheading": "Pick the closest fit — copy will update across the site.",
-            "cards": [
-                {"intent": "cats", "sub_intent": "new_kitten", "title": "New Kitten", "description": "First visits, vaccines, early preventive care.", "image": "https://images.unsplash.com/photo-1759564795768-4d6b43846406?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwyfHxjdXRlJTIwa2l0dGVuJTIwbG9va2luZyUyMHVwfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85"},
-                {"intent": "cats", "sub_intent": "wellness", "title": "Wellness & Preventive", "description": "Gentle annual exams and vaccines.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/720x960_80/webmgr/02/s/r/51361429_2235127750060442_2837072696418762752_n.jpg.webp"},
-                {"intent": "cats", "sub_intent": "health_concerns", "title": "Something's Wrong", "description": "Hiding, not eating, vomiting — let's triage.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp"},
-                {"intent": "cats", "sub_intent": "senior", "title": "Senior Cat Care", "description": "Aging support and chronic-condition monitoring.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1546x1295_80/webmgr/02/s/r/screen-shot-2019-06-21-at-92223-pm.png.webp"},
-                {"intent": "cats", "sub_intent": "treatments", "title": "Specific Treatments", "description": "Dental, surgery, laser, PRP.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1152x1152_80/webmgr/02/s/r/13116461_1728398937399995_1801395013260039740_o.jpg.webp"},
-            ],
-        },
-    },
-]
+INTENT_SELECTOR_SWITCHES = []
 
 APPOINTMENT_INTRO_SWITCHES = [
     {
@@ -429,7 +454,7 @@ PROOF_SWITCHES = [
 SWITCH_SPECS: dict[str, list[dict]] = {
     "home_hero": HERO_SWITCHES,
     "home_featured_care": FEATURED_SWITCHES,
-    "intent_selector": INTENT_SELECTOR_SWITCHES,
+    "sub_intent_prompt": SUB_INTENT_PROMPT_SWITCHES,
     "appointment_intro": APPOINTMENT_INTRO_SWITCHES,
     "home_proof": PROOF_SWITCHES,
 }
