@@ -23,9 +23,9 @@ export default function Home() {
         <FeaturedCare />
 
         <InlineCTA />
+        <FAQSection />
         <Testimonials />
         <TeamSection />
-        <FAQSection />
         <ContactSection />
       </div>
     </div>
