@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PawPrint } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
+import InlineCTA from "../components/InlineCTA";
 
 export const SERVICES = [
   { slug: "wellness-exams", title: "Wellness Exams", blurb: "Annual checkups that catch problems early.", intent_hint: "wellness" },
@@ -63,6 +64,7 @@ export default function Services() {
           );
         })}
       </div>
+      <InlineCTA />
     </div>
   );
 }
