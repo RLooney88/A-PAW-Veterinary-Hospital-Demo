@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Phone, Sparkles } from "lucide-react";
 import { useSurface } from "../hooks/useSurface";
 import { useSmartSite } from "../context/SmartSiteContext";
+import AnimalButtons from "./AnimalButtons";
 
 /**
  * Full-bleed, viewport-filling hero that swaps its background image,
@@ -11,7 +12,7 @@ import { useSmartSite } from "../context/SmartSiteContext";
  */
 export default function DynamicHero() {
   const { content, matched, loading, inferredIntent } = useSurface("home_hero");
-  const { intentLabel, subIntentLabel } = useSmartSite();
+  const { intentLabel, subIntentLabel, parentIntent } = useSmartSite();
 
   if (loading || !content) {
     return (
@@ -100,21 +101,27 @@ export default function DynamicHero() {
             )}
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link
-                to={primary_cta_href || "/appointment"}
-                className="inline-flex items-center gap-2 bg-clinic-clay hover:bg-clinic-clay-hover text-white rounded-full px-8 py-4 font-semibold shadow-xl shadow-clinic-clay/30 transition-transform hover:-translate-y-0.5"
-                data-testid="hero-primary-cta"
-              >
-                {primary_cta_label || "Schedule a Visit"}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <a
-                href={secondary_cta_href || "tel:+14102246624"}
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 backdrop-blur-md text-sand-50 rounded-full px-7 py-4 font-semibold transition-colors"
-                data-testid="hero-secondary-cta"
-              >
-                <Phone className="h-4 w-4" /> {secondary_cta_label || "Call (410) 224-6624"}
-              </a>
+              {!parentIntent ? (
+                <AnimalButtons variant="hero" />
+              ) : (
+                <>
+                  <Link
+                    to={primary_cta_href || "/appointment"}
+                    className="inline-flex items-center gap-2 bg-clinic-clay hover:bg-clinic-clay-hover text-white rounded-full px-8 py-4 font-semibold shadow-xl shadow-clinic-clay/30 transition-transform hover:-translate-y-0.5"
+                    data-testid="hero-primary-cta"
+                  >
+                    {primary_cta_label || "Schedule a Visit"}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <a
+                    href={secondary_cta_href || "tel:+14102246624"}
+                    className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 backdrop-blur-md text-sand-50 rounded-full px-7 py-4 font-semibold transition-colors"
+                    data-testid="hero-secondary-cta"
+                  >
+                    <Phone className="h-4 w-4" /> {secondary_cta_label || "Call (410) 224-6624"}
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>

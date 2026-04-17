@@ -11,6 +11,7 @@ import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
 import Appointment from "./pages/Appointment";
 import About from "./pages/About";
+import AnimalPage from "./pages/AnimalPage";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -47,6 +48,9 @@ function App() {
             <Route path="/services/:slug" element={<ServiceDetail />} />
             <Route path="/appointment" element={<Appointment />} />
             <Route path="/about" element={<About />} />
+            <Route path="/dogs" element={<AnimalPage />} />
+            <Route path="/cats" element={<AnimalPage />} />
+            <Route path="/critters" element={<AnimalPage />} />
 
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminLayout />}>
