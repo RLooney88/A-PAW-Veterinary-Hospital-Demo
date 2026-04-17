@@ -40,7 +40,7 @@ export default function DynamicHero() {
       data-matched-switch={matched || "default"}
       data-inferred-intent={inferredIntent || "none"}
     >
-      {/* Background image — cross-fades when intent changes via key */}
+      {/* Background image, cross-fades when intent changes via key */}
       <img
         key={image_url}
         src={image_url}

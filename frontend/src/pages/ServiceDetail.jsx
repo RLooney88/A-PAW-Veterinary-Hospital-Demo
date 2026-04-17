@@ -14,26 +14,26 @@ const SERVICE_CONTENT = {
   },
   vaccinations: {
     eyebrow: "Vaccines",
-    h1: "Core & lifestyle vaccines — scheduled around your pet.",
+    h1: "Core & lifestyle vaccines, scheduled around your pet.",
     body: "Puppy/kitten series, boosters, and lifestyle vaccines (bordetella, leptospirosis, lyme). We plan a cadence that's appropriate for your pet's age, lifestyle, and exposure.",
     img: "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp",
   },
   "dental-care": {
     eyebrow: "Dentistry",
     h1: "Dental cleanings, extractions, and ongoing oral health.",
-    body: "Dental disease is the most common health problem we see and the most under-treated. We perform full-mouth digital imaging, scaling, and extractions when needed — all under safe, monitored anesthesia.",
+    body: "Dental disease is the most common health problem we see and the most under-treated. We perform full-mouth digital imaging, scaling, and extractions when needed, all under safe, monitored anesthesia.",
     img: "https://cdcssl.ibsrv.net/ibimg/smb/1546x1295_80/webmgr/02/s/r/screen-shot-2019-06-21-at-92223-pm.png.webp",
   },
   surgery: {
     eyebrow: "Surgery",
     h1: "Spay/neuter plus advanced surgical procedures.",
-    body: "From routine spay/neuter and mass removals to ACL repair and abdominal surgery — we use modern monitoring and multi-modal pain management to keep your pet safe and comfortable.",
+    body: "From routine spay/neuter and mass removals to ACL repair and abdominal surgery, we use modern monitoring and multi-modal pain management to keep your pet safe and comfortable.",
     img: "https://cdcssl.ibsrv.net/ibimg/smb/1152x1152_80/webmgr/02/s/r/13116461_1728398937399995_1801395013260039740_o.jpg.webp",
   },
   "laser-therapy": {
     eyebrow: "Laser Therapy",
     h1: "Drug-free pain relief & faster recovery.",
-    body: "Class IV therapeutic laser helps with arthritis, post-op recovery, and soft tissue injuries — without drug side effects. Quiet, warm, and usually enjoyed by most pets.",
+    body: "Class IV therapeutic laser helps with arthritis, post-op recovery, and soft tissue injuries, without drug side effects. Quiet, warm, and usually enjoyed by most pets.",
     img: "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp",
   },
   "prp-therapy": {
@@ -57,12 +57,12 @@ const SERVICE_CONTENT = {
   "senior-care": {
     eyebrow: "Senior Pet Care",
     h1: "Comfort, mobility, and quality-of-life support.",
-    body: "For senior pets, we focus on pain management, mobility, chronic-condition monitoring, and gentle diagnostics — shaped by what matters most for your family.",
+    body: "For senior pets, we focus on pain management, mobility, chronic-condition monitoring, and gentle diagnostics, shaped by what matters most for your family.",
     img: "https://cdcssl.ibsrv.net/ibimg/smb/1546x1295_80/webmgr/02/s/r/screen-shot-2019-06-21-at-92223-pm.png.webp",
   },
   "emergency-care": {
     eyebrow: "Emergency & Urgent",
-    h1: "Worried now? Call us first — we'll triage and guide.",
+    h1: "Worried now? Call us first, we'll triage and guide.",
     body: "During business hours we'll triage most urgent concerns. After hours we'll direct you to the nearest 24/7 emergency hospital so your pet gets care fast.",
     img: "https://cdcssl.ibsrv.net/ibimg/smb/3000x2000_80/webmgr/02/s/r/IMG1369.jpg.webp",
   },

@@ -1,4 +1,4 @@
-"""Annapolis Vet Smart Site — FastAPI server.
+"""Annapolis Vet Smart Site, FastAPI server.
 
 Public routes handle anonymous visitor tracking, dynamic surface content, and
 lead submissions. Admin routes (JWT-protected) expose CRUD over Surfaces,

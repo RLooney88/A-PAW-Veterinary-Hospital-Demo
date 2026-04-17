@@ -95,7 +95,7 @@ function Stat({ label, value, accent = false }) {
   return (
     <div className={`rounded-2xl p-6 border ${accent ? "bg-clinic-navy text-sand-50 border-clinic-navy" : "bg-white border-sand-300/60"}`}>
       <div className={`text-xs uppercase tracking-[0.16em] font-bold ${accent ? "text-clinic-amber" : "text-clinic-forest"}`}>{label}</div>
-      <div className={`mt-2 font-display text-3xl font-extrabold ${accent ? "text-sand-50" : "text-clinic-navy"}`}>{value ?? "—"}</div>
+      <div className={`mt-2 font-display text-3xl font-extrabold ${accent ? "text-sand-50" : "text-clinic-navy"}`}>{value ?? "-"}</div>
     </div>
   );
 }

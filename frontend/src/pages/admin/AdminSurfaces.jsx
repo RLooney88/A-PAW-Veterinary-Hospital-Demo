@@ -142,7 +142,7 @@ function SurfaceCard({ surface, isOpen, onToggle, onAddSwitch, onPatchSwitch, on
 
           <div className="mt-4 space-y-3">
             {surface.switches.length === 0 && (
-              <div className="text-xs text-clinic-mist">No switches yet — visitors will see the default content.</div>
+              <div className="text-xs text-clinic-mist">No switches yet, visitors will see the default content.</div>
             )}
             {surface.switches.map((sw) => (
               <SwitchEditor key={sw.id} switchItem={sw} onPatch={(p) => onPatchSwitch(sw.id, p)} onDelete={() => onDeleteSwitch(sw.id)} />

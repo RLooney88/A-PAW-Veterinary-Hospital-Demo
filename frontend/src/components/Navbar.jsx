@@ -88,7 +88,7 @@ export default function Navbar() {
               </NavLink>
             ))}
 
-            {/* Animals We Serve — dropdown (also a signal surface) */}
+            {/* Animals We Serve, dropdown (also a signal surface) */}
             <DropdownMenu>
               <DropdownMenuTrigger
                 className={`inline-flex items-center gap-1 text-sm font-semibold focus:outline-none transition-colors ${

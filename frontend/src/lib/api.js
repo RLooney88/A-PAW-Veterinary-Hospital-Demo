@@ -5,7 +5,7 @@ export const API_BASE = `${BACKEND_URL}/api`;
 
 export const api = axios.create({ baseURL: API_BASE });
 
-// Admin JWT token — in localStorage for persistence
+// Admin JWT token, in localStorage for persistence
 const TOKEN_KEY = "avw_admin_token";
 
 export function getAdminToken() {

@@ -20,7 +20,7 @@ import { useSmartSite } from "../context/SmartSiteContext";
 import { SERVICES } from "./Services";
 
 /**
- * Canonical species pages — /dogs, /cats, /critters.
+ * Canonical species pages, /dogs, /cats, /critters.
  * These are NOT dynamic. They exist so every visitor can explore everything
  * we do for a given species, whether or not their intent is set yet.
  * We still fire a strong intent signal on mount + on interactions so the
@@ -37,7 +37,7 @@ const ANIMALS = {
       "From first-puppy visits to senior comfort, we treat every dog with the calm, thoughtful care you'd give a member of the family.",
     image: "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp",
     quote: {
-      body: "Dogs don't hide discomfort as well as cats do, but they'll push through because they want to please you. Our job is to notice the small things — a little stiffness, a subtle cough, a change in appetite — before they become big problems.",
+      body: "Dogs don't hide discomfort as well as cats do, but they'll push through because they want to please you. Our job is to notice the small things, a little stiffness, a subtle cough, a change in appetite, before they become big problems.",
       author: "Dr. Karen Hamilton, DVM",
     },
     life_stages: [
@@ -46,11 +46,11 @@ const ANIMALS = {
       { name: "Senior", age: "7 yrs +", focus: "Twice-yearly exams, bloodwork, joint support, laser therapy, PRP, quality-of-life planning.", icon: "heart" },
     ],
     conditions: [
-      { name: "Dental disease", body: "Plaque, gingivitis, and loose teeth — often silent until severe." },
+      { name: "Dental disease", body: "Plaque, gingivitis, and loose teeth, often silent until severe." },
       { name: "Allergies & skin issues", body: "Itching, ear infections, hot spots. Often environmental, sometimes food-related." },
       { name: "Arthritis & joint pain", body: "Stiffness getting up, reluctance on stairs, slowing on walks." },
       { name: "ACL / cruciate injury", body: "Sudden rear-leg lameness. We diagnose and often repair onsite." },
-      { name: "Ear infections", body: "Head shaking, odor, redness. We diagnose the cause and treat it properly — not just the symptom." },
+      { name: "Ear infections", body: "Head shaking, odor, redness. We diagnose the cause and treat it properly, not just the symptom." },
       { name: "GI upset", body: "Vomiting, diarrhea, loss of appetite. We triage and figure out the cause." },
     ],
     vaccines: {
@@ -58,17 +58,17 @@ const ANIMALS = {
       lifestyle: ["Bordetella (kennel cough)", "Leptospirosis", "Lyme", "Canine influenza"],
     },
     what_to_expect: [
-      "A calm greeting from our team — no rushed handling.",
+      "A calm greeting from our team, no rushed handling.",
       "Full nose-to-tail exam with plenty of breaks if your dog is anxious.",
       "A conversation about lifestyle, nutrition, and anything you've noticed.",
-      "A clear, written plan you leave with — next steps, costs, and timing.",
+      "A clear, written plan you leave with, next steps, costs, and timing.",
     ],
     faqs: [
       { q: "How often should my adult dog come in?", a: "Once a year for healthy adults (1–7 yrs), twice a year for seniors. Puppies follow their own schedule for the first year." },
-      { q: "When should I spay/neuter my dog?", a: "It depends on breed and size — small breeds often earlier, large and giant breeds later to support joint development. We'll recommend the right timing at your puppy visit." },
+      { q: "When should I spay/neuter my dog?", a: "It depends on breed and size, small breeds often earlier, large and giant breeds later to support joint development. We'll recommend the right timing at your puppy visit." },
       { q: "What signs mean I should call you today?", a: "Not eating for 24 hours, repeated vomiting, difficulty breathing, suspected toxin ingestion, sudden lameness, seizures, or any bloated belly. Call (410) 224-6624." },
-      { q: "Do you do dental work for dogs?", a: "Yes — full anesthetic cleanings with dental X-rays and extractions as needed. We screen at every wellness visit." },
-      { q: "Can you help my senior dog stay comfortable?", a: "Absolutely. Laser therapy, joint support, weight management, multimodal pain control, and PRP/regenerative options — we combine them for real quality of life." },
+      { q: "Do you do dental work for dogs?", a: "Yes, full anesthetic cleanings with dental X-rays and extractions as needed. We screen at every wellness visit." },
+      { q: "Can you help my senior dog stay comfortable?", a: "Absolutely. Laser therapy, joint support, weight management, multimodal pain control, and PRP/regenerative options, we combine them for real quality of life." },
     ],
     services: ["wellness-exams", "vaccinations", "dental-care", "surgery", "parasite-prevention", "laser-therapy", "prp-therapy", "microchipping", "senior-care", "emergency-care"],
   },
@@ -78,10 +78,10 @@ const ANIMALS = {
     hero_headline: "Gentle, low-stress feline medicine.",
     hero_eyebrow: "Annapolis Cats",
     hero_copy:
-      "We take cats at their pace — quiet rooms, slow hands, and a team that listens. Feline wellness, dental, senior, and specific treatments all in one place.",
+      "We take cats at their pace, quiet rooms, slow hands, and a team that listens. Feline wellness, dental, senior, and specific treatments all in one place.",
     image: "https://cdcssl.ibsrv.net/ibimg/smb/720x960_80/webmgr/02/s/r/51361429_2235127750060442_2837072696418762752_n.jpg.webp",
     quote: {
-      body: "Cats don't complain — they hide. The best thing you can do is bring them in for wellness before they're sick, because by the time a cat looks sick, the disease has usually been there a while.",
+      body: "Cats don't complain, they hide. The best thing you can do is bring them in for wellness before they're sick, because by the time a cat looks sick, the disease has usually been there a while.",
       author: "Dr. Karen Hamilton, DVM",
     },
     life_stages: [
@@ -99,20 +99,20 @@ const ANIMALS = {
     ],
     vaccines: {
       core: ["Rabies", "FVRCP (Feline Viral Rhinotracheitis / Calicivirus / Panleukopenia)"],
-      lifestyle: ["FeLV (Feline Leukemia) — especially for outdoor cats"],
+      lifestyle: ["FeLV (Feline Leukemia), especially for outdoor cats"],
     },
     what_to_expect: [
       "Quiet exam room, dim lighting, and time to let your cat come out at their own pace.",
-      "Gentle, slow handling — we work with the cat in front of us, not against them.",
+      "Gentle, slow handling, we work with the cat in front of us, not against them.",
       "A thorough exam plus any screening appropriate to their age and lifestyle.",
-      "A plan you leave with — and honest conversation if something needs a specialist.",
+      "A plan you leave with, and honest conversation if something needs a specialist.",
     ],
     faqs: [
-      { q: "My cat hates the carrier — any tips for the visit?", a: "Leave the carrier out as furniture at home, use pheromone spray, bring a familiar towel, and skip the car lecture. We take extra time at check-in so your cat can decompress." },
-      { q: "Does my indoor-only cat really need vaccines?", a: "Yes — core vaccines protect against diseases that can still reach indoor cats. We'll build a minimal, risk-appropriate schedule." },
-      { q: "My cat is over 10 — what changes about their care?", a: "Twice-yearly exams, baseline bloodwork, kidney and thyroid screening, blood pressure checks, and a focus on comfort. Small changes matter a lot at this age." },
+      { q: "My cat hates the carrier, any tips for the visit?", a: "Leave the carrier out as furniture at home, use pheromone spray, bring a familiar towel, and skip the car lecture. We take extra time at check-in so your cat can decompress." },
+      { q: "Does my indoor-only cat really need vaccines?", a: "Yes, core vaccines protect against diseases that can still reach indoor cats. We'll build a minimal, risk-appropriate schedule." },
+      { q: "My cat is over 10, what changes about their care?", a: "Twice-yearly exams, baseline bloodwork, kidney and thyroid screening, blood pressure checks, and a focus on comfort. Small changes matter a lot at this age." },
       { q: "What counts as a feline emergency?", a: "Male cats straining to urinate, difficulty breathing, sudden collapse, seizures, suspected toxin exposure, prolonged not eating or hiding. Call us right away." },
-      { q: "Do you do dental work for cats?", a: "Yes. Feline dental disease is incredibly common and painful — we screen at every wellness and offer full cleanings with dental X-rays." },
+      { q: "Do you do dental work for cats?", a: "Yes. Feline dental disease is incredibly common and painful, we screen at every wellness and offer full cleanings with dental X-rays." },
     ],
     services: ["wellness-exams", "vaccinations", "dental-care", "senior-care", "surgery", "laser-therapy", "microchipping", "parasite-prevention", "emergency-care"],
   },
@@ -125,7 +125,7 @@ const ANIMALS = {
       "Rabbits, guinea pigs, and the occasional unexpected friend. Let's talk about your pet and confirm whether we're the right home for their species-specific care.",
     image: "https://images.unsplash.com/photo-1555634819-ce681c6e258c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwxfHxwZXQlMjBidW5ueSUyMHJhYmJpdCUyMGd1aW5lYSUyMHBpZ3xlbnwwfHx8fDE3NzY0NDk2NTl8MA&ixlib=rb-4.1.0&q=85",
     quote: {
-      body: "The best thing we can do for an exotic pet is be honest — about what we can confidently treat, and when a species-specific specialist is the right next step. We'll point you in the right direction either way.",
+      body: "The best thing we can do for an exotic pet is be honest, about what we can confidently treat, and when a species-specific specialist is the right next step. We'll point you in the right direction either way.",
       author: "Dr. Karen Hamilton, DVM",
     },
     life_stages: [
@@ -138,24 +138,24 @@ const ANIMALS = {
       { name: "Dental overgrowth (rabbits, rodents)", body: "Continuously-growing teeth need the right diet and regular checks." },
       { name: "GI stasis (rabbits)", body: "A true emergency. If your rabbit stops eating or pooping, call immediately." },
       { name: "Nutritional imbalances", body: "Calcium, vitamin D, and protein issues are common and very fixable." },
-      { name: "Respiratory infections", body: "Small mammals hide respiratory disease well — we screen carefully at every visit." },
+      { name: "Respiratory infections", body: "Small mammals hide respiratory disease well, we screen carefully at every visit." },
     ],
     vaccines: {
-      core: ["Vary widely by species — we'll build a plan that's right for your pet."],
+      core: ["Vary widely by species, we'll build a plan that's right for your pet."],
       lifestyle: [],
     },
     what_to_expect: [
       "A phone conversation first so we can confirm we're a good fit for your species.",
       "A short, low-stress first visit focused on husbandry, diet, and general health.",
-      "An honest assessment — including referral to a specialist if that's what your pet needs.",
+      "An honest assessment, including referral to a specialist if that's what your pet needs.",
       "Guidance you can put into practice at home that same day.",
     ],
     faqs: [
-      { q: "Do you see rabbits?", a: "Yes, for wellness and common issues — please call first so we can confirm fit and timing." },
+      { q: "Do you see rabbits?", a: "Yes, for wellness and common issues, please call first so we can confirm fit and timing." },
       { q: "What about reptiles, birds, or very exotic species?", a: "We see some. For specialty cases we'll refer you to an experienced exotics practice rather than guess." },
-      { q: "My rabbit stopped eating — is that urgent?", a: "Yes. GI stasis is life-threatening in rabbits. Call (410) 224-6624 immediately or head to an exotics ER." },
+      { q: "My rabbit stopped eating, is that urgent?", a: "Yes. GI stasis is life-threatening in rabbits. Call (410) 224-6624 immediately or head to an exotics ER." },
       { q: "How often should my small mammal come in?", a: "At minimum once a year for a wellness and husbandry review. Seniors and sick pets more often." },
-      { q: "Can you help me set up a good habitat?", a: "Absolutely — environment, lighting, diet, and enrichment are often the biggest levers for exotic-pet health." },
+      { q: "Can you help me set up a good habitat?", a: "Absolutely, environment, lighting, diet, and enrichment are often the biggest levers for exotic-pet health." },
     ],
     services: ["wellness-exams", "parasite-prevention", "microchipping", "emergency-care"],
   },
@@ -374,7 +374,7 @@ export default function AnimalPage() {
             <blockquote className="mt-4 font-display text-2xl sm:text-3xl font-bold leading-[1.2]">
               &ldquo;{animal.quote.body}&rdquo;
             </blockquote>
-            <div className="mt-5 text-sm font-semibold text-sand-50/85">— {animal.quote.author}</div>
+            <div className="mt-5 text-sm font-semibold text-sand-50/85">{animal.quote.author}</div>
           </div>
           <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-clinic-amber/25 blur-3xl" />
           <div className="absolute -left-10 -bottom-16 h-60 w-60 rounded-full bg-white/10 blur-3xl" />

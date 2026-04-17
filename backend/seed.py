@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 HERO_DEFAULT = {
     "eyebrow": "Trusted Care for Every Paw",
     "headline": "Compassionate veterinary care for your whole family.",
-    "subheadline": "Annapolis Veterinary & Wellness has been caring for Annapolis pets for years — wellness, surgery, dental, emergencies, and beyond.",
+    "subheadline": "Annapolis Veterinary & Wellness has been caring for Annapolis pets for years, wellness, surgery, dental, emergencies, and beyond.",
     "primary_cta_label": "Schedule a Visit",
     "primary_cta_href": "/appointment",
     "secondary_cta_label": "Call (410) 224-6624",
@@ -68,53 +68,53 @@ FAQ_DEFAULT = {
     "heading": "Answers that help you help your pet.",
     "items": [
         {
-            "q": "My new puppy needs vaccines — how soon should we come in?",
+            "q": "My new puppy needs vaccines, how soon should we come in?",
             "a": "As early as 6–8 weeks for the first puppy visit. We'll design a vaccine schedule based on your puppy's age and lifestyle and talk through spay/neuter timing, house-training, and nutrition.",
             "intent": "dogs", "sub_intent": "new_puppy",
         },
         {
-            "q": "My cat stopped eating or is hiding — should I be worried?",
+            "q": "My cat stopped eating or is hiding, should I be worried?",
             "a": "Cats hide illness well, so sudden changes in appetite, behavior, or litter-box habits deserve a same-day call. We'll triage over the phone and get you in quickly if needed.",
             "intent": "cats", "sub_intent": "health_concerns",
         },
         {
-            "q": "My senior dog is slowing down — can you help with arthritis or pain?",
-            "a": "Yes — we combine laser therapy, joint support, multimodal pain management, and PRP/regenerative medicine to keep older dogs comfortable and mobile. Senior consults include a tailored quality-of-life plan.",
+            "q": "My senior dog is slowing down, can you help with arthritis or pain?",
+            "a": "Yes, we combine laser therapy, joint support, multimodal pain management, and PRP/regenerative medicine to keep older dogs comfortable and mobile. Senior consults include a tailored quality-of-life plan.",
             "intent": "dogs", "sub_intent": "senior",
         },
         {
-            "q": "Do you see exotic pets — rabbits, reptiles, birds, or small mammals?",
+            "q": "Do you see exotic pets, rabbits, reptiles, birds, or small mammals?",
             "a": "We see select non-dog, non-cat pets. Call us first and we'll be honest about whether we're the right clinic for your species, or refer you to a specialist we trust.",
             "intent": "critters", "sub_intent": "husbandry",
         },
         {
-            "q": "Do you perform spay/neuter surgery — and at what age?",
-            "a": "Yes, on site. Recommended age varies by species, breed, and size — we'll talk through the ideal timing for your pet at their wellness visit.",
+            "q": "Do you perform spay/neuter surgery, and at what age?",
+            "a": "Yes, on site. Recommended age varies by species, breed, and size, we'll talk through the ideal timing for your pet at their wellness visit.",
             "sub_intent": "treatments",
         },
         {
-            "q": "My dog's breath is bad and there's plaque — do you do dental cleanings?",
+            "q": "My dog's breath is bad and there's plaque, do you do dental cleanings?",
             "a": "Yes. We perform full anesthetic dental cleanings with digital dental X-rays and extractions when needed. Dental disease is one of the most under-treated issues we see in dogs.",
             "intent": "dogs", "sub_intent": "treatments",
         },
         {
             "q": "How often should my indoor cat get wellness exams and vaccines?",
-            "a": "Annual wellness for adult cats, twice-yearly for seniors. Even indoor cats need core vaccines and screening — many feline illnesses are silent until they're serious.",
+            "a": "Annual wellness for adult cats, twice-yearly for seniors. Even indoor cats need core vaccines and screening, many feline illnesses are silent until they're serious.",
             "intent": "cats", "sub_intent": "wellness",
         },
         {
             "q": "Do you offer laser therapy or PRP / regenerative medicine?",
-            "a": "Yes — Class IV laser therapy for pain, inflammation, and healing, and Platelet-Rich Plasma (PRP) for joints, soft-tissue injuries, and chronic pain where medications aren't enough.",
+            "a": "Yes, Class IV laser therapy for pain, inflammation, and healing, and Platelet-Rich Plasma (PRP) for joints, soft-tissue injuries, and chronic pain where medications aren't enough.",
             "sub_intent": "treatments",
         },
         {
-            "q": "Something seems wrong with my pet right now — can I come in today?",
+            "q": "Something seems wrong with my pet right now, can I come in today?",
             "a": "Call us. During business hours we triage most urgent concerns same-day. For true emergencies after hours we'll direct you to the nearest 24/7 ER so your pet gets care fast.",
             "sub_intent": "health_concerns",
         },
         {
             "q": "Do you take new patients, and what happens at the first visit?",
-            "a": "Yes — we love meeting new families. First visits are roughly 45 minutes: full exam, health history, lifestyle chat, and a custom care plan. Bring any previous records you have.",
+            "a": "Yes, we love meeting new families. First visits are roughly 45 minutes: full exam, health history, lifestyle chat, and a custom care plan. Bring any previous records you have.",
             "sub_intent": "wellness",
         },
     ],
@@ -131,9 +131,9 @@ INTENT_SELECTOR_DEFAULT = {
     "heading": "Start with your pet.",
     "subheading": "Pick one to see the care we offer them.",
     "cards": [
-        {"intent": "dogs", "title": "Dogs", "description": "Puppies, adults, seniors — we've got you.", "image": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=1000&q=80&auto=format&fit=crop"},
+        {"intent": "dogs", "title": "Dogs", "description": "Puppies, adults, seniors, we've got you.", "image": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=1000&q=80&auto=format&fit=crop"},
         {"intent": "cats", "title": "Cats", "description": "Gentle, low-stress feline medicine.", "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=1000&q=80&auto=format&fit=crop"},
-        {"intent": "critters", "title": "Other Critters", "description": "Rabbits, small mammals & more — let's see if we're a fit.", "image": "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=1000&q=80&auto=format&fit=crop"},
+        {"intent": "critters", "title": "Other Critters", "description": "Rabbits, small mammals & more, let's see if we're a fit.", "image": "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=1000&q=80&auto=format&fit=crop"},
     ],
 }
 
@@ -152,7 +152,7 @@ SUB_INTENT_PROMPT_DEFAULT = {
 
 SUB_INTENT_PROMPT_SWITCHES = [
     {
-        "name": "Dogs — sub-intent options",
+        "name": "Dogs, sub-intent options",
         "rule": {"intent": "dogs"},
         "priority": 100,
         "content": {
@@ -168,7 +168,7 @@ SUB_INTENT_PROMPT_SWITCHES = [
         },
     },
     {
-        "name": "Cats — sub-intent options",
+        "name": "Cats, sub-intent options",
         "rule": {"intent": "cats"},
         "priority": 100,
         "content": {
@@ -184,7 +184,7 @@ SUB_INTENT_PROMPT_SWITCHES = [
         },
     },
     {
-        "name": "Critters — sub-intent options",
+        "name": "Critters, sub-intent options",
         "rule": {"intent": "critters"},
         "priority": 100,
         "content": {
@@ -201,10 +201,10 @@ SUB_INTENT_PROMPT_SWITCHES = [
 
 SURFACES = [
     {"slug": "home_hero", "name": "Home Hero", "page": "home",
-     "description": "Main hero on the homepage — swaps copy + image per intent.",
+     "description": "Main hero on the homepage, swaps copy + image per intent.",
      "default_content": HERO_DEFAULT},
     {"slug": "intent_selector", "name": "Parent-Intent Selector (fixed)", "page": "home",
-     "description": "Always-visible parent-animal selector. Not switched by intent — keeps navigation to all animals available.",
+     "description": "Always-visible parent-animal selector. Not switched by intent, keeps navigation to all animals available.",
      "default_content": INTENT_SELECTOR_DEFAULT},
     {"slug": "sub_intent_prompt", "name": "Sub-Intent Prompt", "page": "home",
      "description": "Optional deepening section; only rendered when a parent intent is already set. Offers sub-intent cards specific to the visitor's current animal focus.",
@@ -219,7 +219,7 @@ SURFACES = [
      "description": "FAQ content swapped per intent.",
      "default_content": FAQ_DEFAULT},
     {"slug": "appointment_intro", "name": "Appointment Intro", "page": "appointment",
-     "description": "Copy above the appointment form — echoes intent back.",
+     "description": "Copy above the appointment form, echoes intent back.",
      "default_content": APPOINTMENT_INTRO_DEFAULT},
     {"slug": "inline_cta", "name": "Inline CTA (condition/service pages)", "page": "service",
      "description": "Inline CTA block shown on service/condition pages.",
@@ -230,7 +230,7 @@ SURFACES = [
 # ---------- Switch specs (keyed by surface slug) ----------
 HERO_SWITCHES = [
     {
-        "name": "Dogs — Default",
+        "name": "Dogs, Default",
         "rule": {"intent": "dogs"},
         "priority": 100,
         "content": {
@@ -250,7 +250,7 @@ HERO_SWITCHES = [
             **HERO_DEFAULT,
             "eyebrow": "New Puppy? Congrats!",
             "headline": "A strong start for your new best friend.",
-            "subheadline": "Vaccine schedules, spay/neuter timing and early preventive care — all in one friendly visit.",
+            "subheadline": "Vaccine schedules, spay/neuter timing and early preventive care, all in one friendly visit.",
             "image_url": "https://images.unsplash.com/photo-1767101607738-c93754ce5220?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwzfHxjdXRlJTIwcHVwcHklMjBkb2clMjBmYWNlfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85",
             "primary_cta_label": "Book Puppy's First Visit",
         },
@@ -269,7 +269,7 @@ HERO_SWITCHES = [
         },
     },
     {
-        "name": "Cats — Default",
+        "name": "Cats, Default",
         "rule": {"intent": "cats"},
         "priority": 100,
         "content": {
@@ -295,7 +295,7 @@ HERO_SWITCHES = [
         },
     },
     {
-        "name": "Critters — Default",
+        "name": "Critters, Default",
         "rule": {"intent": "critters"},
         "priority": 100,
         "content": {
@@ -316,7 +316,7 @@ HERO_SWITCHES = [
             **HERO_DEFAULT,
             "eyebrow": "Worried About Your Pet?",
             "headline": "Let's figure this out together.",
-            "subheadline": "Describe what's going on and we'll guide you to the next best step — today.",
+            "subheadline": "Describe what's going on and we'll guide you to the next best step, today.",
             "primary_cta_label": "Request an Urgent Visit",
             "secondary_cta_label": "Call (410) 224-6624",
         },
@@ -326,7 +326,7 @@ HERO_SWITCHES = [
 
 FEATURED_SWITCHES = [
     {
-        "name": "Dogs — Featured",
+        "name": "Dogs, Featured",
         "rule": {"intent": "dogs"},
         "priority": 100,
         "content": {
@@ -335,21 +335,21 @@ FEATURED_SWITCHES = [
                 {"title": "Puppy & Dog Vaccinations", "description": "Core + lifestyle on a flexible schedule.", "href": "/services/vaccinations", "icon": "shield"},
                 {"title": "Dental Care", "description": "Cleanings, extractions, and plaque prevention.", "href": "/services/dental-care", "icon": "tooth"},
                 {"title": "Laser Therapy", "description": "Drug-free pain relief for arthritis and recovery.", "href": "/services/laser-therapy", "icon": "sparkles"},
-                {"title": "Spay / Neuter", "description": "Safe, modern protocols — on site.", "href": "/services/surgery", "icon": "scissors"},
+                {"title": "Spay / Neuter", "description": "Safe, modern protocols, on site.", "href": "/services/surgery", "icon": "scissors"},
                 {"title": "PRP & Regenerative", "description": "Regenerative medicine for joints & healing.", "href": "/services/prp-therapy", "icon": "activity"},
                 {"title": "Parasite Prevention", "description": "Flea, tick and heartworm protection year-round.", "href": "/services/parasite-prevention", "icon": "bug"},
             ],
         },
     },
     {
-        "name": "Cats — Featured",
+        "name": "Cats, Featured",
         "rule": {"intent": "cats"},
         "priority": 100,
         "content": {
             "heading": "Popular care for cats.",
             "cards": [
                 {"title": "Cat Vaccinations", "description": "Core feline vaccines tailored to lifestyle.", "href": "/services/vaccinations", "icon": "shield"},
-                {"title": "Feline Dental Care", "description": "Often overlooked — and critical for cats.", "href": "/services/dental-care", "icon": "tooth"},
+                {"title": "Feline Dental Care", "description": "Often overlooked, and critical for cats.", "href": "/services/dental-care", "icon": "tooth"},
                 {"title": "Senior Cat Care", "description": "Chronic-condition monitoring and quality-of-life support.", "href": "/services/senior-care", "icon": "heart"},
                 {"title": "Spay / Neuter", "description": "Gentle, modern feline protocols.", "href": "/services/surgery", "icon": "scissors"},
                 {"title": "Laser Therapy", "description": "Comfort for aging joints and healing.", "href": "/services/laser-therapy", "icon": "sparkles"},
@@ -358,7 +358,7 @@ FEATURED_SWITCHES = [
         },
     },
     {
-        "name": "Critters — Featured",
+        "name": "Critters, Featured",
         "rule": {"intent": "critters"},
         "priority": 100,
         "content": {
@@ -423,14 +423,14 @@ APPOINTMENT_INTRO_SWITCHES = [
         },
     },
     {
-        "name": "Health concerns — urgency",
+        "name": "Health concerns, urgency",
         "rule": {"sub_intent": "health_concerns"},
         "priority": 50,
         "content": {
             **APPOINTMENT_INTRO_DEFAULT,
             "eyebrow": "We're here to help",
             "headline": "Tell us what's going on.",
-            "subheadline": "Describe symptoms and timing — we'll reach out quickly to guide you.",
+            "subheadline": "Describe symptoms and timing, we'll reach out quickly to guide you.",
             "reassurance": "If this is truly urgent, please call (410) 224-6624 right now.",
         },
     },

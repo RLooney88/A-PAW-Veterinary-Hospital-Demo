@@ -47,7 +47,7 @@ export default function AdminSessions() {
                     <div className="font-semibold text-clinic-navy">
                       {s.parent_intent || "unknown"}
                     </div>
-                    <div className="text-xs text-clinic-mist">{s.sub_intent || "—"}</div>
+                    <div className="text-xs text-clinic-mist">{s.sub_intent || "-"}</div>
                   </td>
                   <td className="px-5 py-3 text-clinic-mist">{s.page_view_count}</td>
                   <td className="px-5 py-3 text-clinic-mist">{s.event_count}</td>
@@ -69,7 +69,7 @@ export default function AdminSessions() {
           ) : (
             <div>
               <div className="text-xs uppercase tracking-widest font-bold text-clinic-forest">Timeline</div>
-              <div className="font-display font-bold text-clinic-navy mt-1">{open.parent_intent || "unknown"} · {open.sub_intent || "—"}</div>
+              <div className="font-display font-bold text-clinic-navy mt-1">{open.parent_intent || "unknown"} · {open.sub_intent || "-"}</div>
               <div className="mt-2 text-xs text-clinic-mist">
                 Scores: parent {JSON.stringify(open.intent_scores || {})} · sub {JSON.stringify(open.sub_intent_scores || {})}
               </div>
@@ -77,7 +77,7 @@ export default function AdminSessions() {
                 {events.map((e) => (
                   <li key={e.id} className="flex items-start gap-3 text-xs border-l-2 border-clinic-forest/30 pl-3">
                     <span className="font-semibold text-clinic-navy w-24 shrink-0">{e.signal_type}</span>
-                    <span className="flex-1 text-clinic-mist">{e.label || e.page_path || e.intent || "—"}</span>
+                    <span className="flex-1 text-clinic-mist">{e.label || e.page_path || e.intent || "-"}</span>
                     <span className="text-clinic-mist/70">{new Date(e.created_at).toLocaleTimeString()}</span>
                   </li>
                 ))}

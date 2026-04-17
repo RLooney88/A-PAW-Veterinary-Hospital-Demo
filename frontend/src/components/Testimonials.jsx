@@ -37,7 +37,7 @@ export default function Testimonials() {
               </p>
               <div className="mt-6 flex items-center justify-between gap-3">
                 <div className={`text-sm font-semibold ${i % 3 === 0 ? "text-white" : "text-clinic-navy"}`}>
-                  {t.author || "— Client"}
+                  {t.author || "Client"}
                 </div>
                 {t.tag && (
                   <span className={`text-[11px] uppercase tracking-widest font-bold rounded-full px-3 py-1 ${tagBg}`}>

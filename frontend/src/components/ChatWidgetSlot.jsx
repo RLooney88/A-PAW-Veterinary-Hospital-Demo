@@ -16,7 +16,7 @@ export default function ChatWidgetSlot() {
       className="fixed bottom-6 right-6 z-30"
       data-chat-embed="annapolis-vet"
     >
-      {/* Visual placeholder — replace with external widget script when available. */}
+      {/* Visual placeholder, replace with external widget script when available. */}
       <div className="hidden md:flex items-center gap-2 bg-white/90 backdrop-blur-md border border-sand-300/70 rounded-full pl-3 pr-4 py-2 shadow-lg text-xs text-clinic-navy font-semibold">
         <span className="h-2 w-2 rounded-full bg-clinic-forest animate-soft-pulse" />
         <MessageCircle className="h-4 w-4 text-clinic-forest" />

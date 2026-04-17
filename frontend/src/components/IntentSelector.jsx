@@ -21,7 +21,7 @@ export default function IntentSelector() {
   const cards = content.cards || [];
 
   const handleSelect = (card) => {
-    // Only supports parent-intent cards — the 3 animal buttons.
+    // Only supports parent-intent cards, the 3 animal buttons.
     if (card.intent) {
       setIntent(card.intent, null, { label: `intent_selector:${card.intent}` });
     }

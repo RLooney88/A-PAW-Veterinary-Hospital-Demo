@@ -10,7 +10,7 @@ export const SERVICES = [
   { slug: "surgery", title: "Surgery & Spay/Neuter", blurb: "Safe, modern surgical protocols performed onsite.", intent_hint: "treatments" },
   { slug: "laser-therapy", title: "Laser Therapy", blurb: "Drug-free pain relief and faster healing.", intent_hint: "senior" },
   { slug: "prp-therapy", title: "PRP & Regenerative Medicine", blurb: "Regenerative treatments for joints, tendons, and healing.", intent_hint: "senior" },
-  { slug: "parasite-prevention", title: "Parasite Prevention", blurb: "Fleas, ticks, heartworm — year-round protection.", intent_hint: "wellness" },
+  { slug: "parasite-prevention", title: "Parasite Prevention", blurb: "Fleas, ticks, heartworm, year-round protection.", intent_hint: "wellness" },
   { slug: "microchipping", title: "Microchipping", blurb: "Permanent ID in case your pet slips out.", intent_hint: "wellness" },
   { slug: "senior-care", title: "Senior Pet Care", blurb: "Comfort, mobility and quality-of-life support.", intent_hint: "senior" },
   { slug: "emergency-care", title: "Emergency & Urgent", blurb: "Triage during business hours; guidance after hours.", intent_hint: "health_concerns" },

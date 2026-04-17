@@ -6,7 +6,7 @@ import { PawPrint } from "lucide-react";
 /**
  * Optional deepening section. Only renders when the session has a parent
  * intent (Dogs / Cats / Critters). Offers sub-intent cards for the current
- * animal focus — never hides the parent-animal selector, just augments it.
+ * animal focus, never hides the parent-animal selector, just augments it.
  */
 export default function SubIntentPrompt() {
   const { content, loading, matched } = useSurface("sub_intent_prompt");

@@ -86,8 +86,8 @@ export default function AdminLeads() {
                     {l.phone && <div className="text-xs">{l.phone}</div>}
                   </td>
                   <td className="px-5 py-4 text-clinic-mist">
-                    <div className="text-clinic-navy font-semibold">{l.pet_name || "—"} <span className="font-normal text-clinic-mist">({l.pet_type || "?"})</span></div>
-                    <div className="text-xs">{l.service_interest || "—"}</div>
+                    <div className="text-clinic-navy font-semibold">{l.pet_name || "-"} <span className="font-normal text-clinic-mist">({l.pet_type || "?"})</span></div>
+                    <div className="text-xs">{l.service_interest || "-"}</div>
                   </td>
                   <td className="px-5 py-4">
                     {l.intent_summary?.parent_intent ? (
@@ -131,11 +131,11 @@ export default function AdminLeads() {
               </div>
 
               <div className="mt-6 grid gap-4 text-sm">
-                <Kv k="Pet" v={`${open.pet_name || "—"} (${open.pet_type || "?"})`} />
-                <Kv k="Service of interest" v={open.service_interest || "—"} />
-                <Kv k="Preferred time" v={open.preferred_time || "—"} />
-                <Kv k="Source page" v={open.source_page || "—"} />
-                <Kv k="Comment" v={open.comment || "—"} multiline />
+                <Kv k="Pet" v={`${open.pet_name || "-"} (${open.pet_type || "?"})`} />
+                <Kv k="Service of interest" v={open.service_interest || "-"} />
+                <Kv k="Preferred time" v={open.preferred_time || "-"} />
+                <Kv k="Source page" v={open.source_page || "-"} />
+                <Kv k="Comment" v={open.comment || "-"} multiline />
               </div>
 
               <div className="mt-8">
@@ -164,7 +164,7 @@ export default function AdminLeads() {
                   <div><b>Page views:</b> {open.intent_summary?.page_views ?? 0}</div>
                   <div><b>Intent scores:</b> {JSON.stringify(open.intent_summary?.intent_scores || {})}</div>
                   <div><b>Sub scores:</b> {JSON.stringify(open.intent_summary?.sub_intent_scores || {})}</div>
-                  <div><b>First referrer:</b> {open.intent_summary?.first_referrer || "—"}</div>
+                  <div><b>First referrer:</b> {open.intent_summary?.first_referrer || "-"}</div>
                 </div>
               </div>
 
@@ -176,7 +176,7 @@ export default function AdminLeads() {
                   {(open.signal_trail || []).slice(-20).map((e, i) => (
                     <li key={i} className="text-xs bg-white border border-sand-300/60 rounded-lg px-3 py-2 flex items-center justify-between">
                       <span className="font-semibold text-clinic-navy">{e.signal_type}</span>
-                      <span className="text-clinic-mist">{e.label || e.page_path || e.intent || "—"}</span>
+                      <span className="text-clinic-mist">{e.label || e.page_path || e.intent || "-"}</span>
                     </li>
                   ))}
                   {(open.signal_trail || []).length === 0 && (
