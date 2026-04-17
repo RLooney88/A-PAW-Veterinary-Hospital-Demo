@@ -21,12 +21,19 @@ Admin backend must manage surfaces/switches, view lead submissions with intent s
 - Postgres 15 installed + supervisor-managed; DB `annapolisvet` seeded on app boot.
 - 7 default surfaces: `home_hero`, `intent_selector`, `home_featured_care`, `home_proof`, `home_faq`, `appointment_intro`, `inline_cta`.
 - Default switches per Dogs/Cats/Critters + sub-intents (new_puppy, new_kitten, senior, health_concerns, treatments).
-- Public marketing site (Home, Services, Service Detail × 10, Appointment, About, 404) with real Annapolis Vet photos, hours (Mon 8-4 / Tue closed / Wed 12-7 / Thu 8-4 / Fri 8-3 / Sat 9-1 / Sun closed), address, phone.
+- Public marketing site (Home, Services, Service Detail x 10, Appointment, About, 404) with real Annapolis Vet photos, hours (Mon 8-4 / Tue closed / Wed 12-7 / Thu 8-4 / Fri 8-3 / Sat 9-1 / Sun closed), address, phone.
 - Dynamic Hero + Intent Selector + Featured Care + Testimonials + Team (5 real staff) + FAQ + Contact — all reactively re-render on intent change.
 - `window.smartSite.{getSession,setIntent,trackSignal,clearIntent}` API for external chat widgets.
-- Admin dashboard: Login, Overview (pie/bar charts), Leads (table + side sheet with intent summary + signal trail + status controls), Surfaces (accordion of surfaces → switch editors with JSON content + rule dropdowns + priority + active toggle), Sessions (table + timeline).
+- Admin dashboard: Login, Overview (pie/bar charts), Leads (table + side sheet with intent summary + signal trail + status controls), Surfaces (accordion of surfaces -> switch editors with JSON content + rule dropdowns + priority + active toggle), Sessions (table + timeline).
 - Lead-submission email via SendGrid — silently no-ops until `SENDGRID_API_KEY` is set.
-- Testing agent: **backend 16/16 ✅ · frontend flows all green ✅**.
+- Testing agent: **backend 16/16 pass · frontend flows all green pass**.
+
+### 2026-04-17 — Hero image fixes
+- Replaced unrecognizable cat photo on `/cats` with a clear tabby cat portrait (green eyes, landscape orientation).
+- Replaced dogs page hero (had a person) with a happy border collie, no people.
+- Updated critters page with a better rabbit photo.
+- Updated all 3 homepage hero switches in DB to use DIFFERENT animal photos from their respective pages (variety).
+- Navbar dropdown opacity fix and em-dash cleanup carried over from previous session.
 
 ## 4. Users / Personas
 - **Pet owner (primary visitor)** — wants to quickly find relevant care for their pet (dog/cat/critter) and book or call.
@@ -34,16 +41,16 @@ Admin backend must manage surfaces/switches, view lead submissions with intent s
 - **External chat widget vendor** — reads/writes intent via `window.smartSite.*`.
 
 ## 5. Core Requirements (static)
-- Signal → intent → surface → switch resolution (verified).
+- Signal -> intent -> surface -> switch resolution (verified).
 - Admin CRUD for surfaces + switches; JWT-protected.
 - Lead submission stores full intent snapshot (already implemented).
 - No Emergent-specific dependencies at runtime; Postgres-backed.
 
-## 6. What's Implemented (2026-02-17)
+## 6. What's Implemented
 - [x] Postgres schema & seed
 - [x] JWT admin auth
 - [x] Signal tracking + intent scoring engine
-- [x] 7 surfaces × switches CRUD
+- [x] 7 surfaces x switches CRUD
 - [x] Dynamic Hero / Featured Care / Intent Selector / Appointment Intro / FAQ / Testimonials surfaces
 - [x] Lead submissions + intent summary + signal trail
 - [x] SendGrid email (ready; needs API key)
@@ -53,11 +60,15 @@ Admin backend must manage surfaces/switches, view lead submissions with intent s
 - [x] Admin sessions list + event timeline
 - [x] `window.smartSite` global API for external chat widget
 - [x] Real Annapolis Vet logo, team photos, clinic photos, hours, address, phone
+- [x] Canonical animal pages (/dogs, /cats, /critters) with distinct hero images
+- [x] Homepage hero switches with variety (different photos from pages)
+- [x] No-people animal photos across all pages
+- [x] Navbar dropdown solid white background (readable)
+- [x] Em-dash cleanup across all text
 
 ## 7. Backlog (prioritised)
 
 ### P0 — before launch
-- Point `DATABASE_URL` at Railway Postgres (simple env var change).
 - Add `SENDGRID_API_KEY` + verified sender; test real email.
 - Embed external chat widget `<script>` in `public/index.html`; confirm `window.smartSite.setIntent()` round-trips.
 - Replace default JWT_SECRET & ADMIN_PASSWORD (both in `backend/.env`).
@@ -78,17 +89,17 @@ Admin backend must manage surfaces/switches, view lead submissions with intent s
 - Shadcn-style content block types (not raw JSON) in switch editor for less-technical admins.
 
 ## 8. Deployment Notes (Railway)
-- Spin up a Postgres service → copy `DATABASE_URL` into the backend service env.
+- Spin up a Postgres service -> copy `DATABASE_URL` into the backend service env.
 - Backend service: `uvicorn server:app --host 0.0.0.0 --port $PORT`; set `JWT_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `SENDGRID_API_KEY`, `SENDGRID_FROM_EMAIL`, `LEAD_NOTIFICATION_EMAIL`, `CORS_ORIGINS` (comma-sep list of your domains).
-- Frontend: set `REACT_APP_BACKEND_URL` → `https://<backend-service>.up.railway.app` and deploy static build.
+- Frontend: set `REACT_APP_BACKEND_URL` -> `https://<backend-service>.up.railway.app` and deploy static build.
 - First boot auto-runs `seed.py` (idempotent) and creates admin + surfaces + switches.
 
 ## 9. Handy API Reference
 Public:
-- `POST /api/sessions/init` → `{ session_token, ... }`
-- `POST /api/signals/track` → updated session
-- `GET  /api/surfaces/{slug}/content?session_token=...` → switched content
-- `POST /api/leads` → creates lead with full intent summary
+- `POST /api/sessions/init` -> `{ session_token, ... }`
+- `POST /api/signals/track` -> updated session
+- `GET  /api/surfaces/{slug}/content?session_token=...` -> switched content
+- `POST /api/leads` -> creates lead with full intent summary
 
 Admin (Bearer JWT):
 - `POST /api/admin/login` / `GET /api/admin/me`
@@ -97,3 +108,7 @@ Admin (Bearer JWT):
 - `GET/PATCH /api/admin/leads`
 - `GET /api/admin/sessions` / `GET /api/admin/sessions/{id}/events`
 - `GET /api/admin/analytics/overview`
+
+## 10. Text Rules
+- NO em-dashes anywhere on the site. Use commas, colons, or standard hyphens.
+- NO user-facing text mentioning "tailoring", "personalizing", or "Smart site". The dynamic functionality is invisible to visitors.

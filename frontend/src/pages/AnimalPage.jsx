@@ -35,7 +35,7 @@ const ANIMALS = {
     hero_eyebrow: "Annapolis Dogs",
     hero_copy:
       "From first-puppy visits to senior comfort, we treat every dog with the calm, thoughtful care you'd give a member of the family.",
-    image: "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp",
+    image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=80&auto=format&fit=crop",
     quote: {
       body: "Dogs don't hide discomfort as well as cats do, but they'll push through because they want to please you. Our job is to notice the small things, a little stiffness, a subtle cough, a change in appetite, before they become big problems.",
       author: "Dr. Karen Hamilton, DVM",
@@ -79,7 +79,7 @@ const ANIMALS = {
     hero_eyebrow: "Annapolis Cats",
     hero_copy:
       "We take cats at their pace, quiet rooms, slow hands, and a team that listens. Feline wellness, dental, senior, and specific treatments all in one place.",
-    image: "https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=1800&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=1920&q=80&auto=format&fit=crop",
     quote: {
       body: "Cats don't complain, they hide. The best thing you can do is bring them in for wellness before they're sick, because by the time a cat looks sick, the disease has usually been there a while.",
       author: "Dr. Karen Hamilton, DVM",
@@ -123,7 +123,7 @@ const ANIMALS = {
     hero_eyebrow: "Other Critters",
     hero_copy:
       "Rabbits, guinea pigs, and the occasional unexpected friend. Let's talk about your pet and confirm whether we're the right home for their species-specific care.",
-    image: "https://images.unsplash.com/photo-1555634819-ce681c6e258c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwxfHxwZXQlMjBidW5ueSUyMHJhYmJpdCUyMGd1aW5lYSUyMHBpZ3xlbnwwfHx8fDE3NzY0NDk2NTl8MA&ixlib=rb-4.1.0&q=85",
+    image: "https://images.unsplash.com/photo-1642789310144-bf1254cc56fe?w=1800&q=80&auto=format&fit=crop",
     quote: {
       body: "The best thing we can do for an exotic pet is be honest, about what we can confidently treat, and when a species-specific specialist is the right next step. We'll point you in the right direction either way.",
       author: "Dr. Karen Hamilton, DVM",
