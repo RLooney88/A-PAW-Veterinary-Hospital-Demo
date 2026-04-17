@@ -141,7 +141,6 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <IntentChip data-testid="navbar-intent-chip" />
             <a
               href="tel:+14102246624"
               className={`hidden md:inline-flex items-center gap-2 rounded-full px-5 py-3 font-semibold text-sm transition-colors ${

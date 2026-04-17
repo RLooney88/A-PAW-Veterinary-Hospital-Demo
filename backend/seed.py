@@ -65,12 +65,58 @@ PROOF_DEFAULT = {
 }
 
 FAQ_DEFAULT = {
-    "heading": "Frequently asked questions",
+    "heading": "Answers that help you help your pet.",
     "items": [
-        {"q": "What should I expect at my first visit?", "a": "A thorough nose-to-tail exam, a chat about history and lifestyle, and a tailored care plan. Plan for about 45 minutes."},
-        {"q": "Do you see new patients?", "a": "Yes — we love meeting new families. Call us or request an appointment online."},
-        {"q": "Do you handle emergencies?", "a": "We triage urgent concerns during business hours and will guide you to the right care after hours."},
-        {"q": "What vaccines does my pet need?", "a": "Core vaccines vary by species, age and lifestyle. We'll build a custom schedule at your wellness visit."},
+        {
+            "q": "My new puppy needs vaccines — how soon should we come in?",
+            "a": "As early as 6–8 weeks for the first puppy visit. We'll design a vaccine schedule based on your puppy's age and lifestyle and talk through spay/neuter timing, house-training, and nutrition.",
+            "intent": "dogs", "sub_intent": "new_puppy",
+        },
+        {
+            "q": "My cat stopped eating or is hiding — should I be worried?",
+            "a": "Cats hide illness well, so sudden changes in appetite, behavior, or litter-box habits deserve a same-day call. We'll triage over the phone and get you in quickly if needed.",
+            "intent": "cats", "sub_intent": "health_concerns",
+        },
+        {
+            "q": "My senior dog is slowing down — can you help with arthritis or pain?",
+            "a": "Yes — we combine laser therapy, joint support, multimodal pain management, and PRP/regenerative medicine to keep older dogs comfortable and mobile. Senior consults include a tailored quality-of-life plan.",
+            "intent": "dogs", "sub_intent": "senior",
+        },
+        {
+            "q": "Do you see exotic pets — rabbits, reptiles, birds, or small mammals?",
+            "a": "We see select non-dog, non-cat pets. Call us first and we'll be honest about whether we're the right clinic for your species, or refer you to a specialist we trust.",
+            "intent": "critters", "sub_intent": "husbandry",
+        },
+        {
+            "q": "Do you perform spay/neuter surgery — and at what age?",
+            "a": "Yes, on site. Recommended age varies by species, breed, and size — we'll talk through the ideal timing for your pet at their wellness visit.",
+            "sub_intent": "treatments",
+        },
+        {
+            "q": "My dog's breath is bad and there's plaque — do you do dental cleanings?",
+            "a": "Yes. We perform full anesthetic dental cleanings with digital dental X-rays and extractions when needed. Dental disease is one of the most under-treated issues we see in dogs.",
+            "intent": "dogs", "sub_intent": "treatments",
+        },
+        {
+            "q": "How often should my indoor cat get wellness exams and vaccines?",
+            "a": "Annual wellness for adult cats, twice-yearly for seniors. Even indoor cats need core vaccines and screening — many feline illnesses are silent until they're serious.",
+            "intent": "cats", "sub_intent": "wellness",
+        },
+        {
+            "q": "Do you offer laser therapy or PRP / regenerative medicine?",
+            "a": "Yes — Class IV laser therapy for pain, inflammation, and healing, and Platelet-Rich Plasma (PRP) for joints, soft-tissue injuries, and chronic pain where medications aren't enough.",
+            "sub_intent": "treatments",
+        },
+        {
+            "q": "Something seems wrong with my pet right now — can I come in today?",
+            "a": "Call us. During business hours we triage most urgent concerns same-day. For true emergencies after hours we'll direct you to the nearest 24/7 ER so your pet gets care fast.",
+            "sub_intent": "health_concerns",
+        },
+        {
+            "q": "Do you take new patients, and what happens at the first visit?",
+            "a": "Yes — we love meeting new families. First visits are roughly 45 minutes: full exam, health history, lifestyle chat, and a custom care plan. Bring any previous records you have.",
+            "sub_intent": "wellness",
+        },
     ],
 }
 
