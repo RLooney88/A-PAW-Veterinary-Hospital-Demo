@@ -129,7 +129,7 @@ APPOINTMENT_INTRO_DEFAULT = {
 
 INTENT_SELECTOR_DEFAULT = {
     "heading": "Who are we caring for today?",
-    "subheading": "Tap your pet type and we'll tailor the site around their needs.",
+    "subheading": "Jump straight to the care info for your pet.",
     "cards": [
         {"intent": "dogs", "title": "Dogs", "description": "Puppies, adults, seniors — we've got you.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp"},
         {"intent": "cats", "title": "Cats", "description": "Gentle, low-stress feline medicine.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/720x960_80/webmgr/02/s/r/51361429_2235127750060442_2837072696418762752_n.jpg.webp"},
@@ -334,7 +334,7 @@ INTENT_SELECTOR_SWITCHES = [
         "priority": 100,
         "content": {
             "heading": "What are we helping your dog with?",
-            "subheading": "Tap what fits best — the site will adjust.",
+            "subheading": "Pick the closest fit.",
             "cards": [
                 {"intent": "dogs", "sub_intent": "new_puppy", "title": "New Puppy", "description": "First visits, vaccines, spay/neuter timing.", "image": "https://images.unsplash.com/photo-1767101607738-c93754ce5220?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwzfHxjdXRlJTIwcHVwcHklMjBkb2clMjBmYWNlfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85"},
                 {"intent": "dogs", "sub_intent": "wellness", "title": "Wellness & Preventive", "description": "Annual exams, vaccines, parasite prevention.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp"},

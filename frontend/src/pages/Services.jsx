@@ -5,7 +5,7 @@ import { useSmartSite } from "../context/SmartSiteContext";
 
 export const SERVICES = [
   { slug: "wellness-exams", title: "Wellness Exams", blurb: "Annual checkups that catch problems early.", intent_hint: "wellness" },
-  { slug: "vaccinations", title: "Vaccinations", blurb: "Core & lifestyle vaccines tailored to your pet.", intent_hint: "wellness" },
+  { slug: "vaccinations", title: "Vaccinations", blurb: "Core & lifestyle vaccines on a schedule that fits your pet.", intent_hint: "wellness" },
   { slug: "dental-care", title: "Dental Care", blurb: "Cleanings, extractions, and long-term dental health.", intent_hint: "treatments" },
   { slug: "surgery", title: "Surgery & Spay/Neuter", blurb: "Safe, modern surgical protocols performed onsite.", intent_hint: "treatments" },
   { slug: "laser-therapy", title: "Laser Therapy", blurb: "Drug-free pain relief and faster healing.", intent_hint: "senior" },

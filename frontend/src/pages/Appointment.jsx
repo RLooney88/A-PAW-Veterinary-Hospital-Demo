@@ -159,12 +159,7 @@ export default function Appointment() {
 
         <div className="flex items-center justify-between pt-2">
           <div className="text-xs text-clinic-mist">
-            {parentIntent ? (
-              <>Pre-filled based on your interest in <strong className="text-clinic-navy">{parentIntent}</strong>
-                {subIntent ? <> · <strong className="text-clinic-navy">{subIntent}</strong></> : null}.</>
-            ) : (
-              "We'll never share your info."
-            )}
+            We&rsquo;ll never share your info.
           </div>
           <button
             type="submit"

@@ -57,7 +57,7 @@ const SERVICE_CONTENT = {
   "senior-care": {
     eyebrow: "Senior Pet Care",
     h1: "Comfort, mobility, and quality-of-life support.",
-    body: "For senior pets, we focus on pain management, mobility, chronic-condition monitoring, and gentle diagnostics — tailored to what matters most for your family.",
+    body: "For senior pets, we focus on pain management, mobility, chronic-condition monitoring, and gentle diagnostics — shaped by what matters most for your family.",
     img: "https://cdcssl.ibsrv.net/ibimg/smb/1546x1295_80/webmgr/02/s/r/screen-shot-2019-06-21-at-92223-pm.png.webp",
   },
   "emergency-care": {
@@ -142,11 +142,6 @@ export default function ServiceDetail() {
                 <Phone className="h-4 w-4" /> (410) 224-6624
               </a>
             </div>
-            {parentIntent && (
-              <div className="mt-5 text-[11px] uppercase tracking-widest text-clinic-mist">
-                Personalised for: <span className="text-clinic-navy font-bold">{parentIntent}</span>
-              </div>
-            )}
           </div>
         </div>
 

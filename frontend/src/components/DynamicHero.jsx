@@ -6,9 +6,8 @@ import { useSmartSite } from "../context/SmartSiteContext";
 import AnimalButtons from "./AnimalButtons";
 
 /**
- * Full-bleed, viewport-filling hero that swaps its background image,
- * eyebrow, headline, subheadline, and CTAs based on the visitor's inferred
- * intent (via the `home_hero` surface in the Smart Site admin).
+ * Full-bleed, viewport-filling hero. Content is resolved server-side from
+ * the `home_hero` surface and swapped via admin-managed switches.
  */
 export default function DynamicHero() {
   const { content, matched, loading, inferredIntent } = useSurface("home_hero");

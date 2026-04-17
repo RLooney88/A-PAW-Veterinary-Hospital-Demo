@@ -24,8 +24,8 @@ export default function IntentSelector() {
     <section className="mt-20" data-testid="intent-selector">
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
         <div>
-          <div className="text-xs uppercase tracking-[0.22em] font-semibold text-clinic-forest">
-            Tailor your experience
+          <div className="text-xs uppercase tracking-[0.22em] font-semibold text-clinic-red">
+            Find care fast
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-clinic-navy mt-3">
             {content.heading}
