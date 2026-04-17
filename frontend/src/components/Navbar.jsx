@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, Phone, X } from "lucide-react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Cat, ChevronDown, Dog, Menu, Phone, Rabbit, X } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { useSmartSite } from "../context/SmartSiteContext";
 import IntentChip from "./IntentChip";
 
 const LOGO = "https://cdcssl.ibsrv.net/ibimg/smb/158x193_80/webmgr/02/s/r/58de6e5942c22_Logo2.png.webp";
@@ -12,10 +19,18 @@ const NAV = [
   { to: "/appointment", label: "Request Visit" },
 ];
 
+const ANIMAL_ITEMS = [
+  { intent: "dogs", href: "/dogs", label: "Dogs", blurb: "Puppies, adults & seniors", Icon: Dog },
+  { intent: "cats", href: "/cats", label: "Cats", blurb: "Gentle feline medicine", Icon: Cat },
+  { intent: "critters", href: "/critters", label: "Other Critters", blurb: "Exotics & small mammals", Icon: Rabbit },
+];
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
+  const { setIntent } = useSmartSite();
+  const navigate = useNavigate();
   const overHero = pathname === "/";
 
   useEffect(() => {
@@ -25,8 +40,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // When we're on the hero page and not scrolled, use transparent mode
   const transparent = overHero && !scrolled && !open;
+
+  const pickAnimal = async (item, { closeMobile = false } = {}) => {
+    await setIntent(item.intent, null, { label: `nav_animals_menu:${item.intent}` });
+    if (closeMobile) setOpen(false);
+    navigate(item.href);
+  };
 
   return (
     <header
@@ -47,40 +67,72 @@ export default function Navbar() {
               className={`h-12 w-auto rounded-xl transition-all ${transparent ? "bg-white/90 p-1" : ""}`}
             />
             <div className="hidden sm:block leading-tight">
-              <div
-                className={`font-display font-extrabold text-[17px] transition-colors ${
-                  transparent ? "text-sand-50" : "text-clinic-navy"
-                }`}
-              >
+              <div className={`font-display font-extrabold text-[17px] transition-colors ${transparent ? "text-sand-50" : "text-clinic-navy"}`}>
                 Annapolis Veterinary
               </div>
-              <div
-                className={`text-[12px] uppercase tracking-[0.18em] font-semibold transition-colors ${
-                  transparent ? "text-clinic-amber" : "text-clinic-forest"
-                }`}
-              >
+              <div className={`text-[12px] uppercase tracking-[0.18em] font-semibold transition-colors ${transparent ? "text-clinic-amber" : "text-clinic-forest"}`}>
                 &amp; Wellness
               </div>
             </div>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
-            {NAV.map((n) => (
+            {NAV.slice(0, 1).map((n) => (
               <NavLink
                 key={n.to}
                 to={n.to}
-                end={n.to === "/"}
-                className={({ isActive }) =>
-                  `text-sm font-semibold transition-colors ${
-                    transparent
-                      ? isActive
-                        ? "text-clinic-amber"
-                        : "text-sand-50/90 hover:text-clinic-amber"
-                      : isActive
-                      ? "text-clinic-forest"
-                      : "text-clinic-ink hover:text-clinic-forest"
-                  }`
-                }
+                end
+                className={({ isActive }) => linkCls(transparent, isActive)}
+                data-testid="nav-link-home"
+              >
+                {n.label}
+              </NavLink>
+            ))}
+
+            {/* Animals We Serve — dropdown (also a signal surface) */}
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                className={`inline-flex items-center gap-1 text-sm font-semibold focus:outline-none transition-colors ${
+                  transparent ? "text-sand-50/90 hover:text-clinic-amber" : "text-clinic-ink hover:text-clinic-forest"
+                }`}
+                data-testid="nav-animals-trigger"
+              >
+                Animals We Serve
+                <ChevronDown className="h-3.5 w-3.5 opacity-75" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="start"
+                sideOffset={12}
+                className="w-72 rounded-2xl border border-sand-300/70 bg-white/98 backdrop-blur-lg p-2 shadow-[0_24px_60px_rgba(0,0,0,0.12)]"
+                data-testid="nav-animals-menu"
+              >
+                {ANIMAL_ITEMS.map((item) => (
+                  <DropdownMenuItem
+                    key={item.intent}
+                    onSelect={(e) => {
+                      e.preventDefault();
+                      pickAnimal(item);
+                    }}
+                    className="group flex items-center gap-3 rounded-xl px-3 py-3 cursor-pointer focus:bg-clinic-red-soft data-[highlighted]:bg-clinic-red-soft"
+                    data-testid={`nav-animals-${item.intent}`}
+                  >
+                    <span className="h-10 w-10 rounded-xl bg-clinic-sage text-clinic-forest grid place-items-center group-hover:bg-clinic-red group-hover:text-white transition-colors">
+                      <item.Icon className="h-5 w-5" strokeWidth={2.2} />
+                    </span>
+                    <span className="flex-1">
+                      <span className="block font-display font-bold text-clinic-navy leading-tight">{item.label}</span>
+                      <span className="block text-xs text-clinic-mist">{item.blurb}</span>
+                    </span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {NAV.slice(1).map((n) => (
+              <NavLink
+                key={n.to}
+                to={n.to}
+                className={({ isActive }) => linkCls(transparent, isActive)}
                 data-testid={`nav-link-${n.label.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 {n.label}
@@ -114,6 +166,7 @@ export default function Navbar() {
             </button>
           </div>
         </div>
+
         {open && (
           <div className="lg:hidden pb-6 flex flex-col gap-2 bg-sand-50 rounded-b-2xl" data-testid="nav-mobile-menu">
             {NAV.map((n) => (
@@ -126,9 +179,23 @@ export default function Navbar() {
                 {n.label}
               </NavLink>
             ))}
+            <div className="px-3 pt-3 pb-1 text-[11px] uppercase tracking-widest font-bold text-clinic-forest">
+              Animals We Serve
+            </div>
+            {ANIMAL_ITEMS.map((a) => (
+              <button
+                key={a.intent}
+                onClick={() => pickAnimal(a, { closeMobile: true })}
+                className="mx-3 flex items-center gap-3 py-2 px-3 rounded-lg font-semibold text-clinic-ink hover:bg-sand-200 text-left"
+                data-testid={`nav-animals-mobile-${a.intent}`}
+              >
+                <a.Icon className="h-4 w-4 text-clinic-forest" strokeWidth={2.2} />
+                {a.label}
+              </button>
+            ))}
             <a
               href="tel:+14102246624"
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-clinic-navy px-5 py-3 text-white font-semibold"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-clinic-red px-5 py-3 text-white font-semibold"
             >
               <Phone className="h-4 w-4" /> (410) 224-6624
             </a>
@@ -137,4 +204,15 @@ export default function Navbar() {
       </div>
     </header>
   );
+}
+
+function linkCls(transparent, isActive) {
+  if (transparent) {
+    return `text-sm font-semibold transition-colors ${
+      isActive ? "text-clinic-amber" : "text-sand-50/90 hover:text-clinic-amber"
+    }`;
+  }
+  return `text-sm font-semibold transition-colors ${
+    isActive ? "text-clinic-red" : "text-clinic-ink hover:text-clinic-red"
+  }`;
 }
