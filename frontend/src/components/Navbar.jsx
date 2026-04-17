@@ -102,7 +102,7 @@ export default function Navbar() {
               <DropdownMenuContent
                 align="start"
                 sideOffset={12}
-                className="w-72 rounded-2xl border border-sand-300/70 bg-white/98 backdrop-blur-lg p-2 shadow-[0_24px_60px_rgba(0,0,0,0.12)]"
+                className="w-72 rounded-2xl border border-sand-300/70 bg-white p-2 shadow-[0_24px_60px_rgba(0,0,0,0.12)]"
                 data-testid="nav-animals-menu"
               >
                 {ANIMAL_ITEMS.map((item) => (

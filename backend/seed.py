@@ -277,7 +277,7 @@ HERO_SWITCHES = [
             "eyebrow": "Gentle Feline Medicine",
             "headline": "Calm, low-stress care your cat will tolerate.",
             "subheadline": "We go slow, we listen, and we put comfort first.",
-            "image_url": "https://cdcssl.ibsrv.net/ibimg/smb/720x960_80/webmgr/02/s/r/51361429_2235127750060442_2837072696418762752_n.jpg.webp",
+            "image_url": "https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=1800&q=80&auto=format&fit=crop",
             "primary_cta_label": "Book a Cat Visit",
         },
     },
