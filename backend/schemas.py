@@ -163,6 +163,44 @@ class LeadStatusUpdate(BaseModel):
     status: str
 
 
+# ---------- Webhooks ----------
+class WebhookCreate(BaseModel):
+    name: str
+    url: str
+    event_type: str = "lead_created"
+    headers: dict = {}
+    active: bool = True
+
+
+class WebhookUpdate(BaseModel):
+    name: str | None = None
+    url: str | None = None
+    event_type: str | None = None
+    headers: dict | None = None
+    active: bool | None = None
+
+
+class WebhookOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: str
+    name: str
+    url: str
+    event_type: str
+    headers: dict
+    active: bool
+    last_fired_at: datetime | None = None
+    last_status_code: int | None = None
+    last_error: str | None = None
+    created_at: datetime
+    updated_at: datetime
+
+
+class WebhookTestResponse(BaseModel):
+    success: bool
+    status_code: int | None = None
+    error: str | None = None
+
+
 # ---------- Analytics ----------
 class AnalyticsOverview(BaseModel):
     total_sessions: int

@@ -149,3 +149,21 @@ class LeadSubmission(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, index=True)
 
     session: Mapped["VisitorSession | None"] = relationship(back_populates="leads")
+
+
+class WebhookConfig(Base):
+    __tablename__ = "webhook_configs"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    name: Mapped[str] = mapped_column(String(120), nullable=False)
+    url: Mapped[str] = mapped_column(Text, nullable=False)
+    event_type: Mapped[str] = mapped_column(String(64), default="lead_created")  # lead_created, etc.
+    headers: Mapped[dict] = mapped_column(JSONB, default=dict)  # custom headers (auth tokens, etc.)
+    active: Mapped[bool] = mapped_column(Boolean, default=True)
+    last_fired_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_status_code: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    last_error: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=_utcnow, onupdate=_utcnow
+    )

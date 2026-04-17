@@ -23,7 +23,7 @@ from auth import create_access_token, get_current_admin, verify_password
 from database import get_db
 from email_service import send_lead_notification
 from intent_engine import match_switch, resolve_parent_intent, resolve_sub_intent
-from models import LeadSubmission, SignalEvent, Surface, Switch, User, VisitorSession
+from models import LeadSubmission, SignalEvent, Surface, Switch, User, VisitorSession, WebhookConfig
 from schemas import (
     AnalyticsOverview,
     LeadCreateRequest,
@@ -43,6 +43,10 @@ from schemas import (
     SwitchUpdate,
     TokenResponse,
     VisitorSessionOut,
+    WebhookCreate,
+    WebhookOut,
+    WebhookTestResponse,
+    WebhookUpdate,
 )
 from seed import seed as seed_db
 
@@ -288,26 +292,34 @@ async def create_lead(payload: LeadCreateRequest, db: AsyncSession = Depends(get
     await db.commit()
     await db.refresh(lead)
 
+    # Build notification payload
+    lead_data = {
+        "id": lead.id,
+        "name": lead.name,
+        "email": lead.email,
+        "phone": lead.phone,
+        "pet_name": lead.pet_name,
+        "pet_type": lead.pet_type,
+        "service_interest": lead.service_interest,
+        "comment": lead.comment,
+        "preferred_time": lead.preferred_time,
+        "source_page": lead.source_page,
+        "intent_summary": lead.intent_summary,
+        "signal_trail": lead.signal_trail,
+        "created_at": lead.created_at.isoformat() if lead.created_at else None,
+    }
+
     # Fire-and-forget email
     try:
-        send_lead_notification(
-            {
-                "id": lead.id,
-                "name": lead.name,
-                "email": lead.email,
-                "phone": lead.phone,
-                "pet_name": lead.pet_name,
-                "pet_type": lead.pet_type,
-                "service_interest": lead.service_interest,
-                "comment": lead.comment,
-                "preferred_time": lead.preferred_time,
-                "source_page": lead.source_page,
-                "intent_summary": lead.intent_summary,
-                "signal_trail": lead.signal_trail,
-            }
-        )
+        send_lead_notification(lead_data)
     except Exception:
         logger.exception("Email notification failed (non-fatal)")
+
+    # Fire webhooks
+    try:
+        await _fire_webhooks("lead_created", lead_data, db)
+    except Exception:
+        logger.exception("Webhook firing failed (non-fatal)")
 
     return LeadOut.model_validate(lead)
 
@@ -576,6 +588,147 @@ async def analytics_overview(
         sub_intent_breakdown=sub_breakdown,
         top_pages=top_pages,
     )
+
+
+# ---------- Webhook helpers ----------
+import httpx
+
+async def _fire_webhooks(event_type: str, payload: dict, db: AsyncSession):
+    """Fire all active webhooks for the given event type."""
+    res = await db.execute(
+        select(WebhookConfig).where(
+            WebhookConfig.event_type == event_type,
+            WebhookConfig.active == True,
+        )
+    )
+    hooks = res.scalars().all()
+    for hook in hooks:
+        try:
+            async with httpx.AsyncClient(timeout=10) as client:
+                resp = await client.post(
+                    hook.url,
+                    json=payload,
+                    headers={
+                        "Content-Type": "application/json",
+                        "X-Webhook-Event": event_type,
+                        **hook.headers,
+                    },
+                )
+            hook.last_fired_at = datetime.now(timezone.utc)
+            hook.last_status_code = resp.status_code
+            hook.last_error = None if resp.is_success else resp.text[:500]
+        except Exception as exc:
+            hook.last_fired_at = datetime.now(timezone.utc)
+            hook.last_status_code = None
+            hook.last_error = str(exc)[:500]
+            logger.warning(f"Webhook {hook.name} failed: {exc}")
+    if hooks:
+        await db.commit()
+
+
+# ---------- Admin: Webhooks ----------
+@api.get("/admin/webhooks", response_model=list[WebhookOut])
+async def list_webhooks(
+    _admin=Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    res = await db.execute(select(WebhookConfig).order_by(WebhookConfig.created_at))
+    return [WebhookOut.model_validate(w) for w in res.scalars().all()]
+
+
+@api.post("/admin/webhooks", response_model=WebhookOut, status_code=201)
+async def create_webhook(
+    payload: WebhookCreate,
+    _admin=Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    hook = WebhookConfig(
+        name=payload.name,
+        url=payload.url,
+        event_type=payload.event_type,
+        headers=payload.headers,
+        active=payload.active,
+    )
+    db.add(hook)
+    await db.commit()
+    await db.refresh(hook)
+    return WebhookOut.model_validate(hook)
+
+
+@api.patch("/admin/webhooks/{webhook_id}", response_model=WebhookOut)
+async def update_webhook(
+    webhook_id: str,
+    payload: WebhookUpdate,
+    _admin=Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    res = await db.execute(select(WebhookConfig).where(WebhookConfig.id == webhook_id))
+    hook = res.scalar_one_or_none()
+    if not hook:
+        raise HTTPException(404, "Webhook not found")
+    for field, val in payload.model_dump(exclude_unset=True).items():
+        setattr(hook, field, val)
+    await db.commit()
+    await db.refresh(hook)
+    return WebhookOut.model_validate(hook)
+
+
+@api.delete("/admin/webhooks/{webhook_id}", status_code=204)
+async def delete_webhook(
+    webhook_id: str,
+    _admin=Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    res = await db.execute(select(WebhookConfig).where(WebhookConfig.id == webhook_id))
+    hook = res.scalar_one_or_none()
+    if not hook:
+        raise HTTPException(404, "Webhook not found")
+    await db.delete(hook)
+    await db.commit()
+
+
+@api.post("/admin/webhooks/{webhook_id}/test", response_model=WebhookTestResponse)
+async def test_webhook(
+    webhook_id: str,
+    _admin=Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    res = await db.execute(select(WebhookConfig).where(WebhookConfig.id == webhook_id))
+    hook = res.scalar_one_or_none()
+    if not hook:
+        raise HTTPException(404, "Webhook not found")
+    test_payload = {
+        "event": "test",
+        "message": "This is a test webhook from Annapolis Vet Smart Site.",
+        "webhook_name": hook.name,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+    try:
+        async with httpx.AsyncClient(timeout=10) as client:
+            resp = await client.post(
+                hook.url,
+                json=test_payload,
+                headers={
+                    "Content-Type": "application/json",
+                    "X-Webhook-Event": "test",
+                    **hook.headers,
+                },
+            )
+        hook.last_fired_at = datetime.now(timezone.utc)
+        hook.last_status_code = resp.status_code
+        hook.last_error = None if resp.is_success else resp.text[:500]
+        await db.commit()
+        return WebhookTestResponse(
+            success=resp.is_success,
+            status_code=resp.status_code,
+            error=None if resp.is_success else resp.text[:500],
+        )
+    except Exception as exc:
+        hook.last_fired_at = datetime.now(timezone.utc)
+        hook.last_status_code = None
+        hook.last_error = str(exc)[:500]
+        await db.commit()
+        return WebhookTestResponse(success=False, error=str(exc)[:500])
 
 
 # ---------- Wire it up ----------
