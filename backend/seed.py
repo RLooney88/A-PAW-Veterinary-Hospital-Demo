@@ -128,12 +128,12 @@ APPOINTMENT_INTRO_DEFAULT = {
 }
 
 INTENT_SELECTOR_DEFAULT = {
-    "heading": "Who are we caring for today?",
-    "subheading": "Jump straight to the care info for your pet.",
+    "heading": "Start with your pet.",
+    "subheading": "Pick one to see the care we offer them.",
     "cards": [
-        {"intent": "dogs", "title": "Dogs", "description": "Puppies, adults, seniors — we've got you.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp"},
-        {"intent": "cats", "title": "Cats", "description": "Gentle, low-stress feline medicine.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/720x960_80/webmgr/02/s/r/51361429_2235127750060442_2837072696418762752_n.jpg.webp"},
-        {"intent": "critters", "title": "Other Critters", "description": "Exotics, small mammals & more — let's see if we're a fit.", "image": "https://images.unsplash.com/photo-1555634819-ce681c6e258c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwxfHxwZXQlMjBidW5ueSUyMHJhYmJpdCUyMGd1aW5lYSUyMHBpZ3xlbnwwfHx8fDE3NzY0NDk2NTl8MA&ixlib=rb-4.1.0&q=85"},
+        {"intent": "dogs", "title": "Dogs", "description": "Puppies, adults, seniors — we've got you.", "image": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=1000&q=80&auto=format&fit=crop"},
+        {"intent": "cats", "title": "Cats", "description": "Gentle, low-stress feline medicine.", "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=1000&q=80&auto=format&fit=crop"},
+        {"intent": "critters", "title": "Other Critters", "description": "Rabbits, small mammals & more — let's see if we're a fit.", "image": "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=1000&q=80&auto=format&fit=crop"},
     ],
 }
 
