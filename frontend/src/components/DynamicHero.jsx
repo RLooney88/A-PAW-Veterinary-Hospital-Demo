@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { PawPrint, Phone, Sparkles } from "lucide-react";
+import { PawPrint, Phone } from "lucide-react";
 import { useSurface } from "../hooks/useSurface";
 import { useSmartSite } from "../context/SmartSiteContext";
 import AnimalButtons from "./AnimalButtons";
@@ -12,7 +12,7 @@ import AnimalButtons from "./AnimalButtons";
  */
 export default function DynamicHero() {
   const { content, matched, loading, inferredIntent } = useSurface("home_hero");
-  const { intentLabel, subIntentLabel, parentIntent } = useSmartSite();
+  const { parentIntent } = useSmartSite();
 
   if (loading || !content) {
     return (
@@ -32,7 +32,6 @@ export default function DynamicHero() {
     secondary_cta_label,
     secondary_cta_href,
     image_url,
-    badge,
   } = content;
 
   return (
@@ -62,25 +61,14 @@ export default function DynamicHero() {
       <div className="relative z-10 h-full">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 h-full flex flex-col justify-end pb-20 lg:pb-28">
           <div className="max-w-3xl animate-fade-up">
-            {(intentLabel || eyebrow) && (
-              <div className="flex flex-wrap items-center gap-2 mb-6" data-testid="hero-eyebrow-row">
-                {intentLabel && (
-                  <span
-                    className="inline-flex items-center gap-1.5 rounded-full bg-clinic-amber/25 text-clinic-amber border border-clinic-amber/40 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em]"
-                    data-testid="hero-intent-pill"
-                  >
-                    <Sparkles className="h-3 w-3" /> Personalised · {intentLabel}
-                    {subIntentLabel ? <span className="opacity-80"> · {subIntentLabel}</span> : null}
-                  </span>
-                )}
-                {eyebrow && (
-                  <span
-                    className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-bold text-sand-50/90"
-                    data-testid="hero-eyebrow"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-clinic-amber" /> {eyebrow}
-                  </span>
-                )}
+            {eyebrow && (
+              <div className="mb-6" data-testid="hero-eyebrow-row">
+                <span
+                  className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-bold text-sand-50/90"
+                  data-testid="hero-eyebrow"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-clinic-red" /> {eyebrow}
+                </span>
               </div>
             )}
 
@@ -125,31 +113,6 @@ export default function DynamicHero() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Floating info strip bottom-right */}
-      <div
-        className="hidden md:flex absolute right-6 lg:right-12 bottom-10 z-10 items-center gap-4 bg-white/90 backdrop-blur-md rounded-2xl px-5 py-4 shadow-xl max-w-sm"
-        data-testid="hero-info-strip"
-      >
-        <div className="h-10 w-10 rounded-xl bg-clinic-sage text-clinic-forest grid place-items-center">
-          <Sparkles className="h-4 w-4" />
-        </div>
-        <div>
-          <div className="text-[10px] uppercase tracking-[0.22em] font-bold text-clinic-forest">
-            {badge || "Smart site"}
-          </div>
-          <div className="text-sm font-semibold text-clinic-navy leading-tight mt-0.5">
-            {intentLabel
-              ? `Tailored for ${intentLabel}${subIntentLabel ? " · " + subIntentLabel : ""}`
-              : "Pick your pet type to personalise this site."}
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll cue */}
-      <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 bottom-6 text-sand-100/60 text-[11px] uppercase tracking-[0.3em] font-semibold">
-        Scroll
       </div>
     </section>
   );
