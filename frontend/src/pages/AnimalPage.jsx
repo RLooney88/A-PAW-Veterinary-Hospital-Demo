@@ -79,7 +79,7 @@ const ANIMALS = {
     hero_eyebrow: "Annapolis Cats",
     hero_copy:
       "We take cats at their pace, quiet rooms, slow hands, and a team that listens. Feline wellness, dental, senior, and specific treatments all in one place.",
-    image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1920&q=80&auto=format&fit=crop",
+    image: "https://static.prod-images.emergentagent.com/jobs/bbbe81db-e829-4c23-9e37-266d5d7bc7b3/images/a46532b4fd05b5253699397d93493af1c0a77ab50532e77ab832508dc0b00444.png",
     quote: {
       body: "Cats don't complain, they hide. The best thing you can do is bring them in for wellness before they're sick, because by the time a cat looks sick, the disease has usually been there a while.",
       author: "Dr. Karen Hamilton, DVM",
