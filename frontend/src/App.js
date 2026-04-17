@@ -23,10 +23,12 @@ function PublicShell({ children }) {
   const { pathname } = useLocation();
   const isAdmin = pathname.startsWith("/admin");
   if (isAdmin) return children;
+  const isHome = pathname === "/";
   return (
     <>
       <Navbar />
-      <main className="pb-20">{children}</main>
+      {/* Home hero is full-bleed under a transparent fixed navbar; other pages need top padding equal to navbar height (h-20 = 5rem). */}
+      <main className={isHome ? "pb-20" : "pt-20 pb-20"}>{children}</main>
       <Footer />
       <ChatWidgetSlot />
     </>
