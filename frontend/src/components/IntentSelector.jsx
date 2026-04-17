@@ -1,7 +1,7 @@
 import React from "react";
 import { useSurface } from "../hooks/useSurface";
 import { useSmartSite } from "../context/SmartSiteContext";
-import { ArrowRight } from "lucide-react";
+import { PawPrint } from "lucide-react";
 
 export default function IntentSelector() {
   const { content, loading } = useSurface("intent_selector");
@@ -56,9 +56,9 @@ export default function IntentSelector() {
             <div className="p-5">
               <div className="font-display font-bold text-clinic-navy text-lg">{card.title}</div>
               <p className="text-sm text-clinic-mist mt-1 line-clamp-2">{card.description}</p>
-              <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-clinic-forest group-hover:text-clinic-navy transition-colors">
+              <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-clinic-red group-hover:text-clinic-red-hover transition-colors">
                 Choose
-                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                <PawPrint className="h-3.5 w-3.5 transition-transform group-hover:rotate-12" />
               </div>
             </div>
           </button>

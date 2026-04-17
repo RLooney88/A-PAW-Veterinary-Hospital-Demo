@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { PawPrint } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
 
 export const SERVICES = [
@@ -32,28 +32,36 @@ export default function Services() {
       </p>
 
       <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {SERVICES.map((s) => (
-          <Link
-            key={s.slug}
-            to={`/services/${s.slug}`}
-            onClick={() =>
-              track({
-                signalType: "cta_click",
-                label: `service:${s.slug}`,
-                subIntent: s.intent_hint,
-                strength: 2,
-              })
-            }
-            className="group bg-white rounded-[1.5rem] p-7 border border-sand-300/60 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_22px_42px_rgba(0,0,0,0.08)]"
-            data-testid={`service-card-${s.slug}`}
-          >
-            <div className="font-display font-bold text-xl text-clinic-navy">{s.title}</div>
-            <p className="mt-2 text-sm text-clinic-mist leading-relaxed">{s.blurb}</p>
-            <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-clinic-forest group-hover:text-clinic-clay">
-              Learn more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-            </div>
-          </Link>
-        ))}
+        {SERVICES.map((s, i) => {
+          const tints = [
+            "bg-white border-sand-300/60",
+            "bg-clinic-peach border-clinic-peachDeep/60",
+            "bg-clinic-sage border-clinic-forest/15",
+            "bg-clinic-red-soft border-clinic-red/20",
+          ];
+          return (
+            <Link
+              key={s.slug}
+              to={`/services/${s.slug}`}
+              onClick={() =>
+                track({
+                  signalType: "cta_click",
+                  label: `service:${s.slug}`,
+                  subIntent: s.intent_hint,
+                  strength: 2,
+                })
+              }
+              className={`group rounded-[1.5rem] p-7 border hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_22px_42px_rgba(0,0,0,0.08)] ${tints[i % tints.length]}`}
+              data-testid={`service-card-${s.slug}`}
+            >
+              <div className="font-display font-bold text-xl text-clinic-navy">{s.title}</div>
+              <p className="mt-2 text-sm text-clinic-mist leading-relaxed">{s.blurb}</p>
+              <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-clinic-red group-hover:gap-2.5 transition-all">
+                Learn more <PawPrint className="h-3.5 w-3.5 transition-transform group-hover:rotate-12" />
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

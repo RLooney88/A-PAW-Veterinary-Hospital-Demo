@@ -17,13 +17,13 @@ export default function About() {
 
       <div className="mt-12 grid gap-6 sm:grid-cols-3">
         {[
-          { n: "Years", v: "15+" },
-          { n: "Happy families", v: "5,000+" },
-          { n: "Modalities onsite", v: "10" },
+          { n: "Years", v: "15+", tint: "bg-clinic-red text-sand-50", numColor: "text-white", labelColor: "text-clinic-amber" },
+          { n: "Happy families", v: "5,000+", tint: "bg-clinic-peach border border-clinic-peachDeep/60", numColor: "text-clinic-navy", labelColor: "text-clinic-red" },
+          { n: "Modalities onsite", v: "10", tint: "bg-clinic-sage border border-clinic-forest/15", numColor: "text-clinic-navy", labelColor: "text-clinic-forest" },
         ].map((s) => (
-          <div key={s.n} className="bg-white rounded-[1.5rem] p-7 border border-sand-300/60">
-            <div className="font-display text-4xl font-extrabold text-clinic-navy">{s.v}</div>
-            <div className="text-xs uppercase tracking-widest text-clinic-forest font-semibold mt-2">
+          <div key={s.n} className={`rounded-[1.5rem] p-7 ${s.tint}`}>
+            <div className={`font-display text-4xl font-extrabold ${s.numColor}`}>{s.v}</div>
+            <div className={`text-xs uppercase tracking-widest font-semibold mt-2 ${s.labelColor}`}>
               {s.n}
             </div>
           </div>

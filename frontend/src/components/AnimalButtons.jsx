@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Cat, Dog, Rabbit } from "lucide-react";
+import { Cat, Dog, PawPrint, Rabbit } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
 
 const BUTTONS = [
@@ -53,13 +53,13 @@ export default function AnimalButtons({ variant = "hero" }) {
             {b.label}
           </span>
           <span
-            className={`h-9 w-9 rounded-full grid place-items-center transition-transform group-hover:translate-x-0.5 ${
+            className={`h-9 w-9 rounded-full grid place-items-center transition-transform group-hover:scale-110 ${
               variant === "hero"
-                ? "bg-clinic-clay text-white"
+                ? "bg-clinic-red text-white"
                 : "bg-white/15 text-white"
             }`}
           >
-            <ArrowRight className="h-4 w-4" />
+            <PawPrint className="h-4 w-4" />
           </span>
         </button>
       ))}

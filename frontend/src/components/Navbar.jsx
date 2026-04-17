@@ -94,7 +94,7 @@ export default function Navbar() {
               href="tel:+14102246624"
               className={`hidden md:inline-flex items-center gap-2 rounded-full px-5 py-3 font-semibold text-sm transition-colors ${
                 transparent
-                  ? "bg-clinic-clay hover:bg-clinic-clay-hover text-white"
+                  ? "bg-clinic-red hover:bg-clinic-red-hover text-white"
                   : "bg-clinic-navy hover:bg-clinic-navy-hover text-white"
               }`}
               data-testid="nav-call-btn"

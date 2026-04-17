@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { Link, Navigate, useLocation } from "react-router-dom";
-import { ArrowRight, Phone } from "lucide-react";
+import { PawPrint, Phone } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
 import { SERVICES } from "./Services";
 
@@ -170,11 +170,11 @@ export default function AnimalPage() {
                     strength: 2,
                   })
                 }
-                className="inline-flex items-center gap-2 bg-clinic-clay hover:bg-clinic-clay-hover text-white rounded-full px-8 py-4 font-semibold shadow-xl shadow-clinic-clay/30 transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-8 py-4 font-semibold shadow-xl shadow-clinic-red/30 transition-transform hover:-translate-y-0.5"
                 data-testid={`animal-cta-${animal.slug}`}
               >
+                <PawPrint className="h-4 w-4" />
                 Request a {animal.title.replace(/s$/, "").toLowerCase()} visit
-                <ArrowRight className="h-4 w-4" />
               </Link>
               <a
                 href="tel:+14102246624"
@@ -214,36 +214,44 @@ export default function AnimalPage() {
             </div>
             <Link
               to="/services"
-              className="text-sm font-bold text-clinic-forest hover:text-clinic-navy"
+              className="text-sm font-bold text-clinic-red hover:text-clinic-red-hover underline underline-offset-4 decoration-2"
             >
-              See all services →
+              See all services
             </Link>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {scopedServices.map((s) => (
-              <Link
-                key={s.slug}
-                to={`/services/${s.slug}`}
-                onClick={() =>
-                  track({
-                    signalType: "cta_click",
-                    label: `animal_service:${animal.slug}:${s.slug}`,
-                    intent: animal.slug,
-                    subIntent: s.intent_hint,
-                    strength: 2,
-                  })
-                }
-                className="group bg-white rounded-[1.5rem] p-7 border border-sand-300/60 hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_22px_42px_rgba(0,0,0,0.08)]"
-                data-testid={`animal-service-card-${s.slug}`}
-              >
-                <div className="font-display font-bold text-xl text-clinic-navy">{s.title}</div>
-                <p className="mt-2 text-sm text-clinic-mist leading-relaxed">{s.blurb}</p>
-                <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-clinic-forest group-hover:text-clinic-clay">
-                  Learn more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                </div>
-              </Link>
-            ))}
+            {scopedServices.map((s, i) => {
+              const tints = [
+                "bg-white border-sand-300/60",
+                "bg-clinic-peach border-clinic-peachDeep/60",
+                "bg-clinic-sage border-clinic-forest/15",
+                "bg-clinic-red-soft border-clinic-red/20",
+              ];
+              return (
+                <Link
+                  key={s.slug}
+                  to={`/services/${s.slug}`}
+                  onClick={() =>
+                    track({
+                      signalType: "cta_click",
+                      label: `animal_service:${animal.slug}:${s.slug}`,
+                      intent: animal.slug,
+                      subIntent: s.intent_hint,
+                      strength: 2,
+                    })
+                  }
+                  className={`group rounded-[1.5rem] p-7 border hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_22px_42px_rgba(0,0,0,0.08)] ${tints[i % tints.length]}`}
+                  data-testid={`animal-service-card-${s.slug}`}
+                >
+                  <div className="font-display font-bold text-xl text-clinic-navy">{s.title}</div>
+                  <p className="mt-2 text-sm text-clinic-mist leading-relaxed">{s.blurb}</p>
+                  <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-clinic-red group-hover:gap-2.5 transition-all">
+                    Learn more <PawPrint className="h-3.5 w-3.5 transition-transform group-hover:rotate-12" />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </section>
 

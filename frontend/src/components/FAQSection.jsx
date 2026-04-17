@@ -15,15 +15,16 @@ export default function FAQSection() {
   const items = content.items || [];
 
   return (
-    <section className="mt-24 grid gap-12 lg:grid-cols-5" data-testid="faq-section">
-      <div className="lg:col-span-2">
-        <div className="text-xs uppercase tracking-[0.22em] font-semibold text-clinic-forest">FAQ</div>
+    <section className="mt-24 grid gap-12 lg:grid-cols-5 items-start" data-testid="faq-section">
+      <div className="lg:col-span-2 bg-clinic-peach rounded-[2rem] p-10 border border-clinic-peachDeep/60 relative overflow-hidden">
+        <div className="text-xs uppercase tracking-[0.22em] font-semibold text-clinic-red">FAQ</div>
         <h2 className="font-display text-3xl sm:text-4xl font-bold text-clinic-navy mt-3">
           {content.heading || "Frequently asked questions"}
         </h2>
-        <p className="mt-4 text-clinic-mist max-w-md">
+        <p className="mt-4 text-clinic-navy/70 max-w-md">
           If you don&rsquo;t see what you&rsquo;re looking for, give us a call. We&rsquo;re happy to walk you through it.
         </p>
+        <div className="absolute -right-16 -bottom-16 h-48 w-48 rounded-full bg-clinic-red/10 blur-3xl" />
       </div>
 
       <div className="lg:col-span-3">

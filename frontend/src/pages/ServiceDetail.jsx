@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowRight, Phone } from "lucide-react";
+import { PawPrint, Phone } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
 import { useSurface } from "../hooks/useSurface";
 import { SERVICES } from "./Services";
@@ -129,10 +129,11 @@ export default function ServiceDetail() {
                 onClick={() =>
                   track({ signalType: "cta_click", label: `service_inline:${slug}`, subIntent: service.intent_hint, strength: 2 })
                 }
-                className="inline-flex items-center gap-2 bg-clinic-clay hover:bg-clinic-clay-hover text-white rounded-full px-6 py-3 font-semibold"
+                className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-6 py-3 font-semibold"
                 data-testid={`service-inline-cta-${slug}`}
               >
-                {cta?.primary_cta_label || "Request an appointment"} <ArrowRight className="h-4 w-4" />
+                <PawPrint className="h-4 w-4" />
+                {cta?.primary_cta_label || "Request an appointment"}
               </Link>
               <a
                 href="tel:+14102246624"

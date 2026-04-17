@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Phone, Sparkles } from "lucide-react";
+import { PawPrint, Phone, Sparkles } from "lucide-react";
 import { useSurface } from "../hooks/useSurface";
 import { useSmartSite } from "../context/SmartSiteContext";
 import AnimalButtons from "./AnimalButtons";
@@ -107,11 +107,11 @@ export default function DynamicHero() {
                 <>
                   <Link
                     to={primary_cta_href || "/appointment"}
-                    className="inline-flex items-center gap-2 bg-clinic-clay hover:bg-clinic-clay-hover text-white rounded-full px-8 py-4 font-semibold shadow-xl shadow-clinic-clay/30 transition-transform hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-8 py-4 font-semibold shadow-xl shadow-clinic-red/30 transition-transform hover:-translate-y-0.5"
                     data-testid="hero-primary-cta"
                   >
+                    <PawPrint className="h-4 w-4" />
                     {primary_cta_label || "Schedule a Visit"}
-                    <ArrowRight className="h-4 w-4" />
                   </Link>
                   <a
                     href={secondary_cta_href || "tel:+14102246624"}

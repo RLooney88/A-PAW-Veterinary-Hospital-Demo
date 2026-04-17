@@ -15,24 +15,39 @@ export default function Testimonials() {
       </h2>
 
       <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {items.map((t, i) => (
-          <article
-            key={i}
-            className="bg-clinic-sage/40 rounded-[1.5rem] p-7 border border-clinic-forest/10 relative overflow-hidden"
-            data-testid={`testimonial-${i}`}
-          >
-            <Quote className="absolute top-5 right-5 h-6 w-6 text-clinic-forest/30" />
-            <p className="text-clinic-navy text-[15px] leading-relaxed font-medium">&ldquo;{t.quote}&rdquo;</p>
-            <div className="mt-6 flex items-center justify-between">
-              <div className="text-sm font-semibold text-clinic-navy">{t.author || "— Client"}</div>
-              {t.tag && (
-                <span className="text-[11px] uppercase tracking-widest font-bold text-clinic-forest bg-white/80 rounded-full px-3 py-1">
-                  {t.tag}
-                </span>
-              )}
-            </div>
-          </article>
-        ))}
+        {items.map((t, i) => {
+          // Alternate tints so the section isn't all one color
+          const tint =
+            i % 3 === 0
+              ? "bg-clinic-red text-sand-50 border-clinic-red/30"
+              : i % 3 === 1
+              ? "bg-clinic-peach text-clinic-navy border-clinic-peachDeep/70"
+              : "bg-clinic-sage text-clinic-navy border-clinic-forest/15";
+          const quoteColor = i % 3 === 0 ? "text-white/40" : "text-clinic-forest/30";
+          const tagBg = i % 3 === 0 ? "bg-white/15 text-white" : "bg-white/80 text-clinic-forest";
+          return (
+            <article
+              key={i}
+              className={`relative overflow-hidden rounded-[1.5rem] p-7 border ${tint}`}
+              data-testid={`testimonial-${i}`}
+            >
+              <Quote className={`absolute top-5 right-5 h-7 w-7 ${quoteColor}`} />
+              <p className={`text-[15px] leading-relaxed font-medium ${i % 3 === 0 ? "text-white" : "text-clinic-navy"}`}>
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <div className="mt-6 flex items-center justify-between gap-3">
+                <div className={`text-sm font-semibold ${i % 3 === 0 ? "text-white" : "text-clinic-navy"}`}>
+                  {t.author || "— Client"}
+                </div>
+                {t.tag && (
+                  <span className={`text-[11px] uppercase tracking-widest font-bold rounded-full px-3 py-1 ${tagBg}`}>
+                    {t.tag}
+                  </span>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

@@ -35,7 +35,7 @@ code {
     --secondary-foreground: 148 32% 25%;
     --muted: 38 20% 95%;
     --muted-foreground: 216 17% 43%;
-    --accent: 15 62% 57%;
+    --accent: 4 62% 48%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 98%;
@@ -62,7 +62,7 @@ code {
     --secondary-foreground: 38 50% 97%;
     --muted: 220 30% 20%;
     --muted-foreground: 220 15% 65%;
-    --accent: 15 62% 57%;
+    --accent: 4 62% 48%;
     --accent-foreground: 38 50% 97%;
     --destructive: 0 62% 40%;
     --destructive-foreground: 38 50% 97%;
