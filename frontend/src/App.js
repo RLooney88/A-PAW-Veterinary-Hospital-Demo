@@ -1,53 +1,65 @@
-import { useEffect } from "react";
+import React from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Toaster } from "sonner";
+import { SmartSiteProvider } from "./context/SmartSiteContext";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ChatWidgetSlot from "./components/ChatWidgetSlot";
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import ServiceDetail from "./pages/ServiceDetail";
+import Appointment from "./pages/Appointment";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminOverview from "./pages/admin/AdminOverview";
+import AdminLeads from "./pages/admin/AdminLeads";
+import AdminSurfaces from "./pages/admin/AdminSurfaces";
+import AdminSessions from "./pages/admin/AdminSessions";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
+function PublicShell({ children }) {
+  const { pathname } = useLocation();
+  const isAdmin = pathname.startsWith("/admin");
+  if (isAdmin) return children;
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <main className="pb-20">{children}</main>
+      <Footer />
+      <ChatWidgetSlot />
+    </>
   );
-};
+}
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <SmartSiteProvider>
+        <Toaster richColors position="top-right" />
+        <PublicShell>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/:slug" element={<ServiceDetail />} />
+            <Route path="/appointment" element={<Appointment />} />
+            <Route path="/about" element={<About />} />
+
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminOverview />} />
+              <Route path="leads" element={<AdminLeads />} />
+              <Route path="surfaces" element={<AdminSurfaces />} />
+              <Route path="sessions" element={<AdminSessions />} />
+            </Route>
+
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<Navigate to="/404" replace />} />
+          </Routes>
+        </PublicShell>
+      </SmartSiteProvider>
+    </BrowserRouter>
   );
 }
 
