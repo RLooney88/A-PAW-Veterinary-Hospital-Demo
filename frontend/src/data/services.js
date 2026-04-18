@@ -29,6 +29,7 @@ const DOG_PREVENTIVE = [
     title: "Parasite Prevention",
     summary: "Heartworm, fleas, ticks, intestinal parasites, fecal screening, year-round prevention planning.",
     image: img("svc-dog-parasite"),
+    objectPosition: "object-top",
     detail: "Year-round parasite prevention is essential in our region. We screen for heartworm annually, run fecal tests, and recommend a prevention plan tailored to your dog's environment and exposure. Fleas, ticks, and intestinal parasites are all part of the conversation.",
   },
   {
@@ -50,6 +51,7 @@ const DOG_PREVENTIVE = [
     title: "Nutrition & Weight Management",
     summary: "Puppy nutrition, adult maintenance, obesity prevention, prescription diets, joint-support nutrition.",
     image: img("svc-dog-nutrition"),
+    objectPosition: "object-top",
     detail: "Good nutrition is the foundation of long-term health. We guide you through puppy feeding, adult maintenance, and senior diets. For dogs struggling with weight, we create realistic plans that work. Prescription diets are recommended when there is a clinical need, not as a default.",
   },
   {
@@ -95,6 +97,7 @@ const CAT_PREVENTIVE = [
     title: "Cat Vaccinations",
     summary: "Core feline vaccines plus lifestyle-based vaccines. FHV-1, FCV, FPV, rabies, and FeLV for at-risk cats.",
     image: img("svc-cat-vaccine"),
+    objectPosition: "object-top",
     detail: "We follow AAHA/AAFP feline vaccination guidelines. Core vaccines include FHV-1, FCV, FPV, and rabies. FeLV is recommended for all cats under 1 year and for any cat with outdoor access. We build a minimal, risk-appropriate schedule, not a one-size-fits-all list.",
   },
   {
@@ -183,9 +186,9 @@ const GP_PREVENTIVE = [
   { slug: "gp-wellness-exams", title: "Wellness Exams", summary: "Routine exams, weight trends, preventive review, early detection of subtle illness.", image: img("svc-gp-wellness"), detail: "Guinea pigs are masters at hiding illness. Annual wellness exams include a thorough physical, dental check, weight trend review, and husbandry assessment. Early detection of common conditions like dental disease, respiratory infections, and vitamin C deficiency makes treatment much more effective." },
   { slug: "gp-nutrition-vitamin-c", title: "Nutrition & Vitamin Support", summary: "Guinea pigs require dietary vitamin C. High-fiber feeding, proper pellets, and fresh produce guidance.", image: img("svc-gp-nutrition"), detail: "Guinea pigs cannot produce their own vitamin C and require approximately 10 mg/kg daily from diet. Deficiency leads to scurvy: joint pain, lethargy, and poor healing. We review diet composition, hay quality, fresh produce, and supplement options. Proper nutrition prevents most guinea pig health problems." },
   { slug: "gp-dental-care", title: "Dental Care", summary: "Tooth overgrowth, chewing issues, weight loss, diet-linked dental disease.", image: img("svc-gp-dental"), detail: "Cheek-tooth elongation is the most common dental disease in guinea pigs. Like rabbits, their teeth grow continuously and depend on proper wear from hay and chewing. We screen for malocclusion and overgrowth at every visit. Weight loss and drooling are early warning signs." },
-  { slug: "gp-skin-parasite", title: "Skin, Coat & Parasite Care", summary: "Mites, hair loss, itching, skin irritation.", image: img("svc-gp-skin-parasite"), detail: "Skin mites are extremely common in guinea pigs and cause intense itching, hair loss, and scabbing. Fungal infections (ringworm) are also prevalent. We diagnose through examination and skin scraping, and treat with species-safe products. Some over-the-counter treatments are not safe for guinea pigs." },
+  { slug: "gp-skin-parasite", title: "Skin, Coat & Parasite Care", summary: "Mites, hair loss, itching, skin irritation.", image: img("svc-gp-skin-parasite"), objectPosition: "object-top", detail: "Skin mites are extremely common in guinea pigs and cause intense itching, hair loss, and scabbing. Fungal infections (ringworm) are also prevalent. We diagnose through examination and skin scraping, and treat with species-safe products. Some over-the-counter treatments are not safe for guinea pigs." },
   { slug: "gp-foot-nail-grooming", title: "Foot, Nail & Grooming Care", summary: "Nail trims, foot sores, husbandry-related foot issues.", image: img("svc-gp-foot"), detail: "Pododermatitis (bumblefoot) is a common condition in guinea pigs, especially those on wire or rough flooring. Regular nail trims, proper bedding, and weight management help prevent it. We assess foot health at every visit and treat early to avoid complications." },
-  { slug: "gp-diagnostics-appetite", title: "Diagnostics for Appetite, Weight & Respiratory Changes", summary: "These pets often mask illness. Subtle changes in eating, weight, or breathing deserve investigation.", image: img("svc-gp-diagnostics"), detail: "Guinea pigs hide illness until it is advanced. Unexplained weight loss, changes in appetite, or even subtle breathing changes can signal serious conditions. We use physical exam findings, bloodwork, and imaging when needed to get answers before problems become critical." },
+  { slug: "gp-diagnostics-appetite", title: "Diagnostics for Appetite, Weight & Respiratory Changes", summary: "These pets often mask illness. Subtle changes in eating, weight, or breathing deserve investigation.", image: img("svc-gp-diagnostics"), objectPosition: "object-top", detail: "Guinea pigs hide illness until it is advanced. Unexplained weight loss, changes in appetite, or even subtle breathing changes can signal serious conditions. We use physical exam findings, bloodwork, and imaging when needed to get answers before problems become critical." },
   { slug: "gp-husbandry-habitat", title: "Husbandry & Habitat Guidance", summary: "Bedding, sanitation, enclosure setup, social housing, stress reduction.", image: img("svc-gp-habitat"), detail: "Many guinea pig health problems trace directly to husbandry. We review enclosure size, bedding type, sanitation schedule, temperature, social housing needs (guinea pigs are social and do best in pairs), and enrichment. Small changes at home often prevent veterinary visits later." },
 ];
 

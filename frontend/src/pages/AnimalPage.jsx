@@ -43,13 +43,13 @@ const ANIMALS = {
     },
     life_stages: [
       { name: "Puppy", age: "6 wks – 1 yr", focus: "Vaccine series, deworming, nutrition counseling, spay/neuter planning, training guidance.", icon: "paw", image: "/images/animals/dog-puppy.png" },
-      { name: "Adult", age: "1 – 7 yrs", focus: "Annual wellness, dental care, parasite prevention, weight management, lifestyle vaccines.", icon: "shield", image: "/images/animals/dog-adult.png" },
+      { name: "Adult", age: "1 – 7 yrs", focus: "Annual wellness, dental care, parasite prevention, weight management, lifestyle vaccines.", icon: "shield", image: "/images/animals/dog-adult.png", objectPosition: "object-top" },
       { name: "Senior", age: "7 yrs +", focus: "Twice-yearly exams, bloodwork, joint support, laser therapy, PRP, quality-of-life planning.", icon: "heart", image: "/images/animals/dog-senior.png" },
     ],
     conditions: [
       { name: "Dental disease", body: "Plaque, gingivitis, and loose teeth, often silent until severe.", image: "/images/animals/dog-dental.png" },
       { name: "Allergies & skin issues", body: "Itching, ear infections, hot spots. Often environmental, sometimes food-related.", image: "/images/animals/dog-allergy-skin.png" },
-      { name: "Arthritis & joint pain", body: "Stiffness getting up, reluctance on stairs, slowing on walks.", image: "/images/animals/dog-arthritis.png" },
+      { name: "Arthritis & joint pain", body: "Stiffness getting up, reluctance on stairs, slowing on walks.", image: "/images/animals/dog-arthritis.png", objectPosition: "object-top" },
       { name: "Obesity & weight issues", body: "Excess weight stresses joints, heart, and overall health. We create realistic plans.", image: "/images/animals/dog-obesity.png" },
       { name: "GI upset", body: "Vomiting, diarrhea, loss of appetite. We triage and figure out the cause.", image: "/images/animals/dog-gi.png" },
     ],
@@ -87,7 +87,7 @@ const ANIMALS = {
     },
     life_stages: [
       { name: "Kitten", age: "8 wks – 1 yr", focus: "Vaccine series, deworming, spay/neuter, nutrition, socialization, microchipping.", icon: "paw", image: "/images/animals/cat-kitten.png" },
-      { name: "Adult", age: "1 – 10 yrs", focus: "Annual wellness exam, dental screening, parasite prevention, weight and behavior check-ins.", icon: "shield", image: "/images/animals/cat-adult.png" },
+      { name: "Adult", age: "1 – 10 yrs", focus: "Annual wellness exam, dental screening, parasite prevention, weight and behavior check-ins.", icon: "shield", image: "/images/animals/cat-adult.png", objectPosition: "object-top" },
       { name: "Senior", age: "10 yrs +", focus: "Twice-yearly exams, bloodwork, kidney & thyroid screening, quality-of-life support, gentle dental care.", icon: "heart", image: "/images/animals/cat-senior.png" },
     ],
     conditions: [
@@ -131,7 +131,7 @@ const ANIMALS = {
     },
     life_stages: [
       { name: "Young", age: "First months", focus: "Husbandry review, diet, environment, basic exam, age-appropriate handling.", icon: "paw", image: "/images/animals/rabbit-young.png" },
-      { name: "Adult", age: "Prime years", focus: "Annual wellness, weight and dental check, enrichment and habitat review.", icon: "shield", image: "/images/animals/rabbit-adult.png" },
+      { name: "Adult", age: "Prime years", focus: "Annual wellness, weight and dental check, enrichment and habitat review.", icon: "shield", image: "/images/animals/rabbit-adult.png", objectPosition: "object-top" },
       { name: "Senior", age: "Late life", focus: "Quality-of-life monitoring, pain support, and gentle diagnostics.", icon: "heart", image: "/images/animals/rabbit-senior.png" },
     ],
     conditions: [
@@ -287,7 +287,7 @@ export default function AnimalPage() {
                 <article key={st.name} className={`rounded-[1.5rem] overflow-hidden ${tints[i]}`}>
                   {st.image && (
                     <div className="h-40 overflow-hidden">
-                      <img src={st.image} alt={st.name} className="h-full w-full object-cover" loading="lazy" />
+                      <img src={st.image} alt={st.name} className={`h-full w-full object-cover ${st.objectPosition || ""}`} loading="lazy" />
                     </div>
                   )}
                   <div className="p-6">
@@ -324,7 +324,7 @@ export default function AnimalPage() {
               >
                 {c.image && (
                   <div className="h-36 overflow-hidden">
-                    <img src={c.image} alt={c.name} className="h-full w-full object-cover" loading="lazy" />
+                    <img src={c.image} alt={c.name} className={`h-full w-full object-cover ${c.objectPosition || ""}`} loading="lazy" />
                   </div>
                 )}
                 <div className="p-6">
