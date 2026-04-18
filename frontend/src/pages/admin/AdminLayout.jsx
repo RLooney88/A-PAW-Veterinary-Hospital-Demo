@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { adminApi, getAdminToken, setAdminToken } from "../../lib/api";
 import {
   Activity,
+  Bot,
   Inbox,
   Layers,
   LayoutGrid,
@@ -14,6 +15,7 @@ const NAV = [
   { to: "/admin", label: "Overview", icon: Activity, end: true },
   { to: "/admin/leads", label: "Leads", icon: Inbox },
   { to: "/admin/surfaces", label: "Surfaces & Switches", icon: Layers },
+  { to: "/admin/chatbot", label: "Chatbot", icon: Bot },
   { to: "/admin/sessions", label: "Sessions", icon: Users },
 ];
 

@@ -23,9 +23,13 @@ from auth import create_access_token, get_current_admin, verify_password
 from database import get_db
 from email_service import send_lead_notification
 from intent_engine import match_switch, resolve_parent_intent, resolve_sub_intent
-from models import LeadSubmission, SignalEvent, Surface, Switch, User, VisitorSession, WebhookConfig
+from models import LeadSubmission, SignalEvent, Surface, Switch, User, VisitorSession, WebhookConfig, ChatbotConfig, ChatMessage
 from schemas import (
     AnalyticsOverview,
+    ChatRequest,
+    ChatResponse,
+    ChatbotConfigOut,
+    ChatbotConfigUpdate,
     LeadCreateRequest,
     LeadOut,
     LeadStatusUpdate,
@@ -729,6 +733,127 @@ async def test_webhook(
         hook.last_error = str(exc)[:500]
         await db.commit()
         return WebhookTestResponse(success=False, error=str(exc)[:500])
+
+
+# ---------- Chatbot ----------
+DEFAULT_SYSTEM_PROMPT = """You are the virtual assistant for Annapolis Veterinary & Wellness, a family-owned veterinary clinic in Annapolis, MD. You help visitors learn about the clinic's services, answer common pet care questions, and guide them toward scheduling an appointment.
+
+CLINIC INFO:
+- Address: 167 Jennifer Rd, Suite Q, Annapolis, MD 21401
+- Phone: (410) 224-6624
+- Email: annapolisvet@gmail.com
+- Hours: Mon 8-4, Tue Closed, Wed 12-7, Thu 8-4, Fri 8-3, Sat 9-1, Sun Closed
+- Owner: Dr. Karen Hamilton, DVM (15+ years)
+- Team: Leah Boback (Clinic Manager), Kaitlin J. (Vet Assistant), Lester L. (Vet Assistant), Tanjii M. (Client Services)
+
+SERVICES: Wellness Exams, Vaccinations, Dental Care, Surgery & Spay/Neuter, Laser Therapy, PRP & Regenerative Medicine, Parasite Prevention, Microchipping, Senior Pet Care, Emergency Care
+
+ANIMALS: Dogs, Cats, Rabbits, Guinea Pigs, and some other small mammals. For specialized exotic species (reptiles, birds), the clinic will refer to an exotics specialist.
+
+TONE: Warm, professional, concise. Speak like a trusted neighbor who happens to be a vet expert. Never use em-dashes. Use commas, colons, or hyphens instead."""
+
+DEFAULT_GUARDRAILS = """RULES:
+- Only answer questions related to Annapolis Veterinary & Wellness, pet care, veterinary medicine, or the clinic's services.
+- If someone asks about topics unrelated to pets or veterinary care, politely redirect: "I'm here to help with questions about Annapolis Vet and pet care. Is there something about your pet I can help with?"
+- Never provide specific medical diagnoses. Always recommend calling the clinic or scheduling a visit for medical concerns.
+- Never discuss pricing specifics. Say "call us at (410) 224-6624 for pricing details."
+- Do not make up information about the clinic. If unsure, say "I'd recommend calling us at (410) 224-6624 for the most accurate answer."
+- Keep responses concise, 2-4 sentences for simple questions."""
+
+
+async def _get_chatbot_config(db: AsyncSession) -> ChatbotConfig:
+    res = await db.execute(select(ChatbotConfig).limit(1))
+    config = res.scalar_one_or_none()
+    if not config:
+        config = ChatbotConfig(
+            system_prompt=DEFAULT_SYSTEM_PROMPT,
+            guardrails=DEFAULT_GUARDRAILS,
+            training_context="",
+            provider=os.environ.get("CHATBOT_PROVIDER", "openai"),
+            model=os.environ.get("CHATBOT_MODEL", "gpt-4o-mini"),
+        )
+        db.add(config)
+        await db.commit()
+        await db.refresh(config)
+    return config
+
+
+@api.post("/chat", response_model=ChatResponse)
+async def chat_endpoint(payload: ChatRequest, db: AsyncSession = Depends(get_db)):
+    from emergentintegrations.llm.chat import LlmChat, UserMessage
+
+    config = await _get_chatbot_config(db)
+    if not config.active:
+        return ChatResponse(reply="Chat is currently unavailable. Please call us at (410) 224-6624.", session_token=payload.session_token)
+
+    # Build full system message
+    parts = [config.system_prompt]
+    if config.training_context:
+        parts.append(f"\nADDITIONAL TRAINING CONTEXT:\n{config.training_context}")
+    if config.guardrails:
+        parts.append(f"\n{config.guardrails}")
+    system_msg = "\n".join(parts)
+
+    # Get chat history for this session (last 20 messages)
+    hist_res = await db.execute(
+        select(ChatMessage)
+        .where(ChatMessage.session_token == payload.session_token)
+        .order_by(ChatMessage.created_at.desc())
+        .limit(20)
+    )
+    history = list(reversed(hist_res.scalars().all()))
+
+    api_key = config.api_key_override or os.environ.get("EMERGENT_LLM_KEY", "")
+
+    chat = LlmChat(
+        api_key=api_key,
+        session_id=f"vet-chat-{payload.session_token}",
+        system_message=system_msg,
+    ).with_model(config.provider, config.model)
+
+    # Replay history into the chat
+    for msg in history:
+        if msg.role == "user":
+            chat.messages.append({"role": "user", "content": msg.content})
+        else:
+            chat.messages.append({"role": "assistant", "content": msg.content})
+
+    try:
+        user_msg = UserMessage(text=payload.message)
+        reply = await chat.send_message(user_msg)
+    except Exception as exc:
+        logger.exception("Chatbot error")
+        reply = "I'm having trouble right now. Please call us at (410) 224-6624 and we'll be happy to help."
+
+    # Save messages
+    db.add(ChatMessage(session_token=payload.session_token, role="user", content=payload.message))
+    db.add(ChatMessage(session_token=payload.session_token, role="assistant", content=reply))
+    await db.commit()
+
+    return ChatResponse(reply=reply, session_token=payload.session_token)
+
+
+@api.get("/admin/chatbot-config", response_model=ChatbotConfigOut)
+async def get_chatbot_config(
+    _admin=Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    config = await _get_chatbot_config(db)
+    return ChatbotConfigOut.model_validate(config)
+
+
+@api.patch("/admin/chatbot-config", response_model=ChatbotConfigOut)
+async def update_chatbot_config(
+    payload: ChatbotConfigUpdate,
+    _admin=Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    config = await _get_chatbot_config(db)
+    for field, val in payload.model_dump(exclude_unset=True).items():
+        setattr(config, field, val)
+    await db.commit()
+    await db.refresh(config)
+    return ChatbotConfigOut.model_validate(config)
 
 
 # ---------- Wire it up ----------

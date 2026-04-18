@@ -19,6 +19,7 @@ import AdminOverview from "./pages/admin/AdminOverview";
 import AdminLeads from "./pages/admin/AdminLeads";
 import AdminSurfaces from "./pages/admin/AdminSurfaces";
 import AdminSessions from "./pages/admin/AdminSessions";
+import AdminChatbot from "./pages/admin/AdminChatbot";
 
 function PublicShell({ children }) {
   const { pathname } = useLocation();
@@ -57,6 +58,7 @@ function App() {
               <Route index element={<AdminOverview />} />
               <Route path="leads" element={<AdminLeads />} />
               <Route path="surfaces" element={<AdminSurfaces />} />
+              <Route path="chatbot" element={<AdminChatbot />} />
               <Route path="sessions" element={<AdminSessions />} />
             </Route>
 

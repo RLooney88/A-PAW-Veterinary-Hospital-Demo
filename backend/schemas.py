@@ -201,6 +201,40 @@ class WebhookTestResponse(BaseModel):
     error: str | None = None
 
 
+# ---------- Chatbot ----------
+class ChatRequest(BaseModel):
+    session_token: str
+    message: str
+
+
+class ChatResponse(BaseModel):
+    reply: str
+    session_token: str
+
+
+class ChatbotConfigOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: str
+    system_prompt: str
+    training_context: str
+    guardrails: str
+    provider: str
+    model: str
+    api_key_override: str | None = None
+    active: bool
+    updated_at: datetime
+
+
+class ChatbotConfigUpdate(BaseModel):
+    system_prompt: str | None = None
+    training_context: str | None = None
+    guardrails: str | None = None
+    provider: str | None = None
+    model: str | None = None
+    api_key_override: str | None = None
+    active: bool | None = None
+
+
 # ---------- Analytics ----------
 class AnalyticsOverview(BaseModel):
     total_sessions: int

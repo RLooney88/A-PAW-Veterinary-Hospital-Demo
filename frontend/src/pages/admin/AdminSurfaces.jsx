@@ -155,29 +155,67 @@ function SurfaceCard({ surface, isOpen, onToggle, onAddSwitch, onPatchSwitch, on
 }
 
 function DefaultContentEditor({ surface, onSave }) {
-  const [text, setText] = useState(JSON.stringify(surface.default_content || {}, null, 2));
-  const [err, setErr] = useState(null);
+  const [fields, setFields] = useState(surface.default_content || {});
+  const updateField = (key, val) => setFields((prev) => ({ ...prev, [key]: val }));
+
   return (
     <div className="p-4 space-y-3">
-      <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        rows={10}
-        className="w-full font-mono text-xs rounded-lg border border-sand-300 bg-white p-3 focus:outline-none focus:border-clinic-forest"
-      />
-      {err && <div className="text-xs text-red-600">{err}</div>}
+      {Object.entries(fields).map(([key, val]) => (
+        <ContentFieldEditor key={key} fieldKey={key} value={val} onChange={(v) => updateField(key, v)} />
+      ))}
       <button
-        onClick={() => {
-          try {
-            const parsed = JSON.parse(text);
-            setErr(null);
-            onSave(parsed);
-          } catch (e) { setErr(e.message); }
-        }}
+        onClick={() => onSave(fields)}
         className="inline-flex items-center gap-1.5 rounded-full bg-clinic-forest text-white px-4 py-1.5 text-xs font-semibold"
       >
         <Save className="h-3.5 w-3.5" /> Save defaults
       </button>
+    </div>
+  );
+}
+
+function ContentFieldEditor({ fieldKey, value, onChange }) {
+  if (Array.isArray(value) || (typeof value === "object" && value !== null)) {
+    return <JsonFieldEditor fieldKey={fieldKey} value={value} onChange={onChange} />;
+  }
+  const isLong = typeof value === "string" && value.length > 80;
+  return (
+    <div>
+      <label className="text-[10px] uppercase tracking-widest font-bold text-clinic-forest">{fieldKey}</label>
+      {isLong ? (
+        <textarea
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          rows={3}
+          className="w-full mt-1 rounded-lg border border-sand-300 bg-white px-3 py-2 text-sm focus:outline-none focus:border-clinic-forest"
+        />
+      ) : (
+        <input
+          value={value ?? ""}
+          onChange={(e) => onChange(e.target.value)}
+          className={inputCls}
+        />
+      )}
+    </div>
+  );
+}
+
+function JsonFieldEditor({ fieldKey, value, onChange }) {
+  const [text, setText] = useState(JSON.stringify(value, null, 2));
+  const [err, setErr] = useState(null);
+  return (
+    <div>
+      <label className="text-[10px] uppercase tracking-widest font-bold text-clinic-forest">{fieldKey} (JSON)</label>
+      <textarea
+        value={text}
+        onChange={(e) => { setText(e.target.value); setErr(null); }}
+        onBlur={() => {
+          try { onChange(JSON.parse(text)); setErr(null); }
+          catch (e) { setErr(e.message); }
+        }}
+        rows={6}
+        className="w-full mt-1 font-mono text-xs rounded-lg border border-sand-300 bg-sand-50 p-3 focus:outline-none focus:border-clinic-forest"
+      />
+      {err && <div className="text-xs text-red-600 mt-1">{err}</div>}
     </div>
   );
 }
@@ -188,24 +226,21 @@ function SwitchEditor({ switchItem, onPatch, onDelete }) {
   const [active, setActive] = useState(switchItem.active);
   const [intent, setIntent] = useState(switchItem.rule?.intent || "");
   const [sub, setSub] = useState(switchItem.rule?.sub_intent || "");
-  const [content, setContent] = useState(JSON.stringify(switchItem.content || {}, null, 2));
-  const [err, setErr] = useState(null);
+  const [contentFields, setContentFields] = useState(switchItem.content || {});
+
+  const updateContentField = (key, val) => setContentFields((prev) => ({ ...prev, [key]: val }));
 
   const save = () => {
-    try {
-      const parsed = JSON.parse(content);
-      setErr(null);
-      onPatch({
-        name,
-        priority: Number(priority) || 100,
-        active,
-        rule: {
-          intent: intent || null,
-          sub_intent: sub || null,
-        },
-        content: parsed,
-      });
-    } catch (e) { setErr(e.message); }
+    onPatch({
+      name,
+      priority: Number(priority) || 100,
+      active,
+      rule: {
+        intent: intent || null,
+        sub_intent: sub || null,
+      },
+      content: contentFields,
+    });
   };
 
   return (
@@ -227,27 +262,23 @@ function SwitchEditor({ switchItem, onPatch, onDelete }) {
       </div>
       <div className="mt-3 grid gap-3 md:grid-cols-2">
         <div>
-          <label className="text-[10px] uppercase tracking-widest font-bold text-clinic-forest">Rule · Intent</label>
+          <label className="text-[10px] uppercase tracking-widest font-bold text-clinic-forest">Rule: Intent</label>
           <select value={intent} onChange={(e) => setIntent(e.target.value)} className={inputCls}>
             {INTENT_OPTIONS.map((o) => <option key={o || "any"} value={o}>{o || "(any)"}</option>)}
           </select>
         </div>
         <div>
-          <label className="text-[10px] uppercase tracking-widest font-bold text-clinic-forest">Rule · Sub-intent</label>
+          <label className="text-[10px] uppercase tracking-widest font-bold text-clinic-forest">Rule: Sub-intent</label>
           <select value={sub} onChange={(e) => setSub(e.target.value)} className={inputCls}>
             {SUB_OPTIONS.map((o) => <option key={o || "any"} value={o}>{o || "(any)"}</option>)}
           </select>
         </div>
       </div>
-      <div className="mt-3">
-        <label className="text-[10px] uppercase tracking-widest font-bold text-clinic-forest">Content (JSON)</label>
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          rows={8}
-          className="w-full mt-1 font-mono text-xs rounded-lg border border-sand-300 bg-sand-50 p-3 focus:outline-none focus:border-clinic-forest"
-        />
-        {err && <div className="text-xs text-red-600 mt-1">{err}</div>}
+      <div className="mt-3 space-y-2">
+        <div className="text-[10px] uppercase tracking-widest font-bold text-clinic-forest">Content</div>
+        {Object.entries(contentFields).map(([key, val]) => (
+          <ContentFieldEditor key={key} fieldKey={key} value={val} onChange={(v) => updateContentField(key, v)} />
+        ))}
       </div>
       <div className="mt-3 flex items-center justify-between">
         <button
