@@ -16,6 +16,7 @@ const NAV = [
   { to: "/services", label: "Services" },
   { to: "/about", label: "About" },
   { to: "/appointment", label: "Request Visit" },
+  { to: "/portal/login", label: "Client Portal" },
 ];
 
 const ANIMAL_ITEMS = [
