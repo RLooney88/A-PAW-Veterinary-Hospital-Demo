@@ -5,22 +5,24 @@ import { useSurface } from "../hooks/useSurface";
 import { useSmartSite } from "../context/SmartSiteContext";
 import AnimalButtons from "./AnimalButtons";
 
-/**
- * Full-bleed, viewport-filling hero. Content is resolved server-side from
- * the `home_hero` surface and swapped via admin-managed switches.
- */
+// Hardcoded defaults so the hero renders instantly without waiting for the API
+const DEFAULTS = {
+  eyebrow: "Trusted Care for Every Paw",
+  headline: "Compassionate veterinary care for your whole family.",
+  subheadline: "Annapolis Veterinary & Wellness has been caring for Annapolis pets for years, wellness, surgery, dental, emergencies, and beyond.",
+  image_url: "/images/animals/hero-home-default.webp",
+  primary_cta_href: "/appointment",
+  primary_cta_label: "Schedule a Visit",
+  secondary_cta_href: "tel:+14102246624",
+  secondary_cta_label: "Call (410) 224-6624",
+};
+
 export default function DynamicHero() {
   const { content, matched, loading, inferredIntent } = useSurface("home_hero");
   const { parentIntent } = useSmartSite();
 
-  if (loading || !content) {
-    return (
-      <section
-        className="relative h-[92vh] min-h-[640px] animate-pulse bg-sand-200"
-        data-testid="hero-skeleton"
-      />
-    );
-  }
+  // Use API content if available, otherwise hardcoded defaults (no blank state)
+  const c = content || DEFAULTS;
 
   const {
     eyebrow,
@@ -31,7 +33,7 @@ export default function DynamicHero() {
     secondary_cta_label,
     secondary_cta_href,
     image_url,
-  } = content;
+  } = c;
 
   return (
     <section
@@ -40,12 +42,13 @@ export default function DynamicHero() {
       data-matched-switch={matched || "default"}
       data-inferred-intent={inferredIntent || "none"}
     >
-      {/* Background image, cross-fades when intent changes via key */}
+      {/* Background image */}
       <img
         key={image_url}
         src={image_url}
         alt=""
         aria-hidden="true"
+        fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover animate-[fade-up_0.9s_ease-out_both]"
         data-testid="hero-image"
       />
@@ -53,7 +56,6 @@ export default function DynamicHero() {
       {/* Dark gradient for text legibility */}
       <div className="absolute inset-0 bg-gradient-to-br from-clinic-navy/85 via-clinic-navy/55 to-clinic-navy/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-clinic-ink/80 via-transparent to-transparent" />
-      {/* Subtle grain */}
       <div className="absolute inset-0 grain pointer-events-none" aria-hidden="true" />
 
       {/* Content */}
