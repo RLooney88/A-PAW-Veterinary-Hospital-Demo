@@ -96,13 +96,18 @@ export default function Services() {
   const { parentIntent } = useSmartSite();
   const { content: hero } = useSurface("services_hero");
 
-  // Map parent intent to default tab
-  const defaultTab = parentIntent === "dogs" ? "dogs"
+  // Map parent intent to tab key
+  const intentToTab = parentIntent === "dogs" ? "dogs"
     : parentIntent === "cats" ? "cats"
     : parentIntent === "critters" ? "rabbits"
     : null;
 
-  const [activeTab, setActiveTab] = useState(defaultTab);
+  const [activeTab, setActiveTab] = useState(intentToTab);
+
+  // Update tab when intent changes (e.g., navigated from dropdown)
+  React.useEffect(() => {
+    if (intentToTab) setActiveTab(intentToTab);
+  }, [intentToTab]);
 
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-12" data-testid="services-page">
