@@ -4,7 +4,7 @@
  * All images are custom-generated and stored in /images/animals/
  */
 
-const img = (slug) => `/images/animals/${slug}.png`;
+const img = (slug) => `/images/animals/${slug}.webp`;
 
 // ──────────────────────────────────────────────
 // DOGS
