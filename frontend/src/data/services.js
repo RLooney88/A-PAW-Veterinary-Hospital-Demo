@@ -44,6 +44,7 @@ const DOG_PREVENTIVE = [
     title: "Skin, Allergy & Ear Care",
     summary: "Hot spots, itching, recurrent ear infections, seasonal allergies, food sensitivities.",
     image: img("svc-dog-skin-allergy"),
+    objectPosition: "object-top",
     detail: "Allergies are one of the most common reasons dogs come to see us: itching, ear infections, hot spots, licking paws. We work through whether the cause is environmental, food-related, or seasonal, and build a plan that actually resolves the issue rather than just masking symptoms.",
   },
   {
@@ -59,6 +60,7 @@ const DOG_PREVENTIVE = [
     title: "Surgery & Spay/Neuter",
     summary: "Routine soft tissue surgery, anesthesia protocols, perioperative care.",
     image: img("svc-dog-surgery"),
+    objectPosition: "object-top",
     detail: "We perform routine soft tissue surgeries including spay, neuter, and mass removals. Every procedure follows careful anesthesia protocols with monitoring, IV fluids, and pain management. We discuss timing for spay/neuter based on breed and size rather than using a one-size-fits-all approach.",
   },
   {
@@ -119,6 +121,7 @@ const CAT_PREVENTIVE = [
     title: "Nutrition & Weight Management",
     summary: "Weight control, obesity prevention, urinary-health diets, kidney-support diets, life-stage feeding.",
     image: img("svc-cat-nutrition"),
+    objectPosition: "object-top",
     detail: "Obesity is a major health risk for cats, contributing to diabetes, joint disease, and urinary problems. We create realistic feeding plans tailored to your cat's age, activity level, and any health conditions. Prescription diets for urinary health or kidney support are recommended when clinically indicated.",
   },
   {
@@ -133,6 +136,7 @@ const CAT_PREVENTIVE = [
     title: "Surgery & Spay/Neuter",
     summary: "Routine surgery, anesthesia, recovery support.",
     image: img("svc-cat-surgery"),
+    objectPosition: "object-top",
     detail: "We perform routine feline surgeries with careful feline-specific anesthesia protocols. Cats metabolize anesthesia differently than dogs, and our protocols reflect that. Pain management, temperature monitoring, and gentle recovery handling are standard for every procedure.",
   },
   {
@@ -163,8 +167,8 @@ const RABBIT_PREVENTIVE = [
   { slug: "rabbit-vaccination", title: "Rabbit Vaccination", summary: "RHDV2 vaccination where appropriate. Protection against a serious and often fatal disease.", image: img("svc-rabbit-vaccine"), detail: "Rabbit Hemorrhagic Disease Virus 2 (RHDV2) has spread across the US and is often fatal. Annual vaccination is the best protection. We follow current guidance from the House Rabbit Society and discuss risk based on your location and rabbit's exposure." },
   { slug: "rabbit-dental-care", title: "Dental Care", summary: "Rabbit teeth grow continuously. Hay-based diet, dental screening, and intervention when needed.", image: img("svc-rabbit-dental"), detail: "A rabbit's teeth grow continuously for life, and proper wear depends on a hay-based diet. We screen for malocclusion, overgrowth, and spurs at every visit. When dental issues arise, we intervene early to prevent pain, appetite loss, and secondary GI problems." },
   { slug: "rabbit-nutrition-gi", title: "Nutrition & Digestive Health", summary: "Hay-based diet guidance, GI health, appetite monitoring, stool monitoring, cecotrope issues.", image: img("svc-rabbit-nutrition"), detail: "Diet is the single most important factor in rabbit health. We emphasize unlimited hay, appropriate greens, limited pellets, and proper hydration. GI stasis is one of the most common and dangerous rabbit conditions, and good nutrition is the best prevention." },
-  { slug: "rabbit-spay-neuter", title: "Spay/Neuter", summary: "Important for health, behavior, and litter prevention. An especially important service for rabbits.", image: img("svc-rabbit-spay"), detail: "Spaying female rabbits significantly reduces the risk of uterine cancer, which is extremely common in unspayed does over 3 to 4 years. Neutering males reduces territorial behavior. We use rabbit-safe anesthesia protocols and monitor recovery closely." },
-  { slug: "rabbit-skin-parasite", title: "Skin & Parasite Care", summary: "Mites, fur issues, skin lesions, parasite concerns.", image: img("svc-rabbit-skin"), detail: "Rabbits are susceptible to fur mites, ear mites, and various skin conditions. We diagnose through skin scraping and examination, and treat with rabbit-safe products. Some over-the-counter flea products are toxic to rabbits, so guidance matters." },
+  { slug: "rabbit-spay-neuter", title: "Spay/Neuter", summary: "Important for health, behavior, and litter prevention. An especially important service for rabbits.", image: img("svc-rabbit-spay"), objectPosition: "object-top", detail: "Spaying female rabbits significantly reduces the risk of uterine cancer, which is extremely common in unspayed does over 3 to 4 years. Neutering males reduces territorial behavior. We use rabbit-safe anesthesia protocols and monitor recovery closely." },
+  { slug: "rabbit-skin-parasite", title: "Skin & Parasite Care", summary: "Mites, fur issues, skin lesions, parasite concerns.", image: img("svc-rabbit-skin"), objectPosition: "object-top", detail: "Rabbits are susceptible to fur mites, ear mites, and various skin conditions. We diagnose through skin scraping and examination, and treat with rabbit-safe products. Some over-the-counter flea products are toxic to rabbits, so guidance matters." },
   { slug: "rabbit-husbandry-habitat", title: "Husbandry & Habitat Guidance", summary: "Housing, enrichment, litter habits, exercise, stress reduction.", image: img("svc-rabbit-habitat"), detail: "Many rabbit health problems trace back to environment. We review enclosure size, flooring, litter choices, enrichment, exercise time, and social needs. Small adjustments often make a big difference in your rabbit's health and happiness." },
 ];
 
