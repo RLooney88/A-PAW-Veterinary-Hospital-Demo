@@ -68,7 +68,7 @@ logger = logging.getLogger(__name__)
 SIGNAL_STRENGTH_MULT = {
     "intent_select": 5,       # explicit click on parent-intent card
     "sub_intent_select": 5,   # explicit sub-intent pick
-    "chat_intent": 4,         # chat widget pushed intent
+    "chat_intent": 8,         # chat conversation - highest weight signal
     "form_start": 3,
     "form_submit": 4,
     "cta_click": 2,
@@ -828,6 +828,63 @@ async def chat_endpoint(payload: ChatRequest, db: AsyncSession = Depends(get_db)
     # Save messages
     db.add(ChatMessage(session_token=payload.session_token, role="user", content=payload.message))
     db.add(ChatMessage(session_token=payload.session_token, role="assistant", content=reply))
+
+    # --- Detect intent from conversation and fire signals ---
+    combined = f"{payload.message} {reply}".lower()
+    detected_intent = None
+    detected_sub = None
+
+    # Parent intent detection
+    dog_kw = ("dog", "puppy", "puppies", "canine", "pup ", "pups", "golden retriever", "labrador", "beagle", "terrier", "bulldog", "shepherd")
+    cat_kw = ("cat", "kitten", "kittens", "feline", "kitty", "kitties", "tabby")
+    critter_kw = ("rabbit", "bunny", "guinea pig", "hamster", "exotic", "small mammal", "reptile", "bird", "ferret")
+
+    dog_hits = sum(1 for kw in dog_kw if kw in combined)
+    cat_hits = sum(1 for kw in cat_kw if kw in combined)
+    critter_hits = sum(1 for kw in critter_kw if kw in combined)
+
+    if dog_hits > cat_hits and dog_hits > critter_hits and dog_hits > 0:
+        detected_intent = "dogs"
+    elif cat_hits > dog_hits and cat_hits > critter_hits and cat_hits > 0:
+        detected_intent = "cats"
+    elif critter_hits > 0:
+        detected_intent = "critters"
+
+    # Sub-intent detection
+    sub_kw_map = {
+        "new_puppy": ("new puppy", "puppy visit", "first puppy", "just got a puppy", "adopted a puppy", "puppy vaccine"),
+        "new_kitten": ("new kitten", "kitten visit", "first kitten", "just got a kitten", "adopted a kitten", "kitten vaccine"),
+        "senior": ("senior", "older dog", "older cat", "aging", "arthritis", "joint", "mobility", "stiff"),
+        "health_concerns": ("sick", "emergency", "vomiting", "diarrhea", "not eating", "lethargic", "bleeding", "pain", "limping", "swelling", "lump", "breathing", "cough"),
+        "treatments": ("dental", "surgery", "spay", "neuter", "laser", "prp", "cleaning", "extraction", "procedure"),
+        "wellness": ("wellness", "checkup", "check-up", "vaccine", "annual", "exam", "prevention", "parasite", "flea", "tick", "heartworm"),
+    }
+    for sub_key, keywords in sub_kw_map.items():
+        if any(kw in combined for kw in keywords):
+            detected_sub = sub_key
+            break
+
+    # Fire signal into the visitor session if we detected intent
+    if detected_intent:
+        sess = None
+        if payload.session_token:
+            res = await db.execute(
+                select(VisitorSession).where(VisitorSession.session_token == payload.session_token)
+            )
+            sess = res.scalar_one_or_none()
+        if sess:
+            ev = SignalEvent(
+                session_id=sess.id,
+                signal_type="chat_intent",
+                page_path="/chat",
+                label=f"chat:{payload.message[:80]}",
+                intent=detected_intent,
+                sub_intent=detected_sub,
+                strength=3,  # base strength 3 x multiplier 8 = 24 points per chat message
+            )
+            db.add(ev)
+            _apply_signal(sess, ev)
+
     await db.commit()
 
     return ChatResponse(reply=reply, session_token=payload.session_token)
