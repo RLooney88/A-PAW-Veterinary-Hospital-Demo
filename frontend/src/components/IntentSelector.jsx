@@ -1,31 +1,30 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useSurface } from "../hooks/useSurface";
 import { useSmartSite } from "../context/SmartSiteContext";
 import { PawPrint } from "lucide-react";
 
 /**
- * The "Who are we caring for today?" parent-animal selector.
+ * The "Animals We Serve" parent-animal selector.
  *
- * This section is ALWAYS fixed: it renders the three parent-animal cards
- * (Dogs / Cats / Other Critters) no matter what the visitor's current
- * interest is, so someone with both a dog and a cat can always switch
- * focus. Deeper sub-intent prompting is handled by <SubIntentPrompt /> in
- * a separate, additive section below.
+ * Clicking a card fires an intent signal AND navigates to the
+ * dedicated animal page (/dogs, /cats, /critters).
  */
 export default function IntentSelector() {
   const { content, loading } = useSurface("intent_selector");
   const { setIntent, parentIntent } = useSmartSite();
+  const navigate = useNavigate();
 
   if (loading || !content) return null;
 
   const cards = content.cards || [];
 
   const handleSelect = (card) => {
-    // Only supports parent-intent cards, the 3 animal buttons.
     if (card.intent) {
       setIntent(card.intent, null, { label: `intent_selector:${card.intent}` });
     }
-    window.scrollBy({ top: 220, behavior: "smooth" });
+    const href = card.intent === "critters" ? "/critters" : `/${card.intent}`;
+    navigate(href);
   };
 
   return (
@@ -36,7 +35,7 @@ export default function IntentSelector() {
             Animals We Serve
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-clinic-navy mt-3">
-            {content.heading || "Who are we caring for today?"}
+            {content.heading || "Start with your pet."}
           </h2>
           {content.subheading && (
             <p className="text-clinic-mist mt-2 max-w-xl">{content.subheading}</p>
