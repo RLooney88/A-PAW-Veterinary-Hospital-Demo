@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { PawPrint, AlertTriangle, ChevronRight, Dog, Cat, Rabbit } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
 import { useSurface } from "../hooks/useSurface";
@@ -95,19 +95,22 @@ function AnimalServicesSection({ animalKey }) {
 export default function Services() {
   const { parentIntent } = useSmartSite();
   const { content: hero } = useSurface("services_hero");
+  const [searchParams] = useSearchParams();
 
-  // Map parent intent to tab key
+  // Priority: URL ?tab= param > parent intent > null
+  const tabParam = searchParams.get("tab");
   const intentToTab = parentIntent === "dogs" ? "dogs"
     : parentIntent === "cats" ? "cats"
     : parentIntent === "critters" ? "rabbits"
     : null;
+  const initialTab = tabParam && SERVICES_BY_ANIMAL[tabParam] ? tabParam : intentToTab;
 
-  const [activeTab, setActiveTab] = useState(intentToTab);
+  const [activeTab, setActiveTab] = useState(initialTab);
 
   // Update tab when intent changes (e.g., navigated from dropdown)
   React.useEffect(() => {
-    if (intentToTab) setActiveTab(intentToTab);
-  }, [intentToTab]);
+    if (intentToTab && !tabParam) setActiveTab(intentToTab);
+  }, [intentToTab, tabParam]);
 
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-12" data-testid="services-page">
