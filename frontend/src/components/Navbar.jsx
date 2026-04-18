@@ -122,16 +122,6 @@ export default function Navbar() {
                     <span className="flex-1">
                       <span className="block font-display font-bold text-clinic-navy leading-tight">{item.label}</span>
                       <span className="block text-xs text-clinic-mist">{item.blurb}</span>
-                      <span
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setIntent(item.intent, null, { label: `nav_services:${item.intent}` });
-                          navigate("/services");
-                        }}
-                        className="inline-block text-[11px] font-bold text-clinic-red hover:text-clinic-red-hover mt-1 cursor-pointer"
-                      >
-                        View {item.label.toLowerCase()} services
-                      </span>
                     </span>
                   </DropdownMenuItem>
                 ))}

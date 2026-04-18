@@ -251,6 +251,13 @@ export default function AnimalPage() {
               >
                 <Phone className="h-4 w-4" /> Call (410) 224-6624
               </a>
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 text-sm font-bold text-clinic-amber hover:text-white underline underline-offset-4 decoration-2 transition-colors"
+                data-testid={`animal-services-link-${animal.slug}`}
+              >
+                View {animal.noun} services
+              </Link>
             </div>
           </div>
         </div>
