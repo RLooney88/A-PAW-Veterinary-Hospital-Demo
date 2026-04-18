@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { PawPrint, AlertTriangle, ChevronRight, Dog, Cat, Rabbit } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
+import { useSurface } from "../hooks/useSurface";
 import InlineCTA from "../components/InlineCTA";
 import { SERVICES_BY_ANIMAL } from "../data/services";
 
@@ -93,6 +94,7 @@ function AnimalServicesSection({ animalKey }) {
 
 export default function Services() {
   const { parentIntent } = useSmartSite();
+  const { content: hero } = useSurface("services_hero");
 
   // Map parent intent to default tab
   const defaultTab = parentIntent === "dogs" ? "dogs"
@@ -104,17 +106,28 @@ export default function Services() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-12" data-testid="services-page">
-      <div className="text-xs uppercase tracking-[0.22em] font-semibold text-clinic-red">Our Services</div>
-      <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-clinic-navy mt-3 max-w-3xl leading-[1.02]">
-        {activeTab
-          ? `${SERVICES_BY_ANIMAL[activeTab].label} care at Annapolis Vet.`
-          : "Complete care for every member of your family."}
-      </h1>
-      <p className="mt-5 text-lg text-clinic-mist max-w-2xl leading-relaxed">
-        {activeTab
-          ? `Preventive, routine, and urgent care designed specifically for ${SERVICES_BY_ANIMAL[activeTab].label.toLowerCase()}.`
-          : "Select your pet type to see the services we offer, or browse everything below."}
-      </p>
+      {/* Dynamic hero */}
+      {hero?.image_url && (
+        <div className="rounded-2xl overflow-hidden h-64 sm:h-72 mb-8 relative">
+          <img
+            src={hero.image_url}
+            alt=""
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-clinic-navy/80 via-clinic-navy/50 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-center px-10">
+            <div className="text-[11px] uppercase tracking-[0.22em] font-bold text-clinic-amber">
+              {hero.eyebrow || "Our Services"}
+            </div>
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-sand-50 mt-2 max-w-2xl leading-[1.06]">
+              {hero.headline || "Complete care for every member of your family."}
+            </h1>
+            <p className="mt-3 text-sand-100/85 max-w-lg text-base">
+              {hero.subheadline || "Select your pet type to see the services we offer, or browse everything below."}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Animal tabs */}
       <div className="mt-8 flex flex-wrap gap-2">
