@@ -20,16 +20,20 @@ import AdminLeads from "./pages/admin/AdminLeads";
 import AdminSurfaces from "./pages/admin/AdminSurfaces";
 import AdminSessions from "./pages/admin/AdminSessions";
 import AdminChatbot from "./pages/admin/AdminChatbot";
+import PortalLogin from "./pages/portal/PortalLogin";
+import PortalLayout from "./pages/portal/PortalLayout";
+import PortalDashboard from "./pages/portal/PortalDashboard";
+import PortalPetDetail from "./pages/portal/PortalPetDetail";
 
 function PublicShell({ children }) {
   const { pathname } = useLocation();
   const isAdmin = pathname.startsWith("/admin");
-  if (isAdmin) return children;
+  const isPortal = pathname.startsWith("/portal");
+  if (isAdmin || isPortal) return children;
   const isHome = pathname === "/";
   return (
     <>
       <Navbar />
-      {/* Home hero is full-bleed under a transparent fixed navbar; other pages need top padding equal to navbar height (h-20 = 5rem). */}
       <main className={isHome ? "pb-20" : "pt-20 pb-20"}>{children}</main>
       <Footer />
       <ChatWidgetSlot />
@@ -60,6 +64,12 @@ function App() {
               <Route path="surfaces" element={<AdminSurfaces />} />
               <Route path="chatbot" element={<AdminChatbot />} />
               <Route path="sessions" element={<AdminSessions />} />
+            </Route>
+
+            <Route path="/portal/login" element={<PortalLogin />} />
+            <Route path="/portal" element={<PortalLayout />}>
+              <Route index element={<PortalDashboard />} />
+              <Route path="pets/:petId" element={<PortalPetDetail />} />
             </Route>
 
             <Route path="/404" element={<NotFound />} />

@@ -53,6 +53,8 @@ from schemas import (
     WebhookUpdate,
 )
 from seed import seed as seed_db
+from seed_portal import seed_portal
+from portal import portal as portal_router
 
 from pathlib import Path
 
@@ -116,6 +118,7 @@ def _apply_signal(sess: VisitorSession, ev: SignalEvent) -> None:
 async def lifespan(_app: FastAPI):
     try:
         await seed_db()
+        await seed_portal()
     except Exception:
         logger.exception("Seed failed")
     yield
@@ -915,6 +918,7 @@ async def update_chatbot_config(
 
 # ---------- Wire it up ----------
 app.include_router(api)
+app.include_router(portal_router, prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,

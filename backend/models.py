@@ -194,3 +194,94 @@ class ChatMessage(Base):
     role: Mapped[str] = mapped_column(String(16), nullable=False)  # user | assistant
     content: Mapped[str] = mapped_column(Text, nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+
+# ---------- Client Portal ----------
+class Client(Base):
+    __tablename__ = "clients"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False, index=True)
+    password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
+    first_name: Mapped[str] = mapped_column(String(120), nullable=False)
+    last_name: Mapped[str] = mapped_column(String(120), nullable=False)
+    phone: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+    pet_links: Mapped[list["ClientPetLink"]] = relationship(back_populates="client", cascade="all, delete-orphan")
+
+
+class Pet(Base):
+    __tablename__ = "pets"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    name: Mapped[str] = mapped_column(String(120), nullable=False)
+    species: Mapped[str] = mapped_column(String(32), nullable=False)  # dog, cat, rabbit, etc.
+    breed: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    dob: Mapped[str | None] = mapped_column(String(32), nullable=True)  # YYYY-MM-DD or approximate
+    sex: Mapped[str | None] = mapped_column(String(16), nullable=True)  # male, female, unknown
+    weight_lbs: Mapped[float | None] = mapped_column(nullable=True)
+    photo_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    microchip_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+    client_links: Mapped[list["ClientPetLink"]] = relationship(back_populates="pet", cascade="all, delete-orphan")
+    contacts: Mapped[list["PetContact"]] = relationship(back_populates="pet", cascade="all, delete-orphan")
+    health_records: Mapped[list["PetHealthRecord"]] = relationship(back_populates="pet", cascade="all, delete-orphan")
+    appointments: Mapped[list["PetAppointment"]] = relationship(back_populates="pet", cascade="all, delete-orphan")
+
+
+class ClientPetLink(Base):
+    __tablename__ = "client_pet_links"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    client_id: Mapped[str] = mapped_column(UUID(as_uuid=False), ForeignKey("clients.id", ondelete="CASCADE"), index=True)
+    pet_id: Mapped[str] = mapped_column(UUID(as_uuid=False), ForeignKey("pets.id", ondelete="CASCADE"), index=True)
+    role: Mapped[str] = mapped_column(String(32), default="owner")  # owner, co-owner, caretaker
+
+    client: Mapped["Client"] = relationship(back_populates="pet_links")
+    pet: Mapped["Pet"] = relationship(back_populates="client_links")
+
+
+class PetContact(Base):
+    __tablename__ = "pet_contacts"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    pet_id: Mapped[str] = mapped_column(UUID(as_uuid=False), ForeignKey("pets.id", ondelete="CASCADE"), index=True)
+    name: Mapped[str] = mapped_column(String(120), nullable=False)
+    relation: Mapped[str] = mapped_column(String(64), default="owner")  # owner, spouse, emergency, caretaker
+    phone: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    email: Mapped[str | None] = mapped_column(String(255), nullable=True)
+
+    pet: Mapped["Pet"] = relationship("Pet", back_populates="contacts")
+
+
+class PetHealthRecord(Base):
+    __tablename__ = "pet_health_records"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    pet_id: Mapped[str] = mapped_column(UUID(as_uuid=False), ForeignKey("pets.id", ondelete="CASCADE"), index=True)
+    record_type: Mapped[str] = mapped_column(String(64), nullable=False)  # vaccination, bloodwork, fecal, dental
+    name: Mapped[str] = mapped_column(String(160), nullable=False)  # e.g. "Rabies", "DHPP", "CBC Panel"
+    date_performed: Mapped[str] = mapped_column(String(32), nullable=False)  # YYYY-MM-DD
+    next_due: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+    pet: Mapped["Pet"] = relationship(back_populates="health_records")
+
+
+class PetAppointment(Base):
+    __tablename__ = "pet_appointments"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    pet_id: Mapped[str] = mapped_column(UUID(as_uuid=False), ForeignKey("pets.id", ondelete="CASCADE"), index=True)
+    date: Mapped[str] = mapped_column(String(32), nullable=False)
+    reason: Mapped[str] = mapped_column(String(255), nullable=False)
+    provider: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    status: Mapped[str] = mapped_column(String(32), default="completed")  # completed, upcoming, cancelled
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+    pet: Mapped["Pet"] = relationship(back_populates="appointments")
