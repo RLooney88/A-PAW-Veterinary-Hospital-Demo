@@ -29,7 +29,7 @@ const DOG_PREVENTIVE = [
     title: "Parasite Prevention",
     summary: "Heartworm, fleas, ticks, intestinal parasites, fecal screening, year-round prevention planning.",
     image: img("svc-dog-parasite"),
-    objectPosition: "object-top",
+    objectPosition: "center top",
     detail: "Year-round parasite prevention is essential in our region. We screen for heartworm annually, run fecal tests, and recommend a prevention plan tailored to your dog's environment and exposure. Fleas, ticks, and intestinal parasites are all part of the conversation.",
   },
   {
@@ -44,7 +44,7 @@ const DOG_PREVENTIVE = [
     title: "Skin, Allergy & Ear Care",
     summary: "Hot spots, itching, recurrent ear infections, seasonal allergies, food sensitivities.",
     image: img("svc-dog-skin-allergy"),
-    objectPosition: "object-top",
+    objectPosition: "center top",
     detail: "Allergies are one of the most common reasons dogs come to see us: itching, ear infections, hot spots, licking paws. We work through whether the cause is environmental, food-related, or seasonal, and build a plan that actually resolves the issue rather than just masking symptoms.",
   },
   {
@@ -52,7 +52,7 @@ const DOG_PREVENTIVE = [
     title: "Nutrition & Weight Management",
     summary: "Puppy nutrition, adult maintenance, obesity prevention, prescription diets, joint-support nutrition.",
     image: img("svc-dog-nutrition"),
-    objectPosition: "object-top",
+    objectPosition: "center top",
     detail: "Good nutrition is the foundation of long-term health. We guide you through puppy feeding, adult maintenance, and senior diets. For dogs struggling with weight, we create realistic plans that work. Prescription diets are recommended when there is a clinical need, not as a default.",
   },
   {
@@ -60,7 +60,7 @@ const DOG_PREVENTIVE = [
     title: "Surgery & Spay/Neuter",
     summary: "Routine soft tissue surgery, anesthesia protocols, perioperative care.",
     image: img("svc-dog-surgery"),
-    objectPosition: "object-top",
+    objectPosition: "center top",
     detail: "We perform routine soft tissue surgeries including spay, neuter, and mass removals. Every procedure follows careful anesthesia protocols with monitoring, IV fluids, and pain management. We discuss timing for spay/neuter based on breed and size rather than using a one-size-fits-all approach.",
   },
   {
@@ -99,7 +99,7 @@ const CAT_PREVENTIVE = [
     title: "Cat Vaccinations",
     summary: "Core feline vaccines plus lifestyle-based vaccines. FHV-1, FCV, FPV, rabies, and FeLV for at-risk cats.",
     image: img("svc-cat-vaccine"),
-    objectPosition: "object-top",
+    objectPosition: "center top",
     detail: "We follow AAHA/AAFP feline vaccination guidelines. Core vaccines include FHV-1, FCV, FPV, and rabies. FeLV is recommended for all cats under 1 year and for any cat with outdoor access. We build a minimal, risk-appropriate schedule, not a one-size-fits-all list.",
   },
   {
@@ -121,7 +121,7 @@ const CAT_PREVENTIVE = [
     title: "Nutrition & Weight Management",
     summary: "Weight control, obesity prevention, urinary-health diets, kidney-support diets, life-stage feeding.",
     image: img("svc-cat-nutrition"),
-    objectPosition: "object-top",
+    objectPosition: "center top",
     detail: "Obesity is a major health risk for cats, contributing to diabetes, joint disease, and urinary problems. We create realistic feeding plans tailored to your cat's age, activity level, and any health conditions. Prescription diets for urinary health or kidney support are recommended when clinically indicated.",
   },
   {
@@ -136,7 +136,7 @@ const CAT_PREVENTIVE = [
     title: "Surgery & Spay/Neuter",
     summary: "Routine surgery, anesthesia, recovery support.",
     image: img("svc-cat-surgery"),
-    objectPosition: "object-top",
+    objectPosition: "center top",
     detail: "We perform routine feline surgeries with careful feline-specific anesthesia protocols. Cats metabolize anesthesia differently than dogs, and our protocols reflect that. Pain management, temperature monitoring, and gentle recovery handling are standard for every procedure.",
   },
   {
@@ -167,8 +167,8 @@ const RABBIT_PREVENTIVE = [
   { slug: "rabbit-vaccination", title: "Rabbit Vaccination", summary: "RHDV2 vaccination where appropriate. Protection against a serious and often fatal disease.", image: img("svc-rabbit-vaccine"), detail: "Rabbit Hemorrhagic Disease Virus 2 (RHDV2) has spread across the US and is often fatal. Annual vaccination is the best protection. We follow current guidance from the House Rabbit Society and discuss risk based on your location and rabbit's exposure." },
   { slug: "rabbit-dental-care", title: "Dental Care", summary: "Rabbit teeth grow continuously. Hay-based diet, dental screening, and intervention when needed.", image: img("svc-rabbit-dental"), detail: "A rabbit's teeth grow continuously for life, and proper wear depends on a hay-based diet. We screen for malocclusion, overgrowth, and spurs at every visit. When dental issues arise, we intervene early to prevent pain, appetite loss, and secondary GI problems." },
   { slug: "rabbit-nutrition-gi", title: "Nutrition & Digestive Health", summary: "Hay-based diet guidance, GI health, appetite monitoring, stool monitoring, cecotrope issues.", image: img("svc-rabbit-nutrition"), detail: "Diet is the single most important factor in rabbit health. We emphasize unlimited hay, appropriate greens, limited pellets, and proper hydration. GI stasis is one of the most common and dangerous rabbit conditions, and good nutrition is the best prevention." },
-  { slug: "rabbit-spay-neuter", title: "Spay/Neuter", summary: "Important for health, behavior, and litter prevention. An especially important service for rabbits.", image: img("svc-rabbit-spay"), objectPosition: "object-top", detail: "Spaying female rabbits significantly reduces the risk of uterine cancer, which is extremely common in unspayed does over 3 to 4 years. Neutering males reduces territorial behavior. We use rabbit-safe anesthesia protocols and monitor recovery closely." },
-  { slug: "rabbit-skin-parasite", title: "Skin & Parasite Care", summary: "Mites, fur issues, skin lesions, parasite concerns.", image: img("svc-rabbit-skin"), objectPosition: "object-top", detail: "Rabbits are susceptible to fur mites, ear mites, and various skin conditions. We diagnose through skin scraping and examination, and treat with rabbit-safe products. Some over-the-counter flea products are toxic to rabbits, so guidance matters." },
+  { slug: "rabbit-spay-neuter", title: "Spay/Neuter", summary: "Important for health, behavior, and litter prevention. An especially important service for rabbits.", image: img("svc-rabbit-spay"), objectPosition: "center top", detail: "Spaying female rabbits significantly reduces the risk of uterine cancer, which is extremely common in unspayed does over 3 to 4 years. Neutering males reduces territorial behavior. We use rabbit-safe anesthesia protocols and monitor recovery closely." },
+  { slug: "rabbit-skin-parasite", title: "Skin & Parasite Care", summary: "Mites, fur issues, skin lesions, parasite concerns.", image: img("svc-rabbit-skin"), objectPosition: "center top", detail: "Rabbits are susceptible to fur mites, ear mites, and various skin conditions. We diagnose through skin scraping and examination, and treat with rabbit-safe products. Some over-the-counter flea products are toxic to rabbits, so guidance matters." },
   { slug: "rabbit-husbandry-habitat", title: "Husbandry & Habitat Guidance", summary: "Housing, enrichment, litter habits, exercise, stress reduction.", image: img("svc-rabbit-habitat"), detail: "Many rabbit health problems trace back to environment. We review enclosure size, flooring, litter choices, enrichment, exercise time, and social needs. Small adjustments often make a big difference in your rabbit's health and happiness." },
 ];
 
@@ -190,9 +190,9 @@ const GP_PREVENTIVE = [
   { slug: "gp-wellness-exams", title: "Wellness Exams", summary: "Routine exams, weight trends, preventive review, early detection of subtle illness.", image: img("svc-gp-wellness"), detail: "Guinea pigs are masters at hiding illness. Annual wellness exams include a thorough physical, dental check, weight trend review, and husbandry assessment. Early detection of common conditions like dental disease, respiratory infections, and vitamin C deficiency makes treatment much more effective." },
   { slug: "gp-nutrition-vitamin-c", title: "Nutrition & Vitamin Support", summary: "Guinea pigs require dietary vitamin C. High-fiber feeding, proper pellets, and fresh produce guidance.", image: img("svc-gp-nutrition"), detail: "Guinea pigs cannot produce their own vitamin C and require approximately 10 mg/kg daily from diet. Deficiency leads to scurvy: joint pain, lethargy, and poor healing. We review diet composition, hay quality, fresh produce, and supplement options. Proper nutrition prevents most guinea pig health problems." },
   { slug: "gp-dental-care", title: "Dental Care", summary: "Tooth overgrowth, chewing issues, weight loss, diet-linked dental disease.", image: img("svc-gp-dental"), detail: "Cheek-tooth elongation is the most common dental disease in guinea pigs. Like rabbits, their teeth grow continuously and depend on proper wear from hay and chewing. We screen for malocclusion and overgrowth at every visit. Weight loss and drooling are early warning signs." },
-  { slug: "gp-skin-parasite", title: "Skin, Coat & Parasite Care", summary: "Mites, hair loss, itching, skin irritation.", image: img("svc-gp-skin-parasite"), objectPosition: "object-top", detail: "Skin mites are extremely common in guinea pigs and cause intense itching, hair loss, and scabbing. Fungal infections (ringworm) are also prevalent. We diagnose through examination and skin scraping, and treat with species-safe products. Some over-the-counter treatments are not safe for guinea pigs." },
+  { slug: "gp-skin-parasite", title: "Skin, Coat & Parasite Care", summary: "Mites, hair loss, itching, skin irritation.", image: img("svc-gp-skin-parasite"), objectPosition: "center top", detail: "Skin mites are extremely common in guinea pigs and cause intense itching, hair loss, and scabbing. Fungal infections (ringworm) are also prevalent. We diagnose through examination and skin scraping, and treat with species-safe products. Some over-the-counter treatments are not safe for guinea pigs." },
   { slug: "gp-foot-nail-grooming", title: "Foot, Nail & Grooming Care", summary: "Nail trims, foot sores, husbandry-related foot issues.", image: img("svc-gp-foot"), detail: "Pododermatitis (bumblefoot) is a common condition in guinea pigs, especially those on wire or rough flooring. Regular nail trims, proper bedding, and weight management help prevent it. We assess foot health at every visit and treat early to avoid complications." },
-  { slug: "gp-diagnostics-appetite", title: "Diagnostics for Appetite, Weight & Respiratory Changes", summary: "These pets often mask illness. Subtle changes in eating, weight, or breathing deserve investigation.", image: img("svc-gp-diagnostics"), objectPosition: "object-top", detail: "Guinea pigs hide illness until it is advanced. Unexplained weight loss, changes in appetite, or even subtle breathing changes can signal serious conditions. We use physical exam findings, bloodwork, and imaging when needed to get answers before problems become critical." },
+  { slug: "gp-diagnostics-appetite", title: "Diagnostics for Appetite, Weight & Respiratory Changes", summary: "These pets often mask illness. Subtle changes in eating, weight, or breathing deserve investigation.", image: img("svc-gp-diagnostics"), objectPosition: "center top", detail: "Guinea pigs hide illness until it is advanced. Unexplained weight loss, changes in appetite, or even subtle breathing changes can signal serious conditions. We use physical exam findings, bloodwork, and imaging when needed to get answers before problems become critical." },
   { slug: "gp-husbandry-habitat", title: "Husbandry & Habitat Guidance", summary: "Bedding, sanitation, enclosure setup, social housing, stress reduction.", image: img("svc-gp-habitat"), detail: "Many guinea pig health problems trace directly to husbandry. We review enclosure size, bedding type, sanitation schedule, temperature, social housing needs (guinea pigs are social and do best in pairs), and enrichment. Small changes at home often prevent veterinary visits later." },
 ];
 
