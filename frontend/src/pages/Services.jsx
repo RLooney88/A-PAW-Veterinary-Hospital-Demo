@@ -115,28 +115,38 @@ export default function Services() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-12" data-testid="services-page">
-      {/* Dynamic hero */}
-      {hero?.image_url && (
-        <div className="rounded-2xl overflow-hidden h-64 sm:h-72 mb-8 relative">
-          <img
-            src={hero.image_url}
-            alt=""
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-clinic-navy/80 via-clinic-navy/50 to-transparent" />
-          <div className="absolute inset-0 flex flex-col justify-center px-10">
-            <div className="text-[11px] uppercase tracking-[0.22em] font-bold text-clinic-amber">
-              {hero.eyebrow || "Our Services"}
+      {/* Dynamic hero - swaps per active tab */}
+      {hero?.image_url && (() => {
+        const tabHero = (activeTab && hero.by_animal && hero.by_animal[activeTab]) || {};
+        const heroImage = tabHero.image_url || hero.image_url;
+        const heroPos = tabHero.imagePosition || hero.imagePosition;
+        const heroEyebrow = tabHero.eyebrow || hero.eyebrow || "Our Services";
+        const heroHeadline = tabHero.headline || hero.headline || "Complete care for every member of your family.";
+        const heroSubheadline = tabHero.subheadline || hero.subheadline || "Select your pet type to see the services we offer, or browse everything below.";
+        return (
+          <div className="rounded-2xl overflow-hidden h-64 sm:h-72 mb-8 relative" data-testid="services-hero">
+            <img
+              key={heroImage}
+              src={heroImage}
+              alt=""
+              className="h-full w-full object-cover transition-opacity duration-500"
+              style={heroPos ? { objectPosition: heroPos } : undefined}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-clinic-navy/80 via-clinic-navy/50 to-transparent" />
+            <div className="absolute inset-0 flex flex-col justify-center px-10">
+              <div className="text-[11px] uppercase tracking-[0.22em] font-bold text-clinic-amber">
+                {heroEyebrow}
+              </div>
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-sand-50 mt-2 max-w-2xl leading-[1.06]">
+                {heroHeadline}
+              </h1>
+              <p className="mt-3 text-sand-100/85 max-w-lg text-base">
+                {heroSubheadline}
+              </p>
             </div>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-sand-50 mt-2 max-w-2xl leading-[1.06]">
-              {hero.headline || "Complete care for every member of your family."}
-            </h1>
-            <p className="mt-3 text-sand-100/85 max-w-lg text-base">
-              {hero.subheadline || "Select your pet type to see the services we offer, or browse everything below."}
-            </p>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* Animal tabs */}
       <div className="mt-8 flex flex-wrap gap-2">
