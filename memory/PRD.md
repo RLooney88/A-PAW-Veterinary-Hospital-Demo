@@ -23,7 +23,7 @@ Rebuild annapolisvet.com as a **Smart Site** that tracks visitor intent (Signals
 - [x] Service detail pages with full descriptions and CTAs
 - [x] Client Portal: login, pet dashboard, health records, vaccination history, appointment history
 - [x] Health indicators (bloodwork/fecal/dental) with green/amber status + hover warnings
-- [x] Dynamic inline CTA on Home, About, Services, ServiceDetail pages
+- [x] Dynamic inline CTA on Home, About, Services, ServiceDetail pages (with background images + navy gradient overlay, intent-specific images for Dogs/Cats/Critters)
 - [x] Two-column FAQ with intent-specific switches
 - [x] "Small & Exotic Pets" naming throughout
 - [x] No em-dashes, no "tailoring/personalizing" language
