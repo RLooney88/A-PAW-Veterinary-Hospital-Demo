@@ -42,17 +42,16 @@ const ANIMALS = {
       author: "Dr. Karen Hamilton, DVM",
     },
     life_stages: [
-      { name: "Puppy", age: "6 wks – 1 yr", focus: "Vaccine series, deworming, nutrition counseling, spay/neuter planning, training guidance.", icon: "paw" },
-      { name: "Adult", age: "1 – 7 yrs", focus: "Annual wellness, dental care, parasite prevention, weight management, lifestyle vaccines.", icon: "shield" },
-      { name: "Senior", age: "7 yrs +", focus: "Twice-yearly exams, bloodwork, joint support, laser therapy, PRP, quality-of-life planning.", icon: "heart" },
+      { name: "Puppy", age: "6 wks – 1 yr", focus: "Vaccine series, deworming, nutrition counseling, spay/neuter planning, training guidance.", icon: "paw", image: "/images/animals/dog-puppy.png" },
+      { name: "Adult", age: "1 – 7 yrs", focus: "Annual wellness, dental care, parasite prevention, weight management, lifestyle vaccines.", icon: "shield", image: "/images/animals/dog-adult.png" },
+      { name: "Senior", age: "7 yrs +", focus: "Twice-yearly exams, bloodwork, joint support, laser therapy, PRP, quality-of-life planning.", icon: "heart", image: "/images/animals/dog-senior.png" },
     ],
     conditions: [
-      { name: "Dental disease", body: "Plaque, gingivitis, and loose teeth, often silent until severe." },
-      { name: "Allergies & skin issues", body: "Itching, ear infections, hot spots. Often environmental, sometimes food-related." },
-      { name: "Arthritis & joint pain", body: "Stiffness getting up, reluctance on stairs, slowing on walks." },
-      { name: "ACL / cruciate injury", body: "Sudden rear-leg lameness. We diagnose and often repair onsite." },
-      { name: "Ear infections", body: "Head shaking, odor, redness. We diagnose the cause and treat it properly, not just the symptom." },
-      { name: "GI upset", body: "Vomiting, diarrhea, loss of appetite. We triage and figure out the cause." },
+      { name: "Dental disease", body: "Plaque, gingivitis, and loose teeth, often silent until severe.", image: "/images/animals/dog-dental.png" },
+      { name: "Allergies & skin issues", body: "Itching, ear infections, hot spots. Often environmental, sometimes food-related.", image: "/images/animals/dog-allergy-skin.png" },
+      { name: "Arthritis & joint pain", body: "Stiffness getting up, reluctance on stairs, slowing on walks.", image: "/images/animals/dog-arthritis.png" },
+      { name: "Obesity & weight issues", body: "Excess weight stresses joints, heart, and overall health. We create realistic plans.", image: "/images/animals/dog-obesity.png" },
+      { name: "GI upset", body: "Vomiting, diarrhea, loss of appetite. We triage and figure out the cause.", image: "/images/animals/dog-gi.png" },
     ],
     vaccines: {
       core: ["Rabies", "DHPP (Distemper / Hepatitis / Parvo / Parainfluenza)"],
@@ -87,17 +86,16 @@ const ANIMALS = {
       author: "Dr. Karen Hamilton, DVM",
     },
     life_stages: [
-      { name: "Kitten", age: "8 wks – 1 yr", focus: "Vaccine series, deworming, spay/neuter, nutrition, socialization, microchipping.", icon: "paw" },
-      { name: "Adult", age: "1 – 10 yrs", focus: "Annual wellness exam, dental screening, parasite prevention, weight and behavior check-ins.", icon: "shield" },
-      { name: "Senior", age: "10 yrs +", focus: "Twice-yearly exams, bloodwork, kidney & thyroid screening, quality-of-life support, gentle dental care.", icon: "heart" },
+      { name: "Kitten", age: "8 wks – 1 yr", focus: "Vaccine series, deworming, spay/neuter, nutrition, socialization, microchipping.", icon: "paw", image: "/images/animals/cat-kitten.png" },
+      { name: "Adult", age: "1 – 10 yrs", focus: "Annual wellness exam, dental screening, parasite prevention, weight and behavior check-ins.", icon: "shield", image: "/images/animals/cat-adult.png" },
+      { name: "Senior", age: "10 yrs +", focus: "Twice-yearly exams, bloodwork, kidney & thyroid screening, quality-of-life support, gentle dental care.", icon: "heart", image: "/images/animals/cat-senior.png" },
     ],
     conditions: [
-      { name: "Kidney disease", body: "The most common chronic illness in senior cats. Caught early, we can slow its progression significantly." },
-      { name: "Dental disease", body: "Painful resorptive lesions, gingivitis, and tooth loss. Often missed because cats hide mouth pain." },
-      { name: "Hyperthyroidism", body: "Weight loss despite a big appetite, vocalizing, hyperactivity. Common in cats over 10." },
-      { name: "Diabetes", body: "Excess thirst, urination, weight changes. Manageable with the right plan." },
-      { name: "Urinary issues (FLUTD)", body: "Straining, blood in urine, inappropriate urination. Can be a true emergency in male cats." },
-      { name: "Arthritis", body: "Cats are masters at hiding pain. Reluctance to jump and less grooming are often the only clues." },
+      { name: "Kidney disease", body: "The most common chronic illness in senior cats. Caught early, we can slow its progression significantly.", image: "/images/animals/cat-kidney.png" },
+      { name: "Dental disease", body: "Painful resorptive lesions, gingivitis, and tooth loss. Often missed because cats hide mouth pain.", image: "/images/animals/cat-dental.png" },
+      { name: "Hyperthyroidism", body: "Weight loss despite a big appetite, vocalizing, hyperactivity. Common in cats over 10.", image: "/images/animals/cat-hyperthyroid.png" },
+      { name: "Urinary issues (FLUTD)", body: "Straining, blood in urine, inappropriate urination. Can be a true emergency in male cats.", image: "/images/animals/cat-urinary.png" },
+      { name: "Upper respiratory", body: "Sneezing, nasal discharge, eye involvement. Common and treatable when caught early.", image: "/images/animals/cat-respiratory.png" },
     ],
     vaccines: {
       core: ["Rabies", "FVRCP (Feline Viral Rhinotracheitis / Calicivirus / Panleukopenia)"],
@@ -132,16 +130,16 @@ const ANIMALS = {
       author: "Dr. Karen Hamilton, DVM",
     },
     life_stages: [
-      { name: "Young", age: "First months", focus: "Husbandry review, diet, environment, basic exam, age-appropriate handling.", icon: "paw" },
-      { name: "Adult", age: "Prime years", focus: "Annual wellness, weight and dental check, enrichment and habitat review.", icon: "shield" },
-      { name: "Senior", age: "Late life", focus: "Quality-of-life monitoring, pain support, and gentle diagnostics.", icon: "heart" },
+      { name: "Young", age: "First months", focus: "Husbandry review, diet, environment, basic exam, age-appropriate handling.", icon: "paw", image: "/images/animals/rabbit-young.png" },
+      { name: "Adult", age: "Prime years", focus: "Annual wellness, weight and dental check, enrichment and habitat review.", icon: "shield", image: "/images/animals/rabbit-adult.png" },
+      { name: "Senior", age: "Late life", focus: "Quality-of-life monitoring, pain support, and gentle diagnostics.", icon: "heart", image: "/images/animals/rabbit-senior.png" },
     ],
     conditions: [
-      { name: "Habitat & husbandry issues", body: "Many illnesses in exotic pets trace back to environment, lighting, or diet." },
-      { name: "Dental overgrowth (rabbits, rodents)", body: "Continuously-growing teeth need the right diet and regular checks." },
-      { name: "GI stasis (rabbits)", body: "A true emergency. If your rabbit stops eating or pooping, call immediately." },
-      { name: "Nutritional imbalances", body: "Calcium, vitamin D, and protein issues are common and very fixable." },
-      { name: "Respiratory infections", body: "Small mammals hide respiratory disease well. We screen carefully at every visit." },
+      { name: "Dental overgrowth", body: "Continuously-growing teeth need the right diet and regular checks.", image: "/images/animals/rabbit-dental.png" },
+      { name: "GI stasis (rabbits)", body: "A true emergency. If your rabbit stops eating or pooping, call immediately.", image: "/images/animals/rabbit-gi.png" },
+      { name: "Skin & parasite issues", body: "Mites, fur loss, and skin lesions are common. We use species-safe treatments.", image: "/images/animals/rabbit-skin.png" },
+      { name: "Nutritional imbalances", body: "Vitamin C deficiency (guinea pigs), calcium issues, and diet-linked disease.", image: "/images/animals/gp-vitamin-c.png" },
+      { name: "Respiratory infections", body: "Small mammals hide respiratory disease well. We screen carefully at every visit.", image: "/images/animals/gp-skin.png" },
     ],
     vaccines: {
       core: ["Varies by species. We will build a prevention plan that fits your pet."],
@@ -286,16 +284,23 @@ export default function AnimalPage() {
               ];
               const primary = i === 0;
               return (
-                <article key={st.name} className={`rounded-[1.5rem] p-7 ${tints[i]}`}>
-                  <div className={`inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold ${primary ? "text-clinic-amber" : "text-clinic-red"}`}>
-                    <Icon className="h-4 w-4" /> {st.name}
+                <article key={st.name} className={`rounded-[1.5rem] overflow-hidden ${tints[i]}`}>
+                  {st.image && (
+                    <div className="h-40 overflow-hidden">
+                      <img src={st.image} alt={st.name} className="h-full w-full object-cover" loading="lazy" />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <div className={`inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold ${primary ? "text-clinic-amber" : "text-clinic-red"}`}>
+                      <Icon className="h-4 w-4" /> {st.name}
+                    </div>
+                    <div className={`mt-2 font-display text-2xl font-extrabold ${primary ? "text-white" : "text-clinic-navy"}`}>
+                      {st.age}
+                    </div>
+                    <p className={`mt-2 text-sm leading-relaxed ${primary ? "text-white/85" : "text-clinic-mist"}`}>
+                      {st.focus}
+                    </p>
                   </div>
-                  <div className={`mt-3 font-display text-2xl font-extrabold ${primary ? "text-white" : "text-clinic-navy"}`}>
-                    {st.age}
-                  </div>
-                  <p className={`mt-3 text-sm leading-relaxed ${primary ? "text-white/85" : "text-clinic-mist"}`}>
-                    {st.focus}
-                  </p>
                 </article>
               );
             })}
@@ -314,14 +319,18 @@ export default function AnimalPage() {
             {animal.conditions.map((c, i) => (
               <article
                 key={c.name}
-                className="bg-white rounded-[1.5rem] p-6 border border-sand-300/60 hover:-translate-y-1 transition-transform"
+                className="bg-white rounded-[1.5rem] overflow-hidden border border-sand-300/60 hover:-translate-y-1 transition-transform"
                 data-testid={`animal-condition-${i}`}
               >
-                <div className="h-10 w-10 rounded-xl bg-clinic-red-soft text-clinic-red grid place-items-center">
-                  <Stethoscope className="h-4 w-4" />
+                {c.image && (
+                  <div className="h-36 overflow-hidden">
+                    <img src={c.image} alt={c.name} className="h-full w-full object-cover" loading="lazy" />
+                  </div>
+                )}
+                <div className="p-6">
+                  <div className="font-display font-bold text-clinic-navy">{c.name}</div>
+                  <p className="mt-2 text-sm text-clinic-mist leading-relaxed">{c.body}</p>
                 </div>
-                <div className="mt-4 font-display font-bold text-clinic-navy">{c.name}</div>
-                <p className="mt-2 text-sm text-clinic-mist leading-relaxed">{c.body}</p>
               </article>
             ))}
           </div>
