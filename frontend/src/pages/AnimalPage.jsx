@@ -17,7 +17,7 @@ import {
   Syringe,
 } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
-import { SERVICES } from "./Services";
+import { SERVICES_BY_ANIMAL } from "../data/services";
 
 /**
  * Canonical species pages, /dogs, /cats, /critters.
@@ -193,7 +193,13 @@ export default function AnimalPage() {
   }, [key]);
 
   const scopedServices = useMemo(
-    () => (animal ? animal.services.map((sl) => SERVICES.find((s) => s.slug === sl)).filter(Boolean) : []),
+    () => {
+      if (!animal) return [];
+      // Find services for this animal type from the new data structure
+      const animalKey = animal.slug === "critters" ? "rabbits" : animal.slug;
+      const data = SERVICES_BY_ANIMAL[animalKey];
+      return data ? data.preventive.slice(0, 4) : [];
+    },
     [animal]
   );
 
@@ -471,7 +477,7 @@ export default function AnimalPage() {
                   data-testid={`animal-service-card-${s.slug}`}
                 >
                   <div className="font-display font-bold text-xl text-clinic-navy">{s.title}</div>
-                  <p className="mt-2 text-sm text-clinic-mist leading-relaxed">{s.blurb}</p>
+                  <p className="mt-2 text-sm text-clinic-mist leading-relaxed">{s.summary || s.blurb}</p>
                   <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-clinic-red group-hover:gap-2.5 transition-all">
                     Learn more <PawPrint className="h-3.5 w-3.5 transition-transform group-hover:rotate-12" />
                   </div>

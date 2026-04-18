@@ -1,69 +1,163 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { PawPrint } from "lucide-react";
+import { PawPrint, AlertTriangle, ChevronRight, Dog, Cat, Rabbit } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
 import InlineCTA from "../components/InlineCTA";
+import { SERVICES_BY_ANIMAL } from "../data/services";
 
-export const SERVICES = [
-  { slug: "wellness-exams", title: "Wellness Exams", blurb: "Annual checkups that catch problems early.", intent_hint: "wellness" },
-  { slug: "vaccinations", title: "Vaccinations", blurb: "Core & lifestyle vaccines on a schedule that fits your pet.", intent_hint: "wellness" },
-  { slug: "dental-care", title: "Dental Care", blurb: "Cleanings, extractions, and long-term dental health.", intent_hint: "treatments" },
-  { slug: "surgery", title: "Surgery & Spay/Neuter", blurb: "Safe, modern surgical protocols performed onsite.", intent_hint: "treatments" },
-  { slug: "laser-therapy", title: "Laser Therapy", blurb: "Drug-free pain relief and faster healing.", intent_hint: "senior" },
-  { slug: "prp-therapy", title: "PRP & Regenerative Medicine", blurb: "Regenerative treatments for joints, tendons, and healing.", intent_hint: "senior" },
-  { slug: "parasite-prevention", title: "Parasite Prevention", blurb: "Fleas, ticks, heartworm, year-round protection.", intent_hint: "wellness" },
-  { slug: "microchipping", title: "Microchipping", blurb: "Permanent ID in case your pet slips out.", intent_hint: "wellness" },
-  { slug: "senior-care", title: "Senior Pet Care", blurb: "Comfort, mobility and quality-of-life support.", intent_hint: "senior" },
-  { slug: "emergency-care", title: "Emergency & Urgent", blurb: "Triage during business hours; guidance after hours.", intent_hint: "health_concerns" },
+const TABS = [
+  { key: "dogs", label: "Dogs", Icon: Dog },
+  { key: "cats", label: "Cats", Icon: Cat },
+  { key: "rabbits", label: "Rabbits", Icon: Rabbit },
+  { key: "guinea_pigs", label: "Guinea Pigs", Icon: PawPrint },
 ];
 
+function ServiceCard({ service }) {
+  return (
+    <Link
+      to={`/services/${service.slug}`}
+      className="group bg-white rounded-2xl border border-sand-300/60 overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)]"
+      data-testid={`service-card-${service.slug}`}
+    >
+      <div className="h-44 overflow-hidden bg-sand-200">
+        <img
+          src={service.image}
+          alt={service.title}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+      </div>
+      <div className="p-5">
+        <h3 className="font-display font-bold text-clinic-navy text-base">{service.title}</h3>
+        <p className="text-sm text-clinic-mist mt-1.5 line-clamp-2">{service.summary}</p>
+        <div className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-clinic-red group-hover:text-clinic-red-hover transition-colors">
+          Learn more <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function UrgentCard({ service }) {
+  return (
+    <Link
+      to={`/services/${service.slug}`}
+      className="group flex items-start gap-4 bg-white rounded-xl border border-sand-300/60 p-4 hover:border-clinic-red/30 hover:bg-clinic-red-soft/30 transition-all duration-200"
+      data-testid={`urgent-card-${service.slug}`}
+    >
+      <div className="h-10 w-10 rounded-lg bg-amber-50 grid place-items-center shrink-0 group-hover:bg-clinic-red-soft">
+        <AlertTriangle className="h-4 w-4 text-amber-500 group-hover:text-clinic-red" />
+      </div>
+      <div className="flex-1 min-w-0">
+        <div className="font-display font-bold text-sm text-clinic-navy">{service.title}</div>
+        <p className="text-xs text-clinic-mist mt-0.5 line-clamp-2">{service.summary}</p>
+      </div>
+      <ChevronRight className="h-4 w-4 text-clinic-mist shrink-0 mt-1 group-hover:text-clinic-red transition-colors" />
+    </Link>
+  );
+}
+
+function AnimalServicesSection({ animalKey }) {
+  const animal = SERVICES_BY_ANIMAL[animalKey];
+  if (!animal) return null;
+
+  return (
+    <div data-testid={`services-${animalKey}`}>
+      {/* Preventive */}
+      <div className="text-xs uppercase tracking-[0.22em] font-semibold text-clinic-forest mt-10 mb-6">
+        Preventive & Routine Care
+      </div>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {animal.preventive.map((s) => (
+          <ServiceCard key={s.slug} service={s} />
+        ))}
+      </div>
+
+      {/* Urgent */}
+      <div className="mt-14">
+        <div className="flex items-center gap-3 mb-6">
+          <AlertTriangle className="h-5 w-5 text-amber-500" />
+          <div className="text-xs uppercase tracking-[0.22em] font-semibold text-amber-700">
+            Urgent Care & Common Illness
+          </div>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {animal.urgent.map((s) => (
+            <UrgentCard key={s.slug} service={s} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Services() {
-  const { track } = useSmartSite();
+  const { parentIntent } = useSmartSite();
+
+  // Map parent intent to default tab
+  const defaultTab = parentIntent === "dogs" ? "dogs"
+    : parentIntent === "cats" ? "cats"
+    : parentIntent === "critters" ? "rabbits"
+    : null;
+
+  const [activeTab, setActiveTab] = useState(defaultTab);
+
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-12" data-testid="services-page">
-      <div className="text-xs uppercase tracking-[0.22em] font-semibold text-clinic-forest">
-        What we do
-      </div>
+      <div className="text-xs uppercase tracking-[0.22em] font-semibold text-clinic-red">Our Services</div>
       <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-clinic-navy mt-3 max-w-3xl leading-[1.02]">
-        Care that grows with your pet&mdash;from first visits to senior years.
+        {activeTab
+          ? `${SERVICES_BY_ANIMAL[activeTab].label} care at Annapolis Vet.`
+          : "Complete care for every member of your family."}
       </h1>
-      <p className="mt-5 text-clinic-mist max-w-2xl text-lg">
-        From preventive care to advanced surgery and regenerative medicine, every service is delivered
-        calmly, thoughtfully, and in-house.
+      <p className="mt-5 text-lg text-clinic-mist max-w-2xl leading-relaxed">
+        {activeTab
+          ? `Preventive, routine, and urgent care designed specifically for ${SERVICES_BY_ANIMAL[activeTab].label.toLowerCase()}.`
+          : "Select your pet type to see the services we offer, or browse everything below."}
       </p>
 
-      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {SERVICES.map((s, i) => {
-          const tints = [
-            "bg-white border-sand-300/60",
-            "bg-clinic-peach border-clinic-peachDeep/60",
-            "bg-clinic-sage border-clinic-forest/15",
-            "bg-clinic-red-soft border-clinic-red/20",
-          ];
-          return (
-            <Link
-              key={s.slug}
-              to={`/services/${s.slug}`}
-              onClick={() =>
-                track({
-                  signalType: "cta_click",
-                  label: `service:${s.slug}`,
-                  subIntent: s.intent_hint,
-                  strength: 2,
-                })
-              }
-              className={`group rounded-[1.5rem] p-7 border hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_22px_42px_rgba(0,0,0,0.08)] ${tints[i % tints.length]}`}
-              data-testid={`service-card-${s.slug}`}
-            >
-              <div className="font-display font-bold text-xl text-clinic-navy">{s.title}</div>
-              <p className="mt-2 text-sm text-clinic-mist leading-relaxed">{s.blurb}</p>
-              <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-clinic-red group-hover:gap-2.5 transition-all">
-                Learn more <PawPrint className="h-3.5 w-3.5 transition-transform group-hover:rotate-12" />
-              </div>
-            </Link>
-          );
-        })}
+      {/* Animal tabs */}
+      <div className="mt-8 flex flex-wrap gap-2">
+        {TABS.map(({ key, label, Icon }) => (
+          <button
+            key={key}
+            onClick={() => setActiveTab(activeTab === key ? null : key)}
+            className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border transition-all ${
+              activeTab === key
+                ? "bg-clinic-navy text-white border-clinic-navy"
+                : "bg-white text-clinic-navy border-sand-300/60 hover:border-clinic-navy/30"
+            }`}
+            data-testid={`services-tab-${key}`}
+          >
+            <Icon className="h-4 w-4" />
+            {label}
+          </button>
+        ))}
       </div>
+
+      {/* Content */}
+      {activeTab ? (
+        <AnimalServicesSection animalKey={activeTab} />
+      ) : (
+        // Show all animals
+        Object.entries(SERVICES_BY_ANIMAL).map(([key, animal]) => (
+          <div key={key} className="mt-14">
+            <button
+              onClick={() => setActiveTab(key)}
+              className="inline-flex items-center gap-2 text-2xl font-display font-bold text-clinic-navy hover:text-clinic-red transition-colors"
+            >
+              {animal.label}
+              <ChevronRight className="h-5 w-5" />
+            </button>
+            <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {animal.preventive.slice(0, 4).map((s) => (
+                <ServiceCard key={s.slug} service={s} />
+              ))}
+            </div>
+          </div>
+        ))
+      )}
+
       <InlineCTA />
     </div>
   );
