@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSmartSite } from "../context/SmartSiteContext";
 
-const CACHE_PREFIX = "avw_surface_";
+const CACHE_PREFIX = "avw_surface_v2_";
 
 function getCached(slug) {
   try {
