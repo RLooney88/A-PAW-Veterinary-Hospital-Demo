@@ -36,7 +36,7 @@ const ANIMALS = {
     hero_eyebrow: "Annapolis Dogs",
     hero_copy:
       "From first-puppy visits to senior comfort, we treat every dog with the calm, thoughtful care you'd give a member of the family.",
-    image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=80&auto=format&fit=crop",
+    image: "/images/animals/hero-dogs-page.webp",
     quote: {
       body: "Dogs don't hide discomfort as well as cats do, but they'll push through because they want to please you. Our job is to notice the small things, a little stiffness, a subtle cough, a change in appetite, before they become big problems.",
       author: "Dr. Karen Hamilton, DVM",
@@ -124,7 +124,7 @@ const ANIMALS = {
     hero_eyebrow: "Rabbits, Small Mammals & More",
     hero_copy:
       "Rabbits, guinea pigs, hamsters, and other small companions deserve the same quality of care as any family pet. We will be honest about what we can treat and guide you to the right specialist when needed.",
-    image: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=1920&q=80&auto=format&fit=crop",
+    image: "/images/animals/hero-critters-page.webp",
     quote: {
       body: "The best thing we can do for an exotic pet is be honest: what we can confidently treat, and when a species-specific specialist is the right next step. We will point you in the right direction either way.",
       author: "Dr. Karen Hamilton, DVM",
