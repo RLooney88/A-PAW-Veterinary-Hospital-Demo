@@ -995,6 +995,52 @@ async def update_chatbot_config(
     return ChatbotConfigOut.model_validate(config)
 
 
+# ---------- Admin: Chat Bookings ----------
+@api.get("/admin/chat-bookings")
+async def list_chat_bookings(
+    _admin=Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    res = await db.execute(
+        select(ChatBooking).order_by(desc(ChatBooking.created_at)).limit(200)
+    )
+    bookings = res.scalars().all()
+    return [
+        {
+            "id": b.id,
+            "created_at": b.created_at.isoformat() if b.created_at else None,
+            "client_name": b.client_name,
+            "client_phone": b.client_phone,
+            "client_email": b.client_email,
+            "pet_name": b.pet_name,
+            "pet_breed": b.pet_breed,
+            "preferred_time": b.preferred_time,
+            "notes": b.notes,
+            "status": b.status,
+            "session_token": b.session_token,
+        }
+        for b in bookings
+    ]
+
+
+@api.patch("/admin/chat-bookings/{booking_id}")
+async def update_chat_booking(
+    booking_id: str,
+    payload: dict,
+    _admin=Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db),
+):
+    res = await db.execute(select(ChatBooking).where(ChatBooking.id == booking_id))
+    booking = res.scalar_one_or_none()
+    if not booking:
+        raise HTTPException(404, "Booking not found")
+    new_status = payload.get("status")
+    if new_status in ("new", "confirmed", "cancelled"):
+        booking.status = new_status
+    await db.commit()
+    return {"ok": True, "status": booking.status}
+
+
 # ---------- Wire it up ----------
 app.include_router(api)
 app.include_router(portal_router, prefix="/api")

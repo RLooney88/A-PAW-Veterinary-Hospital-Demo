@@ -22,7 +22,7 @@ export default function ServiceDetail() {
           src={service.image}
           alt={service.title}
           className="h-full w-full object-cover"
-          style={service.objectPosition ? { objectPosition: service.objectPosition } : undefined}
+          style={service.detailObjectPosition ? { objectPosition: service.detailObjectPosition } : undefined}
         />
       </div>
 

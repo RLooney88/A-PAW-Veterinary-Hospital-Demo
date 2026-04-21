@@ -53,6 +53,7 @@ const DOG_PREVENTIVE = [
     summary: "Puppy nutrition, adult maintenance, obesity prevention, prescription diets, joint-support nutrition.",
     image: img("svc-dog-nutrition"),
     objectPosition: "center top",
+    detailObjectPosition: "center 25%",
     detail: "Good nutrition is the foundation of long-term health. We guide you through puppy feeding, adult maintenance, and senior diets. For dogs struggling with weight, we create realistic plans that work. Prescription diets are recommended when there is a clinical need, not as a default.",
   },
   {
@@ -92,6 +93,7 @@ const CAT_PREVENTIVE = [
     title: "Wellness & Preventive Exams",
     summary: "Routine exams, weight trends, baseline screening, preventive planning, indoor/outdoor risk review.",
     image: img("svc-cat-wellness"),
+    detailObjectPosition: "center 75%",
     detail: "Annual exams are critical for cats because they hide illness so well. We check weight trends, dental health, heart, thyroid, kidneys, and overall condition. For indoor cats we review environmental enrichment; for outdoor cats we assess risk factors. Baseline bloodwork helps us spot problems before they become emergencies.",
   },
   {
@@ -129,6 +131,7 @@ const CAT_PREVENTIVE = [
     title: "Behavior & Litter Box Health",
     summary: "Stress-related behaviors, litter box changes, scratching, environmental guidance.",
     image: img("svc-cat-behavior"),
+    detailObjectPosition: "center 20%",
     detail: "Changes in litter box habits, hiding, aggression, or overgrooming often have a medical component. We always rule out physical causes first. For behavioral issues, we provide environmental enrichment guidance, multi-cat household strategies, and stress reduction techniques.",
   },
   {
