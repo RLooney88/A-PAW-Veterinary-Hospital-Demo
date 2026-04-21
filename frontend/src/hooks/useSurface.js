@@ -1,39 +1,52 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSmartSite } from "../context/SmartSiteContext";
 
-const CACHE_PREFIX = "avw_surface_v2_";
+const CACHE_PREFIX = "avw_surface_v3_";
 
-function getCached(slug) {
-  try {
-    const raw = localStorage.getItem(CACHE_PREFIX + slug);
-    if (!raw) return null;
-    return JSON.parse(raw);
-  } catch { return null; }
+// Cache key is namespaced by the visitor's current intent so repeat visitors
+// paint the same content they last saw for that intent, not a stale default.
+function cacheKey(slug, parentIntent, subIntent) {
+  return `${CACHE_PREFIX}${slug}__${parentIntent || "none"}__${subIntent || "none"}`;
 }
 
-function setCache(slug, data) {
+function getCached(slug, parentIntent, subIntent) {
   try {
-    localStorage.setItem(CACHE_PREFIX + slug, JSON.stringify(data));
-  } catch { /* quota exceeded, ignore */ }
+    const raw = localStorage.getItem(cacheKey(slug, parentIntent, subIntent));
+    if (raw) return JSON.parse(raw);
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function setCache(slug, parentIntent, subIntent, data) {
+  try {
+    localStorage.setItem(cacheKey(slug, parentIntent, subIntent), JSON.stringify(data));
+  } catch {
+    /* quota exceeded, ignore */
+  }
 }
 
 /**
  * Hook: fetch surface content whenever the session's parent/sub-intent changes.
  * Uses stale-while-revalidate: renders cached content instantly, updates from API in background.
+ * Cache is keyed per-intent so returning visitors never see a flash of default content.
  */
 export function useSurface(slug) {
   const { getSurfaceContent, parentIntent, subIntent, ready } = useSmartSite();
-  const cached = useRef(getCached(slug));
 
+  // Seed state synchronously from the intent-matched cache. Because the context
+  // hydrates parent_intent from a localStorage snapshot on mount, this runs
+  // with the real intent even before /sessions/init completes.
+  const initial = useRef(getCached(slug, parentIntent, subIntent));
   const [state, setState] = useState({
-    content: cached.current?.content || null,
-    matched: cached.current?.matched || null,
-    inferredIntent: cached.current?.inferredIntent || null,
-    loading: !cached.current,
+    content: initial.current?.content || null,
+    matched: initial.current?.matched || null,
+    inferredIntent: initial.current?.inferredIntent || null,
+    loading: !initial.current,
   });
 
   const load = React.useCallback(async () => {
-    // Only show loading spinner if we have no cached content
     if (!state.content) {
       setState((s) => ({ ...s, loading: true }));
     }
@@ -46,12 +59,14 @@ export function useSurface(slug) {
         loading: false,
       };
       setState(newState);
-      setCache(slug, newState);
+      // Cache under the intent the server actually matched against, not just
+      // the local snapshot, so the next paint is perfectly aligned.
+      setCache(slug, data.inferred_intent || parentIntent, subIntent, newState);
     } catch (e) {
       console.warn("surface load failed", slug, e);
       setState((s) => ({ ...s, loading: false }));
     }
-  }, [slug, getSurfaceContent]);
+  }, [slug, getSurfaceContent, parentIntent, subIntent]);
 
   useEffect(() => {
     if (!ready) return;

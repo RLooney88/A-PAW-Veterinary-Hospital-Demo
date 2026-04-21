@@ -3,6 +3,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useR
 import { api } from "../lib/api";
 
 const STORAGE_KEY = "avw_session_token";
+const SESSION_SNAPSHOT_KEY = "avw_session_snapshot";
 
 const SmartSiteContext = createContext(null);
 
@@ -30,9 +31,36 @@ const SUB_INTENT_LABELS = {
 
 export function SmartSiteProvider({ children }) {
   const [sessionToken, setSessionToken] = useState(() => localStorage.getItem(STORAGE_KEY) || null);
-  const [session, setSession] = useState(null);
+  const [session, setSession] = useState(() => {
+    // Hydrate from snapshot so parent_intent is known before /sessions/init completes.
+    // This eliminates the flash of default content on repeat visits.
+    try {
+      const raw = localStorage.getItem(SESSION_SNAPSHOT_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  });
   const [ready, setReady] = useState(false);
   const initRef = useRef(false);
+
+  // Persist session snapshot (parent_intent + sub_intent) whenever it updates.
+  useEffect(() => {
+    if (!session) return;
+    try {
+      localStorage.setItem(
+        SESSION_SNAPSHOT_KEY,
+        JSON.stringify({
+          parent_intent: session.parent_intent || null,
+          sub_intent: session.sub_intent || null,
+          intent_scores: session.intent_scores || {},
+          sub_intent_scores: session.sub_intent_scores || {},
+        })
+      );
+    } catch {
+      /* quota, ignore */
+    }
+  }, [session]);
 
   const init = useCallback(async () => {
     if (initRef.current) return;
@@ -97,6 +125,7 @@ export function SmartSiteProvider({ children }) {
     // soft-clear: we can't subtract on the server without a new endpoint;
     // instead we reset session (fresh token).
     localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(SESSION_SNAPSHOT_KEY);
     setSessionToken(null);
     setSession(null);
     initRef.current = false;

@@ -19,10 +19,15 @@ const DEFAULTS = {
 
 export default function DynamicHero() {
   const { content, matched, loading, inferredIntent } = useSurface("home_hero");
-  const { parentIntent } = useSmartSite();
+  const { parentIntent, ready } = useSmartSite();
 
-  // Use API content if available, otherwise hardcoded defaults (no blank state)
-  const c = content || DEFAULTS;
+  // Rendering strategy to prevent the flash-of-default-content that repeat visitors experience:
+  //   - If we have real content (from cache or API), render it.
+  //   - If we have no content AND the user has an established intent, render the neutral image
+  //     (no text) while we fetch the intent-matched content. This avoids painting the wrong copy.
+  //   - If we have no content AND no intent (truly first visit), render DEFAULTS.
+  const awaitingIntentMatch = !content && (parentIntent || !ready);
+  const c = content || (awaitingIntentMatch ? { image_url: DEFAULTS.image_url } : DEFAULTS);
 
   const {
     eyebrow,
