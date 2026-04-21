@@ -95,49 +95,39 @@ async def _ensure_session(db: AsyncSession, session_token: str | None) -> Visito
     return sess
 
 
-# Half-life for intent score decay (minutes). Older signals fade so the visitor's
-# most recent focus dominates the site. Tune here to change the bias.
-INTENT_HALFLIFE_MINUTES = 8.0
+# Per-signal recency decay. Each new tracked signal shrinks all prior scores
+# by this factor before the new delta is added. Lower = more aggressive bias
+# toward the most recent clicks. 0.75 means after ~5 signals, an earlier
+# score is down to ~24% of its original weight.
+SIGNAL_DECAY_FACTOR = 0.75
+SIGNAL_FLOOR = 0.3  # drop scores below this to keep the state clean
 
 
-def _decay_scores(scores: dict | None, elapsed_minutes: float) -> dict:
-    """Exponentially decay a score dict. Drops entries that fall below ~0.3."""
+def _decay_scores(scores: dict | None) -> dict:
+    """Apply a fixed per-signal decay to all scores."""
     if not scores:
         return {}
-    if elapsed_minutes <= 0:
-        return dict(scores)
-    factor = 0.5 ** (elapsed_minutes / INTENT_HALFLIFE_MINUTES)
     decayed: dict = {}
     for k, v in scores.items():
         try:
-            nv = float(v) * factor
+            nv = float(v) * SIGNAL_DECAY_FACTOR
         except (TypeError, ValueError):
             continue
-        if nv >= 0.3:
+        if nv >= SIGNAL_FLOOR:
             decayed[k] = round(nv, 3)
     return decayed
 
 
 def _apply_signal(sess: VisitorSession, ev: SignalEvent) -> None:
-    """Update session intent from a new event, decaying older scores first."""
+    """Update session intent from a new event, decaying older scores first by click order."""
     if ev.signal_type == "page_view":
         sess.page_view_count = (sess.page_view_count or 0) + 1
     mult = SIGNAL_STRENGTH_MULT.get(ev.signal_type, 1)
     delta = max(1, int(ev.strength or 1)) * mult
 
-    now = datetime.now(timezone.utc)
-    last = sess.last_seen_at
-    if last is not None:
-        # Handle naive datetimes that may have been stored without tz.
-        if last.tzinfo is None:
-            last = last.replace(tzinfo=timezone.utc)
-        elapsed_min = max(0.0, (now - last).total_seconds() / 60.0)
-    else:
-        elapsed_min = 0.0
-
-    # Decay everything the visitor has accumulated so far.
-    scores = _decay_scores(sess.intent_scores or {}, elapsed_min)
-    sub_scores = _decay_scores(sess.sub_intent_scores or {}, elapsed_min)
+    # Decay everything the visitor has accumulated so far by one "tick".
+    scores = _decay_scores(sess.intent_scores or {})
+    sub_scores = _decay_scores(sess.sub_intent_scores or {})
 
     if ev.intent:
         scores[ev.intent] = scores.get(ev.intent, 0) + delta
@@ -148,7 +138,7 @@ def _apply_signal(sess: VisitorSession, ev: SignalEvent) -> None:
     sess.sub_intent_scores = sub_scores
     sess.parent_intent = resolve_parent_intent(scores)
     sess.sub_intent = resolve_sub_intent(sub_scores)
-    sess.last_seen_at = now
+    sess.last_seen_at = datetime.now(timezone.utc)
 
 
 # ---------- Lifespan ----------
