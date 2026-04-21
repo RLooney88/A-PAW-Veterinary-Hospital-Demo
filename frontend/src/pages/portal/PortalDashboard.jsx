@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import { portalApi } from "../../lib/portalApi";
-import { PawPrint, Calendar, AlertTriangle, CheckCircle2, Clock } from "lucide-react";
+import { PawPrint, Calendar, AlertTriangle, CheckCircle2, Clock, CalendarPlus } from "lucide-react";
 
 function daysAgo(dateStr) {
   if (!dateStr) return Infinity;
@@ -52,10 +52,21 @@ export default function PortalDashboard() {
   return (
     <div data-testid="portal-dashboard">
       <div className="text-xs uppercase tracking-[0.22em] font-semibold text-clinic-forest">My Pets</div>
-      <h1 className="font-display text-3xl font-extrabold text-clinic-navy mt-2">
-        Welcome back{client ? `, ${client.first_name}` : ""}.
-      </h1>
-      <p className="text-clinic-mist text-sm mt-1">Here's how your pets are doing.</p>
+      <div className="flex items-start justify-between flex-wrap gap-4 mt-2">
+        <div>
+          <h1 className="font-display text-3xl font-extrabold text-clinic-navy">
+            Welcome back{client ? `, ${client.first_name}` : ""}.
+          </h1>
+          <p className="text-clinic-mist text-sm mt-1">Here's how your pets are doing.</p>
+        </div>
+        <Link
+          to="/portal/book"
+          className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-5 py-2.5 font-semibold text-sm shadow-sm"
+          data-testid="portal-dashboard-book"
+        >
+          <CalendarPlus className="h-4 w-4" /> Book an appointment
+        </Link>
+      </div>
 
       {pets.length === 0 ? (
         <div className="mt-8 bg-white rounded-2xl border border-sand-300/60 p-12 text-center">

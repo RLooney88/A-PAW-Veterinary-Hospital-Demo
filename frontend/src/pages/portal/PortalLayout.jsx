@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate, NavLink } from "react-router-dom";
 import { portalApi, getPortalToken, setPortalToken } from "../../lib/portalApi";
-import { PawPrint, LogOut, User } from "lucide-react";
+import { PawPrint, LogOut, User, CalendarDays, Home } from "lucide-react";
 
 export default function PortalLayout() {
   const [client, setClient] = useState(null);
@@ -28,8 +28,31 @@ export default function PortalLayout() {
             </div>
           </Link>
           <div className="flex items-center gap-4">
+            <NavLink
+              to="/portal"
+              end
+              className={({ isActive }) =>
+                `hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold ${isActive ? "text-clinic-navy" : "text-clinic-mist hover:text-clinic-navy"}`
+              }
+              data-testid="portal-nav-dashboard"
+            >
+              <Home className="h-3.5 w-3.5" /> Pets
+            </NavLink>
+            <NavLink
+              to="/portal/book"
+              className={({ isActive }) =>
+                `inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
+                  isActive
+                    ? "bg-clinic-red text-white"
+                    : "bg-clinic-red/10 text-clinic-red hover:bg-clinic-red hover:text-white"
+                }`
+              }
+              data-testid="portal-nav-book"
+            >
+              <CalendarDays className="h-3.5 w-3.5" /> Book visit
+            </NavLink>
             {client && (
-              <div className="flex items-center gap-2 text-sm text-clinic-navy">
+              <div className="hidden md:flex items-center gap-2 text-sm text-clinic-navy">
                 <User className="h-4 w-4 text-clinic-mist" />
                 <span className="font-semibold">{client.first_name} {client.last_name}</span>
               </div>

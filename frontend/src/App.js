@@ -28,6 +28,7 @@ import PortalLogin from "./pages/portal/PortalLogin";
 import PortalLayout from "./pages/portal/PortalLayout";
 import PortalDashboard from "./pages/portal/PortalDashboard";
 import PortalPetDetail from "./pages/portal/PortalPetDetail";
+import PortalBook from "./pages/portal/PortalBook";
 
 function PublicShell({ children }) {
   const { pathname } = useLocation();
@@ -77,6 +78,7 @@ function App() {
             <Route path="/portal/login" element={<PortalLogin />} />
             <Route path="/portal" element={<PortalLayout />}>
               <Route index element={<PortalDashboard />} />
+              <Route path="book" element={<PortalBook />} />
               <Route path="pets/:petId" element={<PortalPetDetail />} />
             </Route>
 
