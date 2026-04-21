@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "../components/ui/accordion";
 import {
+  ArrowRight,
   Calendar,
   CheckCircle2,
   HeartPulse,
@@ -18,6 +19,20 @@ import {
 } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
 import { SERVICES_BY_ANIMAL } from "../data/services";
+
+// Map an animal-page slug to the correct /services tab.
+// Critters has no single tab (rabbits + guinea_pigs), so default to rabbits
+// which is the most common and still gives the user a relevant starting tab.
+const SERVICES_TAB_FOR_ANIMAL = {
+  dogs: "dogs",
+  cats: "cats",
+  critters: "rabbits",
+};
+
+function servicesHref(animalSlug) {
+  const tab = SERVICES_TAB_FOR_ANIMAL[animalSlug];
+  return tab ? `/services?tab=${tab}` : "/services";
+}
 
 /**
  * Canonical species pages, /dogs, /cats, /critters.
@@ -333,6 +348,35 @@ export default function AnimalPage() {
                 </div>
               </article>
             ))}
+
+            {/* Explore services CTA card, fills empty trailing slot */}
+            <Link
+              to={servicesHref(animal.slug)}
+              onClick={() => track({
+                signalType: "cta_click",
+                label: `animal-page-explore-services:${animal.slug}`,
+                intent: animal.slug === "critters" ? "critters" : animal.slug,
+                strength: 4,
+              })}
+              className="group bg-clinic-navy text-sand-50 rounded-[1.5rem] p-8 flex flex-col justify-between min-h-[280px] relative overflow-hidden hover:-translate-y-1 transition-transform grain"
+              data-testid="animal-explore-services"
+            >
+              <div>
+                <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-bold text-clinic-amber">
+                  <PawPrint className="h-3.5 w-3.5" /> Full service list
+                </div>
+                <h3 className="font-display text-2xl font-extrabold mt-4 leading-[1.1]">
+                  Explore every service we offer for {animal.title.toLowerCase()}.
+                </h3>
+                <p className="mt-3 text-sand-100/80 text-sm leading-relaxed">
+                  Preventive, dental, surgery, senior, and urgent care, all grouped in one place.
+                </p>
+              </div>
+              <span className="mt-6 inline-flex items-center gap-2 text-clinic-amber font-bold text-sm">
+                See {animal.title.toLowerCase()} services
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </Link>
           </div>
         </section>
 
