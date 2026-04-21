@@ -22,6 +22,8 @@ import AdminSurfaces from "./pages/admin/AdminSurfaces";
 import AdminSessions from "./pages/admin/AdminSessions";
 import AdminChatbot from "./pages/admin/AdminChatbot";
 import AdminChatBookings from "./pages/admin/AdminChatBookings";
+import AdminAppointments from "./pages/admin/AdminAppointments";
+import AdminCalendarConfig from "./pages/admin/AdminCalendarConfig";
 import PortalLogin from "./pages/portal/PortalLogin";
 import PortalLayout from "./pages/portal/PortalLayout";
 import PortalDashboard from "./pages/portal/PortalDashboard";
@@ -65,6 +67,8 @@ function App() {
               <Route index element={<AdminOverview />} />
               <Route path="leads" element={<AdminLeads />} />
               <Route path="chat-bookings" element={<AdminChatBookings />} />
+              <Route path="appointments" element={<AdminAppointments />} />
+              <Route path="calendar-config" element={<AdminCalendarConfig />} />
               <Route path="surfaces" element={<AdminSurfaces />} />
               <Route path="chatbot" element={<AdminChatbot />} />
               <Route path="sessions" element={<AdminSessions />} />

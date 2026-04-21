@@ -303,3 +303,96 @@ class PetAppointment(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
 
     pet: Mapped["Pet"] = relationship(back_populates="appointments")
+
+
+# ---------- Booking calendar ----------
+
+class AppointmentType(Base):
+    """A bookable appointment kind (Wellness, Dental, Urgent, etc.)."""
+    __tablename__ = "appointment_types"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    name: Mapped[str] = mapped_column(String(120), nullable=False)
+    description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    duration_mins: Mapped[int] = mapped_column(Integer, default=30, nullable=False)
+    # How many minutes inside the appointment actually need the doctor present.
+    # Doctors cannot be double-booked for this window. Set to 0 for tech-only visits.
+    doctor_mins: Mapped[int] = mapped_column(Integer, default=30, nullable=False)
+    # How many minutes need a vet tech. Usually full duration. Set <= duration_mins.
+    tech_mins: Mapped[int] = mapped_column(Integer, default=30, nullable=False)
+    color: Mapped[str | None] = mapped_column(String(32), nullable=True)  # hex or token for UI
+    sort_order: Mapped[int] = mapped_column(Integer, default=0)
+    active: Mapped[bool] = mapped_column(Boolean, default=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+
+class ClinicHours(Base):
+    """One row per weekday defining open/close times and whether the clinic is open."""
+    __tablename__ = "clinic_hours"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    # 0 = Monday ... 6 = Sunday (ISO-ish). Unique per day.
+    day_of_week: Mapped[int] = mapped_column(Integer, unique=True, nullable=False)
+    is_open: Mapped[bool] = mapped_column(Boolean, default=True)
+    open_minutes: Mapped[int] = mapped_column(Integer, default=480)   # 8:00 AM
+    close_minutes: Mapped[int] = mapped_column(Integer, default=960)  # 4:00 PM
+
+
+class StaffConfig(Base):
+    """Singleton row defining staffing capacity."""
+    __tablename__ = "staff_config"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    num_doctors: Mapped[int] = mapped_column(Integer, default=1)
+    num_techs: Mapped[int] = mapped_column(Integer, default=2)
+    # Minimum granularity for booking start times, in minutes.
+    slot_granularity_mins: Mapped[int] = mapped_column(Integer, default=30)
+    # How far in the future bookings can go.
+    booking_window_days: Mapped[int] = mapped_column(Integer, default=14)
+    # Minimum lead time before a booking can be made, in hours.
+    min_lead_time_hours: Mapped[int] = mapped_column(Integer, default=2)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, onupdate=_utcnow)
+
+
+class BlockedTime(Base):
+    """Admin-defined blackout ranges (holidays, training, surgery days)."""
+    __tablename__ = "blocked_times"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    reason: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    starts_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, index=True)
+    ends_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, index=True)
+    # What it blocks: "doctor", "tech", or "all".
+    blocks: Mapped[str] = mapped_column(String(16), default="all")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
+
+
+class Appointment(Base):
+    """A booked appointment tied (optionally) to a lead submission."""
+    __tablename__ = "appointments"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    lead_id: Mapped[str | None] = mapped_column(
+        UUID(as_uuid=False), ForeignKey("lead_submissions.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    appointment_type_id: Mapped[str | None] = mapped_column(
+        UUID(as_uuid=False), ForeignKey("appointment_types.id", ondelete="SET NULL"), nullable=True
+    )
+    # Denormalised for fast admin display and surviving deleted types.
+    appointment_type_name: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    client_name: Mapped[str] = mapped_column(String(160), nullable=False)
+    client_email: Mapped[str] = mapped_column(String(255), nullable=False)
+    client_phone: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    pet_name: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    pet_type: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+    starts_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, index=True)
+    ends_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, index=True)
+    # The doctor / tech busy windows within this appointment. Denormalised for fast
+    # availability checks without re-reading the type.
+    doctor_ends_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    tech_ends_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+    status: Mapped[str] = mapped_column(String(32), default="booked")  # booked|confirmed|cancelled|completed
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, index=True)

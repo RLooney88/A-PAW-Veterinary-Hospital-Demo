@@ -5,6 +5,8 @@ import {
   Activity,
   Bot,
   CalendarClock,
+  CalendarDays,
+  CalendarCog,
   Inbox,
   Layers,
   LayoutGrid,
@@ -15,7 +17,9 @@ import {
 const NAV = [
   { to: "/admin", label: "Overview", icon: Activity, end: true },
   { to: "/admin/leads", label: "Leads", icon: Inbox },
+  { to: "/admin/appointments", label: "Appointments", icon: CalendarDays },
   { to: "/admin/chat-bookings", label: "Chat Bookings", icon: CalendarClock },
+  { to: "/admin/calendar-config", label: "Calendar Setup", icon: CalendarCog },
   { to: "/admin/surfaces", label: "Surfaces & Switches", icon: Layers },
   { to: "/admin/chatbot", label: "Chatbot", icon: Bot },
   { to: "/admin/sessions", label: "Sessions", icon: Users },

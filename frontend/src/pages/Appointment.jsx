@@ -6,6 +6,7 @@ import { api } from "../lib/api";
 import { useSurface } from "../hooks/useSurface";
 import { useSmartSite } from "../context/SmartSiteContext";
 import Testimonials from "../components/Testimonials";
+import SlotPicker from "../components/SlotPicker";
 
 const PET_TYPES = [
   { value: "dogs", label: "Dog" },
@@ -57,6 +58,8 @@ export default function Appointment() {
     comment: "",
   }));
   const [submitted, setSubmitted] = useState(false);
+  const [submittedLead, setSubmittedLead] = useState(null);
+  const [bookedAppt, setBookedAppt] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -70,13 +73,14 @@ export default function Appointment() {
     setLoading(true);
     try {
       await track({ signalType: "form_start", label: "appointment" });
-      await api.post("/leads", {
+      const { data } = await api.post("/leads", {
         ...form,
         session_token: sessionToken,
         source_page: "/appointment",
       });
+      setSubmittedLead(data);
       setSubmitted(true);
-      toast.success("We got it! We'll be in touch shortly.");
+      toast.success("Got it — now pick a time below.");
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong. Please call us at (410) 224-6624.");
@@ -85,22 +89,45 @@ export default function Appointment() {
     }
   };
 
-  if (submitted) {
+  if (bookedAppt) {
+    const startLocal = new Date(bookedAppt.starts_at).toLocaleString([], {
+      weekday: "long", month: "long", day: "numeric",
+      hour: "numeric", minute: "2-digit",
+    });
     return (
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="max-w-3xl mx-auto py-24 text-center" data-testid="appointment-success">
+        <div className="max-w-3xl mx-auto py-24 text-center" data-testid="appointment-booked">
           <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-clinic-sage text-clinic-forest mb-6">
             <CheckCircle2 className="h-8 w-8" />
           </div>
-          <h1 className="font-display text-4xl font-extrabold text-clinic-navy">Thank you!</h1>
+          <h1 className="font-display text-4xl font-extrabold text-clinic-navy">You&rsquo;re booked!</h1>
           <p className="mt-4 text-clinic-mist text-lg">
-            Your request is in. We&rsquo;ll reach out shortly to confirm a time that works. For urgent concerns, please call{" "}
+            <span className="font-bold text-clinic-navy">{bookedAppt.appointment_type_name}</span>
+            {" "}on{" "}
+            <span className="font-bold text-clinic-navy">{startLocal}</span>.
+          </p>
+          <p className="mt-2 text-clinic-mist text-sm">
+            We&rsquo;ll email a confirmation to {bookedAppt.client_email}. For changes, call{" "}
             <a href="tel:+14102246624" className="font-bold text-clinic-navy underline">(410) 224-6624</a>.
           </p>
         </div>
         <div className="pb-24">
           <Testimonials />
         </div>
+      </div>
+    );
+  }
+
+  if (submitted) {
+    return (
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-12 pb-24" data-testid="appointment-page-step-2">
+        <SlotPicker
+          leadId={submittedLead?.id}
+          lead={submittedLead}
+          preferredType={form.service_interest}
+          onBooked={setBookedAppt}
+        />
+        <Testimonials />
       </div>
     );
   }
