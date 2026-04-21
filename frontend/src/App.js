@@ -6,6 +6,7 @@ import { SmartSiteProvider } from "./context/SmartSiteContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ChatWidgetSlot from "./components/ChatWidgetSlot";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
@@ -47,6 +48,7 @@ function App() {
     <BrowserRouter>
       <SmartSiteProvider>
         <Toaster richColors position="top-right" />
+        <ScrollToTop />
         <PublicShell>
           <Routes>
             <Route path="/" element={<Home />} />
