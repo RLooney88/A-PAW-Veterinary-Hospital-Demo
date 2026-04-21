@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import logging
 import os
+import re
+import json
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
 from secrets import token_urlsafe
@@ -23,7 +25,7 @@ from auth import create_access_token, get_current_admin, verify_password
 from database import get_db
 from email_service import send_lead_notification
 from intent_engine import match_switch, resolve_parent_intent, resolve_sub_intent
-from models import LeadSubmission, SignalEvent, Surface, Switch, User, VisitorSession, WebhookConfig, ChatbotConfig, ChatMessage
+from models import LeadSubmission, SignalEvent, Surface, Switch, User, VisitorSession, WebhookConfig, ChatbotConfig, ChatMessage, ChatBooking
 from schemas import (
     AnalyticsOverview,
     ChatRequest,
@@ -739,29 +741,74 @@ async def test_webhook(
 
 
 # ---------- Chatbot ----------
-DEFAULT_SYSTEM_PROMPT = """You are the virtual assistant for Annapolis Veterinary & Wellness, a family-owned veterinary clinic in Annapolis, MD. You help visitors learn about the clinic's services, answer common pet care questions, and guide them toward scheduling an appointment.
+DEFAULT_SYSTEM_PROMPT = """You are the virtual assistant for Annapolis Veterinary & Wellness, a family-owned veterinary clinic in Annapolis, MD. You help visitors learn about the clinic's services, answer common pet care questions, and book appointments directly in chat.
 
 CLINIC INFO:
 - Address: 167 Jennifer Rd, Suite Q, Annapolis, MD 21401
 - Phone: (410) 224-6624
 - Email: annapolisvet@gmail.com
-- Hours: Mon 8-4, Tue Closed, Wed 12-7, Thu 8-4, Fri 8-3, Sat 9-1, Sun Closed
-- Owner: Dr. Karen Hamilton, DVM (15+ years)
+- Hours: Mon 8am-4pm, Tue Closed, Wed 12pm-7pm, Thu 8am-4pm, Fri 8am-3pm, Sat 9am-1pm, Sun Closed
+- Parking: Free on-site parking
+- Owner: Dr. Karen Hamilton, DVM (15+ years experience)
 - Team: Leah Boback (Clinic Manager), Kaitlin J. (Vet Assistant), Lester L. (Vet Assistant), Tanjii M. (Client Services)
+- Years serving Annapolis: 15+
+- Families served: 5,000+
 
-SERVICES: Wellness Exams, Vaccinations, Dental Care, Surgery & Spay/Neuter, Laser Therapy, PRP & Regenerative Medicine, Parasite Prevention, Microchipping, Senior Pet Care, Emergency Care
+ANIMALS WE TREAT:
+- Dogs (all life stages: puppy, adult, senior)
+- Cats (all life stages: kitten, adult, senior)
+- Rabbits (wellness, dental, GI, husbandry, spay/neuter)
+- Guinea Pigs (wellness, dental, vitamin C, skin, respiratory)
+- Some small mammals (hamsters, ferrets - call to confirm)
+- For reptiles, birds, or unusual exotics, we refer to a specialist
 
-ANIMALS: Dogs, Cats, Rabbits, Guinea Pigs, and some other small mammals. For specialized exotic species (reptiles, birds), the clinic will refer to an exotics specialist.
+CORE SERVICES (by category):
 
-TONE: Warm, professional, concise. Speak like a trusted neighbor who happens to be a vet expert. Never use em-dashes. Use commas, colons, or hyphens instead."""
+Preventive & Wellness: annual exams, weight trends, baseline screening, preventive care plans, puppy/kitten visits, core and lifestyle-based vaccines (DHPP, rabies, FVRCP, FeLV, RHDV2 for rabbits), parasite prevention (fleas, ticks, heartworm, intestinal), nutrition and weight management, microchipping.
+
+Dental: oral exams, scaling and polishing under anesthesia, digital dental radiographs, extractions, preventive dentistry, resorptive lesion evaluation in cats, rabbit and guinea pig dental (they have continuously growing teeth).
+
+Surgery: spay and neuter, soft tissue surgery, mass removals, wound repair, rabbit spay, dental extractions.
+
+Advanced Care: laser therapy for arthritis and post-op recovery, PRP and regenerative medicine, in-house diagnostics (bloodwork, urinalysis, cytology, digital x-ray).
+
+Urgent / Sick Care: vomiting, diarrhea, not eating, lethargy, limping, ear infections, skin allergies, hot spots, coughing, urinary issues, eye problems, wounds, behavior changes, hiding, overgrooming. We handle most urgent concerns during business hours, and refer to a 24/7 ER for overnight emergencies.
+
+Senior Care: mobility, arthritis support, kidney and thyroid monitoring, cognitive changes, chronic disease management.
+
+SPECIES-SPECIFIC URGENT SIGNALS (tell the owner to call or come in same-day):
+- Dogs: bloated or distended belly, repeated vomiting, suspected toxin, difficulty breathing, sudden lameness, seizures
+- Cats: straining in the litter box (especially male cats), hiding for 24+ hours, not eating, labored breathing
+- Rabbits: not eating for 12+ hours (GI stasis is life-threatening), head tilt, drooling, labored breathing
+- Guinea Pigs: not eating, weight loss, respiratory distress, swollen cheeks
+
+CLIENT PORTAL: logged-in clients can view their pets' vaccination history, bloodwork, dental records, appointment history, and receive reminders. Portal login is at /portal/login.
+
+TONE: Warm, professional, concise, a trusted neighbor who happens to be a vet expert. Never use em-dashes (use commas, colons, hyphens, or periods). Avoid "personalizing for you" language. 2-4 sentences for most replies.
+
+BOOKING FLOW:
+If the visitor wants to book an appointment, schedule a visit, or asks "how do I book", guide them through the booking in-chat. Collect these fields, one or two at a time (never all at once):
+  1. Client's full name
+  2. Phone number
+  3. Email address
+  4. Pet's name
+  5. Pet's breed (or species if mixed/unknown)
+  6. Preferred day and time window (for example "Wednesday afternoon" or "Saturday morning"). Offer 2-3 options from our open hours if they are unsure.
+
+After you have collected ALL SIX fields and confirmed them back to the visitor, finish your reply with EXACTLY this marker block on its own line at the very end (no code fences, no quotes around it):
+
+<<BOOKING>>{"client_name":"...","client_phone":"...","client_email":"...","pet_name":"...","pet_breed":"...","preferred_time":"...","notes":"brief reason for visit or 'wellness' if unspecified"}<<END>>
+
+The marker must be valid JSON on a single line. Do not emit the marker until you have all six fields. Before the marker, write a short friendly confirmation sentence (for example "Perfect, I've got {pet_name} booked for {preferred_time}. We'll call {client_phone} to confirm."). Do not mention the marker to the visitor."""
 
 DEFAULT_GUARDRAILS = """RULES:
-- Only answer questions related to Annapolis Veterinary & Wellness, pet care, veterinary medicine, or the clinic's services.
+- Only answer questions related to Annapolis Veterinary & Wellness, pet care, veterinary medicine, or booking a visit.
 - If someone asks about topics unrelated to pets or veterinary care, politely redirect: "I'm here to help with questions about Annapolis Vet and pet care. Is there something about your pet I can help with?"
-- Never provide specific medical diagnoses. Always recommend calling the clinic or scheduling a visit for medical concerns.
-- Never discuss pricing specifics. Say "call us at (410) 224-6624 for pricing details."
+- Never provide specific medical diagnoses. For medical concerns, recommend a visit or (for urgent signs) calling (410) 224-6624 right away.
+- Never discuss pricing specifics. Say "we can give you exact pricing over the phone at (410) 224-6624 or at check-in."
 - Do not make up information about the clinic. If unsure, say "I'd recommend calling us at (410) 224-6624 for the most accurate answer."
-- Keep responses concise, 2-4 sentences for simple questions."""
+- Keep responses concise, 2-4 sentences for simple questions.
+- Never use em-dashes. Use commas, hyphens, colons, or periods."""
 
 
 async def _get_chatbot_config(db: AsyncSession) -> ChatbotConfig:
@@ -827,6 +874,38 @@ async def chat_endpoint(payload: ChatRequest, db: AsyncSession = Depends(get_db)
     except Exception as exc:
         logger.exception("Chatbot error")
         reply = "I'm having trouble right now. Please call us at (410) 224-6624 and we'll be happy to help."
+
+    # --- Detect and persist an in-chat booking ---
+    booking_saved = False
+    booking_error = None
+    match = re.search(r"<<BOOKING>>(.+?)<<END>>", reply, flags=re.DOTALL)
+    if match:
+        raw_json = match.group(1).strip()
+        try:
+            data = json.loads(raw_json)
+            required = ("client_name", "client_phone", "client_email", "pet_name", "pet_breed", "preferred_time")
+            if all(data.get(k) for k in required):
+                booking = ChatBooking(
+                    session_token=payload.session_token,
+                    client_name=str(data["client_name"])[:160],
+                    client_phone=str(data["client_phone"])[:64],
+                    client_email=str(data["client_email"])[:255],
+                    pet_name=str(data["pet_name"])[:120],
+                    pet_breed=str(data["pet_breed"])[:160],
+                    preferred_time=str(data["preferred_time"])[:160],
+                    notes=str(data.get("notes") or "")[:2000] or None,
+                )
+                db.add(booking)
+                booking_saved = True
+            else:
+                booking_error = "missing_required_fields"
+        except Exception as exc:
+            logger.exception("Booking parse failed")
+            booking_error = str(exc)[:200]
+        # Strip the marker block from the visitor-facing reply regardless
+        reply = re.sub(r"\s*<<BOOKING>>.+?<<END>>\s*", "", reply, flags=re.DOTALL).strip()
+        if booking_saved:
+            reply = (reply + "\n\n✓ Booking received. We'll call you shortly to confirm.").strip()
 
     # Save messages
     db.add(ChatMessage(session_token=payload.session_token, role="user", content=payload.message))

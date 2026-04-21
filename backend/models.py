@@ -196,6 +196,23 @@ class ChatMessage(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
 
 
+class ChatBooking(Base):
+    """Demo bookings created by the chatbot when it collects full contact + pet info."""
+    __tablename__ = "chat_bookings"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    session_token: Mapped[str | None] = mapped_column(String(64), index=True, nullable=True)
+    client_name: Mapped[str] = mapped_column(String(160), nullable=False)
+    client_phone: Mapped[str] = mapped_column(String(64), nullable=False)
+    client_email: Mapped[str] = mapped_column(String(255), nullable=False)
+    pet_name: Mapped[str] = mapped_column(String(120), nullable=False)
+    pet_breed: Mapped[str] = mapped_column(String(160), nullable=False)
+    preferred_time: Mapped[str] = mapped_column(String(160), nullable=False)
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    status: Mapped[str] = mapped_column(String(32), default="new")  # new|confirmed|cancelled
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, index=True)
+
+
 # ---------- Client Portal ----------
 class Client(Base):
     __tablename__ = "clients"

@@ -1,8 +1,60 @@
-import React, { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, PawPrint } from "lucide-react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
+import { MessageCircle, X, Send, PawPrint, CheckCircle2 } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
 
 const API = process.env.REACT_APP_BACKEND_URL;
+
+const QUICK_PROMPTS = [
+  "What are your hours?",
+  "Book an appointment",
+  "My rabbit won't eat",
+];
+
+// Typewriter: animates `text` character by character into state.
+function useTypewriter(text, speedMs = 14) {
+  const [shown, setShown] = useState("");
+  const [done, setDone] = useState(false);
+  useEffect(() => {
+    setShown("");
+    setDone(false);
+    if (!text) { setDone(true); return; }
+    let i = 0;
+    const id = setInterval(() => {
+      i += 1;
+      setShown(text.slice(0, i));
+      if (i >= text.length) {
+        clearInterval(id);
+        setDone(true);
+      }
+    }, speedMs);
+    return () => clearInterval(id);
+  }, [text, speedMs]);
+  return { shown, done };
+}
+
+function AssistantMessage({ content, isBookingConfirm, animate }) {
+  const { shown, done } = useTypewriter(animate ? content : "", 14);
+  const display = animate ? shown : content;
+  return (
+    <div
+      className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap ${
+        isBookingConfirm
+          ? "bg-clinic-sage/60 text-clinic-forest rounded-bl-md border border-clinic-forest/20"
+          : "bg-sand-100 text-clinic-navy rounded-bl-md"
+      }`}
+    >
+      {isBookingConfirm && (
+        <div className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] font-bold text-clinic-forest/80 mb-1">
+          <CheckCircle2 className="h-3 w-3" /> Appointment booked
+        </div>
+      )}
+      {display}
+      {animate && !done && (
+        <span className="inline-block w-[2px] h-[0.9em] align-[-0.1em] ml-0.5 bg-clinic-navy/60 animate-pulse" />
+      )}
+    </div>
+  );
+}
 
 export default function ChatWidgetSlot() {
   const [open, setOpen] = useState(false);
@@ -15,33 +67,43 @@ export default function ChatWidgetSlot() {
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, loading]);
 
   useEffect(() => {
     if (open && inputRef.current) inputRef.current.focus();
   }, [open]);
 
-  const send = async () => {
-    const text = input.trim();
-    if (!text || loading) return;
-    setInput("");
-    setMessages((prev) => [...prev, { role: "user", content: text }]);
+  const sendMessage = useCallback(async (text) => {
+    const trimmed = text.trim();
+    if (!trimmed || loading) return;
+    setMessages((prev) => [...prev, { role: "user", content: trimmed }]);
     setLoading(true);
-
-    track({ signalType: "chat_intent", label: `chat:${text.slice(0, 60)}`, strength: 1 });
-
+    track({ signalType: "chat_intent", label: `chat:${trimmed.slice(0, 60)}`, strength: 1 });
     try {
       const res = await fetch(`${API}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session_token: sessionToken || "anon", message: text }),
+        body: JSON.stringify({ session_token: sessionToken || "anon", message: trimmed }),
       });
       const data = await res.json();
-      setMessages((prev) => [...prev, { role: "assistant", content: data.reply }]);
+      const reply = data.reply || "";
+      const isBooking = reply.includes("Booking received");
+      setMessages((prev) => [...prev, { role: "assistant", content: reply, isBookingConfirm: isBooking, animate: true }]);
     } catch {
-      setMessages((prev) => [...prev, { role: "assistant", content: "Something went wrong. Please call us at (410) 224-6624." }]);
+      setMessages((prev) => [...prev, {
+        role: "assistant",
+        content: "Something went wrong. Please call us at (410) 224-6624.",
+        animate: true,
+      }]);
     }
     setLoading(false);
+  }, [loading, sessionToken, track]);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const text = input;
+    setInput("");
+    sendMessage(text);
   };
 
   if (!open) {
@@ -60,7 +122,7 @@ export default function ChatWidgetSlot() {
   return (
     <div
       className="fixed bottom-6 right-6 z-40 w-[380px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl border border-sand-300/60 flex flex-col overflow-hidden"
-      style={{ height: "min(520px, calc(100vh - 6rem))" }}
+      style={{ height: "min(560px, calc(100vh - 6rem))" }}
       data-testid="chat-widget"
     >
       {/* Header */}
@@ -71,7 +133,7 @@ export default function ChatWidgetSlot() {
           </div>
           <div>
             <div className="font-display font-bold text-sm">Annapolis Vet</div>
-            <div className="text-[11px] text-sand-100/70">Ask us anything about your pet</div>
+            <div className="text-[11px] text-sand-100/70">Ask us anything or book a visit</div>
           </div>
         </div>
         <button
@@ -92,25 +154,14 @@ export default function ChatWidgetSlot() {
               <PawPrint className="h-5 w-5 text-clinic-red" />
             </div>
             <div className="font-display font-bold text-clinic-navy text-sm">How can we help?</div>
-            <p className="text-xs text-clinic-mist mt-1.5 max-w-[220px] mx-auto">Ask about our services, hours, or any questions about your pet's care.</p>
+            <p className="text-xs text-clinic-mist mt-1.5 max-w-[240px] mx-auto">
+              Ask about our services, hours, urgent signs, or book an appointment right here.
+            </p>
             <div className="mt-4 flex flex-wrap justify-center gap-2">
-              {["What are your hours?", "Do you see cats?", "How do I book a visit?"].map((q) => (
+              {QUICK_PROMPTS.map((q) => (
                 <button
                   key={q}
-                  onClick={() => {
-                    setMessages((prev) => [...prev, { role: "user", content: q }]);
-                    setLoading(true);
-                    track({ signalType: "chat_intent", label: `chat:${q.slice(0, 60)}`, strength: 1 });
-                    fetch(`${API}/api/chat`, {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ session_token: sessionToken || "anon", message: q }),
-                    })
-                      .then((r) => r.json())
-                      .then((data) => setMessages((prev) => [...prev, { role: "assistant", content: data.reply }]))
-                      .catch(() => setMessages((prev) => [...prev, { role: "assistant", content: "Something went wrong. Please call us at (410) 224-6624." }]))
-                      .finally(() => setLoading(false));
-                  }}
+                  onClick={() => sendMessage(q)}
                   className="text-xs bg-clinic-sage/50 text-clinic-forest rounded-full px-3 py-1.5 hover:bg-clinic-sage transition-colors"
                   data-testid={`chat-quick-${q.slice(0, 10)}`}
                 >
@@ -121,25 +172,30 @@ export default function ChatWidgetSlot() {
           </div>
         )}
         {messages.map((m, i) => (
-          <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-            <div
-              className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                m.role === "user"
-                  ? "bg-clinic-red text-white rounded-br-md"
-                  : "bg-sand-100 text-clinic-navy rounded-bl-md"
-              }`}
-              data-testid={`chat-msg-${i}`}
-            >
-              {m.content}
-            </div>
+          <div
+            key={i}
+            className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
+            data-testid={`chat-msg-${i}`}
+          >
+            {m.role === "user" ? (
+              <div className="max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed bg-clinic-red text-white rounded-br-md whitespace-pre-wrap">
+                {m.content}
+              </div>
+            ) : (
+              <AssistantMessage
+                content={m.content}
+                isBookingConfirm={m.isBookingConfirm}
+                animate={m.animate}
+              />
+            )}
           </div>
         ))}
         {loading && (
-          <div className="flex justify-start">
+          <div className="flex justify-start" data-testid="chat-typing">
             <div className="bg-sand-100 rounded-2xl rounded-bl-md px-4 py-3 flex gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-clinic-mist/50 animate-bounce" style={{ animationDelay: "0ms" }} />
-              <span className="h-2 w-2 rounded-full bg-clinic-mist/50 animate-bounce" style={{ animationDelay: "150ms" }} />
-              <span className="h-2 w-2 rounded-full bg-clinic-mist/50 animate-bounce" style={{ animationDelay: "300ms" }} />
+              <span className="h-2 w-2 rounded-full bg-clinic-mist/60 animate-bounce" style={{ animationDelay: "0ms" }} />
+              <span className="h-2 w-2 rounded-full bg-clinic-mist/60 animate-bounce" style={{ animationDelay: "150ms" }} />
+              <span className="h-2 w-2 rounded-full bg-clinic-mist/60 animate-bounce" style={{ animationDelay: "300ms" }} />
             </div>
           </div>
         )}
@@ -148,15 +204,12 @@ export default function ChatWidgetSlot() {
 
       {/* Input */}
       <div className="border-t border-sand-300/60 px-3 py-3 shrink-0">
-        <form
-          onSubmit={(e) => { e.preventDefault(); send(); }}
-          className="flex items-center gap-2"
-        >
+        <form onSubmit={onSubmit} className="flex items-center gap-2">
           <input
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Type a question..."
+            placeholder="Type a question or say 'book a visit'..."
             className="flex-1 bg-sand-100 rounded-full px-4 py-2.5 text-sm text-clinic-navy placeholder:text-clinic-mist/60 outline-none focus:ring-2 focus:ring-clinic-red/30"
             data-testid="chat-input"
           />
