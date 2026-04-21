@@ -20,6 +20,13 @@ import {
 import { useSmartSite } from "../context/SmartSiteContext";
 import { SERVICES_BY_ANIMAL } from "../data/services";
 
+// Background image + framing for the "Explore services" CTA card per animal.
+const EXPLORE_CARD_BG = {
+  dogs: { image: "/images/animals/hero-svc-dogs.webp", position: "center 40%" },
+  cats: { image: "/images/animals/hero-svc-cats.webp", position: "center 40%" },
+  critters: { image: "/images/animals/hero-svc-critters.webp", position: "center 40%" },
+};
+
 // Map an animal-page slug to the correct /services tab.
 // Critters has no single tab (rabbits + guinea_pigs), so default to rabbits
 // which is the most common and still gives the user a relevant starting tab.
@@ -358,21 +365,35 @@ export default function AnimalPage() {
                 intent: animal.slug === "critters" ? "critters" : animal.slug,
                 strength: 4,
               })}
-              className="group bg-clinic-navy text-sand-50 rounded-[1.5rem] p-8 flex flex-col justify-between min-h-[280px] relative overflow-hidden hover:-translate-y-1 transition-transform grain"
+              className="group relative overflow-hidden rounded-[1.5rem] min-h-[280px] flex flex-col justify-between p-8 text-sand-50 hover:-translate-y-1 transition-transform"
               data-testid="animal-explore-services"
             >
-              <div>
+              {/* Background photo */}
+              {EXPLORE_CARD_BG[animal.slug]?.image && (
+                <img
+                  src={EXPLORE_CARD_BG[animal.slug].image}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  style={{ objectPosition: EXPLORE_CARD_BG[animal.slug].position }}
+                />
+              )}
+              {/* Navy gradient overlay so text stays legible */}
+              <div className="absolute inset-0 bg-gradient-to-t from-clinic-navy/95 via-clinic-navy/75 to-clinic-navy/40" />
+
+              <div className="relative">
                 <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-bold text-clinic-amber">
                   <PawPrint className="h-3.5 w-3.5" /> Full service list
                 </div>
                 <h3 className="font-display text-2xl font-extrabold mt-4 leading-[1.1]">
                   Explore every service we offer for {animal.title.toLowerCase()}.
                 </h3>
-                <p className="mt-3 text-sand-100/80 text-sm leading-relaxed">
+                <p className="mt-3 text-sand-100/85 text-sm leading-relaxed">
                   Preventive, dental, surgery, senior, and urgent care, all grouped in one place.
                 </p>
               </div>
-              <span className="mt-6 inline-flex items-center gap-2 text-clinic-amber font-bold text-sm">
+              <span className="relative mt-6 inline-flex items-center gap-2 text-clinic-amber font-bold text-sm">
                 See {animal.title.toLowerCase()} services
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
