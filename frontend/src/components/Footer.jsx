@@ -1,10 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { toast } from "sonner";
+import { useSmartSite } from "../context/SmartSiteContext";
 
 const LOGO = "https://cdcssl.ibsrv.net/ibimg/smb/158x193_80/webmgr/02/s/r/58de6e5942c22_Logo2.png.webp";
 
 export default function Footer() {
+  const { clearIntent } = useSmartSite();
+
+  const onClear = async () => {
+    // Wipe local intent cache too so surfaces re-render fresh defaults.
+    try {
+      Object.keys(localStorage)
+        .filter((k) => k.startsWith("avw_surface_") || k === "avw_session_snapshot")
+        .forEach((k) => localStorage.removeItem(k));
+    } catch { /* ignore */ }
+    await clearIntent();
+    toast.success("Intent cleared. Site reset to neutral.");
+  };
+
   return (
     <footer className="bg-clinic-navy text-sand-100 mt-20" data-testid="site-footer">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 grid gap-12 md:grid-cols-4">
@@ -76,7 +91,17 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-sand-100/60">
           <div>© {new Date().getFullYear()} Annapolis Veterinary &amp; Wellness.</div>
-          <Link to="/admin/login" className="hover:text-white" data-testid="footer-admin-link">Admin</Link>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={onClear}
+              className="hover:text-white transition-colors"
+              data-testid="footer-clear-intent"
+              title="Reset intent signals for the current session (demo helper)"
+            >
+              Clear
+            </button>
+            <Link to="/admin/login" className="hover:text-white" data-testid="footer-admin-link">Admin</Link>
+          </div>
         </div>
       </div>
     </footer>
