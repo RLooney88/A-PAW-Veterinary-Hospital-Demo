@@ -27,6 +27,7 @@ const ANIMAL_ITEMS = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [animalsOpen, setAnimalsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const { setIntent } = useSmartSite();
@@ -43,8 +44,9 @@ export default function Navbar() {
   const transparent = overHero && !scrolled && !open;
 
   const pickAnimal = async (item, { closeMobile = false } = {}) => {
-    await setIntent(item.intent, null, { label: `nav_animals_menu:${item.intent}` });
+    setAnimalsOpen(false);
     if (closeMobile) setOpen(false);
+    await setIntent(item.intent, null, { label: `nav_animals_menu:${item.intent}` });
     navigate(item.href);
   };
 
@@ -90,7 +92,7 @@ export default function Navbar() {
             ))}
 
             {/* Animals We Serve, dropdown (also a signal surface) */}
-            <DropdownMenu>
+            <DropdownMenu open={animalsOpen} onOpenChange={setAnimalsOpen}>
               <DropdownMenuTrigger
                 className={`inline-flex items-center gap-1 text-sm font-semibold focus:outline-none transition-colors ${
                   transparent ? "text-sand-50/90 hover:text-clinic-amber" : "text-clinic-ink hover:text-clinic-forest"
