@@ -1,16 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useSurface } from "../hooks/useSurface";
 import { useSmartSite } from "../context/SmartSiteContext";
 import { PawPrint } from "lucide-react";
 
 /**
  * Optional deepening section. Only renders when the session has a parent
- * intent (Dogs / Cats / Critters). Offers sub-intent cards for the current
- * animal focus, never hides the parent-animal selector, just augments it.
+ * intent (Dogs / Cats / Critters). Each card sets the sub-intent and routes
+ * the visitor to the appointment form so they can schedule from here.
  */
 export default function SubIntentPrompt() {
   const { content, loading, matched } = useSurface("sub_intent_prompt");
   const { setIntent, parentIntent, subIntent } = useSmartSite();
+  const navigate = useNavigate();
 
   // Don't show until we know which animal we're on
   if (!parentIntent) return null;
@@ -19,13 +21,16 @@ export default function SubIntentPrompt() {
   const cards = content.cards || [];
   if (cards.length === 0) return null;
 
-  const handleSelect = (card) => {
+  const handleSelect = async (card) => {
     if (card.sub_intent) {
-      setIntent(card.intent || parentIntent, card.sub_intent, {
+      await setIntent(card.intent || parentIntent, card.sub_intent, {
         label: `sub_intent_prompt:${card.sub_intent}`,
       });
-      window.scrollBy({ top: 220, behavior: "smooth" });
     }
+    // Take them to the appointment form, pre-filling the reason-for-visit hint
+    const params = new URLSearchParams();
+    if (card.sub_intent) params.set("reason", card.sub_intent);
+    navigate(`/appointment?${params.toString()}`);
   };
 
   return (
@@ -73,7 +78,7 @@ export default function SubIntentPrompt() {
                 </div>
                 <p className="text-xs text-clinic-mist mt-1.5 line-clamp-2">{card.description}</p>
                 <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-clinic-red">
-                  {active ? "Selected" : "Choose"}
+                  {active ? "Book a visit" : "Book for this"}
                   <PawPrint className="h-3 w-3 transition-transform group-hover:rotate-12" />
                 </div>
               </div>

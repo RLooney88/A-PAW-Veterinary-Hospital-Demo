@@ -230,6 +230,87 @@ async def get_surface_content(
 
 
 # ---------- Leads (public submit) ----------
+INTENT_LABELS = {"dogs": "Dogs", "cats": "Cats", "critters": "Small & Exotic Pets"}
+SUB_INTENT_LABELS = {
+    "new_puppy": "New puppy care",
+    "new_kitten": "New kitten care",
+    "wellness": "Routine wellness",
+    "health_concerns": "Illness or injury concern",
+    "senior": "Senior pet care",
+    "treatments": "Specific treatments (dental / surgery / laser)",
+    "husbandry": "Habitat and diet guidance",
+}
+
+
+async def _generate_lead_narrative(
+    lead: LeadSubmission,
+    sess: VisitorSession | None,
+    trail: list[dict],
+) -> str | None:
+    """Use the LLM to turn the signal trail + form data into a short, human-readable summary."""
+    try:
+        from emergentintegrations.llm.chat import LlmChat, UserMessage
+    except Exception:
+        logger.warning("emergentintegrations not available for lead narrative")
+        return None
+
+    api_key = os.environ.get("EMERGENT_LLM_KEY", "")
+    if not api_key:
+        return None
+
+    parent = (sess.parent_intent if sess else None) or lead.pet_type
+    sub = sess.sub_intent if sess else None
+    parent_label = INTENT_LABELS.get(parent or "", parent or "unknown")
+    sub_label = SUB_INTENT_LABELS.get(sub or "", sub or "none")
+
+    pages_visited: list[str] = []
+    clicks: list[str] = []
+    chat_snippets: list[str] = []
+    for ev in trail:
+        if ev.get("signal_type") == "page_view" and ev.get("page_path"):
+            pages_visited.append(ev["page_path"])
+        elif ev.get("signal_type") in ("cta_click", "service_click", "nav_click") and ev.get("label"):
+            clicks.append(ev["label"])
+        elif ev.get("signal_type") == "chat_intent" and ev.get("label"):
+            chat_snippets.append(ev["label"])
+
+    trail_desc = {
+        "parent_intent": parent_label,
+        "sub_intent": sub_label,
+        "pages_visited": pages_visited[:15],
+        "clicks_and_selections": clicks[:15],
+        "chat_topics": chat_snippets[:5],
+        "total_events": len(trail),
+    }
+
+    user_prompt = f"""Write a concise 1-2 paragraph narrative summary (not a list) describing this visitor's experience on Annapolis Veterinary & Wellness's website before submitting the contact form. Write it in third person, present tense, warm but factual. Mention which animal(s) they focused on, what specific concerns or services drew their attention, and the reason they've reached out now. If they chatted with the bot, weave that in naturally. Do not use bullet points or em-dashes.
+
+Visitor session data:
+{json.dumps(trail_desc, indent=2)}
+
+Form they just submitted:
+- Name: {lead.name}
+- Pet: {lead.pet_name or 'unspecified'} ({lead.pet_type or 'unspecified'})
+- Reason for visit: {lead.service_interest or 'not specified'}
+- Preferred time: {lead.preferred_time or 'flexible'}
+- Their note: {lead.comment or '(none)'}
+
+Return only the narrative. No preface, no headings."""
+
+    chat = LlmChat(
+        api_key=api_key,
+        session_id=f"lead-summary-{lead.id}",
+        system_message="You produce short, honest, readable summaries of website visitor journeys for a veterinary clinic's front desk team. Never invent details that aren't supported by the data.",
+    ).with_model("openai", "gpt-4o-mini")
+
+    try:
+        reply = await chat.send_message(UserMessage(text=user_prompt))
+        return reply.strip() if reply else None
+    except Exception:
+        logger.exception("lead narrative LLM call failed")
+        return None
+
+
 @api.post("/leads", response_model=LeadOut)
 async def create_lead(payload: LeadCreateRequest, db: AsyncSession = Depends(get_db)):
     sess: VisitorSession | None = None
@@ -301,6 +382,16 @@ async def create_lead(payload: LeadCreateRequest, db: AsyncSession = Depends(get
     await db.commit()
     await db.refresh(lead)
 
+    # Build a natural-language summary of the visitor's journey using the LLM.
+    try:
+        summary_text = await _generate_lead_narrative(lead, sess, trail)
+        if summary_text:
+            lead.narrative_summary = summary_text
+            await db.commit()
+            await db.refresh(lead)
+    except Exception:
+        logger.exception("Lead narrative generation failed (non-fatal)")
+
     # Build notification payload
     lead_data = {
         "id": lead.id,
@@ -315,6 +406,7 @@ async def create_lead(payload: LeadCreateRequest, db: AsyncSession = Depends(get
         "source_page": lead.source_page,
         "intent_summary": lead.intent_summary,
         "signal_trail": lead.signal_trail,
+        "narrative_summary": lead.narrative_summary,
         "created_at": lead.created_at.isoformat() if lead.created_at else None,
     }
 

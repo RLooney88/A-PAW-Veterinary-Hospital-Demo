@@ -145,6 +145,7 @@ class LeadSubmission(Base):
     source_page: Mapped[str | None] = mapped_column(String(255), nullable=True)
     intent_summary: Mapped[dict] = mapped_column(JSONB, default=dict)
     signal_trail: Mapped[list] = mapped_column(JSONB, default=list)
+    narrative_summary: Mapped[str | None] = mapped_column(Text, nullable=True)
     status: Mapped[str] = mapped_column(String(32), default="new")  # new|contacted|closed
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, index=True)
 

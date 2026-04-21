@@ -155,6 +155,7 @@ class LeadOut(BaseModel):
     source_page: str | None = None
     intent_summary: dict
     signal_trail: list
+    narrative_summary: str | None = None
     status: str
     created_at: datetime
 

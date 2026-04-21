@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import { CheckCircle2, Phone } from "lucide-react";
 import { api } from "../lib/api";
@@ -26,19 +27,35 @@ const SERVICE_OPTIONS = [
   "Other",
 ];
 
+// Map a sub-intent (from the SubIntentPrompt card click) to the closest service option.
+const SUB_INTENT_TO_SERVICE = {
+  new_puppy: "Wellness Exam",
+  new_kitten: "Wellness Exam",
+  wellness: "Wellness Exam",
+  health_concerns: "Urgent Concern",
+  senior: "Senior Care",
+  treatments: "Dental Care",
+  husbandry: "Wellness Exam",
+};
+
 export default function Appointment() {
   const { content } = useSurface("appointment_intro");
   const { sessionToken, parentIntent, subIntent, track } = useSmartSite();
-  const [form, setForm] = useState({
+  const [searchParams] = useSearchParams();
+  const reasonParam = searchParams.get("reason");
+  const [form, setForm] = useState(() => ({
     name: "",
     email: "",
     phone: "",
     pet_name: "",
     pet_type: parentIntent || "",
-    service_interest: "",
+    service_interest:
+      (reasonParam && SUB_INTENT_TO_SERVICE[reasonParam]) ||
+      (subIntent && SUB_INTENT_TO_SERVICE[subIntent]) ||
+      "",
     preferred_time: "",
     comment: "",
-  });
+  }));
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
