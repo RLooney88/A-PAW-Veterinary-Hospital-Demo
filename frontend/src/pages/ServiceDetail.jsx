@@ -4,11 +4,21 @@ import { ArrowLeft, Phone, PawPrint } from "lucide-react";
 import { ALL_SERVICES } from "../data/services";
 import InlineCTA from "../components/InlineCTA";
 
+// Map a service's animal key to the CTA's parent intent switch rule.
+const ANIMAL_TO_INTENT = {
+  dogs: "dogs",
+  cats: "cats",
+  rabbits: "critters",
+  guinea_pigs: "critters",
+};
+
 export default function ServiceDetail() {
   const { slug } = useParams();
   const service = ALL_SERVICES[slug];
 
   if (!service) return <Navigate to="/services" replace />;
+
+  const forceIntent = ANIMAL_TO_INTENT[service.animalKey] || null;
 
   return (
     <div className="max-w-4xl mx-auto px-6 lg:px-12 pt-12" data-testid={`service-detail-${slug}`}>
@@ -34,31 +44,7 @@ export default function ServiceDetail() {
         {service.detail || service.summary}
       </p>
 
-      {/* CTA */}
-      <div className="mt-10 bg-clinic-peach rounded-2xl border border-clinic-peachDeep/60 p-8">
-        <h2 className="font-display font-bold text-xl text-clinic-navy">
-          Questions about {service.title.toLowerCase()}?
-        </h2>
-        <p className="text-sm text-clinic-mist mt-2">
-          We are happy to talk through what your pet needs. Give us a call or request an appointment.
-        </p>
-        <div className="mt-5 flex flex-wrap gap-3">
-          <Link
-            to="/appointment"
-            className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-6 py-3 font-semibold shadow-lg shadow-clinic-red/20 transition-transform hover:-translate-y-0.5"
-          >
-            <PawPrint className="h-4 w-4" /> Request a visit
-          </Link>
-          <a
-            href="tel:+14102246624"
-            className="inline-flex items-center gap-2 bg-white border border-sand-300 text-clinic-navy rounded-full px-6 py-3 font-semibold hover:border-clinic-navy/30 transition-colors"
-          >
-            <Phone className="h-4 w-4" /> Call (410) 224-6624
-          </a>
-        </div>
-      </div>
-
-      <InlineCTA />
+      <InlineCTA forceIntent={forceIntent} />
     </div>
   );
 }

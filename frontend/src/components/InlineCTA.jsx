@@ -4,8 +4,8 @@ import { PawPrint, Phone } from "lucide-react";
 import { useSurface } from "../hooks/useSurface";
 import { useSmartSite } from "../context/SmartSiteContext";
 
-export default function InlineCTA() {
-  const { content, loading } = useSurface("inline_cta");
+export default function InlineCTA({ forceIntent = null, forceSubIntent = null } = {}) {
+  const { content, loading } = useSurface("inline_cta", { forceIntent, forceSubIntent });
   const { track } = useSmartSite();
 
   if (loading || !content) return null;

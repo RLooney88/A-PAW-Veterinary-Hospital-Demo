@@ -95,25 +95,60 @@ async def _ensure_session(db: AsyncSession, session_token: str | None) -> Visito
     return sess
 
 
+# Half-life for intent score decay (minutes). Older signals fade so the visitor's
+# most recent focus dominates the site. Tune here to change the bias.
+INTENT_HALFLIFE_MINUTES = 8.0
+
+
+def _decay_scores(scores: dict | None, elapsed_minutes: float) -> dict:
+    """Exponentially decay a score dict. Drops entries that fall below ~0.3."""
+    if not scores:
+        return {}
+    if elapsed_minutes <= 0:
+        return dict(scores)
+    factor = 0.5 ** (elapsed_minutes / INTENT_HALFLIFE_MINUTES)
+    decayed: dict = {}
+    for k, v in scores.items():
+        try:
+            nv = float(v) * factor
+        except (TypeError, ValueError):
+            continue
+        if nv >= 0.3:
+            decayed[k] = round(nv, 3)
+    return decayed
+
+
 def _apply_signal(sess: VisitorSession, ev: SignalEvent) -> None:
-    """Update the session's accumulated intent scores from this event."""
+    """Update session intent from a new event, decaying older scores first."""
     if ev.signal_type == "page_view":
         sess.page_view_count = (sess.page_view_count or 0) + 1
     mult = SIGNAL_STRENGTH_MULT.get(ev.signal_type, 1)
     delta = max(1, int(ev.strength or 1)) * mult
 
-    if ev.intent:
-        scores = dict(sess.intent_scores or {})
-        scores[ev.intent] = scores.get(ev.intent, 0) + delta
-        sess.intent_scores = scores
-    if ev.sub_intent:
-        sub = dict(sess.sub_intent_scores or {})
-        sub[ev.sub_intent] = sub.get(ev.sub_intent, 0) + delta
-        sess.sub_intent_scores = sub
+    now = datetime.now(timezone.utc)
+    last = sess.last_seen_at
+    if last is not None:
+        # Handle naive datetimes that may have been stored without tz.
+        if last.tzinfo is None:
+            last = last.replace(tzinfo=timezone.utc)
+        elapsed_min = max(0.0, (now - last).total_seconds() / 60.0)
+    else:
+        elapsed_min = 0.0
 
-    sess.parent_intent = resolve_parent_intent(sess.intent_scores or {})
-    sess.sub_intent = resolve_sub_intent(sess.sub_intent_scores or {})
-    sess.last_seen_at = datetime.now(timezone.utc)
+    # Decay everything the visitor has accumulated so far.
+    scores = _decay_scores(sess.intent_scores or {}, elapsed_min)
+    sub_scores = _decay_scores(sess.sub_intent_scores or {}, elapsed_min)
+
+    if ev.intent:
+        scores[ev.intent] = scores.get(ev.intent, 0) + delta
+    if ev.sub_intent:
+        sub_scores[ev.sub_intent] = sub_scores.get(ev.sub_intent, 0) + delta
+
+    sess.intent_scores = scores
+    sess.sub_intent_scores = sub_scores
+    sess.parent_intent = resolve_parent_intent(scores)
+    sess.sub_intent = resolve_sub_intent(sub_scores)
+    sess.last_seen_at = now
 
 
 # ---------- Lifespan ----------
@@ -190,6 +225,8 @@ async def get_my_session(token: str, db: AsyncSession = Depends(get_db)):
 async def get_surface_content(
     slug: str,
     session_token: str | None = None,
+    force_intent: str | None = None,
+    force_sub_intent: str | None = None,
     db: AsyncSession = Depends(get_db),
 ):
     res = await db.execute(
@@ -206,8 +243,10 @@ async def get_surface_content(
         )
         sess = res.scalar_one_or_none()
 
-    intent = sess.parent_intent if sess else None
-    sub_intent = sess.sub_intent if sess else None
+    # force_intent is used by pet-specific pages (e.g. dog service details) that
+    # MUST show their animal's CTA regardless of the visitor's accumulated signals.
+    intent = force_intent or (sess.parent_intent if sess else None)
+    sub_intent = force_sub_intent or (sess.sub_intent if sess else None)
     page_views = sess.page_view_count if sess else 0
 
     match = match_switch(surface.switches, intent, sub_intent, page_views)

@@ -32,13 +32,20 @@ function setCache(slug, parentIntent, subIntent, data) {
  * Uses stale-while-revalidate: renders cached content instantly, updates from API in background.
  * Cache is keyed per-intent so returning visitors never see a flash of default content.
  */
-export function useSurface(slug) {
+export function useSurface(slug, opts = {}) {
+  const { forceIntent = null, forceSubIntent = null } = opts;
   const { getSurfaceContent, parentIntent, subIntent, ready } = useSmartSite();
+
+  // When forcing an intent (e.g. a dog-specific service page), use the forced
+  // value for the cache key so dog-CTA content is never hidden behind the
+  // visitor's session intent.
+  const effectiveParent = forceIntent || parentIntent;
+  const effectiveSub = forceSubIntent || subIntent;
 
   // Seed state synchronously from the intent-matched cache. Because the context
   // hydrates parent_intent from a localStorage snapshot on mount, this runs
   // with the real intent even before /sessions/init completes.
-  const initial = useRef(getCached(slug, parentIntent, subIntent));
+  const initial = useRef(getCached(slug, effectiveParent, effectiveSub));
   const [state, setState] = useState({
     content: initial.current?.content || null,
     matched: initial.current?.matched || null,
@@ -51,7 +58,7 @@ export function useSurface(slug) {
       setState((s) => ({ ...s, loading: true }));
     }
     try {
-      const data = await getSurfaceContent(slug);
+      const data = await getSurfaceContent(slug, { forceIntent, forceSubIntent });
       const newState = {
         content: data.content,
         matched: data.matched_switch_name,
@@ -61,17 +68,17 @@ export function useSurface(slug) {
       setState(newState);
       // Cache under the intent the server actually matched against, not just
       // the local snapshot, so the next paint is perfectly aligned.
-      setCache(slug, data.inferred_intent || parentIntent, subIntent, newState);
+      setCache(slug, data.inferred_intent || effectiveParent, effectiveSub, newState);
     } catch (e) {
       console.warn("surface load failed", slug, e);
       setState((s) => ({ ...s, loading: false }));
     }
-  }, [slug, getSurfaceContent, parentIntent, subIntent]);
+  }, [slug, getSurfaceContent, effectiveParent, effectiveSub, forceIntent, forceSubIntent]);
 
   useEffect(() => {
-    if (!ready) return;
+    if (!ready && !forceIntent) return;
     load();
-  }, [ready, parentIntent, subIntent, load]);
+  }, [ready, effectiveParent, effectiveSub, forceIntent, load]);
 
   return { ...state, refetch: load };
 }

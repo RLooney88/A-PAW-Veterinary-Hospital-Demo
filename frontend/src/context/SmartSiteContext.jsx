@@ -133,10 +133,12 @@ export function SmartSiteProvider({ children }) {
   }, [init]);
 
   const getSurfaceContent = useCallback(
-    async (slug) => {
-      const { data } = await api.get(`/surfaces/${slug}/content`, {
-        params: sessionToken ? { session_token: sessionToken } : {},
-      });
+    async (slug, opts = {}) => {
+      const params = {};
+      if (sessionToken) params.session_token = sessionToken;
+      if (opts.forceIntent) params.force_intent = opts.forceIntent;
+      if (opts.forceSubIntent) params.force_sub_intent = opts.forceSubIntent;
+      const { data } = await api.get(`/surfaces/${slug}/content`, { params });
       return data;
     },
     [sessionToken]
