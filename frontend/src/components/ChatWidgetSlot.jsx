@@ -63,11 +63,23 @@ export default function ChatWidgetSlot() {
   const [loading, setLoading] = useState(false);
   const endRef = useRef(null);
   const inputRef = useRef(null);
-  const { sessionToken, track } = useSmartSite();
+  const { sessionToken, track, clearNonce } = useSmartSite();
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
+
+  // When the visitor clears intent (footer "Clear"), reset the conversation so
+  // the demo starts from a clean slate and no stale chat re-applies intent.
+  const firstClear = useRef(true);
+  useEffect(() => {
+    if (firstClear.current) {
+      firstClear.current = false;
+      return;
+    }
+    setMessages([]);
+    setInput("");
+  }, [clearNonce]);
 
   useEffect(() => {
     if (open && inputRef.current) inputRef.current.focus();

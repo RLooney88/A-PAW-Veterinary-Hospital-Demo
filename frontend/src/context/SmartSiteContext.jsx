@@ -42,7 +42,13 @@ export function SmartSiteProvider({ children }) {
     }
   });
   const [ready, setReady] = useState(false);
+  const [clearNonce, setClearNonce] = useState(0);
   const initRef = useRef(false);
+  // Generation counter: bumped on clearIntent. Any in-flight request that was
+  // started before a clear captures the old generation and must NOT call
+  // setSession when it resolves, otherwise a slow response tied to the old
+  // session token (e.g. a chat_intent track) re-hydrates the cleared intent.
+  const genRef = useRef(0);
 
   // Persist session snapshot (parent_intent + sub_intent) whenever it updates.
   useEffect(() => {
@@ -65,6 +71,7 @@ export function SmartSiteProvider({ children }) {
   const init = useCallback(async (opts = {}) => {
     if (initRef.current && !opts.force) return;
     initRef.current = true;
+    const myGen = genRef.current;
     try {
       const { data } = await api.post("/sessions/init", {
         // When force is set (e.g. clearIntent), send null so the backend mints
@@ -73,6 +80,7 @@ export function SmartSiteProvider({ children }) {
         referrer: document.referrer || null,
         user_agent: navigator.userAgent,
       });
+      if (genRef.current !== myGen) return; // superseded by a clearIntent
       setSessionToken(data.session_token);
       localStorage.setItem(STORAGE_KEY, data.session_token);
       setSession(data);
@@ -90,6 +98,7 @@ export function SmartSiteProvider({ children }) {
   const track = useCallback(
     async ({ signalType, pagePath, label, intent, subIntent, strength = 1, meta = {} }) => {
       if (!sessionToken) return null;
+      const myGen = genRef.current;
       try {
         const { data } = await api.post("/signals/track", {
           session_token: sessionToken,
@@ -101,6 +110,7 @@ export function SmartSiteProvider({ children }) {
           strength,
           meta,
         });
+        if (genRef.current !== myGen) return null; // superseded by a clearIntent
         setSession(data);
         return data;
       } catch (e) {
@@ -124,10 +134,12 @@ export function SmartSiteProvider({ children }) {
   );
 
   const clearIntent = useCallback(() => {
-    // Hard reset: wipe the session token + snapshot, drop every per-intent
-    // surface cache so old content can't repaint, then force the backend to
-    // mint a brand-new session token (existing_token: null) so the next page
-    // load starts from a 100% neutral slate.
+    // Hard reset: invalidate every in-flight request (so a slow response tied
+    // to the old token can't re-hydrate the cleared intent), wipe the session
+    // token + snapshot, drop every per-intent surface cache, signal the chat
+    // widget to reset its conversation, then force the backend to mint a
+    // brand-new neutral session token.
+    genRef.current += 1;
     localStorage.removeItem(STORAGE_KEY);
     localStorage.removeItem(SESSION_SNAPSHOT_KEY);
     try {
@@ -139,6 +151,7 @@ export function SmartSiteProvider({ children }) {
     }
     setSessionToken(null);
     setSession(null);
+    setClearNonce((n) => n + 1);
     initRef.current = false;
     init({ force: true });
   }, [init]);
@@ -192,6 +205,7 @@ export function SmartSiteProvider({ children }) {
       ready,
       sessionToken,
       session,
+      clearNonce,
       parentIntent: session?.parent_intent || null,
       subIntent: session?.sub_intent || null,
       intentLabel: session?.parent_intent ? INTENT_LABELS[session.parent_intent] : null,
@@ -201,7 +215,7 @@ export function SmartSiteProvider({ children }) {
       clearIntent,
       getSurfaceContent,
     }),
-    [ready, sessionToken, session, track, setIntent, clearIntent, getSurfaceContent]
+    [ready, sessionToken, session, clearNonce, track, setIntent, clearIntent, getSurfaceContent]
   );
 
   return <SmartSiteContext.Provider value={value}>{children}</SmartSiteContext.Provider>;
