@@ -70,8 +70,8 @@ const ANIMALS = {
     ],
     conditions: [
       { name: "Dental disease", body: "Plaque, gingivitis, and loose teeth, often silent until severe.", image: "/images/animals/dog-dental.webp" },
-      { name: "Allergies & skin issues", body: "Itching, ear infections, hot spots. Often environmental, sometimes food-related.", image: "/images/animals/dog-allergy-skin.webp" },
-      { name: "Arthritis & joint pain", body: "Stiffness getting up, reluctance on stairs, slowing on walks.", image: "/images/animals/dog-arthritis.webp", objectPosition: "center top" },
+      { name: "Allergies & skin issues", body: "Itching, ear infections, hot spots. Often environmental, sometimes food-related.", image: "/images/animals/dog-allergy-skin.webp", objectPosition: "center 35%" },
+      { name: "Arthritis & joint pain", body: "Stiffness getting up, reluctance on stairs, slowing on walks.", image: "/images/animals/dog-arthritis.webp", objectPosition: "center 70%" },
       { name: "Obesity & weight issues", body: "Excess weight stresses joints, heart, and overall health. We create realistic plans.", image: "/images/animals/dog-obesity.webp" },
       { name: "GI upset", body: "Vomiting, diarrhea, loss of appetite. We triage and figure out the cause.", image: "/images/animals/dog-gi.webp" },
     ],
