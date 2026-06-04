@@ -102,8 +102,8 @@ def image_values(value: Any, path: str = "$") -> Iterable[tuple[str, str]]:
 def local_public_path(url: str) -> Path | None:
     if not url.startswith("/"):
         return None
-    rel = url.lstrip("/").replace("/", "\\")
-    return PUBLIC_ROOT / rel
+    # URL paths are always slash-separated; construct a platform-native path.
+    return PUBLIC_ROOT.joinpath(*url.lstrip("/").split("/"))
 
 
 def main() -> int:
