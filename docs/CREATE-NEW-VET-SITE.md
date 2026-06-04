@@ -3,7 +3,7 @@
 > **Template safety rule:** Do not customize client/practice sites directly in `Veterinary-Site-Template`. Always duplicate this repo first, rename the duplicate for the practice, and do client-specific edits in that duplicate. This repo should only receive reusable template improvements.
 This template is intended for fast demo-site creation. Do not hand-edit practice-specific values throughout the app. Collect the business information, update `site.config.json`, then validate that the visible site reflects the config.
 
-## Step 1 â€” Fetch the business information
+## Step 1 Ã¢â‚¬â€ Fetch the business information
 
 Start from the practice's existing website and public profiles. Capture as much as possible, but demo sites can use fallback placeholders when information is missing.
 
@@ -41,7 +41,7 @@ Recommended sources:
 - Social profiles
 - Online pharmacy/store buttons or external CNAME redirects
 
-## Step 2 â€” Update the config
+## Step 2 Ã¢â‚¬â€ Update the config
 
 Edit the root config file:
 
@@ -74,7 +74,7 @@ Important config areas:
 
 External store/pharmacy links are normal outbound links. Put them in `links.store` / `links.pharmacy` and set `features.storeLink` / `features.pharmacyLink` to `true`.
 
-## Step 3 â€” Create and validate the site
+## Step 3 Ã¢â‚¬â€ Create and validate the site
 
 From the frontend directory:
 
@@ -95,8 +95,9 @@ Then inspect:
 Check for old practice-specific leftovers:
 
 ```bash
-git grep -n "Your City\|annapolisvet\|000-000-0000\|167 Jennifer"
+git grep -n "OLD_CLIENT_CITY\|OLD_CLIENT_DOMAIN\|OLD_CLIENT_ADDRESS\|OLD_CLIENT_PHONE"
 ```
 
 Some old references may remain in backend seeds/prompts until Phase 2. For Phase 1, the primary frontend shell should be config-driven.
+
 

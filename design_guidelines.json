@@ -65,8 +65,8 @@
         "Dynamic Hero: Changes background image and copy based on selected Intent (Dog, Cat, Critter)",
         "Intent Selector: 3 large clickable pet cards that set the global intent context",
         "Featured Care Grid: Bento layout showing top services, dynamically reordered based on intent",
-        "Trust/Testimonials: Photos of actual clinic, Dr. Hamilton, and patient stories",
-        "Team: Carousel or Grid featuring Karen, Leah, Kaitlin, Lester, Tanjii",
+        "Trust/Testimonials: Photos of actual clinic, the veterinarian, and patient stories",
+        "Team: Carousel or Grid featuring the veterinarian and care team",
         "Contact & Footer: Embedded maps, hours, address, phone"
       ]
     },
@@ -140,19 +140,19 @@
         "description": "Team Member Name"
       },
       {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/2250x3000_80/webmgr/02/s/r/employee.photos/Kaitlin.Jenkins..jpg.webp",
+        "url": "",
         "category": "team_member",
-        "description": "Kaitlin J"
+        "description": "Team Member 1"
       },
       {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/2250x3000_80/webmgr/02/s/r/employee.photos/Lester.Latino..jpg.webp",
+        "url": "",
         "category": "team_member",
-        "description": "Lester L"
+        "description": "Team Member 2"
       },
       {
         "url": "https://cdcssl.ibsrv.net/ibimg/smb/3000x2245_80/webmgr/02/s/r/IMG_6359.jpg.webp",
         "category": "team_group",
-        "description": "Full Team/Staff (Use for Tanjii M fallback or group section)"
+        "description": "Full Team/Staff"
       }
     ],
     "clinic_and_patients": [
@@ -169,12 +169,12 @@
       {
         "url": "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp",
         "category": "service",
-        "description": "Dr. Hamilton in exam"
+        "description": "the veterinarian in exam"
       },
       {
         "url": "https://cdcssl.ibsrv.net/ibimg/smb/1546x1295_80/webmgr/02/s/r/screen-shot-2019-06-21-at-92223-pm.png.webp",
         "category": "service",
-        "description": "Dr. Hamilton & tech"
+        "description": "the veterinarian & tech"
       },
       {
         "url": "https://cdcssl.ibsrv.net/ibimg/smb/720x960_80/webmgr/02/s/r/51361429_2235127750060442_2837072696418762752_n.jpg.webp",
@@ -195,9 +195,9 @@
     "team_members": [
       "Dr. Veterinarian Name",
       "Team Member Name",
-      "Kaitlin J",
-      "Lester L",
-      "Tanjii M"
+      "Team Member 1",
+      "Team Member 2",
+      "Team Member 3"
     ],
     "services": [
       "Dental Care",

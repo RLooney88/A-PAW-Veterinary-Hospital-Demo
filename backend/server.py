@@ -1,4 +1,4 @@
-﻿"""Veterinary Site Template, FastAPI server.
+"""Veterinary Site Template, FastAPI server.
 
 Public routes handle anonymous visitor tracking, dynamic surface content, and
 lead submissions. Admin routes (JWT-protected) expose CRUD over Surfaces,
@@ -160,7 +160,7 @@ api = APIRouter(prefix="/api")
 # ---------- Health ----------
 @api.get("/")
 async def root():
-    return {"service": "annapolis-vet-smart-site", "status": "ok"}
+    return {"service": "veterinary-site-template", "status": "ok"}
 
 
 @api.get("/health")

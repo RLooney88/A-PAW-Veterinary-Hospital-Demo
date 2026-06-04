@@ -457,10 +457,10 @@ export default function AnimalPage() {
           </div>
         </section>
 
-        {/* Dr. Hamilton quote */}
+        {/* the veterinarian quote */}
         <section className="mt-20 bg-clinic-red text-sand-50 rounded-[2rem] p-10 lg:p-14 relative overflow-hidden grain" data-testid="animal-quote">
           <div className="max-w-3xl relative z-10">
-            <div className="text-[11px] uppercase tracking-[0.22em] font-bold text-clinic-amber">From Dr. Hamilton</div>
+            <div className="text-[11px] uppercase tracking-[0.22em] font-bold text-clinic-amber">From the veterinarian</div>
             <blockquote className="mt-4 font-display text-2xl sm:text-3xl font-bold leading-[1.2]">
               &ldquo;{animal.quote.body}&rdquo;
             </blockquote>

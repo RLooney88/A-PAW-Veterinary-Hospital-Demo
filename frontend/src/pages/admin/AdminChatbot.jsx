@@ -122,7 +122,7 @@ export default function AdminChatbot() {
             value={config.training_context}
             onChange={(e) => setConfig({ ...config, training_context: e.target.value })}
             rows={8}
-            placeholder="e.g. We currently have a promotion on dental cleanings through March. Dr. Hamilton will be out the first week of April..."
+            placeholder="e.g. We currently have a promotion on dental cleanings through March. the veterinarian will be out the first week of April..."
             className="w-full rounded-lg border border-sand-300 bg-sand-50 px-4 py-3 text-sm leading-relaxed focus:outline-none focus:border-clinic-forest placeholder:text-clinic-mist/40"
           />
         </div>

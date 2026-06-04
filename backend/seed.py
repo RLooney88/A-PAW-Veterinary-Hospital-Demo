@@ -28,7 +28,7 @@ HERO_DEFAULT = {
     "secondary_cta_label": "Call (000) 000-0000",
     "secondary_cta_href": "tel:+10000000000",
     "image_url": "https://cdcssl.ibsrv.net/ibimg/smb/1100x940_80/webmgr/02/s/r/banner-image-1100x940.png.webp",
-    "badge": "Family-owned clinic in Your City, MD",
+    "badge": "Family-owned clinic in Your City, ST",
 }
 
 FEATURED_DEFAULT = {
@@ -47,7 +47,7 @@ PROOF_DEFAULT = {
     "heading": "Families across Your City trust us with their pets.",
     "testimonials": [
         {
-            "quote": "Dr. Hamilton's love, knowledge and respect for animals is unparalleled. She does not waste your money on unnecessary tests yet does everything she can to find the problem and get your pet healthy.",
+            "quote": "the veterinarian's love, knowledge and respect for animals is unparalleled. She does not waste your money on unnecessary tests yet does everything she can to find the problem and get your pet healthy.",
             "author": "Long-time client",
             "tag": "Wellness",
         },
@@ -57,7 +57,7 @@ PROOF_DEFAULT = {
             "tag": "New Puppy",
         },
         {
-            "quote": "Karen performed ACL surgery on my beagle. She is pretty much back to her normal self. Everyone is very friendly and professional.",
+            "quote": "The team performed orthopedic surgery on my beagle. She is pretty much back to her normal self. Everyone is very friendly and professional.",
             "author": "Beagle mom",
             "tag": "Surgery",
         },
@@ -444,8 +444,8 @@ PROOF_SWITCHES = [
         "content": {
             "heading": "Recovery stories from our families.",
             "testimonials": [
-                {"quote": "Karen performed ACL surgery on my beagle. She is pretty much back to her normal self.", "author": "Beagle mom", "tag": "Surgery"},
-                {"quote": "Heather and Lena did the follow-up laser treatment. Everyone is very friendly and professional.", "author": "Post-op client", "tag": "Laser Therapy"},
+                {"quote": "The team performed orthopedic surgery on my beagle. She is pretty much back to her normal self.", "author": "Beagle mom", "tag": "Surgery"},
+                {"quote": "The care team did the follow-up laser treatment. Everyone is very friendly and professional.", "author": "Post-op client", "tag": "Laser Therapy"},
             ],
         },
     },
