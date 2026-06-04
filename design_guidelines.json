@@ -1,4 +1,4 @@
-{
+﻿{
   "theme": "light",
   "archetype": "Archetype 1: Organic & Earthy",
   "typography": {
@@ -130,7 +130,7 @@
     ],
     "team": [
       {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/3000x1996_80/webmgr/02/s/r/Media_2021/088_Your CityVet.jpg.jpg.webp",
+        "url": "/images/source/team-veterinarian.webp",
         "category": "team_member",
         "description": "Dr. Veterinarian Name"
       },
@@ -140,12 +140,12 @@
         "description": "Team Member Name"
       },
       {
-        "url": "",
+        "url": "/images/source/team-member-1.webp",
         "category": "team_member",
         "description": "Team Member 1"
       },
       {
-        "url": "",
+        "url": "/images/source/team-member-2.webp",
         "category": "team_member",
         "description": "Team Member 2"
       },
