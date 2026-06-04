@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Cat, ChevronDown, Dog, Menu, Phone, Rabbit, X } from "lucide-react";
 import {
@@ -8,10 +8,9 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useSmartSite } from "../context/SmartSiteContext";
+import { brand, contact, features, getExternalLinks, links, practice } from "../site/siteConfig";
 
-const LOGO = "https://cdcssl.ibsrv.net/ibimg/smb/158x193_80/webmgr/02/s/r/58de6e5942c22_Logo2.png.webp";
-
-const NAV = [
+const BASE_NAV = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
   { to: "/about", label: "About" },
@@ -33,6 +32,10 @@ export default function Navbar() {
   const { setIntent } = useSmartSite();
   const navigate = useNavigate();
   const overHero = pathname === "/";
+  const nav = BASE_NAV.filter((item) => item.to !== "/portal/login" || features.clientPortal !== false);
+  const externalLinks = getExternalLinks();
+  const appointmentHref = links.appointment || "/appointment";
+  const isExternalAppointment = /^https?:\/\//i.test(appointmentHref);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -64,22 +67,22 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3 shrink-0" data-testid="nav-logo-link">
             <img
-              src={LOGO}
-              alt="Annapolis Veterinary & Wellness"
+              src={brand.logo}
+              alt={brand.logoAlt || practice.name}
               className={`h-12 w-auto rounded-xl transition-all ${transparent ? "bg-white/90 p-1" : ""}`}
             />
             <div className="hidden sm:block leading-tight">
               <div className={`font-display font-extrabold text-[17px] transition-colors ${transparent ? "text-sand-50" : "text-clinic-navy"}`}>
-                Annapolis Veterinary
+                {practice.displayLines?.[0] || practice.name}
               </div>
               <div className={`text-[12px] uppercase tracking-[0.18em] font-semibold transition-colors ${transparent ? "text-clinic-amber" : "text-clinic-forest"}`}>
-                &amp; Wellness
+                {practice.displayLines?.[1] || practice.shortName}
               </div>
             </div>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
-            {NAV.slice(0, 1).map((n) => (
+            {nav.slice(0, 1).map((n) => (
               <NavLink
                 key={n.to}
                 to={n.to}
@@ -130,7 +133,7 @@ export default function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {NAV.slice(1).map((n) => (
+            {nav.slice(1).map((n) => (
               <NavLink
                 key={n.to}
                 to={n.to}
@@ -140,11 +143,25 @@ export default function Navbar() {
                 {n.label}
               </NavLink>
             ))}
+            {externalLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className={linkCls(transparent, false)}
+                data-testid={`nav-external-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+              >
+                {link.label}
+              </a>
+            ))}
           </nav>
 
           <div className="flex items-center gap-3">
             <a
-              href="tel:+14102246624"
+              href={isExternalAppointment ? appointmentHref : contact.phoneHref}
+              target={isExternalAppointment ? "_blank" : undefined}
+              rel={isExternalAppointment ? "noreferrer" : undefined}
               className={`hidden md:inline-flex items-center gap-2 rounded-full px-5 py-3 font-semibold text-sm transition-colors ${
                 transparent
                   ? "bg-clinic-red hover:bg-clinic-red-hover text-white"
@@ -153,7 +170,7 @@ export default function Navbar() {
               data-testid="nav-call-btn"
             >
               <Phone className="h-4 w-4" />
-              (410) 224-6624
+              {isExternalAppointment ? "Book Online" : contact.phone}
             </a>
             <button
               onClick={() => setOpen((o) => !o)}
@@ -170,7 +187,7 @@ export default function Navbar() {
 
         {open && (
           <div className="lg:hidden pb-6 flex flex-col gap-2 bg-sand-50 rounded-b-2xl" data-testid="nav-mobile-menu">
-            {NAV.map((n) => (
+            {nav.map((n) => (
               <NavLink
                 key={n.to}
                 to={n.to}
@@ -179,6 +196,17 @@ export default function Navbar() {
               >
                 {n.label}
               </NavLink>
+            ))}
+            {externalLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="py-2 px-3 rounded-lg font-semibold text-clinic-ink hover:bg-sand-200"
+              >
+                {link.label}
+              </a>
             ))}
             <div className="px-3 pt-3 pb-1 text-[11px] uppercase tracking-widest font-bold text-clinic-forest">
               Animals We Serve
@@ -195,10 +223,12 @@ export default function Navbar() {
               </button>
             ))}
             <a
-              href="tel:+14102246624"
+              href={isExternalAppointment ? appointmentHref : contact.phoneHref}
+              target={isExternalAppointment ? "_blank" : undefined}
+              rel={isExternalAppointment ? "noreferrer" : undefined}
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-clinic-red px-5 py-3 text-white font-semibold"
             >
-              <Phone className="h-4 w-4" /> (410) 224-6624
+              <Phone className="h-4 w-4" /> {isExternalAppointment ? "Book Online" : contact.phone}
             </a>
           </div>
         )}
@@ -217,3 +247,5 @@ function linkCls(transparent, isActive) {
     isActive ? "text-clinic-red" : "text-clinic-ink hover:text-clinic-red"
   }`;
 }
+
+

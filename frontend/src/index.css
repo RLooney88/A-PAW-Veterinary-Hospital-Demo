@@ -1,15 +1,15 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Annapolis Vet Smart Site — global tokens */
+/* Annapolis Vet Smart Site â€” global tokens */
 body {
   margin: 0;
   font-family: 'Manrope', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #FDFBF7;
-  color: #1A2B4C;
+  background-color: rgb(var(--sand-50));
+  color: rgb(var(--clinic-navy));
 }
 
 code {
@@ -23,7 +23,27 @@ code {
 
 @layer base {
   :root {
-    --background: 38 50% 97%;
+    /* Site template brand palette. Values are RGB triplets so Tailwind opacity modifiers work. */
+    --sand-50: 253 251 247;
+    --sand-100: 247 242 232;
+    --sand-200: 239 230 211;
+    --sand-300: 229 225 216;
+    --clinic-navy: 26 43 76;
+    --clinic-navy-hover: 38 59 102;
+    --clinic-forest: 44 85 69;
+    --clinic-forest-hover: 58 110 89;
+    --clinic-sage: 232 240 235;
+    --clinic-sage-deep: 212 226 216;
+    --clinic-red: 200 56 46;
+    --clinic-red-hover: 166 44 35;
+    --clinic-red-soft: 249 230 226;
+    --clinic-peach: 251 238 222;
+    --clinic-peach-deep: 245 223 196;
+    --clinic-cream: 253 247 237;
+    --clinic-amber: 232 180 88;
+    --clinic-amber-soft: 251 232 194;
+    --clinic-ink: 14 27 54;
+    --clinic-mist: 90 107 130;    --background: 38 50% 97%;
     --foreground: 220 48% 20%;
     --card: 0 0% 100%;
     --card-foreground: 220 48% 20%;
@@ -84,8 +104,8 @@ code {
     letter-spacing: -0.018em;
   }
   ::selection {
-    background: #2C5545;
-    color: #FDFBF7;
+    background: rgb(var(--clinic-forest));
+    color: rgb(var(--sand-50));
   }
 }
 
@@ -106,8 +126,8 @@ code {
 
 /* Admin sidebar active indicator */
 .admin-nav-active {
-  background: rgba(44, 85, 69, 0.1);
-  color: #1A2B4C;
+  background: rgb(var(--clinic-forest) / 0.1);
+  color: rgb(var(--clinic-navy));
   font-weight: 600;
 }
 
@@ -141,3 +161,4 @@ code {
     border-bottom-color: inherit;
   }
 }
+

@@ -1,20 +1,21 @@
-import React from "react";
+﻿import React from "react";
 import { Link } from "react-router-dom";
 import { PawPrint, Phone } from "lucide-react";
 import { useSurface } from "../hooks/useSurface";
 import { useSmartSite } from "../context/SmartSiteContext";
 import AnimalButtons from "./AnimalButtons";
+import { contact, practice } from "../site/siteConfig";
 
 // Hardcoded defaults so the hero renders instantly without waiting for the API
 const DEFAULTS = {
   eyebrow: "Trusted Care for Every Paw",
   headline: "Compassionate veterinary care for your whole family.",
-  subheadline: "Annapolis Veterinary & Wellness has been caring for Annapolis pets for years, wellness, surgery, dental, emergencies, and beyond.",
+  subheadline: `${practice.name} provides wellness, surgery, dental care, urgent guidance, and thoughtful support for local pets.`,
   image_url: "/images/animals/hero-home-default.webp",
   primary_cta_href: "/appointment",
   primary_cta_label: "Schedule a Visit",
-  secondary_cta_href: "tel:+14102246624",
-  secondary_cta_label: "Call (410) 224-6624",
+  secondary_cta_href: contact.phoneHref,
+  secondary_cta_label: `Call ${contact.phone}`,
 };
 
 export default function DynamicHero() {
@@ -108,11 +109,11 @@ export default function DynamicHero() {
                     {primary_cta_label || "Schedule a Visit"}
                   </Link>
                   <a
-                    href={secondary_cta_href || "tel:+14102246624"}
+                    href={secondary_cta_href || contact.phoneHref}
                     className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 backdrop-blur-md text-sand-50 rounded-full px-7 py-4 font-semibold transition-colors"
                     data-testid="hero-secondary-cta"
                   >
-                    <Phone className="h-4 w-4" /> {secondary_cta_label || "Call (410) 224-6624"}
+                    <Phone className="h-4 w-4" /> {secondary_cta_label || `Call ${contact.phone}`}
                   </a>
                 </>
               )}
@@ -123,3 +124,4 @@ export default function DynamicHero() {
     </section>
   );
 }
+

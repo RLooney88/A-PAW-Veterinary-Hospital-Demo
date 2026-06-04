@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { Quote } from "lucide-react";
 import { useSurface } from "../hooks/useSurface";
+import { practice } from "../site/siteConfig";
 
 export default function Testimonials() {
   const { content, loading } = useSurface("home_proof");
@@ -29,7 +30,7 @@ export default function Testimonials() {
     <section className="mt-24" data-testid="testimonials">
       <div className="text-xs uppercase tracking-[0.22em] font-semibold text-clinic-forest">Pet-stimonials</div>
       <h2 className="font-display text-3xl sm:text-4xl font-bold text-clinic-navy mt-3 max-w-2xl">
-        {content.heading || "Families across Annapolis trust us with their pets."}
+        {content.heading || `Families across ${practice.serviceArea || "the community"} trust us with their pets.`}
       </h2>
 
       <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -87,3 +88,4 @@ export default function Testimonials() {
     </section>
   );
 }
+

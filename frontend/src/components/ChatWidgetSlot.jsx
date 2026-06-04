@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+﻿import React, { useState, useRef, useEffect, useCallback } from "react";
 import { MessageCircle, X, Send, PawPrint, CheckCircle2 } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
+import { contact, practice } from "../site/siteConfig";
 
 const API = process.env.REACT_APP_BACKEND_URL;
 
@@ -104,7 +105,7 @@ export default function ChatWidgetSlot() {
     } catch {
       setMessages((prev) => [...prev, {
         role: "assistant",
-        content: "Something went wrong. Please call us at (410) 224-6624.",
+        content: `Something went wrong. Please call us at ${contact.phone}.`,
         animate: true,
       }]);
     }
@@ -144,7 +145,7 @@ export default function ChatWidgetSlot() {
             <PawPrint className="h-4 w-4 text-white" />
           </div>
           <div>
-            <div className="font-display font-bold text-sm">Annapolis Vet</div>
+            <div className="font-display font-bold text-sm">{practice.shortName}</div>
             <div className="text-[11px] text-sand-100/70">Ask us anything or book a visit</div>
           </div>
         </div>
@@ -238,3 +239,4 @@ export default function ChatWidgetSlot() {
     </div>
   );
 }
+

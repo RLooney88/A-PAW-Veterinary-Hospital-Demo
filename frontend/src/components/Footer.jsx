@@ -1,13 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, ShoppingBag, Pill, FileText } from "lucide-react";
 import { toast } from "sonner";
 import { useSmartSite } from "../context/SmartSiteContext";
+import { brand, contact, features, formatAddress, getExternalLinks, hours, links, practice } from "../site/siteConfig";
 
-const LOGO = "https://cdcssl.ibsrv.net/ibimg/smb/158x193_80/webmgr/02/s/r/58de6e5942c22_Logo2.png.webp";
+const socialLinks = [
+  links.facebook ? { href: links.facebook, label: "Facebook", Icon: Facebook } : null,
+  links.instagram ? { href: links.instagram, label: "Instagram", Icon: Instagram } : null,
+  links.linkedin ? { href: links.linkedin, label: "LinkedIn", Icon: Linkedin } : null,
+].filter(Boolean);
+
+const externalIcon = {
+  "Online Store": ShoppingBag,
+  Pharmacy: Pill,
+  Forms: FileText,
+};
 
 export default function Footer() {
   const { clearIntent } = useSmartSite();
+  const addressLines = formatAddress(contact.address, { multiline: true });
+  const externalLinks = getExternalLinks();
 
   const onClear = async () => {
     await clearIntent();
@@ -19,26 +32,32 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-1">
           <div className="flex items-center gap-3">
-            <img src={LOGO} alt="Annapolis Vet" className="h-12 w-auto bg-white rounded-xl p-1.5" />
+            <img src={brand.logo} alt={brand.logoAlt || practice.name} className="h-12 w-auto bg-white rounded-xl p-1.5" />
             <div>
-              <div className="font-display font-extrabold text-lg">Annapolis Veterinary</div>
-              <div className="text-xs uppercase tracking-[0.18em] text-sand-200/80">&amp; Wellness</div>
+              <div className="font-display font-extrabold text-lg">{practice.displayLines?.[0] || practice.name}</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-sand-200/80">{practice.displayLines?.[1] || practice.shortName}</div>
             </div>
           </div>
           <p className="mt-4 text-sm text-sand-100/75 leading-relaxed">
-            A family-owned neighborhood clinic providing calm, compassionate veterinary care in Annapolis, MD.
+            {practice.description}
           </p>
-          <div className="mt-5 flex items-center gap-3">
-            <a href="https://www.facebook.com/annapolisvet/" aria-label="Facebook" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" data-testid="footer-facebook">
-              <Facebook className="h-4 w-4" />
-            </a>
-            <a href="https://www.instagram.com/annapolisvet/" aria-label="Instagram" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" data-testid="footer-instagram">
-              <Instagram className="h-4 w-4" />
-            </a>
-            <a href="https://www.linkedin.com/company/annapolis-veterinary-&-wellness/" aria-label="LinkedIn" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" data-testid="footer-linkedin">
-              <Linkedin className="h-4 w-4" />
-            </a>
-          </div>
+          {(socialLinks.length > 0 || externalLinks.length > 0) && (
+            <div className="mt-5 flex items-center gap-3 flex-wrap">
+              {socialLinks.map(({ href, label, Icon }) => (
+                <a key={href} href={href} target="_blank" rel="noreferrer" aria-label={label} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" data-testid={`footer-${label.toLowerCase()}`}>
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+              {externalLinks.map(({ href, label }) => {
+                const Icon = externalIcon[label] || ShoppingBag;
+                return (
+                  <a key={href} href={href} target="_blank" rel="noreferrer" aria-label={label} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" data-testid={`footer-${label.toLowerCase().replace(/\s+/g, "-")}`}>
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         <div>
@@ -48,20 +67,17 @@ export default function Footer() {
             <li><Link to="/services" className="hover:text-white">Services</Link></li>
             <li><Link to="/about" className="hover:text-white">About</Link></li>
             <li><Link to="/appointment" className="hover:text-white">Request Visit</Link></li>
-            <li><Link to="/portal/login" className="hover:text-white">Client Portal</Link></li>
+            {features.clientPortal !== false && <li><Link to="/portal/login" className="hover:text-white">Client Portal</Link></li>}
+            {externalLinks.map((link) => (
+              <li key={link.href}><a href={link.href} target="_blank" rel="noreferrer" className="hover:text-white">{link.label}</a></li>
+            ))}
           </ul>
         </div>
 
         <div>
           <h4 className="font-display font-bold text-base mb-4">Hours</h4>
           <ul className="space-y-1 text-sm text-sand-100/80">
-            <li>Monday: 8:00 - 4:00</li>
-            <li>Tuesday: Closed</li>
-            <li>Wednesday: 12:00 - 7:00</li>
-            <li>Thursday: 8:00 - 4:00</li>
-            <li>Friday: 8:00 - 3:00</li>
-            <li>Saturday: 9:00 - 1:00</li>
-            <li>Sunday: Closed</li>
+            {hours.map(([day, value]) => <li key={day}>{day}: {value}</li>)}
           </ul>
         </div>
 
@@ -70,13 +86,13 @@ export default function Footer() {
           <ul className="space-y-3 text-sm text-sand-100/80">
             <li className="flex items-start gap-2">
               <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
-              <span>167 Jennifer Rd, Suite Q<br />Annapolis, MD 21401</span>
+              <span>{addressLines[0]}<br />{addressLines[1]}</span>
             </li>
             <li className="flex items-center gap-2">
-              <Phone className="h-4 w-4" /> <a href="tel:+14102246624" className="hover:text-white">(410) 224-6624</a>
+              <Phone className="h-4 w-4" /> <a href={contact.phoneHref} className="hover:text-white">{contact.phone}</a>
             </li>
             <li className="flex items-center gap-2">
-              <Mail className="h-4 w-4" /> <a href="mailto:annapolisvet@gmail.com" className="hover:text-white">annapolisvet@gmail.com</a>
+              <Mail className="h-4 w-4" /> <a href={`mailto:${contact.email}`} className="hover:text-white">{contact.email}</a>
             </li>
           </ul>
         </div>
@@ -84,7 +100,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-sand-100/60">
-          <div>© {new Date().getFullYear()} Annapolis Veterinary &amp; Wellness.</div>
+          <div>© {new Date().getFullYear()} {practice.name}.</div>
           <div className="flex items-center gap-4">
             <button
               onClick={onClear}

@@ -1,17 +1,10 @@
 import React from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-
-const HOURS = [
-  ["Monday", "8:00 AM – 4:00 PM"],
-  ["Tuesday", "Closed"],
-  ["Wednesday", "12:00 PM – 7:00 PM"],
-  ["Thursday", "8:00 AM – 4:00 PM"],
-  ["Friday", "8:00 AM – 3:00 PM"],
-  ["Saturday", "9:00 AM – 1:00 PM"],
-  ["Sunday", "Closed"],
-];
+import { contact, formatAddress, hours } from "../site/siteConfig";
 
 export default function ContactSection() {
+  const addressLines = formatAddress(contact.address, { multiline: true });
+
   return (
     <section className="mt-24 grid gap-8 lg:grid-cols-2" data-testid="contact-section">
       <div className="bg-clinic-red text-sand-50 rounded-[2rem] p-10 lg:p-14 relative overflow-hidden grain">
@@ -21,20 +14,20 @@ export default function ContactSection() {
           <div className="flex items-start gap-3">
             <MapPin className="h-5 w-5 text-clinic-amber mt-0.5" />
             <div>
-              <div className="font-semibold">167 Jennifer Rd, Suite Q</div>
-              <div className="text-sand-50/80">Annapolis, MD 21401</div>
+              <div className="font-semibold">{addressLines[0]}</div>
+              <div className="text-sand-50/80">{addressLines[1]}</div>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Phone className="h-5 w-5 text-clinic-amber mt-0.5" />
-            <a href="tel:+14102246624" className="font-semibold hover:underline underline-offset-4" data-testid="contact-phone">
-              (410) 224-6624
+            <a href={contact.phoneHref} className="font-semibold hover:underline underline-offset-4" data-testid="contact-phone">
+              {contact.phone}
             </a>
           </div>
           <div className="flex items-start gap-3">
             <Mail className="h-5 w-5 text-clinic-amber mt-0.5" />
-            <a href="mailto:annapolisvet@gmail.com" className="font-semibold hover:underline underline-offset-4" data-testid="contact-email">
-              annapolisvet@gmail.com
+            <a href={`mailto:${contact.email}`} className="font-semibold hover:underline underline-offset-4" data-testid="contact-email">
+              {contact.email}
             </a>
           </div>
         </div>
@@ -47,10 +40,10 @@ export default function ContactSection() {
           <Clock className="h-3.5 w-3.5" /> Hours
         </div>
         <h3 className="font-display text-2xl sm:text-3xl font-bold text-clinic-navy mt-3">
-          Open six days a week.
+          Open when your pets need care.
         </h3>
         <ul className="mt-8 divide-y divide-sand-300/70">
-          {HOURS.map(([day, hrs]) => (
+          {hours.map(([day, hrs]) => (
             <li key={day} className="flex items-center justify-between py-3 text-sm">
               <span className="font-semibold text-clinic-navy">{day}</span>
               <span className="text-clinic-mist">{hrs}</span>
