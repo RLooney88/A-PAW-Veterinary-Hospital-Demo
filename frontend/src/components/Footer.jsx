@@ -10,12 +10,6 @@ export default function Footer() {
   const { clearIntent } = useSmartSite();
 
   const onClear = async () => {
-    // Wipe local intent cache too so surfaces re-render fresh defaults.
-    try {
-      Object.keys(localStorage)
-        .filter((k) => k.startsWith("avw_surface_") || k === "avw_session_snapshot")
-        .forEach((k) => localStorage.removeItem(k));
-    } catch { /* ignore */ }
     await clearIntent();
     toast.success("Intent cleared. Site reset to neutral.");
   };
