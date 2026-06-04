@@ -62,3 +62,7 @@ Rebuild annapolisvet.com as a **Smart Site** that tracks visitor intent (Signals
 - `/portal/pets/:id` - Pet health detail
 - `/admin/login` - Admin login
 - `/admin` - Admin dashboard (overview, leads, surfaces, chatbot, sessions)
+
+## Changelog
+- 2026-06-04: Fixed P0 "Clear Intent" footer bug. `clearIntent` now forces `/sessions/init` to mint a brand-new session token (`existing_token: null` via `init({force:true})`), nulls React state, and wipes `avw_surface_v3_*` per-intent surface caches so old intent content can't repaint on navigation. Verified via curl (fresh session returns parent_intent=None) + screenshot (home stays neutral after Clear → nav → return).
+

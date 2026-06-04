@@ -62,12 +62,14 @@ export function SmartSiteProvider({ children }) {
     }
   }, [session]);
 
-  const init = useCallback(async () => {
-    if (initRef.current) return;
+  const init = useCallback(async (opts = {}) => {
+    if (initRef.current && !opts.force) return;
     initRef.current = true;
     try {
       const { data } = await api.post("/sessions/init", {
-        existing_token: sessionToken,
+        // When force is set (e.g. clearIntent), send null so the backend mints
+        // a brand-new session token instead of re-hydrating the old intent.
+        existing_token: opts.force ? null : sessionToken,
         referrer: document.referrer || null,
         user_agent: navigator.userAgent,
       });
@@ -122,14 +124,23 @@ export function SmartSiteProvider({ children }) {
   );
 
   const clearIntent = useCallback(() => {
-    // soft-clear: we can't subtract on the server without a new endpoint;
-    // instead we reset session (fresh token).
+    // Hard reset: wipe the session token + snapshot, drop every per-intent
+    // surface cache so old content can't repaint, then force the backend to
+    // mint a brand-new session token (existing_token: null) so the next page
+    // load starts from a 100% neutral slate.
     localStorage.removeItem(STORAGE_KEY);
     localStorage.removeItem(SESSION_SNAPSHOT_KEY);
+    try {
+      Object.keys(localStorage)
+        .filter((k) => k.startsWith("avw_surface_v3_"))
+        .forEach((k) => localStorage.removeItem(k));
+    } catch {
+      /* ignore */
+    }
     setSessionToken(null);
     setSession(null);
     initRef.current = false;
-    init();
+    init({ force: true });
   }, [init]);
 
   const getSurfaceContent = useCallback(
