@@ -1,4 +1,4 @@
-"""Pydantic schemas for Annapolis Vet Smart Site API."""
+"""Pydantic schemas for Veterinary Site Template API."""
 from __future__ import annotations
 
 from datetime import datetime

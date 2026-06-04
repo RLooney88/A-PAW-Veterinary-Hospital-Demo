@@ -95,7 +95,7 @@ Then inspect:
 Check for old practice-specific leftovers:
 
 ```bash
-git grep -n "Annapolis\|annapolisvet\|410-224-6624\|167 Jennifer"
+git grep -n "Your City\|annapolisvet\|000-000-0000\|167 Jennifer"
 ```
 
 Some old references may remain in backend seeds/prompts until Phase 2. For Phase 1, the primary frontend shell should be config-driven.

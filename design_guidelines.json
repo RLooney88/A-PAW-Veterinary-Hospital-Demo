@@ -103,7 +103,7 @@
       {
         "url": "https://cdcssl.ibsrv.net/ibimg/smb/158x193_80/webmgr/02/s/r/58de6e5942c22_Logo2.png.webp",
         "category": "logo",
-        "description": "Annapolis Vet Main Logo"
+        "description": "Vet Clinic Main Logo"
       }
     ],
     "hero_backgrounds": [
@@ -130,14 +130,14 @@
     ],
     "team": [
       {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/3000x1996_80/webmgr/02/s/r/Media_2021/088_AnnapolisVet.jpg.jpg.webp",
+        "url": "https://cdcssl.ibsrv.net/ibimg/smb/3000x1996_80/webmgr/02/s/r/Media_2021/088_Your CityVet.jpg.jpg.webp",
         "category": "team_member",
-        "description": "Dr. Karen Hamilton"
+        "description": "Dr. Veterinarian Name"
       },
       {
         "url": "https://cdcssl.ibsrv.net/ibimg/smb/3000x2740_80/webmgr/02/s/r/images/leah-headshot..jpg.webp",
         "category": "team_member",
-        "description": "Leah Boback"
+        "description": "Team Member Name"
       },
       {
         "url": "https://cdcssl.ibsrv.net/ibimg/smb/2250x3000_80/webmgr/02/s/r/employee.photos/Kaitlin.Jenkins..jpg.webp",
@@ -190,11 +190,11 @@
   },
   "content_requirements": {
     "hours": "Mon 8-4, Tue closed, Wed 12-7, Thu 8-4, Fri 8-3, Sat 9-1, Sun closed",
-    "address": "167 Jennifer Rd Suite Q Annapolis MD 21401",
-    "phone": "(410) 224-6624",
+    "address": "123 Main Street Suite 100 Your City ST 00000",
+    "phone": "(000) 000-0000",
     "team_members": [
-      "Dr. Karen Hamilton",
-      "Leah Boback",
+      "Dr. Veterinarian Name",
+      "Team Member Name",
       "Kaitlin J",
       "Lester L",
       "Tanjii M"

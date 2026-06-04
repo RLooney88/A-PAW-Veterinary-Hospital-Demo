@@ -3,7 +3,7 @@ import { MessageCircle, X, Send, PawPrint, CheckCircle2 } from "lucide-react";
 import { useSmartSite } from "../context/SmartSiteContext";
 import { contact, practice } from "../site/siteConfig";
 
-const API = process.env.REACT_APP_BACKEND_URL;
+const API = process.env.REACT_APP_BACKEND_URL || "";
 
 const QUICK_PROMPTS = [
   "What are your hours?",
@@ -239,4 +239,5 @@ export default function ChatWidgetSlot() {
     </div>
   );
 }
+
 

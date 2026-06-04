@@ -1,4 +1,4 @@
-"""Async SQLAlchemy engine, session, and Base for Annapolis Vet Smart Site.
+"""Async SQLAlchemy engine, session, and Base for Veterinary Site Template.
 Uses Postgres (hosted on Railway in prod, local in dev)."""
 import os
 from pathlib import Path

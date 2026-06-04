@@ -83,7 +83,7 @@ export default function Appointment() {
       toast.success("Got it — now pick a time below.");
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong. Please call us at (410) 224-6624.");
+      toast.error("Something went wrong. Please call us at (000) 000-0000.");
     } finally {
       setLoading(false);
     }
@@ -108,7 +108,7 @@ export default function Appointment() {
           </p>
           <p className="mt-2 text-clinic-mist text-sm">
             We&rsquo;ll email a confirmation to {bookedAppt.client_email}. For changes, call{" "}
-            <a href="tel:+14102246624" className="font-bold text-clinic-navy underline">(410) 224-6624</a>.
+            <a href="tel:+10000000000" className="font-bold text-clinic-navy underline">(000) 000-0000</a>.
           </p>
         </div>
         <div className="pb-24">
@@ -153,10 +153,10 @@ export default function Appointment() {
             </div>
           )}
           <a
-            href="tel:+14102246624"
+            href="tel:+10000000000"
             className="mt-6 inline-flex items-center gap-2 text-clinic-navy font-bold"
           >
-            <Phone className="h-4 w-4" /> (410) 224-6624
+            <Phone className="h-4 w-4" /> (000) 000-0000
           </a>
         </div>
 

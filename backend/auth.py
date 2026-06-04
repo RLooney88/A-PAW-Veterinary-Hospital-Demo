@@ -1,4 +1,4 @@
-"""JWT + bcrypt helpers for Annapolis Vet admin auth."""
+"""JWT + bcrypt helpers for Vet Clinic admin auth."""
 from __future__ import annotations
 
 import os

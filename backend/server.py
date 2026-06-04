@@ -1,4 +1,4 @@
-"""Annapolis Vet Smart Site, FastAPI server.
+﻿"""Veterinary Site Template, FastAPI server.
 
 Public routes handle anonymous visitor tracking, dynamic surface content, and
 lead submissions. Admin routes (JWT-protected) expose CRUD over Surfaces,
@@ -17,6 +17,7 @@ from secrets import token_urlsafe
 from dotenv import load_dotenv
 from fastapi import APIRouter, Depends, FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy import desc, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
@@ -67,7 +68,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name
 logger = logging.getLogger(__name__)
 
 
-# ---------- Signal → intent scoring ----------
+# ---------- Signal â†’ intent scoring ----------
 
 # Strength multipliers for signal types
 SIGNAL_STRENGTH_MULT = {
@@ -152,7 +153,7 @@ async def lifespan(_app: FastAPI):
     yield
 
 
-app = FastAPI(title="Annapolis Vet Smart Site API", lifespan=lifespan)
+app = FastAPI(title="Veterinary Site Template API", lifespan=lifespan)
 api = APIRouter(prefix="/api")
 
 
@@ -313,7 +314,7 @@ async def _generate_lead_narrative(
         "total_events": len(trail),
     }
 
-    user_prompt = f"""Write a concise 1-2 paragraph narrative summary (not a list) describing this visitor's experience on Annapolis Veterinary & Wellness's website before submitting the contact form. Write it in third person, present tense, warm but factual. Mention which animal(s) they focused on, what specific concerns or services drew their attention, and the reason they've reached out now. If they chatted with the bot, weave that in naturally. Do not use bullet points or em-dashes.
+    user_prompt = f"""Write a concise 1-2 paragraph narrative summary (not a list) describing this visitor's experience on Veterinary Practice Name's website before submitting the contact form. Write it in third person, present tense, warm but factual. Mention which animal(s) they focused on, what specific concerns or services drew their attention, and the reason they've reached out now. If they chatted with the bot, weave that in naturally. Do not use bullet points or em-dashes.
 
 Visitor session data:
 {json.dumps(trail_desc, indent=2)}
@@ -830,7 +831,7 @@ async def test_webhook(
         raise HTTPException(404, "Webhook not found")
     test_payload = {
         "event": "test",
-        "message": "This is a test webhook from Annapolis Vet Smart Site.",
+        "message": "This is a test webhook from Veterinary Site Template.",
         "webhook_name": hook.name,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
@@ -863,17 +864,17 @@ async def test_webhook(
 
 
 # ---------- Chatbot ----------
-DEFAULT_SYSTEM_PROMPT = """You are the virtual assistant for Annapolis Veterinary & Wellness, a family-owned veterinary clinic in Annapolis, MD. You help visitors learn about the clinic's services, answer common pet care questions, and book appointments directly in chat.
+DEFAULT_SYSTEM_PROMPT = """You are the virtual assistant for Veterinary Practice Name, a family-owned veterinary clinic in Your City, MD. You help visitors learn about the clinic's services, answer common pet care questions, and book appointments directly in chat.
 
 CLINIC INFO:
-- Address: 167 Jennifer Rd, Suite Q, Annapolis, MD 21401
-- Phone: (410) 224-6624
-- Email: annapolisvet@gmail.com
+- Address: 123 Main Street, Suite 100, Your City, ST 00000
+- Phone: (000) 000-0000
+- Email: hello@example.com
 - Hours: Mon 8am-4pm, Tue Closed, Wed 12pm-7pm, Thu 8am-4pm, Fri 8am-3pm, Sat 9am-1pm, Sun Closed
 - Parking: Free on-site parking
-- Owner: Dr. Karen Hamilton, DVM (15+ years experience)
-- Team: Leah Boback (Clinic Manager), Kaitlin J. (Vet Assistant), Lester L. (Vet Assistant), Tanjii M. (Client Services)
-- Years serving Annapolis: 15+
+- Owner: Dr. Veterinarian Name, DVM (15+ years experience)
+- Team: Team Member Name (Clinic Manager), Team Member Name (Vet Assistant), Team Member Name (Vet Assistant), Team Member Name (Client Services)
+- Years serving Your City: 15+
 - Families served: 5,000+
 
 ANIMALS WE TREAT:
@@ -924,11 +925,11 @@ After you have collected ALL SIX fields and confirmed them back to the visitor, 
 The marker must be valid JSON on a single line. Do not emit the marker until you have all six fields. Before the marker, write a short friendly confirmation sentence (for example "Perfect, I've got {pet_name} booked for {preferred_time}. We'll call {client_phone} to confirm."). Do not mention the marker to the visitor."""
 
 DEFAULT_GUARDRAILS = """RULES:
-- Only answer questions related to Annapolis Veterinary & Wellness, pet care, veterinary medicine, or booking a visit.
-- If someone asks about topics unrelated to pets or veterinary care, politely redirect: "I'm here to help with questions about Annapolis Vet and pet care. Is there something about your pet I can help with?"
-- Never provide specific medical diagnoses. For medical concerns, recommend a visit or (for urgent signs) calling (410) 224-6624 right away.
-- Never discuss pricing specifics. Say "we can give you exact pricing over the phone at (410) 224-6624 or at check-in."
-- Do not make up information about the clinic. If unsure, say "I'd recommend calling us at (410) 224-6624 for the most accurate answer."
+- Only answer questions related to Veterinary Practice Name, pet care, veterinary medicine, or booking a visit.
+- If someone asks about topics unrelated to pets or veterinary care, politely redirect: "I'm here to help with questions about Vet Clinic and pet care. Is there something about your pet I can help with?"
+- Never provide specific medical diagnoses. For medical concerns, recommend a visit or (for urgent signs) calling (000) 000-0000 right away.
+- Never discuss pricing specifics. Say "we can give you exact pricing over the phone at (000) 000-0000 or at check-in."
+- Do not make up information about the clinic. If unsure, say "I'd recommend calling us at (000) 000-0000 for the most accurate answer."
 - Keep responses concise, 2-4 sentences for simple questions.
 - Never use em-dashes. Use commas, hyphens, colons, or periods."""
 
@@ -956,7 +957,7 @@ async def chat_endpoint(payload: ChatRequest, db: AsyncSession = Depends(get_db)
 
     config = await _get_chatbot_config(db)
     if not config.active:
-        return ChatResponse(reply="Chat is currently unavailable. Please call us at (410) 224-6624.", session_token=payload.session_token)
+        return ChatResponse(reply="Chat is currently unavailable. Please call us at (000) 000-0000.", session_token=payload.session_token)
 
     # Build full system message
     parts = [config.system_prompt]
@@ -995,7 +996,7 @@ async def chat_endpoint(payload: ChatRequest, db: AsyncSession = Depends(get_db)
         reply = await chat.send_message(user_msg)
     except Exception as exc:
         logger.exception("Chatbot error")
-        reply = "I'm having trouble right now. Please call us at (410) 224-6624 and we'll be happy to help."
+        reply = "I'm having trouble right now. Please call us at (000) 000-0000 and we'll be happy to help."
 
     # --- Detect and persist an in-chat booking ---
     booking_saved = False
@@ -1027,7 +1028,7 @@ async def chat_endpoint(payload: ChatRequest, db: AsyncSession = Depends(get_db)
         # Strip the marker block from the visitor-facing reply regardless
         reply = re.sub(r"\s*<<BOOKING>>.+?<<END>>\s*", "", reply, flags=re.DOTALL).strip()
         if booking_saved:
-            reply = (reply + "\n\n✓ Booking received. We'll call you shortly to confirm.").strip()
+            reply = (reply + "\n\nâœ“ Booking received. We'll call you shortly to confirm.").strip()
 
     # Save messages
     db.add(ChatMessage(session_token=payload.session_token, role="user", content=payload.message))
@@ -1175,3 +1176,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Serve the React build when deployed as a single Railway service.
+FRONTEND_BUILD_DIR = Path(__file__).resolve().parent.parent / "frontend" / "build"
+if FRONTEND_BUILD_DIR.exists():
+    app.mount("/", StaticFiles(directory=str(FRONTEND_BUILD_DIR), html=True), name="frontend")
+else:
+    logger.warning("Frontend build directory not found at %s; API-only mode enabled", FRONTEND_BUILD_DIR)

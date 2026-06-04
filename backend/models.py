@@ -1,4 +1,4 @@
-"""SQLAlchemy ORM models for the Annapolis Vet Smart Site.
+"""SQLAlchemy ORM models for the Veterinary Site Template.
 
 Core tables:
     users            - admin login accounts

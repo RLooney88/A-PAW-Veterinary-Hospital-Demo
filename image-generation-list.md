@@ -1,4 +1,4 @@
-# Image Generation List for Annapolis Vet Smart Site
+# Image Generation List for Veterinary Site Template
 
 All images should be 1024x1024, photorealistic, professional pet photography style, warm tones, no text, no watermarks.
 

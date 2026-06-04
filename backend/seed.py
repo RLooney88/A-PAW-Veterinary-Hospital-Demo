@@ -22,13 +22,13 @@ logger = logging.getLogger(__name__)
 HERO_DEFAULT = {
     "eyebrow": "Trusted Care for Every Paw",
     "headline": "Compassionate veterinary care for your whole family.",
-    "subheadline": "Annapolis Veterinary & Wellness has been caring for Annapolis pets for years, wellness, surgery, dental, emergencies, and beyond.",
+    "subheadline": "Veterinary Practice Name has been caring for Your City pets for years, wellness, surgery, dental, emergencies, and beyond.",
     "primary_cta_label": "Schedule a Visit",
     "primary_cta_href": "/appointment",
-    "secondary_cta_label": "Call (410) 224-6624",
-    "secondary_cta_href": "tel:+14102246624",
+    "secondary_cta_label": "Call (000) 000-0000",
+    "secondary_cta_href": "tel:+10000000000",
     "image_url": "https://cdcssl.ibsrv.net/ibimg/smb/1100x940_80/webmgr/02/s/r/banner-image-1100x940.png.webp",
-    "badge": "Family-owned clinic in Annapolis, MD",
+    "badge": "Family-owned clinic in Your City, MD",
 }
 
 FEATURED_DEFAULT = {
@@ -44,7 +44,7 @@ FEATURED_DEFAULT = {
 }
 
 PROOF_DEFAULT = {
-    "heading": "Families across Annapolis trust us with their pets.",
+    "heading": "Families across Your City trust us with their pets.",
     "testimonials": [
         {
             "quote": "Dr. Hamilton's love, knowledge and respect for animals is unparalleled. She does not waste your money on unnecessary tests yet does everything she can to find the problem and get your pet healthy.",
@@ -52,7 +52,7 @@ PROOF_DEFAULT = {
             "tag": "Wellness",
         },
         {
-            "quote": "If I could give Annapolis Veterinary & Wellness more stars, I would! From their receptionists to techs to doctors, they are all kind, attentive, understanding and knowledgeable.",
+            "quote": "If I could give Veterinary Practice Name more stars, I would! From their receptionists to techs to doctors, they are all kind, attentive, understanding and knowledgeable.",
             "author": "First-time dog owner",
             "tag": "New Puppy",
         },
@@ -124,7 +124,7 @@ APPOINTMENT_INTRO_DEFAULT = {
     "eyebrow": "Request a visit",
     "headline": "Let's get your pet on the schedule.",
     "subheadline": "Tell us a little about your pet and we'll follow up to confirm a time that works.",
-    "reassurance": "Same-week appointments typical. For urgent concerns, please call (410) 224-6624.",
+    "reassurance": "Same-week appointments typical. For urgent concerns, please call (000) 000-0000.",
 }
 
 INTENT_SELECTOR_DEFAULT = {
@@ -235,7 +235,7 @@ HERO_SWITCHES = [
         "priority": 100,
         "content": {
             **HERO_DEFAULT,
-            "eyebrow": "Caring for Annapolis Dogs",
+            "eyebrow": "Caring for Your City Dogs",
             "headline": "Tails wag when you walk in the door.",
             "subheadline": "From first-puppy visits to senior care, we treat every dog like family.",
             "image_url": "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp",
@@ -318,7 +318,7 @@ HERO_SWITCHES = [
             "headline": "Let's figure this out together.",
             "subheadline": "Describe what's going on and we'll guide you to the next best step, today.",
             "primary_cta_label": "Request an Urgent Visit",
-            "secondary_cta_label": "Call (410) 224-6624",
+            "secondary_cta_label": "Call (000) 000-0000",
         },
     },
 ]
@@ -431,7 +431,7 @@ APPOINTMENT_INTRO_SWITCHES = [
             "eyebrow": "We're here to help",
             "headline": "Tell us what's going on.",
             "subheadline": "Describe symptoms and timing, we'll reach out quickly to guide you.",
-            "reassurance": "If this is truly urgent, please call (410) 224-6624 right now.",
+            "reassurance": "If this is truly urgent, please call (000) 000-0000 right now.",
         },
     },
 ]
@@ -475,7 +475,7 @@ async def seed() -> None:
             user = User(
                 email=admin_email,
                 password_hash=hash_password(admin_password),
-                name="Annapolis Vet Admin",
+                name="Vet Clinic Admin",
                 role="admin",
             )
             db.add(user)

@@ -1,7 +1,7 @@
-# Annapolis Veterinary & Wellness - Smart Site
+# Veterinary Practice Name - Smart Site
 
 ## 1. Original Problem Statement
-Rebuild annapolisvet.com as a **Smart Site** that tracks visitor intent (Signals) to dynamically swap content (Switches) in designated areas (Surfaces). Use PostgreSQL on Railway, JWT auth, Dribbble "Pet Care" template layout with Annapolis Vet brand colors.
+Rebuild example-vet-site.com as a **Smart Site** that tracks visitor intent (Signals) to dynamically swap content (Switches) in designated areas (Surfaces). Use PostgreSQL on Railway, JWT auth, Dribbble "Pet Care" template layout with Vet Clinic brand colors.
 
 ## 2. Architecture
 - **Backend**: FastAPI + SQLAlchemy async + Postgres (Railway). JWT admin auth + JWT client portal auth. SendGrid email (pending key). Chatbot via emergentintegrations (GPT-4o-mini). Webhook outbound API.

@@ -1,5 +1,5 @@
 {
-  "summary": "Comprehensive testing of Annapolis Vet Smart Site completed. All 16 backend API tests passed (100%). Frontend testing verified all major features: home page with dynamic hero, intent selector (Dogs/Cats/Critters), smart-site personalization (hero changes on intent selection), services page (10 services), service detail navigation, appointment form submission with success page, admin login, admin overview with analytics, admin leads with detail panel showing intent summary + signal trail, admin surfaces with switch editors, admin sessions with event timeline, and window.smartSite global API for external chat widget.",
+  "summary": "Comprehensive testing of Veterinary Site Template completed. All 16 backend API tests passed (100%). Frontend testing verified all major features: home page with dynamic hero, intent selector (Dogs/Cats/Critters), smart-site personalization (hero changes on intent selection), services page (10 services), service detail navigation, appointment form submission with success page, admin login, admin overview with analytics, admin leads with detail panel showing intent summary + signal trail, admin surfaces with switch editors, admin sessions with event timeline, and window.smartSite global API for external chat widget.",
   "backend_issues": {
     "critical": [],
     "minor": []
@@ -28,8 +28,8 @@
     "frontend": "100% (all flows working)"
   },
   "test_credentials": {
-    "admin_email": "admin@annapolisvet.com",
-    "admin_password": "AnnapolisVet2026!"
+    "admin_email": "admin@example-vet-site.com",
+    "admin_password": "Your CityVet2026!"
   },
   "seed_data_creation": "Backend seeds admin user + 7 surfaces + multiple switches on startup",
   "retest_needed": false,

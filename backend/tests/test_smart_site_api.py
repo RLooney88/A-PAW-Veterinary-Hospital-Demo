@@ -1,5 +1,5 @@
 """
-Annapolis Vet Smart Site - Backend API Tests
+Veterinary Site Template - Backend API Tests
 Tests for: sessions, signals, surfaces, leads, admin auth, admin CRUD, analytics
 """
 import os
@@ -11,8 +11,8 @@ if not BASE_URL:
     raise ValueError("REACT_APP_BACKEND_URL environment variable is required")
 
 # Test credentials from test_credentials.md
-ADMIN_EMAIL = "admin@annapolisvet.com"
-ADMIN_PASSWORD = "AnnapolisVet2026!"
+ADMIN_EMAIL = "admin@example-vet-site.com"
+ADMIN_PASSWORD = "Your CityVet2026!"
 
 
 @pytest.fixture(scope="module")

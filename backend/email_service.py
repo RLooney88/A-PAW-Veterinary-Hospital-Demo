@@ -12,7 +12,7 @@ def send_lead_notification(lead: dict) -> bool:
     Returns True if sent, False if skipped or failed (never raises)."""
     api_key = os.environ.get("SENDGRID_API_KEY", "").strip()
     to_email = os.environ.get("LEAD_NOTIFICATION_EMAIL", "").strip()
-    from_email = os.environ.get("SENDGRID_FROM_EMAIL", "no-reply@annapolisvet.com").strip()
+    from_email = os.environ.get("SENDGRID_FROM_EMAIL", "no-reply@example-vet-site.com").strip()
 
     if not api_key or not to_email:
         logger.info("SendGrid not configured -- skipping email for lead %s", lead.get("id"))
@@ -41,7 +41,7 @@ def send_lead_notification(lead: dict) -> bool:
         trail_html += "</ol>"
 
         html = f"""
-        <h2>New Lead from Annapolis Vet Smart Site</h2>
+        <h2>New Lead from Veterinary Site Template</h2>
         <p><strong>Name:</strong> {lead.get('name', '')}</p>
         <p><strong>Email:</strong> {lead.get('email', '')}</p>
         <p><strong>Phone:</strong> {lead.get('phone', '')}</p>

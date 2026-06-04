@@ -1,5 +1,5 @@
 /**
- * Complete services data for the Annapolis Vet Smart Site.
+ * Complete services data for the Veterinary Site Template.
  * Organized by animal type -> preventive + urgent care sections.
  * All images are custom-generated and stored in /images/animals/
  */

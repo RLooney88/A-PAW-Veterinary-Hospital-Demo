@@ -1,6 +1,6 @@
-import axios from "axios";
+﻿import axios from "axios";
 
-const API = process.env.REACT_APP_BACKEND_URL;
+const API = process.env.REACT_APP_BACKEND_URL || "";
 
 const PORTAL_TOKEN_KEY = "portal_token";
 
@@ -20,3 +20,4 @@ portalApi.interceptors.request.use((cfg) => {
   if (t) cfg.headers.Authorization = `Bearer ${t}`;
   return cfg;
 });
+
