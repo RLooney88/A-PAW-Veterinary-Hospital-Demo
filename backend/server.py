@@ -864,7 +864,7 @@ async def test_webhook(
 
 
 # ---------- Chatbot ----------
-DEFAULT_SYSTEM_PROMPT = """You are the virtual assistant for Veterinary Practice Name, a family-owned veterinary clinic in Your City, MD. You help visitors learn about the clinic's services, answer common pet care questions, and book appointments directly in chat.
+DEFAULT_SYSTEM_PROMPT = """You are the virtual assistant for Veterinary Practice Name, a family-owned veterinary clinic in Your City, ST. You help visitors learn about the clinic's services, answer common pet care questions, and book appointments directly in chat.
 
 CLINIC INFO:
 - Address: 123 Main Street, Suite 100, Your City, ST 00000
@@ -953,7 +953,14 @@ async def _get_chatbot_config(db: AsyncSession) -> ChatbotConfig:
 
 @api.post("/chat", response_model=ChatResponse)
 async def chat_endpoint(payload: ChatRequest, db: AsyncSession = Depends(get_db)):
-    from emergentintegrations.llm.chat import LlmChat, UserMessage
+    try:
+        from emergentintegrations.llm.chat import LlmChat, UserMessage
+    except Exception:
+        logger.warning("emergentintegrations not available for chat endpoint")
+        return ChatResponse(
+            reply="Chat is currently unavailable in this demo. Please call us at (000) 000-0000.",
+            session_token=payload.session_token,
+        )
 
     config = await _get_chatbot_config(db)
     if not config.active:
@@ -1183,3 +1190,4 @@ if FRONTEND_BUILD_DIR.exists():
     app.mount("/", StaticFiles(directory=str(FRONTEND_BUILD_DIR), html=True), name="frontend")
 else:
     logger.warning("Frontend build directory not found at %s; API-only mode enabled", FRONTEND_BUILD_DIR)
+
