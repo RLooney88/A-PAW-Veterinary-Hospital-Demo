@@ -101,6 +101,8 @@ npm run build
 
 Railway/Docker builds also run `python backend/validate_seed.py`; invalid smart-site seed data should fail deployment instead of silently producing broken demo content.
 
+Optional finalized-site integration: when the site is ready for client operations, enable Nova Site Editor requests using `docs/NOVA-SITE-EDITOR-INTEGRATION.md`. Leave it disabled for quick prospecting demos unless explicitly needed.
+
 Then inspect:
 
 - Navbar logo/name/phone/vendor links

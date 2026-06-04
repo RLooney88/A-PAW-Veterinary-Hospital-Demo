@@ -214,6 +214,29 @@ class ChatBooking(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, index=True)
 
 
+class SiteEditRequest(Base):
+    """Local audit/status row for requests forwarded to Nova Site Editor."""
+    __tablename__ = "site_edit_requests"
+
+    id: Mapped[str] = mapped_column(UUID(as_uuid=False), primary_key=True, default=_uuid)
+    client_request_id: Mapped[str] = mapped_column(String(160), unique=True, nullable=False, index=True)
+    nova_request_id: Mapped[str | None] = mapped_column(String(160), nullable=True, index=True)
+    nova_thread_id: Mapped[str | None] = mapped_column(String(160), nullable=True)
+    status: Mapped[str] = mapped_column(String(64), default="draft", index=True)
+    title: Mapped[str] = mapped_column(String(255), nullable=False)
+    page_requested: Mapped[str | None] = mapped_column(String(512), nullable=True)
+    description: Mapped[str] = mapped_column(Text, nullable=False)
+    submitter_name: Mapped[str] = mapped_column(String(160), nullable=False)
+    submitter_email: Mapped[str] = mapped_column(String(255), nullable=False)
+    approval_required: Mapped[bool] = mapped_column(Boolean, default=True)
+    nova_payload: Mapped[dict] = mapped_column(JSONB, default=dict)
+    nova_response: Mapped[dict] = mapped_column(JSONB, default=dict)
+    callback_payloads: Mapped[list] = mapped_column(JSONB, default=list)
+    error: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, index=True)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow, onupdate=_utcnow)
+
+
 # ---------- Client Portal ----------
 class Client(Base):
     __tablename__ = "clients"

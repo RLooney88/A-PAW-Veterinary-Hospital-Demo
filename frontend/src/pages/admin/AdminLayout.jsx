@@ -11,6 +11,7 @@ import {
   Layers,
   LayoutGrid,
   LogOut,
+  PencilLine,
   Users,
 } from "lucide-react";
 
@@ -22,6 +23,7 @@ const NAV = [
   { to: "/admin/calendar-config", label: "Calendar Setup", icon: CalendarCog },
   { to: "/admin/surfaces", label: "Surfaces & Switches", icon: Layers },
   { to: "/admin/chatbot", label: "Chatbot", icon: Bot },
+  { to: "/admin/site-editor", label: "Site Editor", icon: PencilLine },
   { to: "/admin/sessions", label: "Sessions", icon: Users },
 ];
 

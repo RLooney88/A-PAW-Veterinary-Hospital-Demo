@@ -59,6 +59,7 @@ from seed import seed as seed_db
 from seed_portal import seed_portal
 from portal import portal as portal_router
 from booking import booking as booking_router
+from nova_site_editor import nova_site_editor as nova_site_editor_router
 
 from pathlib import Path
 
@@ -1175,6 +1176,7 @@ async def update_chat_booking(
 app.include_router(api)
 app.include_router(portal_router, prefix="/api")
 app.include_router(booking_router, prefix="/api")
+app.include_router(nova_site_editor_router, prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,
