@@ -76,12 +76,30 @@ External store/pharmacy links are normal outbound links. Put them in `links.stor
 
 ## Step 3 Ã¢â‚¬â€ Create and validate the site
 
-From the frontend directory:
+The smart-site surfaces and switches are seeded from the canonical file:
+
+```txt
+backend/seeds/smart_site_template.json
+```
+
+Do not hand-maintain duplicate smart-site defaults in React components or ad-hoc backend constants. If a component requires seeded content (for example `inline_cta.image_url` for the blue-overlay CTA bricks), add it to the canonical JSON seed and run validation.
+
+From the repo root, run:
+
+```powershell
+.\scripts\validate-template.ps1
+```
+
+Or manually:
 
 ```bash
+python backend/validate_seed.py
+cd frontend
 npm install
 npm run build
 ```
+
+Railway/Docker builds also run `python backend/validate_seed.py`; invalid smart-site seed data should fail deployment instead of silently producing broken demo content.
 
 Then inspect:
 
