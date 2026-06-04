@@ -1,4 +1,4 @@
-﻿{
+{
   "theme": "light",
   "archetype": "Archetype 1: Organic & Earthy",
   "typography": {
@@ -99,94 +99,31 @@
     }
   },
   "media": {
-    "logo": [
-      {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/158x193_80/webmgr/02/s/r/58de6e5942c22_Logo2.png.webp",
-        "category": "logo",
-        "description": "Vet Clinic Main Logo"
-      }
-    ],
+    "logo": [],
     "hero_backgrounds": [
       {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/1100x940_80/webmgr/02/s/r/banner-image-1100x940.png.webp",
+        "url": "/images/animals/hero-home-default.webp",
         "category": "hero_default",
-        "description": "Default wide clinic banner"
+        "description": "Default generated veterinary hero"
       },
       {
-        "url": "https://images.unsplash.com/photo-1767101607738-c93754ce5220?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwzfHxjdXRlJTIwcHVwcHklMjBkb2clMjBmYWNlfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85",
+        "url": "/images/animals/hero-dogs-default.webp",
         "category": "hero_dog",
-        "description": "Puppy intent background"
+        "description": "Generated dog hero"
       },
       {
-        "url": "https://images.unsplash.com/photo-1759564795768-4d6b43846406?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwyfHxjdXRlJTIwa2l0dGVuJTIwbG9va2luZyUyMHVwfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85",
+        "url": "/images/animals/cat-hero-switch.webp",
         "category": "hero_cat",
-        "description": "Kitten intent background"
+        "description": "Generated cat hero"
       },
       {
-        "url": "https://images.unsplash.com/photo-1555634819-ce681c6e258c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwxfHxwZXQlMjBidW5ueSUyMHJhYmJpdCUyMGd1aW5lYSUyMHBpZ3xlbnwwfHx8fDE3NzY0NDk2NTl8MA&ixlib=rb-4.1.0&q=85",
+        "url": "/images/animals/hero-critters-page.webp",
         "category": "hero_critter",
-        "description": "Other Critter intent background (Rabbit)"
+        "description": "Generated small mammal hero"
       }
     ],
-    "team": [
-      {
-        "url": "/images/source/team-veterinarian.webp",
-        "category": "team_member",
-        "description": "Dr. Veterinarian Name"
-      },
-      {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/3000x2740_80/webmgr/02/s/r/images/leah-headshot..jpg.webp",
-        "category": "team_member",
-        "description": "Team Member Name"
-      },
-      {
-        "url": "/images/source/team-member-1.webp",
-        "category": "team_member",
-        "description": "Team Member 1"
-      },
-      {
-        "url": "/images/source/team-member-2.webp",
-        "category": "team_member",
-        "description": "Team Member 2"
-      },
-      {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/3000x2245_80/webmgr/02/s/r/IMG_6359.jpg.webp",
-        "category": "team_group",
-        "description": "Full Team/Staff"
-      }
-    ],
-    "clinic_and_patients": [
-      {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/3000x2000_80/webmgr/02/s/r/IMG1369.jpg.webp",
-        "category": "clinic_exterior",
-        "description": "Clinic photo"
-      },
-      {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/1152x1152_80/webmgr/02/s/r/13116461_1728398937399995_1801395013260039740_o.jpg.webp",
-        "category": "clinic_interior",
-        "description": "Clinic photo FB"
-      },
-      {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp",
-        "category": "service",
-        "description": "the veterinarian in exam"
-      },
-      {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/1546x1295_80/webmgr/02/s/r/screen-shot-2019-06-21-at-92223-pm.png.webp",
-        "category": "service",
-        "description": "the veterinarian & tech"
-      },
-      {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/720x960_80/webmgr/02/s/r/51361429_2235127750060442_2837072696418762752_n.jpg.webp",
-        "category": "patient",
-        "description": "Titus (hospital cat)"
-      },
-      {
-        "url": "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp",
-        "category": "patient",
-        "description": "Shutterstock Dog"
-      }
-    ]
+    "team": [],
+    "clinic_and_patients": []
   },
   "content_requirements": {
     "hours": "Mon 8-4, Tue closed, Wed 12-7, Thu 8-4, Fri 8-3, Sat 9-1, Sun closed",

@@ -27,7 +27,7 @@ HERO_DEFAULT = {
     "primary_cta_href": "/appointment",
     "secondary_cta_label": "Call (000) 000-0000",
     "secondary_cta_href": "tel:+10000000000",
-    "image_url": "https://cdcssl.ibsrv.net/ibimg/smb/1100x940_80/webmgr/02/s/r/banner-image-1100x940.png.webp",
+    "image_url": "/images/animals/hero-home-default.webp",
     "badge": "Family-owned clinic in Your City, ST",
 }
 
@@ -131,9 +131,9 @@ INTENT_SELECTOR_DEFAULT = {
     "heading": "Start with your pet.",
     "subheading": "Pick one to see the care we offer them.",
     "cards": [
-        {"intent": "dogs", "title": "Dogs", "description": "Puppies, adults, seniors, we've got you.", "image": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=1000&q=80&auto=format&fit=crop"},
-        {"intent": "cats", "title": "Cats", "description": "Gentle, low-stress feline medicine.", "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=1000&q=80&auto=format&fit=crop"},
-        {"intent": "critters", "title": "Other Critters", "description": "Rabbits, small mammals & more, let's see if we're a fit.", "image": "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=1000&q=80&auto=format&fit=crop"},
+        {"intent": "dogs", "title": "Dogs", "description": "Puppies, adults, seniors, we've got you.", "image": "/images/animals/hero-dogs-default.webp"},
+        {"intent": "cats", "title": "Cats", "description": "Gentle, low-stress feline medicine.", "image": "/images/animals/cat-hero-switch.webp"},
+        {"intent": "critters", "title": "Other Critters", "description": "Rabbits, small mammals & more, let's see if we're a fit.", "image": "/images/animals/hero-critters-page.webp"},
     ],
 }
 
@@ -159,11 +159,11 @@ SUB_INTENT_PROMPT_SWITCHES = [
             "heading": "What are we helping your dog with?",
             "subheading": "Pick the closest fit.",
             "cards": [
-                {"intent": "dogs", "sub_intent": "new_puppy", "title": "New Puppy", "description": "First visits, vaccines, spay/neuter timing.", "image": "https://images.unsplash.com/photo-1767101607738-c93754ce5220?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwzfHxjdXRlJTIwcHVwcHklMjBkb2clMjBmYWNlfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85"},
-                {"intent": "dogs", "sub_intent": "wellness", "title": "Wellness", "description": "Annual exams, vaccines, parasite prevention.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp"},
-                {"intent": "dogs", "sub_intent": "health_concerns", "title": "Something's Wrong", "description": "Symptoms, concerns, urgent questions.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp"},
-                {"intent": "dogs", "sub_intent": "senior", "title": "Senior Care", "description": "Mobility, arthritis, quality-of-life.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1546x1295_80/webmgr/02/s/r/screen-shot-2019-06-21-at-92223-pm.png.webp"},
-                {"intent": "dogs", "sub_intent": "treatments", "title": "Specific Treatments", "description": "Dental, surgery, laser, PRP.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1152x1152_80/webmgr/02/s/r/13116461_1728398937399995_1801395013260039740_o.jpg.webp"},
+                {"intent": "dogs", "sub_intent": "new_puppy", "title": "New Puppy", "description": "First visits, vaccines, spay/neuter timing.", "image": "/images/animals/puppy-hero-switch.webp"},
+                {"intent": "dogs", "sub_intent": "wellness", "title": "Wellness", "description": "Annual exams, vaccines, parasite prevention.", "image": "/images/animals/hero-dogs-default.webp"},
+                {"intent": "dogs", "sub_intent": "health_concerns", "title": "Something's Wrong", "description": "Symptoms, concerns, urgent questions.", "image": "/images/animals/hero-svc-default.webp"},
+                {"intent": "dogs", "sub_intent": "senior", "title": "Senior Care", "description": "Mobility, arthritis, quality-of-life.", "image": "/images/animals/hero-dogs-senior.webp"},
+                {"intent": "dogs", "sub_intent": "treatments", "title": "Specific Treatments", "description": "Dental, surgery, laser, PRP.", "image": "/images/animals/hero-svc-dogs.webp"},
             ],
         },
     },
@@ -175,11 +175,11 @@ SUB_INTENT_PROMPT_SWITCHES = [
             "heading": "What are we helping your cat with?",
             "subheading": "Pick the closest fit.",
             "cards": [
-                {"intent": "cats", "sub_intent": "new_kitten", "title": "New Kitten", "description": "First visits, vaccines, early preventive care.", "image": "https://images.unsplash.com/photo-1759564795768-4d6b43846406?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwyfHxjdXRlJTIwa2l0dGVuJTIwbG9va2luZyUyMHVwfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85"},
-                {"intent": "cats", "sub_intent": "wellness", "title": "Wellness", "description": "Gentle annual exams and vaccines.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/720x960_80/webmgr/02/s/r/51361429_2235127750060442_2837072696418762752_n.jpg.webp"},
-                {"intent": "cats", "sub_intent": "health_concerns", "title": "Something's Wrong", "description": "Hiding, not eating, vomiting.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp"},
-                {"intent": "cats", "sub_intent": "senior", "title": "Senior Care", "description": "Aging support, chronic conditions.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1546x1295_80/webmgr/02/s/r/screen-shot-2019-06-21-at-92223-pm.png.webp"},
-                {"intent": "cats", "sub_intent": "treatments", "title": "Specific Treatments", "description": "Dental, surgery, laser.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1152x1152_80/webmgr/02/s/r/13116461_1728398937399995_1801395013260039740_o.jpg.webp"},
+                {"intent": "cats", "sub_intent": "new_kitten", "title": "New Kitten", "description": "First visits, vaccines, early preventive care.", "image": "/images/animals/hero-cats-kitten.webp"},
+                {"intent": "cats", "sub_intent": "wellness", "title": "Wellness", "description": "Gentle annual exams and vaccines.", "image": "/images/animals/cat-hero-home.webp"},
+                {"intent": "cats", "sub_intent": "health_concerns", "title": "Something's Wrong", "description": "Hiding, not eating, vomiting.", "image": "/images/animals/hero-svc-default.webp"},
+                {"intent": "cats", "sub_intent": "senior", "title": "Senior Care", "description": "Aging support, chronic conditions.", "image": "/images/animals/hero-dogs-senior.webp"},
+                {"intent": "cats", "sub_intent": "treatments", "title": "Specific Treatments", "description": "Dental, surgery, laser.", "image": "/images/animals/hero-svc-dogs.webp"},
             ],
         },
     },
@@ -191,9 +191,9 @@ SUB_INTENT_PROMPT_SWITCHES = [
             "heading": "What are we helping with?",
             "subheading": "Pick the closest fit.",
             "cards": [
-                {"intent": "critters", "sub_intent": "wellness", "title": "Wellness", "description": "Routine exam and husbandry review.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/3000x2000_80/webmgr/02/s/r/IMG1369.jpg.webp"},
-                {"intent": "critters", "sub_intent": "health_concerns", "title": "Something's Wrong", "description": "Symptoms, urgent concerns.", "image": "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp"},
-                {"intent": "critters", "sub_intent": "husbandry", "title": "Habitat & Diet", "description": "Environment, nutrition, enrichment.", "image": "https://images.unsplash.com/photo-1555634819-ce681c6e258c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwxfHxwZXQlMjBidW5ueSUyMHJhYmJpdCUyMGd1aW5lYSUyMHBpZ3xlbnwwfHx8fDE3NzY0NDk2NTl8MA&ixlib=rb-4.1.0&q=85"},
+                {"intent": "critters", "sub_intent": "wellness", "title": "Wellness", "description": "Routine exam and husbandry review.", "image": "/images/animals/hero-critters-page.webp"},
+                {"intent": "critters", "sub_intent": "health_concerns", "title": "Something's Wrong", "description": "Symptoms, urgent concerns.", "image": "/images/animals/hero-svc-default.webp"},
+                {"intent": "critters", "sub_intent": "husbandry", "title": "Habitat & Diet", "description": "Environment, nutrition, enrichment.", "image": "/images/animals/hero-critters-page.webp"},
             ],
         },
     },
@@ -238,7 +238,7 @@ HERO_SWITCHES = [
             "eyebrow": "Caring for Your City Dogs",
             "headline": "Tails wag when you walk in the door.",
             "subheadline": "From first-puppy visits to senior care, we treat every dog like family.",
-            "image_url": "https://cdcssl.ibsrv.net/ibimg/smb/1000x563_80/webmgr/02/s/r/shutterstock_2225178095_16x9.jpg.webp",
+            "image_url": "/images/animals/hero-dogs-default.webp",
             "primary_cta_label": "Book a Dog Visit",
         },
     },
@@ -251,7 +251,7 @@ HERO_SWITCHES = [
             "eyebrow": "New Puppy? Congrats!",
             "headline": "A strong start for your new best friend.",
             "subheadline": "Vaccine schedules, spay/neuter timing and early preventive care, all in one friendly visit.",
-            "image_url": "https://images.unsplash.com/photo-1767101607738-c93754ce5220?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwzfHxjdXRlJTIwcHVwcHklMjBkb2clMjBmYWNlfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85",
+            "image_url": "/images/animals/puppy-hero-switch.webp",
             "primary_cta_label": "Book Puppy's First Visit",
         },
     },
@@ -264,7 +264,7 @@ HERO_SWITCHES = [
             "eyebrow": "Senior Dog Care",
             "headline": "Comfort, mobility, and quality of life.",
             "subheadline": "Laser therapy, arthritis support, and chronic-condition monitoring for older dogs.",
-            "image_url": "https://cdcssl.ibsrv.net/ibimg/smb/1761x1293_80/webmgr/02/s/r/screen-shot-2019-06-21-at-91523-pm.png.webp",
+            "image_url": "/images/animals/hero-dogs-senior.webp",
             "primary_cta_label": "Senior Wellness Consult",
         },
     },
@@ -277,7 +277,7 @@ HERO_SWITCHES = [
             "eyebrow": "Gentle Feline Medicine",
             "headline": "Calm, low-stress care your cat will tolerate.",
             "subheadline": "We go slow, we listen, and we put comfort first.",
-            "image_url": "https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=1800&q=80&auto=format&fit=crop",
+            "image_url": "/images/animals/cat-hero-home.webp",
             "primary_cta_label": "Book a Cat Visit",
         },
     },
@@ -290,7 +290,7 @@ HERO_SWITCHES = [
             "eyebrow": "New Kitten? Welcome!",
             "headline": "The healthiest start for your new kitten.",
             "subheadline": "Kitten vaccines, spay/neuter timing, and gentle first visits.",
-            "image_url": "https://images.unsplash.com/photo-1759564795768-4d6b43846406?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwyfHxjdXRlJTIwa2l0dGVuJTIwbG9va2luZyUyMHVwfGVufDB8fHx8MTc3NjQ0OTY1OXww&ixlib=rb-4.1.0&q=85",
+            "image_url": "/images/animals/hero-cats-kitten.webp",
             "primary_cta_label": "Book Kitten's First Visit",
         },
     },
@@ -303,7 +303,7 @@ HERO_SWITCHES = [
             "eyebrow": "Other Critters Welcome",
             "headline": "Gentle, species-appropriate care beyond dogs & cats.",
             "subheadline": "Let's talk about your pet and see if we're the right fit for their needs.",
-            "image_url": "https://images.unsplash.com/photo-1555634819-ce681c6e258c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwxfHxwZXQlMjBidW5ueSUyMHJhYmJpdCUyMGd1aW5lYSUyMHBpZ3xlbnwwfHx8fDE3NzY0NDk2NTl8MA&ixlib=rb-4.1.0&q=85",
+            "image_url": "/images/animals/hero-critters-page.webp",
             "primary_cta_label": "Contact the Clinic",
             "primary_cta_href": "/appointment",
         },
@@ -487,6 +487,11 @@ async def seed() -> None:
             res = await db.execute(select(Surface).where(Surface.slug == spec["slug"]))
             existing = res.scalar_one_or_none()
             if existing:
+                if os.environ.get("SEED_REFRESH_CONTENT", "true").lower() not in {"0", "false", "no"}:
+                    existing.default_content = spec["default_content"]
+                    existing.name = spec["name"]
+                    existing.page = spec["page"]
+                    existing.description = spec["description"]
                 surface_by_slug[spec["slug"]] = existing
                 continue
             s = Surface(**spec)
@@ -509,7 +514,18 @@ async def seed() -> None:
                     )
                 )
                 existing = res.scalar_one_or_none()
+                if not existing:
+                    res = await db.execute(select(Switch).where(Switch.surface_id == surface.id))
+                    for candidate in res.scalars().all():
+                        if candidate.rule == sw_spec["rule"]:
+                            existing = candidate
+                            break
                 if existing:
+                    if os.environ.get("SEED_REFRESH_CONTENT", "true").lower() not in {"0", "false", "no"}:
+                        existing.name = sw_spec["name"]
+                        existing.rule = sw_spec["rule"]
+                        existing.priority = sw_spec["priority"]
+                        existing.content = sw_spec["content"]
                     continue
                 sw = Switch(surface_id=surface.id, **sw_spec)
                 db.add(sw)
@@ -521,3 +537,4 @@ async def seed() -> None:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     asyncio.run(seed())
+
