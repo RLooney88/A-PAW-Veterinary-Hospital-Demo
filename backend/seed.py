@@ -142,7 +142,42 @@ INLINE_CTA_DEFAULT = {
     "body": "Tell us about your pet and we'll take it from here.",
     "primary_cta_label": "Request an appointment",
     "primary_cta_href": "/appointment",
+    "image_url": "/images/animals/hero-svc-default.webp",
+    "imagePosition": "center 45%",
 }
+
+INLINE_CTA_SWITCHES = [
+    {
+        "name": "Dogs CTA",
+        "rule": {"intent": "dogs"},
+        "priority": 100,
+        "content": {
+            **INLINE_CTA_DEFAULT,
+            "image_url": "/images/animals/hero-svc-dogs.webp",
+            "imagePosition": "center 45%",
+        },
+    },
+    {
+        "name": "Cats CTA",
+        "rule": {"intent": "cats"},
+        "priority": 100,
+        "content": {
+            **INLINE_CTA_DEFAULT,
+            "image_url": "/images/animals/hero-svc-cats.webp",
+            "imagePosition": "center 45%",
+        },
+    },
+    {
+        "name": "Critters CTA",
+        "rule": {"intent": "critters"},
+        "priority": 100,
+        "content": {
+            **INLINE_CTA_DEFAULT,
+            "image_url": "/images/animals/hero-svc-critters.webp",
+            "imagePosition": "center 45%",
+        },
+    },
+]
 
 SUB_INTENT_PROMPT_DEFAULT = {
     "heading": "What are we helping with?",
@@ -457,6 +492,7 @@ SWITCH_SPECS: dict[str, list[dict]] = {
     "sub_intent_prompt": SUB_INTENT_PROMPT_SWITCHES,
     "appointment_intro": APPOINTMENT_INTRO_SWITCHES,
     "home_proof": PROOF_SWITCHES,
+    "inline_cta": INLINE_CTA_SWITCHES,
 }
 
 
