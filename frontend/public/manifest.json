@@ -1,7 +1,7 @@
 {
-  "short_name": "Vet Clinic",
-  "name": "Veterinary Practice Name",
-  "description": "Family-owned veterinary clinic in Your City, ST. Dogs, cats, rabbits, and small mammals.",
+  "short_name": "Carney AH",
+  "name": "Carney Animal Hospital",
+  "description": "Full-service veterinary hospital in Parkville, MD. Wellness, dental care, laser surgery, ultrasound, spay/neuter, and vaccinations.",
   "icons": [
     {
       "src": "/favicon.ico",
@@ -21,6 +21,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#1a2740",
-  "background_color": "#faf8f5"
+  "theme_color": "#87302B",
+  "background_color": "#FDFBF7"
 }

@@ -1,47 +1,71 @@
 {
   "practice": {
-    "name": "Veterinary Practice Name",
-    "shortName": "Vet Clinic",
-    "displayLines": ["Veterinary", "Clinic"],
-    "tagline": "Compassionate veterinary care for pets and families.",
-    "description": "A local veterinary practice providing thoughtful, modern care for pets and their people.",
-    "serviceArea": "Your City, ST"
+    "name": "Carney Animal Hospital",
+    "shortName": "Carney Animal Hospital",
+    "displayLines": [
+      "Carney Animal",
+      "Hospital"
+    ],
+    "tagline": "Trusted veterinary care in Parkville since 1952.",
+    "description": "Carney Animal Hospital is a full-service veterinary hospital in Parkville, MD providing wellness care, dental care, laser surgery, ultrasound, spay/neuter, vaccinations, and personalized treatment for pets and their families.",
+    "serviceArea": "Parkville, MD"
   },
   "brand": {
-    "logo": "/brand/logo-placeholder.svg",
-    "logoAlt": "Veterinary practice logo",
+    "logo": "/brand/carneyah-logo.png",
+    "logoAlt": "Carney Animal Hospital logo",
     "colors": {
       "light": "#FDFBF7",
-      "dark": "#1A2B4C",
-      "accent": "#C8382E",
-      "accentLight": "#E8F0EB"
+      "dark": "#16132A",
+      "accent": "#87302B",
+      "accentLight": "#F4E2E1"
     }
   },
   "contact": {
-    "phone": "(000) 000-0000",
-    "phoneHref": "tel:+10000000000",
-    "email": "hello@example.com",
+    "phone": "(410) 665-5255",
+    "phoneHref": "tel:+14106655255",
+    "email": "carneyanimalhospital@yahoo.com",
     "address": {
-      "street": "123 Main Street",
-      "line2": "Suite 100",
-      "city": "Your City",
-      "state": "ST",
-      "zip": "00000",
+      "street": "9011 Harford Rd",
+      "line2": "",
+      "city": "Parkville",
+      "state": "MD",
+      "zip": "21234",
       "country": "US"
     }
   },
   "hours": [
-    ["Monday", "8:00 AM – 5:00 PM"],
-    ["Tuesday", "8:00 AM – 5:00 PM"],
-    ["Wednesday", "8:00 AM – 5:00 PM"],
-    ["Thursday", "8:00 AM – 5:00 PM"],
-    ["Friday", "8:00 AM – 5:00 PM"],
-    ["Saturday", "Closed"],
-    ["Sunday", "Closed"]
+    [
+      "Monday",
+      "9:00 AM \u2013 6:00 PM"
+    ],
+    [
+      "Tuesday",
+      "9:00 AM \u2013 6:00 PM"
+    ],
+    [
+      "Wednesday",
+      "8:00 AM \u2013 6:00 PM"
+    ],
+    [
+      "Thursday",
+      "8:00 AM \u2013 6:00 PM"
+    ],
+    [
+      "Friday",
+      "9:00 AM \u2013 6:00 PM"
+    ],
+    [
+      "Saturday",
+      "8:00 AM \u2013 1:00 PM"
+    ],
+    [
+      "Sunday",
+      "Closed"
+    ]
   ],
   "links": {
-    "website": "",
-    "appointment": "",
+    "website": "https://carneyanimalhospital.com",
+    "appointment": "https://carneyanimalhospital.com/request-appointment/",
     "store": "",
     "pharmacy": "",
     "onlineForms": "",
@@ -52,9 +76,9 @@
   },
   "team": [
     {
-      "name": "Team Member Name",
+      "name": "Dr. Andrew Jendrek, DVM",
       "role": "Veterinarian",
-      "bio": "Short professional bio placeholder.",
+      "bio": "Dr. Andrew Jendrek welcomes pets and their families to Carney Animal Hospital, where healthy pets and happy parents are the central focus.",
       "image": ""
     }
   ],

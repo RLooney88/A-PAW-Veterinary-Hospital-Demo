@@ -1,0 +1,1262 @@
+{
+  "siteId": "carneyanimalhospital-com",
+  "source": {
+    "url": "https://carneyanimalhospital.com",
+    "scrapedAt": "2026-06-07T16:01:09.950219+00:00",
+    "pages": [
+      "https://carneyanimalhospital.com",
+      "https://carneyanimalhospital.com/",
+      "https://carneyanimalhospital.com/",
+      "https://carneyanimalhospital.com/about-us/",
+      "https://carneyanimalhospital.com/",
+      "https://carneyanimalhospital.com/",
+      "https://carneyanimalhospital.com/",
+      "https://carneyanimalhospital.com/",
+      "https://carneyanimalhospital.com/",
+      "https://carneyanimalhospital.com/contact-us/",
+      "https://carneyanimalhospital.com/",
+      "https://carneyanimalhospital.com/about-us/",
+      "https://carneyanimalhospital.com/veterinary-services/",
+      "https://carneyanimalhospital.com/contact-us/"
+    ],
+    "notes": []
+  },
+  "practice": {
+    "name": "Carney Animal Hospital",
+    "shortName": "Carney Animal Hospital",
+    "tagline": "Carney Animal Hospital - We're more than a veterinary clinic; we're your partners in pet care as your dedicated veterinarian in Parkville, MD",
+    "description": "Carney Animal Hospital - We're more than a veterinary clinic; we're your partners in pet care as your dedicated veterinarian in Parkville, MD",
+    "serviceArea": ""
+  },
+  "contact": {
+    "phone": "(410) 665-5255",
+    "phoneHref": "tel:4106655255",
+    "email": "carneyanimalhospital@yahoo.com",
+    "address": {
+      "street": "9011 Harford Rd",
+      "line2": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "country": "US"
+    },
+    "mapUrl": ""
+  },
+  "hours": [
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Mon, Tue, Fri: 9am - 6pm"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Wed, Thu: 8am - 6pm"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Sat: 8am - 1pm"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Sun: Closed"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Mon, Tue, Fri: 9am - 6pm"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Wed, Thu: 8am - 6pm"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Sat: 8am - 1pm"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Sun: Closed"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Mon, Tue, Fri: 9am - 6pm"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Wed, Thu: 8am - 6pm"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Sat: 8am - 1pm"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Sun: Closed"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Mon, Tue, Fri: 9am - 6pm"
+    },
+    {
+      "day": "",
+      "open": "",
+      "close": "",
+      "raw": "Wed, Thu: 8am - 6pm"
+    }
+  ],
+  "team": [
+    {
+      "name": "Veterinarian",
+      "role": "Veterinarian in Parkville, MD",
+      "bio": "",
+      "imageUrl": "",
+      "sourceUrl": "https://carneyanimalhospital.com"
+    },
+    {
+      "name": "Providing Quality Care",
+      "role": "Providing Quality Care as Your Veterinarian Since 1952",
+      "bio": "",
+      "imageUrl": "",
+      "sourceUrl": "https://carneyanimalhospital.com"
+    },
+    {
+      "name": "Experienced Veterinarian In Parkville",
+      "role": "Experienced Veterinarian In Parkville, MD",
+      "bio": "",
+      "imageUrl": "",
+      "sourceUrl": "https://carneyanimalhospital.com"
+    },
+    {
+      "name": "Dr. Andrew",
+      "role": "Dr. Andrew is the best!",
+      "bio": "",
+      "imageUrl": "",
+      "sourceUrl": "https://carneyanimalhospital.com"
+    },
+    {
+      "name": "Experienced",
+      "role": "Experienced and knowledgeable veterinarians",
+      "bio": "",
+      "imageUrl": "",
+      "sourceUrl": "https://carneyanimalhospital.com"
+    },
+    {
+      "name": "Our",
+      "role": "Our experienced veterinarians understand that every pet is unique and deserves individualized attention.",
+      "bio": "",
+      "imageUrl": "",
+      "sourceUrl": "https://carneyanimalhospital.com"
+    },
+    {
+      "name": "Contact Carney Animal Hospital",
+      "role": "Contact Carney Animal Hospital today and schedule an appointment with our experienced and compassionate team.",
+      "bio": "",
+      "imageUrl": "",
+      "sourceUrl": "https://carneyanimalhospital.com"
+    },
+    {
+      "name": "Congrats",
+      "role": "Congrats go out to Dr Andrew and the team at Carney Animal Hospital for being named “Best Veterinarian” by Baltimore Style Magazine in 2021!",
+      "bio": "",
+      "imageUrl": "",
+      "sourceUrl": "https://carneyanimalhospital.com/about-us/"
+    }
+  ],
+  "about": {
+    "summary": "",
+    "sourceText": "About Us - Carney Animal Hospital\nSkip to main content\nMenu\nHome\nAbout\nAbout Us\nTestimonials\nServices\nVeterinary Services\nExperiencing an Emergency?\nPatient Center\n–\nRequest Appointment\nNew Patient Center\nPayment Options\nPet Education Center\n–\nHoliday ​Pet Safety Tips\nPoisons to Pets\nSummertime Safety\nContact Us\n(410) 665-5255\nHome\nAbout\nAbout Us\nTestimonials\nServices\nVeterinary Services\nExperiencing an Emergency?\nPatient Center\n–\nRequest Appointment\nNew Patient Center\nPayment Options\nPet Education Center\n–\nHoliday ​Pet Safety Tips\nPoisons to Pets\nSummertime Safety\nContact Us\n(410) 665-5255\nClose Search\nAbout Us\nCongrats go out to Dr Andrew and the team at Carney Animal Hospital for being named “Best Veterinarian” by Baltimore Style Magazine in 2021!\nWelcome to Carney Animal Hospital where we make healthy pets and happy parents our numbers one focus. Dr. Andrew Jendrek DVM welcomes you to join our happy family at Carney Animal Hospital.\nWe know your pets are members of your family and deserve the best treatment avaible. We’re a full service Veterinary Hospital that covers:\nVaccinations\nSpays and Neuters\nCheck Ups and Wellness Checks\nDental Health\n& Much More!\nWhen you are searching for an animal hospital in Baltimore, MD you need one that can take care of everything your pet needs to live a happy and healthy life. Carney Animal Hospital is the trustworthy veterinarian clinic for every check-up, vaccination, or procedure.\nContact Info\n9011 Harford Rd\nParkville, MD 21234\nPhone:\n(410) 665-5255\nEmail:\ncarneyanimalhospital@yahoo.com\nOffice Hours\nMon, Tue, Fri: 9am - 6pm\nWed, Thu: 8am - 6pm\nSat: 8am - 1pm\nSun: Closed\nClosed on the following days:\nChristmas, New years, Memorial Day, Fourth of July, Thanksgiving, Labor day\n©2026\nCarney Animal Hospital.\nDesigned and Managed by\nViziSites.\nTerms of Use.\nWebsite Accessibility.\nWe use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking “Accept All”, you consent to the use of ALL the cookies. However, you may visit \"Cookie Settings\" to provide a controlled consent.\nCookie Settings\nAccept All\nManage consent\nClose\nPrivacy Overview\nThis website uses cookies to improve your experience while you navigate through the website. Out of these, the cookies that are categorized as necessary are stored on your browser as they are essential for the working of basic functionalities of the website. We also use third-party cookies that help us analyze and understand how you use this website. These cookies will be stored in your browser only with your consent. You also have the option to opt-out of these cookies. But opting out of some of these cookies may affect your browsing experience.\nNecessary\nNecessary\nAlways Enabled\nNecessary cookies are absolutely essential for the website to function properly. This category only includes cookies that ensures basic functionalities and security features of the website. These cookies do not store any personal infor\n\nAbout Us - Carney Animal Hospital\nSkip to main content\nMenu\nHome\nAbout\nAbout Us\nTestimonials\nServices\nVeterinary Services\nExperiencing an Emergency?\nPatient Center\n–\nRequest Appointment\nNew Patient Center\nPayment Options\nPet Education Center\n–\nHoliday ​Pet Safety Tips\nPoisons to Pets\nSummertime Safety\nContact Us\n(410) 665-5255\nHome\nAbout\nAbout Us\nTestimonials\nServices\nVeterinary Services\nExperiencing an Emergency?\nPatient Center\n–\nRequest Appointment\nNew Patient Center\nPayment Options\nPet Education Center\n–\nHoliday ​Pet Safety Tips\nPoisons to Pets\nSummertime Safety\nContact Us\n(410) 665-5255\nClose Search\nAbout Us\nCongrats go out to Dr Andrew and the team at Carney Animal Hospital for being named “Best Veterinarian” by Baltimore Style Magazine in 2021!\nWelcome to Carney Animal Hospital where we make healthy pets and happy parents our numbers one focus. Dr. Andrew Jendrek DVM welcomes you to join our happy family at Carney Animal Hospital.\nWe know your pets are members of your family and deserve the best treatment avaible. We’re a full service Veterinary Hospital that covers:\nVaccinations\nSpays and Neuters\nCheck Ups and Wellness Checks\nDental Health\n& Much More!\nWhen you are searching for an animal hospital in Baltimore, MD you need one that can take care of everything your pet needs to live a happy and healthy life. Carney Animal Hospital is the trustworthy veterinarian clinic for every check-up, vaccination, or procedure.\nContact Info\n9011 Harford Rd\nParkville, MD 21234\nPhone:\n(410) 665-5255\nEmail:\ncarneyanimalhospital@yahoo.com\nOffice Hours\nMon, Tue, Fri: 9am - 6pm\nWed, Thu: 8am - 6pm\nSat: 8am - 1pm\nSun: Closed\nClosed on the following days:\nChristmas, New years, Memorial Day, Fourth of July, Thanksgiving, Labor day\n©2026\nCarney Animal Hospital.\nDesigned and Managed by\nViziSites.\nTerms of Use.\nWebsite Accessibility.\nWe use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking “Accept All”, you consent to the use of ALL the cookies. However, you may visit \"Cookie Settings\" to provide a controlled consent.\nCookie Settings\nAccept All\nManage consent\nClose\nPrivacy Overview\nThis website uses cookies to improve your experience while you navigate through the website. Out of these, the cookies that are categorized as necessary are stored on your browser as they are essential for the working of basic functionalities of the website. We also use third-party cookies that help us analyze and understand how you use this website. These cookies will be stored in your browser only with your consent. You also have the option to opt-out of these cookies. But opting out of some of these cookies may affect your browsing experience.\nNecessary\nNecessary\nAlways Enabled\nNecessary cookies are absolutely essential for the website to function properly. This category only includes cookies that ensures basic functionalities and security features of the website. These cookies do not store any personal infor",
+    "sourceUrls": [
+      "https://carneyanimalhospital.com/about-us/",
+      "https://carneyanimalhospital.com/about-us/"
+    ]
+  },
+  "services": [],
+  "reviews": {
+    "general": [
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Dental problems in animals can lead to diseases, and we strive to prevent this by providing excellent dental care services.",
+        "excerpt": "Dental problems in animals can lead to diseases, and we strive to prevent this by providing excellent dental care services.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com",
+        "categories": [
+          "general"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "We employ state-of-the-art tools and procedures, ensuring a pain-free experience for your beloved pets.",
+        "excerpt": "We employ state-of-the-art tools and procedures, ensuring a pain-free experience for your beloved pets.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com",
+        "categories": [
+          "general"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "We would love to meet you and your pet and give them the highest quality treatment.",
+        "excerpt": "We would love to meet you and your pet and give them the highest quality treatment.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com",
+        "categories": [
+          "general"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Equipped with state-of-the-art facilities and cutting-edge equipment, our veterinary clinic ensures the highest quality of care for your beloved pets.",
+        "excerpt": "Equipped with state-of-the-art facilities and cutting-edge equipment, our veterinary clinic ensures the highest quality of care for your beloved pets.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com",
+        "categories": [
+          "general"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Contact Carney Animal Hospital today and schedule an appointment with our experienced and compassionate team.",
+        "excerpt": "Contact Carney Animal Hospital today and schedule an appointment with our experienced and compassionate team.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com",
+        "categories": [
+          "general"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Christmas, New years, Memorial Day, Fourth of July, Thanksgiving, Labor day",
+        "excerpt": "Christmas, New years, Memorial Day, Fourth of July, Thanksgiving, Labor day",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com",
+        "categories": [
+          "general"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Our knowledgeable staff can help your family learn about potty training your pup, performing nail trims on your puppy or kitten, dietary recommendations, and potential health hazards for your new pet.",
+        "excerpt": "Our knowledgeable staff can help your family learn about potty training your pup, performing nail trims on your puppy or kitten, dietary recommendations, and potential health hazards for your new pet.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general",
+          "dogs",
+          "cats"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Annual age-appropriate lab tests, testing for heartworm and/or tick-borne diseases, and fecal tests for parasites may also be recommended for your pet.",
+        "excerpt": "Annual age-appropriate lab tests, testing for heartworm and/or tick-borne diseases, and fecal tests for parasites may also be recommended for your pet.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "For this reason, we recommend twice-yearly veterinary visits for pets over 7 years of age.",
+        "excerpt": "For this reason, we recommend twice-yearly veterinary visits for pets over 7 years of age.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Your veterinarian can recommend diet modification and supplements to help improve your older pet’s mental sharpness.",
+        "excerpt": "Your veterinarian can recommend diet modification and supplements to help improve your older pet’s mental sharpness.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general",
+          "cats"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "In the early stages of dental disease, your veterinarian can recommend home dental health care measures such as tooth brushing, dental treats and rinses, and dental diets.",
+        "excerpt": "In the early stages of dental disease, your veterinarian can recommend home dental health care measures such as tooth brushing, dental treats and rinses, and dental diets.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Upon discharge, the veterinary team will review any instructions pertaining to post-dental medications, special feeding instructions, and when to resume home dental care.",
+        "excerpt": "Upon discharge, the veterinary team will review any instructions pertaining to post-dental medications, special feeding instructions, and when to resume home dental care.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general",
+          "cats"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      }
+    ],
+    "dogs": [
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Our knowledgeable staff can help your family learn about potty training your pup, performing nail trims on your puppy or kitten, dietary recommendations, and potential health hazards for your new pet.",
+        "excerpt": "Our knowledgeable staff can help your family learn about potty training your pup, performing nail trims on your puppy or kitten, dietary recommendations, and potential health hazards for your new pet.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general",
+          "dogs",
+          "cats"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      }
+    ],
+    "cats": [
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Our knowledgeable staff can help your family learn about potty training your pup, performing nail trims on your puppy or kitten, dietary recommendations, and potential health hazards for your new pet.",
+        "excerpt": "Our knowledgeable staff can help your family learn about potty training your pup, performing nail trims on your puppy or kitten, dietary recommendations, and potential health hazards for your new pet.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general",
+          "dogs",
+          "cats"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Your veterinarian can recommend diet modification and supplements to help improve your older pet’s mental sharpness.",
+        "excerpt": "Your veterinarian can recommend diet modification and supplements to help improve your older pet’s mental sharpness.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general",
+          "cats"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Upon discharge, the veterinary team will review any instructions pertaining to post-dental medications, special feeding instructions, and when to resume home dental care.",
+        "excerpt": "Upon discharge, the veterinary team will review any instructions pertaining to post-dental medications, special feeding instructions, and when to resume home dental care.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general",
+          "cats"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "When there is liver or kidney disease, this may affect the choices of anesthetic drugs recommended by your veterinarian, to prevent anesthetic complications and promote a smooth anesthetic recovery.",
+        "excerpt": "When there is liver or kidney disease, this may affect the choices of anesthetic drugs recommended by your veterinarian, to prevent anesthetic complications and promote a smooth anesthetic recovery.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general",
+          "cats"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      }
+    ],
+    "small_animals": [
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "Any pre-surgical testing that is recommended — Baseline laboratory testing is beneficial so that there are no surprises on surgery day.",
+        "excerpt": "Any pre-surgical testing that is recommended — Baseline laboratory testing is beneficial so that there are no surprises on surgery day.",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general",
+          "small_animals"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      },
+      {
+        "author": "",
+        "rating": null,
+        "date": "",
+        "text": "As your pet is stabilized, your veterinarian will review a diagnostic plan which may include imaging (radiographs, ultrasound) and laboratory evaluation (blood and/or urine tests) to ascertain the severity of the situation and tailor treatment for your pet.",
+        "excerpt": "As your pet is stabilized, your veterinarian will review a diagnostic plan which may include imaging (radiographs, ultrasound) and laboratory evaluation (blood and/or urine tests) to ascertain the severity of the situation and tailor treatm...",
+        "source": "current_website",
+        "sourceUrl": "https://carneyanimalhospital.com/veterinary-services/",
+        "categories": [
+          "general",
+          "small_animals"
+        ],
+        "animalTypes": [],
+        "useForHomepage": true,
+        "notes": "First-pass candidate; verify before publishing"
+      }
+    ],
+    "uncategorized": []
+  },
+  "brand": {
+    "logos": [
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      }
+    ],
+    "colors": [
+      {
+        "hex": "#87302b",
+        "source": "css",
+        "usage": "unknown"
+      },
+      {
+        "hex": "#e0928f",
+        "source": "css",
+        "usage": "unknown"
+      },
+      {
+        "hex": "#ffffff",
+        "source": "css",
+        "usage": "unknown"
+      },
+      {
+        "hex": "#000000",
+        "source": "css",
+        "usage": "unknown"
+      },
+      {
+        "hex": "#e6e6e6",
+        "source": "css",
+        "usage": "unknown"
+      },
+      {
+        "hex": "#f4f4f4",
+        "source": "css",
+        "usage": "unknown"
+      },
+      {
+        "hex": "#16132a",
+        "source": "css",
+        "usage": "unknown"
+      },
+      {
+        "hex": "#676767",
+        "source": "css",
+        "usage": "unknown"
+      },
+      {
+        "hex": "#0070ad",
+        "source": "css",
+        "usage": "unknown"
+      },
+      {
+        "hex": "#00acad",
+        "source": "css",
+        "usage": "unknown"
+      },
+      {
+        "hex": "#f8f8f8",
+        "source": "css",
+        "usage": "unknown"
+      },
+      {
+        "hex": "#f5e2e0",
+        "source": "css",
+        "usage": "unknown"
+      }
+    ],
+    "fonts": [],
+    "images": [
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1-100x100.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNTI0IiB2aWV3Qm94PSIwIDAgODAwIDUyNCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "an orange cat playing with its flowers - Experienced Veterinarian In Parkville, MD",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjU4IiB2aWV3Qm94PSIwIDAgOTAwIDY1OCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "Experienced Veterinarian In Parkville, MD",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjQiIGhlaWdodD0iMTc0IiB2aWV3Qm94PSIwIDAgMzI0IDE3NCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1-100x100.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNTI0IiB2aWV3Qm94PSIwIDAgODAwIDUyNCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "an orange cat playing with its flowers - Experienced Veterinarian In Parkville, MD",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjU4IiB2aWV3Qm94PSIwIDAgOTAwIDY1OCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "Experienced Veterinarian In Parkville, MD",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjQiIGhlaWdodD0iMTc0IiB2aWV3Qm94PSIwIDAgMzI0IDE3NCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1-100x100.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNTI0IiB2aWV3Qm94PSIwIDAgODAwIDUyNCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "an orange cat playing with its flowers - Experienced Veterinarian In Parkville, MD",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjU4IiB2aWV3Qm94PSIwIDAgOTAwIDY1OCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "Experienced Veterinarian In Parkville, MD",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjQiIGhlaWdodD0iMTc0IiB2aWV3Qm94PSIwIDAgMzI0IDE3NCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1-100x100.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/about-us/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/about-us/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/about-us/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/about-us/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTQiIGhlaWdodD0iMTk2IiB2aWV3Qm94PSIwIDAgMTk0IDE5NiI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/about-us/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNTUwIiB2aWV3Qm94PSIwIDAgNjAwIDU1MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/about-us/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjQiIGhlaWdodD0iMTc0IiB2aWV3Qm94PSIwIDAgMzI0IDE3NCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/about-us/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1-100x100.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNTI0IiB2aWV3Qm94PSIwIDAgODAwIDUyNCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "an orange cat playing with its flowers - Experienced Veterinarian In Parkville, MD",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjU4IiB2aWV3Qm94PSIwIDAgOTAwIDY1OCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "Experienced Veterinarian In Parkville, MD",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjQiIGhlaWdodD0iMTc0IiB2aWV3Qm94PSIwIDAgMzI0IDE3NCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1-100x100.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/favicon-1.png",
+        "alt": "favicon/icon",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "https://carneyanimalhospital.com/wp-content/uploads/2023/06/carneyah-logo.png",
+        "alt": "Carney Animal Hospital",
+        "kind": "logo",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNTI0IiB2aWV3Qm94PSIwIDAgODAwIDUyNCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "an orange cat playing with its flowers - Experienced Veterinarian In Parkville, MD",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjU4IiB2aWV3Qm94PSIwIDAgOTAwIDY1OCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "Experienced Veterinarian In Parkville, MD",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgOTAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2NmZDRkYiIvPjwvc3ZnPg==",
+        "alt": "",
+        "kind": "unknown",
+        "practiceSpecific": true,
+        "sourceUrl": "https://carneyanimalhospital.com/"
+      }
+    ]
+  },
+  "links": {
+    "website": "https://carneyanimalhospital.com",
+    "appointment": "https://carneyanimalhospital.com/request-appointment/",
+    "store": "",
+    "pharmacy": "",
+    "onlineForms": "",
+    "facebook": "",
+    "instagram": "",
+    "linkedin": "",
+    "googleBusinessProfile": ""
+  },
+  "seo": {
+    "title": "Veterinarian in Parkville, MD | Trusted Carney Animal Hospital",
+    "description": "Carney Animal Hospital - We're more than a veterinary clinic; we're your partners in pet care as your dedicated veterinarian in Parkville, MD",
+    "canonical": "",
+    "localKeywords": [],
+    "schemaNotes": [],
+    "jsonLd": {
+      "type": "VeterinaryCare",
+      "needsReview": true
+    },
+    "socialImage": "https://carneyanimalhospital.com/wp-content/uploads/2022/10/demo-img-3.jpg"
+  },
+  "favicons": {
+    "sourceLogo": "",
+    "faviconIco": "frontend/public/favicon.ico",
+    "logo192": "frontend/public/logo192.png",
+    "logo512": "frontend/public/logo512.png",
+    "appleTouchIcon": "frontend/public/apple-touch-icon.png",
+    "status": "not_configured",
+    "notes": []
+  },
+  "templateMapping": {
+    "siteConfigUpdates": [],
+    "smartSiteSeedNotes": [],
+    "assetActions": []
+  },
+  "placeholderDomain": {
+    "businessAcronym": "cah",
+    "domain": "cah.RCLintegrated.com",
+    "railwayDomainStatus": "not_configured",
+    "dnsStatus": "not_configured"
+  },
+  "novaSiteEditor": {
+    "demoDefault": "disabled",
+    "finalizedSiteRecommended": true,
+    "siteId": "",
+    "requiredEnvVars": [
+      "EDIT_REQUEST_ENABLED",
+      "EDIT_REQUEST_SITE_ID",
+      "EDIT_REQUEST_SITE_KEY",
+      "EDIT_REQUEST_CALLBACK_AUTH",
+      "PUBLIC_SITE_URL"
+    ]
+  },
+  "openQuestions": []
+}
