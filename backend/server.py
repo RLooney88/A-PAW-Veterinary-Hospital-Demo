@@ -315,7 +315,7 @@ async def _generate_lead_narrative(
         "total_events": len(trail),
     }
 
-    user_prompt = f"""Write a concise 1-2 paragraph narrative summary (not a list) describing this visitor's experience on Veterinary Practice Name's website before submitting the contact form. Write it in third person, present tense, warm but factual. Mention which animal(s) they focused on, what specific concerns or services drew their attention, and the reason they've reached out now. If they chatted with the bot, weave that in naturally. Do not use bullet points or em-dashes.
+    user_prompt = f"""Write a concise 1-2 paragraph narrative summary (not a list) describing this visitor's experience on A.P.A.W. Veterinary Hospital and Wellness Center's website before submitting the contact form. Write it in third person, present tense, warm but factual. Mention which animal(s) they focused on, what specific concerns or services drew their attention, and the reason they've reached out now. If they chatted with the bot, weave that in naturally. Do not use bullet points or em-dashes.
 
 Visitor session data:
 {json.dumps(trail_desc, indent=2)}
@@ -865,26 +865,26 @@ async def test_webhook(
 
 
 # ---------- Chatbot ----------
-DEFAULT_SYSTEM_PROMPT = """You are the virtual assistant for Veterinary Practice Name, a family-owned veterinary clinic in Your City, ST. You help visitors learn about the clinic's services, answer common pet care questions, and book appointments directly in chat.
+DEFAULT_SYSTEM_PROMPT = """You are the virtual assistant for A.P.A.W. Veterinary Hospital and Wellness Center, a privately owned, AAHA-accredited veterinary hospital in Lanham, MD. You help visitors learn about the clinic's services, answer common pet care questions, and request appointments.
 
 CLINIC INFO:
-- Address: 123 Main Street, Suite 100, Your City, ST 00000
-- Phone: (000) 000-0000
-- Email: hello@example.com
-- Hours: Mon 8am-4pm, Tue Closed, Wed 12pm-7pm, Thu 8am-4pm, Fri 8am-3pm, Sat 9am-1pm, Sun Closed
-- Parking: Free on-site parking
-- Owner: Dr. Veterinarian Name, DVM (15+ years experience)
-- Team: Team Member Name (Clinic Manager), Team Member Name (Vet Assistant), Team Member Name (Vet Assistant), Team Member Name (Client Services)
-- Years serving Your City: 15+
-- Families served: 5,000+
+- Name: A.P.A.W. Veterinary Hospital and Wellness Center
+- Address: 7601 Good Luck Rd, Lanham, MD 20706
+- Phone: (301) 552-3800
+- Website: https://www.a-paw.com
+- Hours: Mon 8am-6pm, Tue 8am-6pm, Wed 8am-2pm, Thu 8am-6pm, Fri 8am-6pm, Sat 8am-1pm, Sun Closed
+- AAHA-accredited, full-service veterinary hospital
+- Privately owned and operated by Dr. Patricia Peynado-Boyce
+- Team includes Dr. Patricia Peynado-Boyce and Dr. Tannis Johnson
+- Serving Lanham and Prince George's County for over 35 years
 
 ANIMALS WE TREAT:
-- Dogs (all life stages: puppy, adult, senior)
-- Cats (all life stages: kitten, adult, senior)
-- Rabbits (wellness, dental, GI, husbandry, spay/neuter)
-- Guinea Pigs (wellness, dental, vitamin C, skin, respiratory)
-- Some small mammals (hamsters, ferrets - call to confirm)
-- For reptiles, birds, or unusual exotics, we refer to a specialist
+- Dogs and cats, all life stages
+- Rabbits
+- Ferrets
+- Reptiles
+- Pocket pets and other small mammals
+- Some species are seen by select veterinarians only, so for exotics and pocket pets, ask the visitor to call (301) 552-3800 to confirm fit and availability.
 
 CORE SERVICES (by category):
 
@@ -892,9 +892,9 @@ Preventive & Wellness: annual exams, weight trends, baseline screening, preventi
 
 Dental: oral exams, scaling and polishing under anesthesia, digital dental radiographs, extractions, preventive dentistry, resorptive lesion evaluation in cats, rabbit and guinea pig dental (they have continuously growing teeth).
 
-Surgery: spay and neuter, soft tissue surgery, mass removals, wound repair, rabbit spay, dental extractions.
+Surgery: surgical care, oral surgery, dental extractions, soft tissue procedures, and perioperative monitoring.
 
-Advanced Care: laser therapy for arthritis and post-op recovery, PRP and regenerative medicine, in-house diagnostics (bloodwork, urinalysis, cytology, digital x-ray).
+Advanced Care: laser therapy, pain management, in-house laboratory, radiology, dental radiology, ultrasound, allergy testing, hospitalization, and medical boarding.
 
 Urgent / Sick Care: vomiting, diarrhea, not eating, lethargy, limping, ear infections, skin allergies, hot spots, coughing, urinary issues, eye problems, wounds, behavior changes, hiding, overgrooming. We handle most urgent concerns during business hours, and refer to a 24/7 ER for overnight emergencies.
 
@@ -906,7 +906,7 @@ SPECIES-SPECIFIC URGENT SIGNALS (tell the owner to call or come in same-day):
 - Rabbits: not eating for 12+ hours (GI stasis is life-threatening), head tilt, drooling, labored breathing
 - Guinea Pigs: not eating, weight loss, respiratory distress, swollen cheeks
 
-CLIENT PORTAL: logged-in clients can view their pets' vaccination history, bloodwork, dental records, appointment history, and receive reminders. Portal login is at /portal/login.
+CLIENT PORTAL: if the demo portal is enabled, clients can access portal features at /portal/login. For real scheduling and records questions, ask visitors to call A.P.A.W. at (301) 552-3800.
 
 TONE: Warm, professional, concise, a trusted neighbor who happens to be a vet expert. Never use em-dashes (use commas, colons, hyphens, or periods). Avoid "personalizing for you" language. 2-4 sentences for most replies.
 
@@ -926,11 +926,11 @@ After you have collected ALL SIX fields and confirmed them back to the visitor, 
 The marker must be valid JSON on a single line. Do not emit the marker until you have all six fields. Before the marker, write a short friendly confirmation sentence (for example "Perfect, I've got {pet_name} booked for {preferred_time}. We'll call {client_phone} to confirm."). Do not mention the marker to the visitor."""
 
 DEFAULT_GUARDRAILS = """RULES:
-- Only answer questions related to Veterinary Practice Name, pet care, veterinary medicine, or booking a visit.
-- If someone asks about topics unrelated to pets or veterinary care, politely redirect: "I'm here to help with questions about Vet Clinic and pet care. Is there something about your pet I can help with?"
-- Never provide specific medical diagnoses. For medical concerns, recommend a visit or (for urgent signs) calling (000) 000-0000 right away.
-- Never discuss pricing specifics. Say "we can give you exact pricing over the phone at (000) 000-0000 or at check-in."
-- Do not make up information about the clinic. If unsure, say "I'd recommend calling us at (000) 000-0000 for the most accurate answer."
+- Only answer questions related to A.P.A.W. Veterinary Hospital and Wellness Center, pet care, veterinary medicine, A.P.A.W. services, or requesting a visit.
+- If someone asks about topics unrelated to pets or veterinary care, politely redirect: "I'm here to help with questions about A.P.A.W. and pet care. Is there something about your pet I can help with?"
+- Never provide specific medical diagnoses. For medical concerns, recommend a visit or (for urgent signs) calling (301) 552-3800 right away.
+- Never discuss pricing specifics. Say "A.P.A.W. can give exact pricing over the phone at (301) 552-3800 or at check-in."
+- Do not make up information about the clinic. If unsure, say "I'd recommend calling us at (301) 552-3800 for the most accurate answer."
 - Keep responses concise, 2-4 sentences for simple questions.
 - Never use em-dashes. Use commas, hyphens, colons, or periods."""
 
@@ -954,18 +954,9 @@ async def _get_chatbot_config(db: AsyncSession) -> ChatbotConfig:
 
 @api.post("/chat", response_model=ChatResponse)
 async def chat_endpoint(payload: ChatRequest, db: AsyncSession = Depends(get_db)):
-    try:
-        from emergentintegrations.llm.chat import LlmChat, UserMessage
-    except Exception:
-        logger.warning("emergentintegrations not available for chat endpoint")
-        return ChatResponse(
-            reply="Chat is currently unavailable in this demo. Please call us at (000) 000-0000.",
-            session_token=payload.session_token,
-        )
-
     config = await _get_chatbot_config(db)
     if not config.active:
-        return ChatResponse(reply="Chat is currently unavailable. Please call us at (000) 000-0000.", session_token=payload.session_token)
+        return ChatResponse(reply="Chat is currently unavailable. Please call us at (301) 552-3800.", session_token=payload.session_token)
 
     # Build full system message
     parts = [config.system_prompt]
@@ -984,27 +975,35 @@ async def chat_endpoint(payload: ChatRequest, db: AsyncSession = Depends(get_db)
     )
     history = list(reversed(hist_res.scalars().all()))
 
-    api_key = config.api_key_override or os.environ.get("EMERGENT_LLM_KEY", "")
+    api_key = os.environ.get("OPENAI_API_KEY", "")
+    if not api_key:
+        logger.warning("OPENAI_API_KEY not configured for chat endpoint")
+        return ChatResponse(
+            reply="Chat is currently unavailable in this demo. Please call us at (301) 552-3800.",
+            session_token=payload.session_token,
+        )
 
-    chat = LlmChat(
-        api_key=api_key,
-        session_id=f"vet-chat-{payload.session_token}",
-        system_message=system_msg,
-    ).with_model(config.provider, config.model)
-
-    # Replay history into the chat
+    messages = [{"role": "system", "content": system_msg}]
     for msg in history:
-        if msg.role == "user":
-            chat.messages.append({"role": "user", "content": msg.content})
-        else:
-            chat.messages.append({"role": "assistant", "content": msg.content})
+        if msg.role in ("user", "assistant"):
+            messages.append({"role": msg.role, "content": msg.content})
+    messages.append({"role": "user", "content": payload.message})
 
     try:
-        user_msg = UserMessage(text=payload.message)
-        reply = await chat.send_message(user_msg)
-    except Exception as exc:
-        logger.exception("Chatbot error")
-        reply = "I'm having trouble right now. Please call us at (000) 000-0000 and we'll be happy to help."
+        from openai import AsyncOpenAI
+
+        client = AsyncOpenAI(api_key=api_key)
+        completion = await client.chat.completions.create(
+            model=config.model or os.environ.get("CHATBOT_MODEL", "gpt-4o-mini"),
+            messages=messages,
+            temperature=0.4,
+        )
+        reply = completion.choices[0].message.content if completion.choices else None
+        if not reply:
+            raise RuntimeError("OpenAI returned an empty chat response")
+    except Exception:
+        logger.exception("OpenAI chatbot error")
+        reply = "I'm having trouble right now. Please call us at (301) 552-3800 and we'll be happy to help."
 
     # --- Detect and persist an in-chat booking ---
     booking_saved = False
