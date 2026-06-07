@@ -118,10 +118,10 @@ export default function Navbar() {
                       e.preventDefault();
                       pickAnimal(item);
                     }}
-                    className="group flex items-center gap-3 rounded-xl px-3 py-3 cursor-pointer focus:bg-clinic-red-soft data-[highlighted]:bg-clinic-red-soft"
+                    className="group flex items-center gap-3 rounded-xl px-3 py-3 cursor-pointer focus:bg-clinic-amber-soft data-[highlighted]:bg-clinic-amber-soft"
                     data-testid={`nav-animals-${item.intent}`}
                   >
-                    <span className="h-10 w-10 rounded-xl bg-clinic-sage text-clinic-forest grid place-items-center group-hover:bg-clinic-red group-hover:text-white transition-colors">
+                    <span className="h-10 w-10 rounded-xl bg-clinic-sage text-clinic-forest grid place-items-center group-hover:bg-clinic-amber group-hover:text-clinic-navy transition-colors">
                       <item.Icon className="h-5 w-5" strokeWidth={2.2} />
                     </span>
                     <span className="flex-1">
@@ -163,9 +163,11 @@ export default function Navbar() {
               target={isExternalAppointment ? "_blank" : undefined}
               rel={isExternalAppointment ? "noreferrer" : undefined}
               className={`hidden md:inline-flex items-center gap-2 rounded-full px-5 py-3 font-semibold text-sm transition-colors ${
-                transparent
-                  ? "bg-clinic-red hover:bg-clinic-red-hover text-white"
-                  : "bg-clinic-navy hover:bg-clinic-navy-hover text-white"
+                isExternalAppointment
+                  ? "bg-clinic-amber hover:bg-clinic-red text-clinic-navy hover:text-white shadow-lg shadow-clinic-amber/30"
+                  : transparent
+                    ? "bg-clinic-red hover:bg-clinic-amber text-white hover:text-clinic-navy"
+                    : "bg-clinic-navy hover:bg-clinic-amber text-white hover:text-clinic-navy"
               }`}
               data-testid="nav-call-btn"
             >
@@ -226,7 +228,7 @@ export default function Navbar() {
               href={isExternalAppointment ? appointmentHref : contact.phoneHref}
               target={isExternalAppointment ? "_blank" : undefined}
               rel={isExternalAppointment ? "noreferrer" : undefined}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-clinic-red px-5 py-3 text-white font-semibold"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-clinic-amber hover:bg-clinic-red px-5 py-3 text-clinic-navy hover:text-white font-semibold transition-colors"
             >
               <Phone className="h-4 w-4" /> {isExternalAppointment ? "Book Online" : contact.phone}
             </a>
@@ -244,7 +246,7 @@ function linkCls(transparent, isActive) {
     }`;
   }
   return `text-sm font-semibold transition-colors ${
-    isActive ? "text-clinic-red" : "text-clinic-ink hover:text-clinic-red"
+    isActive ? "text-clinic-red" : "text-clinic-ink hover:text-clinic-amber"
   }`;
 }
 

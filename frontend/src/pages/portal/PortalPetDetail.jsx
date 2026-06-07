@@ -93,7 +93,7 @@ export default function PortalPetDetail() {
         </div>
         <Link
           to={`/portal/book?pet=${pet.id}`}
-          className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-5 py-2.5 font-semibold text-sm shrink-0 shadow-sm"
+          className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-amber text-white hover:text-clinic-navy rounded-full px-5 py-2.5 font-semibold text-sm shrink-0 shadow-sm"
           data-testid="portal-pet-book"
         >
           <CalendarPlus className="h-4 w-4" /> Book for {pet.name}

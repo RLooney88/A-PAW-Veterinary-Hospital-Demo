@@ -259,7 +259,7 @@ export default function AnimalPage() {
                 onClick={() =>
                   track({ signalType: "cta_click", label: `animal_cta:${animal.slug}`, intent: animal.slug, strength: 2 })
                 }
-                className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-8 py-4 font-semibold shadow-xl shadow-clinic-red/30 transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-amber text-white hover:text-clinic-navy rounded-full px-8 py-4 font-semibold shadow-xl shadow-clinic-red/30 transition-transform hover:-translate-y-0.5"
                 data-testid={`animal-cta-${animal.slug}`}
               >
                 <PawPrint className="h-4 w-4" />
@@ -528,7 +528,7 @@ export default function AnimalPage() {
             </div>
             <Link
               to="/services"
-              className="text-sm font-bold text-clinic-red hover:text-clinic-red-hover underline underline-offset-4 decoration-2"
+              className="text-sm font-bold text-clinic-red hover:text-clinic-amber underline underline-offset-4 decoration-2"
             >
               See all services
             </Link>

@@ -244,7 +244,7 @@ export default function SlotPicker({ leadId, lead, preferredType, onBooked }) {
             <button
               onClick={confirm}
               disabled={!selected || booking}
-              className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-6 py-2.5 font-semibold disabled:opacity-50"
+              className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-amber text-white hover:text-clinic-navy rounded-full px-6 py-2.5 font-semibold disabled:opacity-50"
               data-testid="slot-picker-confirm"
             >
               {booking ? "Booking…" : <><CheckCircle2 className="h-4 w-4" /> Confirm appointment</>}

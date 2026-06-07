@@ -47,7 +47,7 @@ export default function InlineCTA({ forceIntent = null, forceSubIntent = null } 
               <Link
                 to={primary_cta_href || "/appointment"}
                 onClick={() => track({ signalType: "cta_click", label: "inline_cta:schedule" })}
-                className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-8 py-4 font-semibold shadow-xl shadow-clinic-red/30 transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-clinic-amber hover:bg-clinic-red text-clinic-navy hover:text-white rounded-full px-8 py-4 font-extrabold shadow-xl shadow-clinic-amber/30 transition-all hover:-translate-y-0.5"
                 data-testid="inline-cta-primary"
               >
                 <PawPrint className="h-4 w-4" />
@@ -55,7 +55,7 @@ export default function InlineCTA({ forceIntent = null, forceSubIntent = null } 
               </Link>
               <a
                 href="tel:+10000000000"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 backdrop-blur-md text-sand-50 rounded-full px-7 py-4 font-semibold transition-colors"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-clinic-amber border border-white/25 hover:border-clinic-amber backdrop-blur-md text-sand-50 hover:text-clinic-navy rounded-full px-7 py-4 font-semibold transition-colors"
                 data-testid="inline-cta-phone"
               >
                 <Phone className="h-4 w-4" /> Call (000) 000-0000

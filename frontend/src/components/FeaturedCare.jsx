@@ -25,7 +25,7 @@ export default function FeaturedCare() {
             <p className="mt-2 text-clinic-mist max-w-xl">{content.subheading}</p>
           )}
         </div>
-        <Link to={servicesLink} className="text-sm font-bold text-clinic-red hover:text-clinic-red-hover underline underline-offset-4 decoration-2" data-testid="featured-view-all">
+        <Link to={servicesLink} className="text-sm font-bold text-clinic-red hover:text-clinic-amber underline underline-offset-4 decoration-2" data-testid="featured-view-all">
           {servicesLabel}
         </Link>
       </div>
@@ -38,7 +38,7 @@ export default function FeaturedCare() {
             onClick={() =>
               track({ signalType: "cta_click", label: `featured:${card.title}`, strength: 2 })
             }
-            className="group bg-white rounded-2xl border border-sand-300/60 overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)]"
+            className="group bg-white rounded-2xl border border-sand-300/60 overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:border-clinic-amber hover:shadow-[0_20px_40px_rgba(116,13,58,0.12)]"
             data-testid={`featured-card-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
           >
             {card.image && (
@@ -55,7 +55,7 @@ export default function FeaturedCare() {
             <div className="p-5">
               <div className="font-display font-bold text-clinic-navy text-base">{card.title}</div>
               <p className="text-sm text-clinic-mist mt-1.5 line-clamp-2">{card.description}</p>
-              <div className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-clinic-red group-hover:text-clinic-red-hover transition-colors">
+              <div className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-clinic-red group-hover:bg-clinic-amber group-hover:text-clinic-navy transition-colors rounded-full px-3 py-1 -ml-3">
                 Learn more <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
               </div>
             </div>

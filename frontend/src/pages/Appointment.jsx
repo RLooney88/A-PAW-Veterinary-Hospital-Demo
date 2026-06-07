@@ -215,7 +215,7 @@ export default function Appointment() {
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-7 py-3 font-semibold disabled:opacity-60"
+              className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-amber text-white hover:text-clinic-navy rounded-full px-7 py-3 font-semibold disabled:opacity-60"
               data-testid="appointment-submit-btn"
             >
               {loading ? "Sending…" : "Request appointment"}

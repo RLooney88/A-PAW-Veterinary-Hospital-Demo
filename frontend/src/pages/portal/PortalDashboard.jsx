@@ -61,7 +61,7 @@ export default function PortalDashboard() {
         </div>
         <Link
           to="/portal/book"
-          className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-5 py-2.5 font-semibold text-sm shadow-sm"
+          className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-amber text-white hover:text-clinic-navy rounded-full px-5 py-2.5 font-semibold text-sm shadow-sm"
           data-testid="portal-dashboard-book"
         >
           <CalendarPlus className="h-4 w-4" /> Book an appointment

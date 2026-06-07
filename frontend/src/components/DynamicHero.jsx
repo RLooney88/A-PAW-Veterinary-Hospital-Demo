@@ -74,7 +74,7 @@ export default function DynamicHero() {
                   className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-bold text-sand-50/90"
                   data-testid="hero-eyebrow"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-clinic-red" /> {eyebrow}
+                  <span className="h-1.5 w-1.5 rounded-full bg-clinic-amber" /> {eyebrow}
                 </span>
               </div>
             )}
@@ -102,7 +102,7 @@ export default function DynamicHero() {
                 <>
                   <Link
                     to={primary_cta_href || "/appointment"}
-                    className="inline-flex items-center gap-2 bg-clinic-red hover:bg-clinic-red-hover text-white rounded-full px-8 py-4 font-semibold shadow-xl shadow-clinic-red/30 transition-transform hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 bg-clinic-amber hover:bg-clinic-red text-clinic-navy hover:text-white rounded-full px-8 py-4 font-extrabold shadow-xl shadow-clinic-amber/30 transition-all hover:-translate-y-0.5"
                     data-testid="hero-primary-cta"
                   >
                     <PawPrint className="h-4 w-4" />
@@ -110,7 +110,7 @@ export default function DynamicHero() {
                   </Link>
                   <a
                     href={secondary_cta_href || contact.phoneHref}
-                    className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 backdrop-blur-md text-sand-50 rounded-full px-7 py-4 font-semibold transition-colors"
+                    className="inline-flex items-center gap-2 bg-white/10 hover:bg-clinic-amber border border-white/25 hover:border-clinic-amber backdrop-blur-md text-sand-50 hover:text-clinic-navy rounded-full px-7 py-4 font-semibold transition-colors"
                     data-testid="hero-secondary-cta"
                   >
                     <Phone className="h-4 w-4" /> {secondary_cta_label || `Call ${contact.phone}`}

@@ -52,7 +52,7 @@ export default function IntentSelector() {
               onClick={() => handleSelect(card)}
               className={`group relative text-left rounded-[1.5rem] overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_rgba(0,0,0,0.08)] border ${
                 active
-                  ? "border-clinic-red bg-clinic-red-soft ring-2 ring-clinic-red/40"
+                  ? "border-clinic-red bg-clinic-amber-soft ring-2 ring-clinic-amber/50"
                   : "border-sand-300/60 bg-white"
               }`}
               data-testid={`intent-card-${card.intent}`}
@@ -69,7 +69,7 @@ export default function IntentSelector() {
               <div className="p-6">
                 <div className="font-display font-bold text-clinic-navy text-xl">{card.title}</div>
                 <p className="text-sm text-clinic-mist mt-1.5 line-clamp-2">{card.description}</p>
-                <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-clinic-red group-hover:text-clinic-red-hover transition-colors">
+                <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-clinic-red group-hover:bg-clinic-amber group-hover:text-clinic-navy transition-colors rounded-full px-3 py-1 -ml-3">
                   {active ? "Currently viewing" : "See care"}
                   <PawPrint className="h-3.5 w-3.5 transition-transform group-hover:rotate-12" />
                 </div>

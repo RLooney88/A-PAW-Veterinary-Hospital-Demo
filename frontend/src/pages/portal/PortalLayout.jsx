@@ -43,8 +43,8 @@ export default function PortalLayout() {
               className={({ isActive }) =>
                 `inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
                   isActive
-                    ? "bg-clinic-red text-white"
-                    : "bg-clinic-red/10 text-clinic-red hover:bg-clinic-red hover:text-white"
+                    ? "bg-clinic-amber text-clinic-navy"
+                    : "bg-clinic-amber-soft text-clinic-navy hover:bg-clinic-amber"
                 }`
               }
               data-testid="portal-nav-book"

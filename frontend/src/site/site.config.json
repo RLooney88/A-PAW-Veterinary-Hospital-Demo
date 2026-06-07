@@ -14,10 +14,10 @@
     "logo": "/brand/apaw-logo.jpg",
     "logoAlt": "A.P.A.W. Veterinary Hospital and Wellness Center logo",
     "colors": {
-      "light": "#FFF9E6",
+      "light": "#FFF9E2",
       "dark": "#2A1124",
-      "accent": "#A0003D",
-      "accentLight": "#FFE06D"
+      "accent": "#740D3A",
+      "accentLight": "#FFD52D"
     }
   },
   "contact": {

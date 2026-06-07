@@ -32,7 +32,7 @@ function ServiceCard({ service }) {
       <div className="p-5">
         <h3 className="font-display font-bold text-clinic-navy text-base">{service.title}</h3>
         <p className="text-sm text-clinic-mist mt-1.5 line-clamp-2">{service.summary}</p>
-        <div className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-clinic-red group-hover:text-clinic-red-hover transition-colors">
+        <div className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-clinic-red group-hover:bg-clinic-amber group-hover:text-clinic-navy transition-colors rounded-full px-3 py-1 -ml-3">
           Learn more <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </div>
       </div>
@@ -44,17 +44,17 @@ function UrgentCard({ service }) {
   return (
     <Link
       to={`/services/${service.slug}`}
-      className="group flex items-start gap-4 bg-white rounded-xl border border-sand-300/60 p-4 hover:border-clinic-red/30 hover:bg-clinic-red-soft/30 transition-all duration-200"
+      className="group flex items-start gap-4 bg-white rounded-xl border border-sand-300/60 p-4 hover:border-clinic-amber hover:bg-clinic-amber-soft/60 transition-all duration-200"
       data-testid={`urgent-card-${service.slug}`}
     >
-      <div className="h-10 w-10 rounded-lg bg-amber-50 grid place-items-center shrink-0 group-hover:bg-clinic-red-soft">
-        <AlertTriangle className="h-4 w-4 text-amber-500 group-hover:text-clinic-red" />
+      <div className="h-10 w-10 rounded-lg bg-amber-50 grid place-items-center shrink-0 group-hover:bg-clinic-amber-soft">
+        <AlertTriangle className="h-4 w-4 text-amber-500 group-hover:text-clinic-amber" />
       </div>
       <div className="flex-1 min-w-0">
         <div className="font-display font-bold text-sm text-clinic-navy">{service.title}</div>
         <p className="text-xs text-clinic-mist mt-0.5 line-clamp-2">{service.summary}</p>
       </div>
-      <ChevronRight className="h-4 w-4 text-clinic-mist shrink-0 mt-1 group-hover:text-clinic-red transition-colors" />
+      <ChevronRight className="h-4 w-4 text-clinic-mist shrink-0 mt-1 group-hover:text-clinic-amber transition-colors" />
     </Link>
   );
 }
@@ -176,7 +176,7 @@ export default function Services() {
           <div key={key} className="mt-14">
             <button
               onClick={() => setActiveTab(key)}
-              className="inline-flex items-center gap-2 text-2xl font-display font-bold text-clinic-navy hover:text-clinic-red transition-colors"
+              className="inline-flex items-center gap-2 text-2xl font-display font-bold text-clinic-navy hover:text-clinic-amber transition-colors"
             >
               {animal.label}
               <ChevronRight className="h-5 w-5" />

@@ -123,7 +123,7 @@ export default function ChatWidgetSlot() {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-30 h-14 w-14 rounded-full bg-clinic-red hover:bg-clinic-red-hover text-white shadow-xl shadow-clinic-red/30 grid place-items-center transition-transform hover:scale-105"
+        className="fixed bottom-6 right-6 z-30 h-14 w-14 rounded-full bg-clinic-red hover:bg-clinic-amber text-white hover:text-clinic-navy shadow-xl shadow-clinic-red/30 grid place-items-center transition-transform hover:scale-105"
         data-testid="chat-widget-trigger"
         aria-label="Open chat"
       >
