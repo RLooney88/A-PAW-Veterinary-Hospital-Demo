@@ -2,12 +2,12 @@
 
 const FALLBACK_CONFIG = {
   practice: {
-    name: "Veterinary Practice Name",
-    shortName: "Vet Clinic",
-    displayLines: ["Veterinary", "Clinic"],
-    tagline: "Compassionate veterinary care for pets and families.",
-    description: "A local veterinary practice providing thoughtful, modern care for pets and their people.",
-    serviceArea: "Your City, ST",
+    name: "A.P.A.W. Veterinary Hospital and Wellness Center",
+    shortName: "A.P.A.W.",
+    displayLines: ["A.P.A.W.", "Veterinary Hospital"],
+    tagline: "Compassionate, AAHA-accredited veterinary care in Lanham.",
+    description: "A full-service veterinary hospital in Lanham caring for dogs, cats, rabbits, ferrets, reptiles, and pocket pets.",
+    serviceArea: "Lanham, MD and Prince George’s County",
   },
   brand: {
     logo: "/brand/logo-placeholder.svg",
@@ -20,15 +20,15 @@ const FALLBACK_CONFIG = {
     },
   },
   contact: {
-    phone: "(000) 000-0000",
-    phoneHref: "tel:+10000000000",
-    email: "hello@example.com",
+    phone: "(301) 552-3800",
+    phoneHref: "tel:+13015523800",
+    email: "apawvet@gmail.com",
     address: {
-      street: "123 Main Street",
-      line2: "Suite 100",
-      city: "Your City",
-      state: "ST",
-      zip: "00000",
+      street: "7601 Good Luck Rd",
+      line2: "",
+      city: "Lanham",
+      state: "MD",
+      zip: "20706",
       country: "US",
     },
   },

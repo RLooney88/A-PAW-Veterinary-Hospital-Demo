@@ -697,7 +697,7 @@
       "description": "Inline CTA block shown on service/condition pages.",
       "default_content": {
         "headline": "Ready to schedule?",
-        "body": "Call or request a visit and the A.P.A.W. team will help guide the next step.",
+        "body": "Call (301) 552-3800, email apawvet@gmail.com, or request a visit and the A.P.A.W. team will help guide the next step.",
         "primary_cta_label": "Request an appointment",
         "primary_cta_href": "https://www.a-paw.com/contact",
         "image_url": "/images/animals/hero-svc-default.webp",
