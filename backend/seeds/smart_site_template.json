@@ -9,15 +9,15 @@
       "page": "home",
       "description": "Main hero on the homepage, swaps copy + image per intent.",
       "default_content": {
-        "eyebrow": "Parkville Veterinary Care Since 1952",
-        "headline": "Healthy pets and happy parents start here.",
-        "subheadline": "Carney Animal Hospital provides full-service veterinary care in Parkville, including wellness exams, vaccinations, dental care, laser surgery, ultrasound, and spay/neuter procedures.",
+        "eyebrow": "AAHA-Accredited Veterinary Care in Lanham",
+        "headline": "Warm, full-service care for every pet in your family.",
+        "subheadline": "A.P.A.W. is a privately owned veterinary hospital serving Prince George’s County with preventive care, diagnostics, surgery, dentistry, urgent care, boarding, and support for dogs, cats, rabbits, ferrets, reptiles, and pocket pets.",
         "primary_cta_label": "Request Appointment",
-        "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
-        "secondary_cta_label": "Call (410) 665-5255",
-        "secondary_cta_href": "tel:+14106655255",
+        "primary_cta_href": "https://www.a-paw.com/contact",
+        "secondary_cta_label": "Call (301) 552-3800",
+        "secondary_cta_href": "tel:+13015523800",
         "image_url": "/images/animals/hero-home-default.webp",
-        "badge": "Community veterinary hospital in Parkville, MD"
+        "badge": "Serving Prince George’s County for over 35 years"
       },
       "switches": [
         {
@@ -27,19 +27,19 @@
           },
           "priority": 100,
           "content": {
-            "eyebrow": "Caring for Parkville Dogs",
+            "eyebrow": "Caring for Lanham Dogs",
             "headline": "Tails wag when you walk in the door.",
             "subheadline": "From first-puppy visits to senior care, we treat every dog like family.",
             "primary_cta_label": "Book a Dog Visit",
-            "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
-            "secondary_cta_label": "Call (410) 665-5255",
-            "secondary_cta_href": "tel:+14106655255",
+            "primary_cta_href": "https://www.a-paw.com/contact",
+            "secondary_cta_label": "Call (301) 552-3800",
+            "secondary_cta_href": "tel:+13015523800",
             "image_url": "/images/animals/hero-dogs-default.webp",
-            "badge": "Family-owned clinic in Parkville, MD"
+            "badge": "Privately owned clinic in Lanham, MD"
           }
         },
         {
-          "name": "Dogs \u2192 New Puppy",
+          "name": "Dogs → New Puppy",
           "rule": {
             "intent": "dogs",
             "sub_intent": "new_puppy"
@@ -50,15 +50,15 @@
             "headline": "A strong start for your new best friend.",
             "subheadline": "Vaccine schedules, spay/neuter timing and early preventive care, all in one friendly visit.",
             "primary_cta_label": "Book Puppy's First Visit",
-            "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
-            "secondary_cta_label": "Call (410) 665-5255",
-            "secondary_cta_href": "tel:+14106655255",
+            "primary_cta_href": "https://www.a-paw.com/contact",
+            "secondary_cta_label": "Call (301) 552-3800",
+            "secondary_cta_href": "tel:+13015523800",
             "image_url": "/images/animals/puppy-hero-switch.webp",
-            "badge": "Family-owned clinic in Parkville, MD"
+            "badge": "Privately owned clinic in Lanham, MD"
           }
         },
         {
-          "name": "Dogs \u2192 Senior Care",
+          "name": "Dogs → Senior Care",
           "rule": {
             "intent": "dogs",
             "sub_intent": "senior"
@@ -69,11 +69,11 @@
             "headline": "Comfort, mobility, and quality of life.",
             "subheadline": "Laser therapy, arthritis support, and chronic-condition monitoring for older dogs.",
             "primary_cta_label": "Senior Wellness Consult",
-            "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
-            "secondary_cta_label": "Call (410) 665-5255",
-            "secondary_cta_href": "tel:+14106655255",
+            "primary_cta_href": "https://www.a-paw.com/contact",
+            "secondary_cta_label": "Call (301) 552-3800",
+            "secondary_cta_href": "tel:+13015523800",
             "image_url": "/images/animals/hero-dogs-senior.webp",
-            "badge": "Family-owned clinic in Parkville, MD"
+            "badge": "Privately owned clinic in Lanham, MD"
           }
         },
         {
@@ -87,15 +87,15 @@
             "headline": "Calm, low-stress care your cat will tolerate.",
             "subheadline": "We go slow, we listen, and we put comfort first.",
             "primary_cta_label": "Book a Cat Visit",
-            "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
-            "secondary_cta_label": "Call (410) 665-5255",
-            "secondary_cta_href": "tel:+14106655255",
+            "primary_cta_href": "https://www.a-paw.com/contact",
+            "secondary_cta_label": "Call (301) 552-3800",
+            "secondary_cta_href": "tel:+13015523800",
             "image_url": "/images/animals/cat-hero-home.webp",
-            "badge": "Family-owned clinic in Parkville, MD"
+            "badge": "Privately owned clinic in Lanham, MD"
           }
         },
         {
-          "name": "Cats \u2192 New Kitten",
+          "name": "Cats → New Kitten",
           "rule": {
             "intent": "cats",
             "sub_intent": "new_kitten"
@@ -106,11 +106,11 @@
             "headline": "The healthiest start for your new kitten.",
             "subheadline": "Kitten vaccines, spay/neuter timing, and gentle first visits.",
             "primary_cta_label": "Book Kitten's First Visit",
-            "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
-            "secondary_cta_label": "Call (410) 665-5255",
-            "secondary_cta_href": "tel:+14106655255",
+            "primary_cta_href": "https://www.a-paw.com/contact",
+            "secondary_cta_label": "Call (301) 552-3800",
+            "secondary_cta_href": "tel:+13015523800",
             "image_url": "/images/animals/hero-cats-kitten.webp",
-            "badge": "Family-owned clinic in Parkville, MD"
+            "badge": "Privately owned clinic in Lanham, MD"
           }
         },
         {
@@ -124,11 +124,11 @@
             "headline": "Gentle, species-appropriate care beyond dogs & cats.",
             "subheadline": "Let's talk about your pet and see if we're the right fit for their needs.",
             "primary_cta_label": "Contact the Clinic",
-            "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
-            "secondary_cta_label": "Call (410) 665-5255",
-            "secondary_cta_href": "tel:+14106655255",
+            "primary_cta_href": "https://www.a-paw.com/contact",
+            "secondary_cta_label": "Call (301) 552-3800",
+            "secondary_cta_href": "tel:+13015523800",
             "image_url": "/images/animals/hero-critters-page.webp",
-            "badge": "Family-owned clinic in Parkville, MD"
+            "badge": "Privately owned clinic in Lanham, MD"
           }
         },
         {
@@ -142,11 +142,11 @@
             "headline": "Let's figure this out together.",
             "subheadline": "Describe what's going on and we'll guide you to the next best step, today.",
             "primary_cta_label": "Request an Urgent Visit",
-            "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
-            "secondary_cta_label": "Call (410) 665-5255",
-            "secondary_cta_href": "tel:+14106655255",
+            "primary_cta_href": "https://www.a-paw.com/contact",
+            "secondary_cta_label": "Call (301) 552-3800",
+            "secondary_cta_href": "tel:+13015523800",
             "image_url": "/images/animals/hero-home-default.webp",
-            "badge": "Family-owned clinic in Parkville, MD"
+            "badge": "Privately owned clinic in Lanham, MD"
           }
         }
       ]
@@ -174,8 +174,8 @@
           },
           {
             "intent": "critters",
-            "title": "Other Critters",
-            "description": "Rabbits, small mammals & more, let's see if we're a fit.",
+            "title": "Pocket Pets & Exotics",
+            "description": "Rabbits, ferrets, reptiles, and pocket pets — call to confirm fit.",
             "image": "/images/animals/hero-critters-page.webp"
           }
         ]
@@ -235,7 +235,7 @@
                 "intent": "dogs",
                 "sub_intent": "treatments",
                 "title": "Specific Treatments",
-                "description": "Dental, surgery, laser, PRP.",
+                "description": "Dental, surgery, laser therapy, diagnostics.",
                 "image": "/images/animals/hero-svc-dogs.webp"
               }
             ]
@@ -334,40 +334,40 @@
         "heading": "Comprehensive services for every life stage.",
         "cards": [
           {
-            "title": "Wellness Exams",
-            "description": "Annual checkups that catch problems early.",
+            "title": "Preventive & Wellness Care",
+            "description": "Life-stage exams, vaccines, parasite prevention, and health planning.",
             "href": "/services/wellness-exams",
             "icon": "stethoscope"
           },
           {
-            "title": "Vaccinations",
-            "description": "Core & lifestyle vaccines on a schedule that fits your pet.",
-            "href": "/services/vaccinations",
-            "icon": "shield"
+            "title": "Diagnostics",
+            "description": "In-house laboratory, radiology, dental radiology, ultrasound, and allergy testing.",
+            "href": "/services/diagnostics",
+            "icon": "activity"
           },
           {
-            "title": "Dental Care",
-            "description": "Cleanings, extractions, and preventive dental health.",
+            "title": "Dentistry & Oral Surgery",
+            "description": "Dental cleanings, oral surgery, and dental radiology for healthier mouths.",
             "href": "/services/dental-care",
             "icon": "tooth"
           },
           {
             "title": "Surgery",
-            "description": "Spay/neuter plus advanced procedures performed onsite.",
+            "description": "Skilled surgical care with thoughtful pain management and monitoring.",
             "href": "/services/surgery",
             "icon": "scissors"
           },
           {
-            "title": "Laser Therapy",
-            "description": "Non-invasive pain relief and faster recovery.",
-            "href": "/services/laser-therapy",
-            "icon": "sparkles"
+            "title": "Urgent Care & Hospitalization",
+            "description": "Same-day urgent care during office hours and overnight hospitalization when needed.",
+            "href": "/services/urgent-care",
+            "icon": "heart"
           },
           {
-            "title": "PRP & Regenerative",
-            "description": "Cutting-edge regenerative treatments for joints & healing.",
-            "href": "/services/prp-therapy",
-            "icon": "activity"
+            "title": "Boarding & Auxiliary Services",
+            "description": "Medical boarding, microchipping, behavior counseling, health certificates, and limited grooming.",
+            "href": "/services/boarding",
+            "icon": "sparkles"
           }
         ]
       },
@@ -406,7 +406,7 @@
                 "icon": "scissors"
               },
               {
-                "title": "PRP & Regenerative",
+                "title": "Diagnostics & Surgery",
                 "description": "Regenerative medicine for joints & healing.",
                 "href": "/services/prp-therapy",
                 "icon": "activity"
@@ -480,7 +480,7 @@
               {
                 "title": "First-visit consults",
                 "description": "Let's talk about your pet and see if we're a fit.",
-                "href": "https://carneyanimalhospital.com/request-appointment/",
+                "href": "https://www.a-paw.com/contact",
                 "icon": "stethoscope"
               },
               {
@@ -514,7 +514,7 @@
                 "icon": "sparkles"
               },
               {
-                "title": "PRP & Regenerative Medicine",
+                "title": "Diagnostics & Surgery Medicine",
                 "description": "Cutting-edge regenerative options.",
                 "href": "/services/prp-therapy",
                 "icon": "activity"
@@ -536,30 +536,30 @@
       "page": "home",
       "description": "Testimonials emphasised by intent.",
       "default_content": {
-        "heading": "Families across Parkville trust us with their pets.",
+        "heading": "Lanham families trust A.P.A.W. with beloved pets.",
         "testimonials": [
           {
-            "quote": "the veterinarian's love, knowledge and respect for animals is unparalleled. She does not waste your money on unnecessary tests yet does everything she can to find the problem and get your pet healthy.",
-            "author": "Long-time client",
-            "tag": "Wellness"
+            "quote": "Love APAW. Great staff and Dr. Johnson is the best! Highly recommend.",
+            "author": "A.P.A.W. client",
+            "tag": "Veterinary Team"
           },
           {
-            "quote": "If I could give Carney Animal Hospital more stars, I would! From their receptionists to techs to doctors, they are all kind, attentive, understanding and knowledgeable.",
-            "author": "First-time dog owner",
-            "tag": "New Puppy"
+            "quote": "A.P.A.W. approaches each client and patient with compassion, warmth, and personalized attention.",
+            "author": "Practice profile",
+            "tag": "Compassionate Care"
           },
           {
-            "quote": "The team performed orthopedic surgery on my beagle. She is pretty much back to her normal self. Everyone is very friendly and professional.",
-            "author": "Beagle mom",
-            "tag": "Surgery"
+            "quote": "A full-service, privately owned hospital for dogs, cats, rabbits, ferrets, and pocket pets.",
+            "author": "Practice profile",
+            "tag": "Multi-species Care"
           }
         ],
-        "eyebrow": "Trusted by Local Pet Families",
-        "headline": "Parkville pet owners count on Carney Animal Hospital.",
-        "quote": "Been going here for 2 decades and the care is top notch!",
-        "quote_author": "Gina",
-        "stat_label": "Serving Parkville pets since",
-        "stat_value": "1952"
+        "eyebrow": "Community Veterinary Care",
+        "headline": "Compassionate care with deep local roots.",
+        "quote": "Love APAW. Great staff and Dr. Johnson is the best! Highly recommend.",
+        "quote_author": "A.P.A.W. client",
+        "stat_label": "Serving the community for",
+        "stat_value": "35+ years"
       },
       "switches": [
         {
@@ -595,59 +595,29 @@
         "heading": "Answers that help you help your pet.",
         "items": [
           {
-            "q": "My new puppy needs vaccines, how soon should we come in?",
-            "a": "As early as 6\u20138 weeks for the first puppy visit. We'll design a vaccine schedule based on your puppy's age and lifestyle and talk through spay/neuter timing, house-training, and nutrition.",
-            "intent": "dogs",
-            "sub_intent": "new_puppy"
-          },
-          {
-            "q": "My cat stopped eating or is hiding, should I be worried?",
-            "a": "Cats hide illness well, so sudden changes in appetite, behavior, or litter-box habits deserve a same-day call. We'll triage over the phone and get you in quickly if needed.",
-            "intent": "cats",
-            "sub_intent": "health_concerns"
-          },
-          {
-            "q": "My senior dog is slowing down, can you help with arthritis or pain?",
-            "a": "Yes, we combine laser therapy, joint support, multimodal pain management, and PRP/regenerative medicine to keep older dogs comfortable and mobile. Senior consults include a tailored quality-of-life plan.",
-            "intent": "dogs",
-            "sub_intent": "senior"
-          },
-          {
-            "q": "Do you see exotic pets, rabbits, reptiles, birds, or small mammals?",
-            "a": "We see select non-dog, non-cat pets. Call us first and we'll be honest about whether we're the right clinic for your species, or refer you to a specialist we trust.",
+            "q": "What types of pets does A.P.A.W. see?",
+            "a": "A.P.A.W. cares for dogs, cats, rabbits, ferrets, reptiles, and pocket pets. Some species are seen by select veterinarians only, so call first for non-dog/non-cat pets.",
             "intent": "critters",
-            "sub_intent": "husbandry"
-          },
-          {
-            "q": "Do you perform spay/neuter surgery, and at what age?",
-            "a": "Yes, on site. Recommended age varies by species, breed, and size, we'll talk through the ideal timing for your pet at their wellness visit.",
-            "sub_intent": "treatments"
-          },
-          {
-            "q": "My dog's breath is bad and there's plaque, do you do dental cleanings?",
-            "a": "Yes. We perform full anesthetic dental cleanings with digital dental X-rays and extractions when needed. Dental disease is one of the most under-treated issues we see in dogs.",
-            "intent": "dogs",
-            "sub_intent": "treatments"
-          },
-          {
-            "q": "How often should my indoor cat get wellness exams and vaccines?",
-            "a": "Annual wellness for adult cats, twice-yearly for seniors. Even indoor cats need core vaccines and screening, many feline illnesses are silent until they're serious.",
-            "intent": "cats",
             "sub_intent": "wellness"
           },
           {
-            "q": "Do you offer laser therapy or PRP / regenerative medicine?",
-            "a": "Yes, Class IV laser therapy for pain, inflammation, and healing, and Platelet-Rich Plasma (PRP) for joints, soft-tissue injuries, and chronic pain where medications aren't enough.",
-            "sub_intent": "treatments"
-          },
-          {
-            "q": "Something seems wrong with my pet right now, can I come in today?",
-            "a": "Call us. During business hours we triage most urgent concerns same-day. For true emergencies after hours we'll direct you to the nearest 24/7 ER so your pet gets care fast.",
+            "q": "Do you offer urgent care?",
+            "a": "Yes. During clinic hours, A.P.A.W. accepts emergencies and urgent care whenever possible. Call before coming in so the team can advise you.",
             "sub_intent": "health_concerns"
           },
           {
-            "q": "Do you take new patients, and what happens at the first visit?",
-            "a": "Yes, we love meeting new families. First visits are roughly 45 minutes: full exam, health history, lifestyle chat, and a custom care plan. Bring any previous records you have.",
+            "q": "Do you provide dental care?",
+            "a": "Yes. A.P.A.W. offers dentistry and oral surgery, including dental radiology, to support healthier mouths and better whole-body health.",
+            "sub_intent": "treatments"
+          },
+          {
+            "q": "Do you offer boarding?",
+            "a": "Yes. A.P.A.W. offers boarding and medical boarding, plus overnight hospitalization when a patient needs additional monitoring.",
+            "sub_intent": "wellness"
+          },
+          {
+            "q": "Can you help with international pet travel certificates?",
+            "a": "Yes. A.P.A.W. has APHIS-accredited veterinarians who can help with international health certificates. Start early because requirements can take 30 days or more.",
             "sub_intent": "wellness"
           }
         ]
@@ -663,7 +633,7 @@
         "eyebrow": "Request a visit",
         "headline": "Let's get your pet on the schedule.",
         "subheadline": "Tell us a little about your pet and we'll follow up to confirm a time that works.",
-        "reassurance": "Same-week appointments typical. For urgent concerns, please call (410) 665-5255."
+        "reassurance": "For urgent concerns, please call (301) 552-3800."
       },
       "switches": [
         {
@@ -676,7 +646,7 @@
             "eyebrow": "Request a dog visit",
             "headline": "Let's get your dog on the schedule.",
             "subheadline": "A few quick details and we'll follow up to confirm.",
-            "reassurance": "Same-week appointments typical. For urgent concerns, please call (410) 665-5255."
+            "reassurance": "Same-week appointments typical. For urgent concerns, please call (301) 552-3800."
           }
         },
         {
@@ -689,7 +659,7 @@
             "eyebrow": "Request a cat visit",
             "headline": "Let's get your cat in for a gentle visit.",
             "subheadline": "Tell us a bit about your kitty and we'll take it from there.",
-            "reassurance": "Same-week appointments typical. For urgent concerns, please call (410) 665-5255."
+            "reassurance": "Same-week appointments typical. For urgent concerns, please call (301) 552-3800."
           }
         },
         {
@@ -715,7 +685,7 @@
             "eyebrow": "We're here to help",
             "headline": "Tell us what's going on.",
             "subheadline": "Describe symptoms and timing, we'll reach out quickly to guide you.",
-            "reassurance": "If this is truly urgent, please call (410) 665-5255 right now."
+            "reassurance": "If this is truly urgent, please call (301) 552-3800 right now."
           }
         }
       ]
@@ -726,10 +696,10 @@
       "page": "service",
       "description": "Inline CTA block shown on service/condition pages.",
       "default_content": {
-        "headline": "Ready when you are.",
-        "body": "Tell us about your pet and we'll take it from here.",
+        "headline": "Ready to schedule?",
+        "body": "Call or request a visit and the A.P.A.W. team will help guide the next step.",
         "primary_cta_label": "Request an appointment",
-        "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
+        "primary_cta_href": "https://www.a-paw.com/contact",
         "image_url": "/images/animals/hero-svc-default.webp",
         "imagePosition": "center 45%"
       },
@@ -744,7 +714,7 @@
             "headline": "Ready when you are.",
             "body": "Tell us about your pet and we'll take it from here.",
             "primary_cta_label": "Request an appointment",
-            "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
+            "primary_cta_href": "https://www.a-paw.com/contact",
             "image_url": "/images/animals/hero-svc-dogs.webp",
             "imagePosition": "center 45%"
           }
@@ -759,7 +729,7 @@
             "headline": "Ready when you are.",
             "body": "Tell us about your pet and we'll take it from here.",
             "primary_cta_label": "Request an appointment",
-            "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
+            "primary_cta_href": "https://www.a-paw.com/contact",
             "image_url": "/images/animals/hero-svc-cats.webp",
             "imagePosition": "center 45%"
           }
@@ -774,7 +744,7 @@
             "headline": "Ready when you are.",
             "body": "Tell us about your pet and we'll take it from here.",
             "primary_cta_label": "Request an appointment",
-            "primary_cta_href": "https://carneyanimalhospital.com/request-appointment/",
+            "primary_cta_href": "https://www.a-paw.com/contact",
             "image_url": "/images/animals/hero-svc-critters.webp",
             "imagePosition": "center 45%"
           }

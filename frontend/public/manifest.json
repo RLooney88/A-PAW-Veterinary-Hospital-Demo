@@ -1,7 +1,7 @@
 {
-  "short_name": "Carney AH",
-  "name": "Carney Animal Hospital",
-  "description": "Full-service veterinary hospital in Parkville, MD. Wellness, dental care, laser surgery, ultrasound, spay/neuter, and vaccinations.",
+  "short_name": "A.P.A.W.",
+  "name": "A.P.A.W. Veterinary Hospital and Wellness Center",
+  "description": "A.P.A.W. Veterinary Hospital and Wellness Center is a full-service, privately owned veterinary hospital in Lanham, MD caring for dogs, cats, rabbits, ferrets, reptiles, and pocket pets.",
   "icons": [
     {
       "src": "/favicon.ico",
@@ -21,6 +21,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#87302B",
-  "background_color": "#FDFBF7"
+  "theme_color": "#A0003D",
+  "background_color": "#FFF9E6"
 }

@@ -1,62 +1,62 @@
 {
   "practice": {
-    "name": "Carney Animal Hospital",
-    "shortName": "Carney Animal Hospital",
+    "name": "A.P.A.W. Veterinary Hospital and Wellness Center",
+    "shortName": "A.P.A.W.",
     "displayLines": [
-      "Carney Animal",
-      "Hospital"
+      "A.P.A.W.",
+      "Veterinary Hospital"
     ],
-    "tagline": "Trusted veterinary care in Parkville since 1952.",
-    "description": "Carney Animal Hospital is a full-service veterinary hospital in Parkville, MD providing wellness care, dental care, laser surgery, ultrasound, spay/neuter, vaccinations, and personalized treatment for pets and their families.",
-    "serviceArea": "Parkville, MD"
+    "tagline": "Compassionate, AAHA-accredited veterinary care in Lanham.",
+    "description": "A.P.A.W. Veterinary Hospital and Wellness Center is a full-service, privately owned veterinary hospital in Lanham, MD caring for dogs, cats, rabbits, ferrets, reptiles, and pocket pets.",
+    "serviceArea": "Lanham, MD and Prince George’s County"
   },
   "brand": {
-    "logo": "/brand/carneyah-logo.png",
-    "logoAlt": "Carney Animal Hospital logo",
+    "logo": "/brand/apaw-logo.jpg",
+    "logoAlt": "A.P.A.W. Veterinary Hospital and Wellness Center logo",
     "colors": {
-      "light": "#FDFBF7",
-      "dark": "#16132A",
-      "accent": "#87302B",
-      "accentLight": "#F4E2E1"
+      "light": "#FFF9E6",
+      "dark": "#2A1124",
+      "accent": "#A0003D",
+      "accentLight": "#FFE06D"
     }
   },
   "contact": {
-    "phone": "(410) 665-5255",
-    "phoneHref": "tel:+14106655255",
-    "email": "carneyanimalhospital@yahoo.com",
+    "phone": "(301) 552-3800",
+    "phoneHref": "tel:+13015523800",
+    "email": "",
     "address": {
-      "street": "9011 Harford Rd",
+      "street": "7601 Good Luck Rd",
       "line2": "",
-      "city": "Parkville",
+      "city": "Lanham",
       "state": "MD",
-      "zip": "21234",
+      "zip": "20706",
       "country": "US"
     }
   },
   "hours": [
     [
       "Monday",
-      "9:00 AM \u2013 6:00 PM"
+      "8:00 AM – 6:00 PM"
     ],
     [
       "Tuesday",
-      "9:00 AM \u2013 6:00 PM"
+      "8:00 AM – 6:00 PM"
     ],
     [
       "Wednesday",
-      "8:00 AM \u2013 6:00 PM"
+      "8:00 AM – 2:00 PM"
     ],
     [
       "Thursday",
-      "8:00 AM \u2013 6:00 PM"
+      "8:00 AM – 6:00 PM"
     ],
     [
       "Friday",
-      "9:00 AM \u2013 6:00 PM"
+      "8:00 AM – 6:00 PM"
     ],
     [
       "Saturday",
-      "8:00 AM \u2013 1:00 PM"
+      "8:00 AM – 1:00 PM"
     ],
     [
       "Sunday",
@@ -64,11 +64,11 @@
     ]
   ],
   "links": {
-    "website": "https://carneyanimalhospital.com",
-    "appointment": "https://carneyanimalhospital.com/request-appointment/",
+    "website": "https://www.a-paw.com",
+    "appointment": "https://www.a-paw.com/contact",
     "store": "",
     "pharmacy": "",
-    "onlineForms": "",
+    "onlineForms": "https://www.a-paw.com/online-forms.html",
     "facebook": "",
     "instagram": "",
     "linkedin": "",
@@ -76,9 +76,15 @@
   },
   "team": [
     {
-      "name": "Dr. Andrew Jendrek, DVM",
+      "name": "Dr. Patricia Peynado-Boyce",
+      "role": "Practice Owner / Veterinarian",
+      "bio": "Privately owns and operates A.P.A.W.; interests include dermatology, internal medicine, and geriatric medicine.",
+      "image": ""
+    },
+    {
+      "name": "Dr. Tannis Johnson",
       "role": "Veterinarian",
-      "bio": "Dr. Andrew Jendrek welcomes pets and their families to Carney Animal Hospital, where healthy pets and happy parents are the central focus.",
+      "bio": "A Tuskegee-trained general practitioner with special interests in geriatric medicine and dentistry.",
       "image": ""
     }
   ],
@@ -87,7 +93,7 @@
     "onlineBooking": true,
     "storeLink": false,
     "pharmacyLink": false,
-    "onlineFormsLink": false,
+    "onlineFormsLink": true,
     "teamSection": true
   }
 }
